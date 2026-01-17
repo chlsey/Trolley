@@ -8,7 +8,11 @@ public class TrolleyMovement : MonoBehaviour
     // Vector3 moveDirection;
     Transform orientation;
 
-    public SplineContainer spline;
+    public SplineContainer OriginalTrack;
+    public SplineContainer SwitchedTrack;
+
+    SplineContainer CurrentSpline; 
+
     public bool followSpline = true;
     private float distanceAlongSpline = 0f;
     
@@ -17,14 +21,12 @@ public class TrolleyMovement : MonoBehaviour
     
     bool grounded;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {   
         rb = GetComponent<Rigidbody>();
 
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (followSpline && spline != null)
@@ -38,12 +40,12 @@ public class TrolleyMovement : MonoBehaviour
 
     private void MoveTrolley()
     {
-        if (spline == null) return;
+        if (CurrentSpline == null) return;
 
-        float splineLength = spline.GetSplineLength();
+        float splineLength = CurrentSpline.GetSplineLength();
         distanceAlongSpline = Mathf.Repeat(distanceAlongSpline, splineLength);
         
-        spline.Evaluate(distanceAlongSpline, out Vector3 currentPos, out Vector3 currentTangent);
+        CurrentSpline.Evaluate(distanceAlongSpline, out Vector3 currentPos, out Vector3 currentTangent);
         
         // get future spline position
         Vector3 desiredDirection = currentTangent.normalized;
