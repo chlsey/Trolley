@@ -60,4 +60,9 @@ public class TrolleyMovement : MonoBehaviour
         
         distanceAlongSpline += moveSpeed * Time.deltaTime;
     }
+
+    public void SwitchTrack()
+    {
+        Debug.Log("SWITCHED!");
+    }
 }
