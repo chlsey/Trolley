@@ -7,57 +7,54 @@ public class TrolleyMovement : MonoBehaviour
     
     internal bool switched;
     public float moveSpeed;
-    // Vector3 moveDirection;
-    Transform orientation;
 
     public SplineContainer spline;
+    public SplineContainer spline1;
+    public SplineContainer currentSpline;
     public bool followSpline = true;
     private float distanceAlongSpline = 0f;
-    
-    public LayerMask ground;
-    Rigidbody rb;
-    
-    bool grounded;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {   
-        rb = GetComponent<Rigidbody>();
-
+        currentSpline = spline;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (followSpline && spline != null)
+        if (followSpline && currentSpline != null)
         {
             MoveTrolley();
             return;
         }
-
     }
 
 
     private void MoveTrolley()
     {
-        if (spline == null) return;
+        if (currentSpline == null) return;
 
-        float splineLength = spline.CalculateLength();
+        float splineLength = currentSpline.CalculateLength();
         distanceAlongSpline = Mathf.Repeat(distanceAlongSpline, splineLength);
         
-        spline.Evaluate(distanceAlongSpline, out float3 currentPos, out float3 currentTangent, out float3 currentUp);
+        currentSpline.Evaluate(distanceAlongSpline, out float3 currentPos, out float3 currentTangent, out float3 currentUp);
         
-        // get future spline position
-        Vector3 desiredDirection = currentTangent;
-        Vector3 desiredVelocity = desiredDirection * moveSpeed;
+        // Set transform position directly along spline
+        transform.position = currentPos;
         
-        // calc forward force
-        Vector3 velocityDiff = desiredVelocity - rb.linearVelocity;
-        rb.AddForce(velocityDiff * rb.mass, ForceMode.Force);
-        
-        // rotate cube in forward direction
+        // Set rotation to face forward direction
         transform.rotation = Quaternion.LookRotation(currentTangent);
         
         distanceAlongSpline += moveSpeed * Time.deltaTime;
+    }
+
+    public void SwitchTrack() {
+        if (currentSpline == spline) {
+            currentSpline = spline1;
+        }
+        else {
+            currentSpline = spline;    
+        }
     }
 }
