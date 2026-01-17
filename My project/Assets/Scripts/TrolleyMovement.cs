@@ -1,8 +1,10 @@
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Splines;
 
 public class TrolleyMovement : MonoBehaviour
 {
+    
     internal bool switched;
     public float moveSpeed;
     // Vector3 moveDirection;
@@ -40,13 +42,13 @@ public class TrolleyMovement : MonoBehaviour
     {
         if (spline == null) return;
 
-        float splineLength = spline.GetSplineLength();
+        float splineLength = spline.CalculateLength();
         distanceAlongSpline = Mathf.Repeat(distanceAlongSpline, splineLength);
         
-        spline.Evaluate(distanceAlongSpline, out Vector3 currentPos, out Vector3 currentTangent);
+        spline.Evaluate(distanceAlongSpline, out float3 currentPos, out float3 currentTangent, out float3 currentUp);
         
         // get future spline position
-        Vector3 desiredDirection = currentTangent.normalized;
+        Vector3 desiredDirection = currentTangent;
         Vector3 desiredVelocity = desiredDirection * moveSpeed;
         
         // calc forward force
