@@ -4,6 +4,8 @@ public class lever : MonoBehaviour
 {
     public TrolleyMovement trolleyMovement;
     public Animator anim;
+
+    public Animator armAnim;
     public AudioSource audioSource;
     public AudioClip switchSound;
 
@@ -21,9 +23,10 @@ public class lever : MonoBehaviour
         {
             trolleyMovement.SwitchTrack();
             anim.SetTrigger("Switch");
+            armAnim.SetTrigger("Switch");
             audioSource.PlayOneShot(switchSound);
             Debug.Log("TrackSwitched");
-            enabled = false;
+            //enabled = false;
         }
     }
 
