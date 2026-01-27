@@ -3,6 +3,9 @@ using UnityEngine;
 public class lever : MonoBehaviour
 {
     public TrolleyMovement trolleyMovement;
+    public RedGreenLight redGreenLight;
+
+    public GreenRedLight greenRedLight;
     public Animator anim;
 
     public Animator armAnim;
@@ -22,11 +25,13 @@ public class lever : MonoBehaviour
         if (nearLever && Input.GetKeyDown(KeyCode.E))
         {
             trolleyMovement.SwitchTrack();
+            redGreenLight.Toggle();
+            greenRedLight.Toggle();
             anim.SetTrigger("Switch");
             armAnim.SetTrigger("Switch");
             audioSource.PlayOneShot(switchSound);
             Debug.Log("TrackSwitched");
-            //enabled = false;
+            enabled = false;
         }
     }
 
