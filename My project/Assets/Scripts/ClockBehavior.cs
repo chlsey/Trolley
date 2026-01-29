@@ -1,0 +1,42 @@
+using System;
+using System.IO;
+using Unity.VisualScripting;
+using UnityEngine;
+
+public class ClockBehavior : MonoBehaviour
+{
+    [SerializeField]
+    private GameObject trolley;
+    [SerializeField]
+    private GameObject startPoint;
+    [SerializeField]
+    private GameObject endPoint;
+    [SerializeField]
+    private GameObject clockHand;
+    private bool rotate; // bool to make trolley stop once its past end point
+    private float trolleyProgress; // a value from 0 to 1 of how far along the trolley is along the path
+    private float pathLength;
+
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
+    {
+        rotate = true;
+        trolleyProgress = 0f;
+        pathLength = Vector3.Distance(startPoint.transform.position, endPoint.transform.position);
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        trolleyProgress = Vector3.Distance(startPoint.transform.position, trolley.transform.position) / pathLength;
+        if(rotate)
+        {
+            clockHand.transform.localRotation = Quaternion.Euler(0, 0, -trolleyProgress * 360);
+            if (Vector3.Distance(trolley.transform.position, endPoint.transform.position) < 1)
+            {
+                rotate = false;
+            }
+        }
+        
+    }
+}

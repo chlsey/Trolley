@@ -1,30 +1,47 @@
 using UnityEngine;
 
-public class Lever : MonoBehaviour
+public class lever : MonoBehaviour
 {
-    [SerializeField] TrolleyMovement TrolleyMovement;
-    private bool playerNear;
-    public Animator animator;
+    public TrolleyMovement trolleyMovement;
+    public RedGreenLight redGreenLight;
+
+    public GreenRedLight greenRedLight;
+    public Animator anim;
+
+    public Animator armAnim;
+    public AudioSource audioSource;
+    public AudioClip switchSound;
+
+    private bool nearLever;
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
+    {
+        nearLever = false;
+    }
 
     // Update is called once per frame
-
     void Update()
     {
-        if (playerNear == true && Input.GetKeyDown(KeyCode.E))
+        if (nearLever && Input.GetKeyDown(KeyCode.E))
         {
-                Debug.Log("lever!");
-                TrolleyMovement.SwitchTrack();
-                animator.SetTrigger("Lever");
+            trolleyMovement.SwitchTrack();
+            redGreenLight.Toggle();
+            greenRedLight.Toggle();
+            anim.SetTrigger("Switch");
+            armAnim.SetTrigger("Switch");
+            audioSource.PlayOneShot(switchSound);
+            Debug.Log("TrackSwitched");
+            enabled = false;
         }
     }
 
-    void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
-        playerNear = true;
+        nearLever = true;
     }
-
-    void OnTriggerExit(Collider other)
+    private void OnTriggerExit(Collider other)
     {
-        playerNear = false;
+        nearLever = false;
     }
+    
 }
