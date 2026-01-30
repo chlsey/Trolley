@@ -1,16 +1,8 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-/*
-Setup notes:
-- Create a Core scene that persists and add GameOrchestrator to an empty GameObject.
-- Assign a LevelGraph asset and the StageRoot transform (parent for StageSet prefabs).
-- Player and theatre environment live in the Core scene and never get destroyed.
-
-StageSet notes:
-- Each level is a prefab with all per-level objects under its root.
-- Place EndTrigger components at track ends and set outcomeId strings that match graph edges.
-*/
+// Core orchestrator class
+// Determines what level the player is currently on and spawns Level Directors to handle each level.
 public class GameOrchestrator : MonoBehaviour
 {
     public LevelGraph graph;

@@ -1,5 +1,6 @@
 ﻿public class GameState
 {
-    // Minimal data container for cross-level state. Extend as needed.
+    // for storing cross level stuff
+    // store stuff that needs to be memorized cross level here
     public int LevelsCompleted;
 }

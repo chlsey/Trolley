@@ -7,12 +7,9 @@ public interface IStageSetReceiver
     void Initialize(GameState state);
 }
 
-/*
-Setup notes:
-- Spawned at runtime by GameOrchestrator; do not place this in scenes.
-- Instantiates the node's StageSet prefab under StageRoot and waits for EndLevel.
-- In-level scripts call LevelDirector.Active.EndLevel("track_a") to finish a level.
-*/
+// Spawned by GameOrchestrator class to handle level lifecycle
+// Uses a stage set prefab to load and deload level assets smoothly
+// DON'T ADD THESE TO SCENES MANUALLY, SPAWNED BY GAME ORCHESTRATOR.
 public class LevelDirector : MonoBehaviour
 {
     public static LevelDirector Active { get; private set; }
