@@ -1,6 +1,13 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <ui:VisualElement style="flex-grow: 1; background-color: rgb(255, 255, 255); background-image: url(&quot;project://database/Assets/UI/UI%20Textures/CurtainBG.png?fileID=2800000&amp;guid=6e0c78425f166c345931933f80a69197&amp;type=3#CurtainBG&quot;);">
-        <ui:Image source="project://database/Assets/UI/UI%20Textures/Title.png?fileID=2800000&amp;guid=7430df443dff153469d40343d0144da8&amp;type=3#Title" scale-mode="ScaleToFit" style="background-position-x: center; width: 50%; height: 40%; align-self: center; padding-left: 0; top: 60px;"/>
-        <ui:Button text="Play" display-tooltip-when-elided="true" name="button" icon-image="" style="-unity-text-align: middle-center; width: 30%; align-items: center; align-self: center; align-content: center; left: auto; font-size: 43px; padding-top: 1px; padding-bottom: 1px; margin-top: 1px; margin-bottom: 1px; background-color: rgba(188, 188, 188, 0); border-top-width: 0; border-right-width: 0; border-bottom-width: 0; border-left-width: 0; background-image: none; -unity-background-scale-mode: stretch-to-fill; background-repeat: no-repeat no-repeat; background-position-y: center; background-position-x: center; background-size: 100% 100%; -unity-background-image-tint-color: rgb(255, 255, 255); color: rgb(255, 255, 255); -unity-text-outline-width: 10px; letter-spacing: 0; text-overflow: clip; -unity-text-outline-color: rgb(0, 0, 0); -unity-font-style: bold; top: 68px;"/>
+    <Style src="project://database/Assets/UI/MainMenu.uss?fileID=7433441132597879392&amp;guid=ec295e58ac3044e47bd7b67a8c611b1a&amp;type=3#MainMenu"/>
+    <ui:VisualElement name="Root" class="root" style="width: 100%; height: 100%;">
+        <ui:VisualElement name="Background_Image" class="background-image" style="flex-grow: 1;"/>
+    </ui:VisualElement>
+    <ui:VisualElement name="Panel" class="panel" style="position: absolute;">
+        <ui:VisualElement name="Button_Container" style="flex-grow: 1;">
+            <ui:Button text="" display-tooltip-when-elided="true" name="Play_Button" icon-image="" emoji-fallback-support="false" class="main-menu-button" style="top: 63%; left: 4%; width: 22%; height: 20%;"/>
+            <ui:Button text="" name="Settings_Button" class="main-menu-button" style="top: 49%; left: 31%; width: 41%; height: 20%;"/>
+            <ui:Button text="" name="Exit_Button" class="main-menu-button" style="top: 74%; left: 41%; width: 22%; height: 20%;"/>
+        </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

@@ -5,8 +5,10 @@ using static UnityEngine.Rendering.DebugUI.MessageBox;
 
 public class MenuController : MonoBehaviour
 {
-    private Button _button;
-    
+    private Button playButton;
+    private Button settingsButton;
+    private Button exitButton;
+
 
     //Add logic that interacts with the UI controls in the `OnEnable` methods
     private void OnEnable()
@@ -15,25 +17,24 @@ public class MenuController : MonoBehaviour
         // The UXML is already instantiated by the UIDocument component
         var uiDocument = GetComponent<UIDocument>();
 
-        _button = uiDocument.rootVisualElement.Q("button") as Button;
+        playButton = uiDocument.rootVisualElement.Q("Play_Button") as Button;
+        settingsButton = uiDocument.rootVisualElement.Q("Settings_Button") as Button;
+        exitButton = uiDocument.rootVisualElement.Q("Exit_Button") as Button;
 
-        _button.RegisterCallback<ClickEvent>(ClickPlay);
-        _button.RegisterCallback<MouseEnterEvent>(MouseHovering);
-        _button.RegisterCallback<MouseOutEvent>(MouseLeft);
+        playButton.RegisterCallback<ClickEvent>(ClickPlay);
+        exitButton.RegisterCallback<ClickEvent>(ClickExit);
     }
 
     private void ClickPlay(ClickEvent evt)
     {
         SceneManager.LoadScene(1);
     }
-    private void MouseHovering(MouseEnterEvent evt)
+
+    private void ClickExit(ClickEvent evt)
     {
-        _button.style.backgroundColor = new Color(0f, 1f, 1f, 0.5f);
+        Application.Quit();
+        Debug.Log("Quit Game");
     }
 
-    private void MouseLeft(MouseOutEvent evt)
-    {
-        _button.style.backgroundColor = new Color(1f, 1f, 1f, 0f);
-    }
 }
 
