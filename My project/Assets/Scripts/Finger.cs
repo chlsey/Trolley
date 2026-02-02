@@ -3,9 +3,8 @@ using UnityEngine;
 public class Finger : MonoBehaviour
 {
     public Animator animator;
-    public string FingerAnimationBoolName = "Finger";
-    public KeyCode FingerKeyToHold = KeyCode.F;
-    
+    private bool nearLever = false;
+  
     void Start()
     {
         
@@ -14,9 +13,23 @@ public class Finger : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(FingerKeyToHold))
-            animator.SetBool(FingerAnimationBoolName, true);
-        else
-            animator.SetBool(FingerAnimationBoolName, false);
+        if (nearLever && Input.GetKeyDown(KeyCode.E))
+        {
+            animator.SetTrigger("Switch");
+            
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+    
+        nearLever = true;
+        
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        
+        nearLever = false;
+        
     }
 }

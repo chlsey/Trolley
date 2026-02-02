@@ -43,5 +43,20 @@ public class lever : MonoBehaviour
     {
         nearLever = false;
     }
+
+    void Awake()
+    {
+        trolleyMovement ??= FindObjectOfType<TrolleyMovement>();
+        if (redGreenLight == null)
+            redGreenLight = FindObjectOfType<RedGreenLight>();
+        if (greenRedLight == null)
+            greenRedLight = FindObjectOfType<GreenRedLight>();
+        if (anim == null)
+            anim = GetComponent<Animator>();
+        if (armAnim == null)
+            armAnim = GetComponentInChildren<Animator>();
+        if (audioSource == null)
+            audioSource = GetComponent<AudioSource>();
+    }
     
 }
