@@ -3074,18 +3074,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c74ed4b0c4125b341a040556ee861689, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  ratingDisplayRenderer: {fileID: 1159331143}
-  backgroundColor: {r: 0, g: 0, b: 0, a: 0.9}
+  lineRenderer: {fileID: 0}
+  ratingDisplay: {fileID: 0}
   lineColor: {r: 1, g: 0, b: 1, a: 1}
-  lineThickness: 1
-  flipX: 1
-  flipY: 1
   startingRating: 0.22
   ratingLerpSpeed: 1.5
-  secondsToFillGraph: 5
+  secondsToFillCube: 5
   pointInterval: 0.05
-  texWidth: 256
-  texHeight: 128
+  maxPoints: 500
+  zOffset: 0.5
 --- !u!4 &586685058
 Transform:
   m_ObjectHideFlags: 0
