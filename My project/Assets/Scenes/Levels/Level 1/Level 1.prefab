@@ -1483,6 +1483,8 @@ GameObject:
   - component: {fileID: 8600096226992377198}
   - component: {fileID: 4535176964905883032}
   - component: {fileID: 2521896700070536236}
+  - component: {fileID: 6690936093718447878}
+  - component: {fileID: 8831080769617053921}
   m_Layer: 0
   m_Name: Lever (1)
   m_TagString: Lever
@@ -1547,6 +1549,7 @@ MonoBehaviour:
   armAnim: {fileID: 0}
   audioSource: {fileID: 2521896700070536236}
   switchSound: {fileID: 8300000, guid: 0cec5d2f5e8c38a4e8cfd748bddd427f, type: 3}
+  voManager: {fileID: 0}
 --- !u!95 &4535176964905883032
 Animator:
   serializedVersion: 7
@@ -1666,6 +1669,51 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!54 &6690936093718447878
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 809691900635899199}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 2
+--- !u!114 &8831080769617053921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 809691900635899199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df5aba26e7c3e4140977edac52591426, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RBController
+  meshRenderer: {fileID: 0}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 8
+  audioSource: {fileID: 0}
+  glassBreaking: {fileID: 0}
 --- !u!1 &811216658595880106
 GameObject:
   m_ObjectHideFlags: 0
