@@ -4,6 +4,7 @@ public class Finger : MonoBehaviour
 {
     public Animator animator;
     private bool nearLever = false;
+    
   
     void Start()
     {
