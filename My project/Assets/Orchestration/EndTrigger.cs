@@ -8,12 +8,9 @@ public class EndTrigger : MonoBehaviour
 
     private bool triggered = false;
 
-    private void OnTriggerEnter(Collider other)
+    public void TriggerEnd()
     {
         if (triggered)
-            return;
-
-        if (!string.IsNullOrEmpty(trolleyTag) && !other.CompareTag(trolleyTag))
             return;
 
         if (LevelDirector.Active == null)
@@ -23,16 +20,37 @@ public class EndTrigger : MonoBehaviour
         }
 
         triggered = true;
-        StartCoroutine(EndSequence());
+        Debug.Log("endtrigger: triggering next node");
+
+        LevelDirector.Active.EndLevel(outcomeId);
     }
 
-    private IEnumerator EndSequence()
-    {
-        yield return new WaitForSeconds(1);
+
+    // private void OnTriggerEnter(Collider other)
+    // {
+    //     if (triggered)
+    //         return;
+
+    //     if (!string.IsNullOrEmpty(trolleyTag) && !other.CompareTag(trolleyTag))
+    //         return;
+
+    //     if (LevelDirector.Active == null)
+    //     {
+    //         Debug.LogWarning("EndTrigger: LevelDirector.Active is null.");
+    //         return;
+    //     }
+
+    //     triggered = true;
+    //     StartCoroutine(EndSequence());
+    // }
+
+    // private IEnumerator EndSequence()
+    // {
+    //     yield return new WaitForSeconds(1);
 
         
 
-        // still goes to next node after done
-        LevelDirector.Active.EndLevel(outcomeId);
-    }
+    //     // still goes to next node after done
+    //     LevelDirector.Active.EndLevel(outcomeId);
+    // }
 }
