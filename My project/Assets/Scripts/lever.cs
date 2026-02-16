@@ -13,6 +13,7 @@ public class lever : MonoBehaviour
     public AudioClip switchSound;
     public Rating rating;
     public bool leverFlipped = false;
+    public VOManager voManager;
 
     private bool nearLever;
     // Start is called once before the first execution of Update after the MonoBehaviour is created

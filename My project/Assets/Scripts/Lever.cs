@@ -11,6 +11,7 @@ public class lever : MonoBehaviour
     public Animator armAnim;
     public AudioSource audioSource;
     public AudioClip switchSound;
+    public VOManager voManager;
 
     private bool nearLever;
     // Start is called once before the first execution of Update after the MonoBehaviour is created

@@ -1,6 +1,9 @@
 using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
+    public PlayerCamera cam;
+    public GameObject arms;
+    public Transform destination;
     public AudioSource footstepSource;
     public AudioClip[] footstepClips;
     public float stepInterval = 0.5f;
@@ -20,12 +23,17 @@ public class PlayerMovement : MonoBehaviour
     public KeyCode jumpKey = KeyCode.Space;
     Vector3 moveDirection;
     Rigidbody rb;
+    
+    
     private void Start()
+    {
+        readyToJump = true;
+        stepTimer = stepInterval;
+    }
+    private void Awake()
     {
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
-        readyToJump = true;
-        stepTimer = stepInterval;
     }
     private void Update()
     {
@@ -100,5 +108,27 @@ public class PlayerMovement : MonoBehaviour
         if (footstepClips.Length == 0 || footstepSource == null) return;
         int index = Random.Range(0, footstepClips.Length);
         footstepSource.PlayOneShot(footstepClips[index]);
+    }
+    public void TeleportToTrack()
+    {
+        cam.tiltZ = -90f;   
+
+        
+        transform.rotation = Quaternion.Euler(-90f, 180f, 0f);
+
+      
+        cam.SetRotation(-90f, -90f);
+
+        cam.clampView = true;
+        cam.minX =-20f;
+        cam.maxX =20f;
+        cam.minY = cam.yRotation - 25f; 
+        cam.maxY = cam.yRotation + 25f;
+        arms.SetActive(false);
+        gameObject.transform.position = destination.transform.position;
+
+
+        PlayerMovement pm = GetComponent<PlayerMovement>(); 
+        pm.enabled = false;
     }
 }

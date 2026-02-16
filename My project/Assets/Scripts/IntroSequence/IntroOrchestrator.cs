@@ -51,13 +51,15 @@ public class IntroOrchestrator : MonoBehaviour
 
     private IEnumerator PlayIntroSequence()
     {
+        
         LightsOff();
+        yield return CurtainController.Instance.OpenCurtains();
 
-        IntroVoiceController.Instance.PlayLine(introClip);
+        VOManager.Instance.PlayLine(introClip);
 
         yield return new WaitForSeconds(5);
 
-        IntroVoiceController.Instance.PlayAudience(lightOnClip);
+        VOManager.Instance.PlayAudience(lightOnClip);
 
         yield return new WaitForSeconds(1);
 
@@ -69,37 +71,39 @@ public class IntroOrchestrator : MonoBehaviour
 
         yield return new WaitForSeconds(introClip.length - 8);
 
-        // IntroVoiceController.Instance.PlayAudience(applauseClip);
+        VOManager.Instance.PlayAudience(applauseClip);
 
         StopCoroutine(lightRoutine);
         MoveLightsAsideAndDim();
 
         // open curtains
-        yield return StartCoroutine(OpenCurtains());
+        // yield return StartCoroutine(OpenCurtains());
+        yield return CurtainController.Instance.OpenCurtains();
 
-        IntroVoiceController.Instance.StartBackgroundMusic(introBGM);
+
+        VOManager.Instance.StartBackgroundMusic(introBGM);
 
         // yield return new WaitForSeconds(2);
 
         // transition VO
-        IntroVoiceController.Instance.PlayLine(transitionClip);
+        VOManager.Instance.PlayLine(transitionClip);
 
         yield return new WaitForSeconds(1);
 
-        IntroVoiceController.Instance.PlaySoundFX(lightOnClip);
+        VOManager.Instance.PlaySoundFX(lightOnClip);
 
         trolleyLight.intensity = 10000f;
 
-        IntroVoiceController.Instance.PlayAudience(trolleyClip);
+        VOManager.Instance.PlaySoundFX(trolleyClip);
 
         yield return new WaitForSeconds(4);
 
-        IntroVoiceController.Instance.PlayAudience(lightOnClip);
+        VOManager.Instance.PlaySoundFX(lightOnClip);
         fiveLight.intensity = 100f;
 
         yield return new WaitForSeconds(5);
 
-        IntroVoiceController.Instance.PlayAudience(lightOnClip);
+        VOManager.Instance.PlaySoundFX(lightOnClip);
 
         leverLight.intensity = 10000f;
 
@@ -108,8 +112,8 @@ public class IntroOrchestrator : MonoBehaviour
         fiveLight.intensity = 0f;
         oneLight.intensity = 100f;
 
-        // leverLight.intensity = 0;
-        // IntroVoiceController.Instance.PlayAudience(lightOnClip);
+        leverLight.intensity = 0;
+        VOManager.Instance.PlaySoundFX(lightOnClip);
 
         yield return new WaitForSeconds(10);
 
@@ -227,8 +231,8 @@ public class IntroOrchestrator : MonoBehaviour
 
     private void StartMainScene()
     {
-        SceneManager.LoadScene("MainScene");
         Debug.Log("Intro complete → transition to main scene");
+        LevelDirector.Active.EndLevel("track_a");
     }
 
 }
