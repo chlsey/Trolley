@@ -1,13 +1,14 @@
 using UnityEngine;
 using System.Collections;
 
-public class LevelOneTrackA : MonoBehaviour
+public class LevelTwoATrackA : MonoBehaviour
 {
     public EndTrigger endTrigger;
 
     [Header("VO Clips")]
     public AudioClip endingClip;      
-    public AudioClip levelTwoAIntroClip;  
+    // public AudioClip levelThreeIntroClip;  
+
 
     private void OnTriggerEnter(Collider other)
     {
@@ -20,13 +21,8 @@ public class LevelOneTrackA : MonoBehaviour
 
         yield return new WaitForSeconds(endingClip.length);
 
-        VOManager.Instance.PlayLine(levelTwoAIntroClip);
-
-        yield return new WaitForSeconds(5f);
-
-        // curtains open back up
-
         Debug.Log("track a ending complete");
+
 
         // call endtrigger
         endTrigger.TriggerEnd();
