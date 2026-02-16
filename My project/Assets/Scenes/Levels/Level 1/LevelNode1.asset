@@ -16,6 +16,6 @@ MonoBehaviour:
   stageSetPrefab: {fileID: 6209571718411646602, guid: 14b201330016e4e1591f8b1b7181cc82, type: 3}
   outgoingEdges:
   - outcomeId: track_a
-    nextNode: {fileID: 11400000, guid: 915037b2d3a9d0f43a6f07fd6e0b008b, type: 2}
+    nextNode: {fileID: 11400000, guid: 103560a33f9c5f64d95e105d6b30486b, type: 2}
   - outcomeId: track_b
     nextNode: {fileID: 11400000, guid: 103560a33f9c5f64d95e105d6b30486b, type: 2}
