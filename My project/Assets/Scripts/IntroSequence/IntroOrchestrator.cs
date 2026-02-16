@@ -51,7 +51,9 @@ public class IntroOrchestrator : MonoBehaviour
 
     private IEnumerator PlayIntroSequence()
     {
+        
         LightsOff();
+        yield return CurtainController.Instance.OpenCurtains();
 
         VOManager.Instance.PlayLine(introClip);
 
@@ -75,7 +77,9 @@ public class IntroOrchestrator : MonoBehaviour
         MoveLightsAsideAndDim();
 
         // open curtains
-        yield return StartCoroutine(OpenCurtains());
+        // yield return StartCoroutine(OpenCurtains());
+        yield return CurtainController.Instance.OpenCurtains();
+
 
         VOManager.Instance.StartBackgroundMusic(introBGM);
 

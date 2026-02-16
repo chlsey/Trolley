@@ -552,7 +552,7 @@ Transform:
   m_GameObject: {fileID: 346647040983609103}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 145.97464, y: -6.5126896, z: 3.033409}
+  m_LocalPosition: {x: 6.9, y: -6.5126896, z: 3.033409}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -663,6 +663,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LevelOneEndSequence
   endTrigger: {fileID: 3680733563081611235}
+  endingClip: {fileID: 8300000, guid: 07fe6d75beb7e43f6ac7c73da284ec81, type: 3}
+  levelTwoAIntroClip: {fileID: 8300000, guid: 1383d0cb6684b4120b6933a0ed5631b2, type: 3}
 --- !u!1 &355883649247720024
 GameObject:
   m_ObjectHideFlags: 0
@@ -8617,7 +8619,7 @@ Transform:
   m_GameObject: {fileID: 5488885839212302271}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 145.97464, y: -6.5126896, z: 12.043411}
+  m_LocalPosition: {x: 6.900009, y: -6.5126896, z: 12.043411}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8728,6 +8730,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LevelOneTrackB
   endTrigger: {fileID: 3080934632226850187}
+  endingClip: {fileID: 8300000, guid: 26999ab0b72a940a489de53412b275f0, type: 3}
+  levelTwoBIntroClip: {fileID: 8300000, guid: 8b7f88536505d49ce95cd3b88635519e, type: 3}
 --- !u!1 &5531776639227954716
 GameObject:
   m_ObjectHideFlags: 0
