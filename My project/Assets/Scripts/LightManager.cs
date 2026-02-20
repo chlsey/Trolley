@@ -1,0 +1,72 @@
+using UnityEngine;
+
+public class LightManager : MonoBehaviour
+{
+    public static LightManager Instance;
+
+    [Header("Overarching Lights")]
+    public Light[] archLights;
+    
+    [Header("Walkway Lights")]
+    public Light[] walkLights;
+
+    [Header("Stage Main Lights")]
+    public Light mainLight1;
+    public Light mainLight2;
+    public Light mainLight3;
+
+
+    [Header("Track Lights")]
+    public Light trackALight;
+    public Light trackBLight;
+
+
+
+    private void Awake()
+    {
+        Instance = this;
+    }
+
+    public void TurnOffArchLights()
+    {
+        foreach (Light light in archLights)
+        {
+            if (light != null)
+                light.enabled = false;
+        }
+        
+    }
+
+    public void TurnOnArchLights()
+    {
+        foreach (Light light in archLights)
+        {
+            if (light != null)
+                light.enabled = true;
+        }
+        
+    }
+
+    public void TurnOffWalkwayLights()
+    {
+        foreach (Light light in walkLights)
+        {
+            if (light != null)
+                light.enabled = false;
+        }
+        
+    }
+
+    public void TurnOnWalkwayLights()
+    {
+        foreach (Light light in walkLights)
+        {
+            if (light != null)
+                light.enabled = true;
+        }
+        
+    }
+
+    
+
+}
