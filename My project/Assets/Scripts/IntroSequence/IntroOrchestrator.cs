@@ -53,7 +53,7 @@ public class IntroOrchestrator : MonoBehaviour
     {
         
         LightsOff();
-        yield return CurtainController.Instance.OpenCurtains();
+        // yield return CurtainController.Instance.OpenCurtains();
 
         VOManager.Instance.PlayLine(introClip);
 
