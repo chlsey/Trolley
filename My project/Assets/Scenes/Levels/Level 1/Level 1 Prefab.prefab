@@ -998,7 +998,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f08260f37fec56345a83b5eac7f6f154, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::VictinSFX
-  audioSource: {fileID: 0}
+  audioSource: {fileID: 6256302529320835376}
   splat: {fileID: 8300000, guid: 9cb76e52c66ca9845b3b11aea3d61ec7, type: 3}
   layerMask:
     serializedVersion: 2
@@ -1417,7 +1417,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f08260f37fec56345a83b5eac7f6f154, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::VictinSFX
-  audioSource: {fileID: 0}
+  audioSource: {fileID: 2794443045946905632}
   splat: {fileID: 8300000, guid: 9cb76e52c66ca9845b3b11aea3d61ec7, type: 3}
   layerMask:
     serializedVersion: 2
@@ -3825,7 +3825,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f08260f37fec56345a83b5eac7f6f154, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::VictinSFX
-  audioSource: {fileID: 0}
+  audioSource: {fileID: 262601649693205405}
   splat: {fileID: 8300000, guid: 9cb76e52c66ca9845b3b11aea3d61ec7, type: 3}
   layerMask:
     serializedVersion: 2
@@ -4640,6 +4640,8 @@ MonoBehaviour:
   splat: {fileID: 8300000, guid: 9cb76e52c66ca9845b3b11aea3d61ec7, type: 3}
   applause: {fileID: 8300000, guid: 54c92324773dd4d40abe4cc91d401f22, type: 3}
   ParticlePrefab: {fileID: 4938095755617958529, guid: 2e79f16be10fbd14f8d5ef191f8db4aa, type: 3}
+  Lever: {fileID: 7310875333360241009}
+  rating: {fileID: 0}
 --- !u!1 &2610514555329130290
 GameObject:
   m_ObjectHideFlags: 0
@@ -5230,7 +5232,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f08260f37fec56345a83b5eac7f6f154, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::VictinSFX
-  audioSource: {fileID: 0}
+  audioSource: {fileID: 1359574843864173868}
   splat: {fileID: 8300000, guid: 9cb76e52c66ca9845b3b11aea3d61ec7, type: 3}
   layerMask:
     serializedVersion: 2
@@ -6309,7 +6311,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f08260f37fec56345a83b5eac7f6f154, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::VictinSFX
-  audioSource: {fileID: 0}
+  audioSource: {fileID: 8743949685220004932}
   splat: {fileID: 8300000, guid: 9cb76e52c66ca9845b3b11aea3d61ec7, type: 3}
   layerMask:
     serializedVersion: 2
@@ -10462,6 +10464,8 @@ MonoBehaviour:
   audioSource: {fileID: 1649778477524365988}
   switchSound: {fileID: 8300000, guid: 0cec5d2f5e8c38a4e8cfd748bddd427f, type: 3}
   voManager: {fileID: 0}
+  rating: {fileID: 0}
+  leverFlipped: 0
 --- !u!95 &2069867800835237834
 Animator:
   serializedVersion: 7
@@ -12464,7 +12468,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f08260f37fec56345a83b5eac7f6f154, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::VictinSFX
-  audioSource: {fileID: 0}
+  audioSource: {fileID: 5445661799429908190}
   splat: {fileID: 8300000, guid: 9cb76e52c66ca9845b3b11aea3d61ec7, type: 3}
   layerMask:
     serializedVersion: 2

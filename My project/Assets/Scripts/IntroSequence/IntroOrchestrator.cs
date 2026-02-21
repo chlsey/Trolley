@@ -54,7 +54,10 @@ public class IntroOrchestrator : MonoBehaviour
     {
         Debug.Log("PlayIntroSequence started");
         LightsOff();
-        yield return CurtainController.Instance.OpenCurtains();
+
+        LightManager.Instance.TurnOffArchLights();
+        LightManager.Instance.TurnOffWalkwayLights();
+        // yield return CurtainController.Instance.OpenCurtains();
 
         // Subtitles EXAMPLE for intro orchestration
         // Add a subtitles line for each, where the parameters are:
@@ -102,6 +105,9 @@ public class IntroOrchestrator : MonoBehaviour
         // open curtains
         // yield return StartCoroutine(OpenCurtains());
         yield return CurtainController.Instance.OpenCurtains();
+
+        LightManager.Instance.TurnOnArchLights();
+        LightManager.Instance.TurnOnWalkwayLights();
 
 
         VOManager.Instance.StartBackgroundMusic(introBGM);
