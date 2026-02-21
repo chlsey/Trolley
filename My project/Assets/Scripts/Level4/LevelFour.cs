@@ -7,7 +7,7 @@ public class LevelFourIntro : MonoBehaviour
     public AudioClip levelFourIntroClip;  
 
     public TrolleyMovement trolleyMovement;
-    public CurtainController curtainController;
+    // public CurtainController curtainController;
 
     public Light trackOneLight;
     public Light trackTwoLight;
@@ -21,7 +21,7 @@ public class LevelFourIntro : MonoBehaviour
 
     private IEnumerator PlayLevelFourIntroSeq()
     {
-        yield return CurtainController.Instance.CloseCurtains();
+        // yield return CurtainController.Instance.CloseCurtains();
         VOManager.Instance.PlayLine(levelFourIntroClip);
         Debug.Log("lvl 4 intro played!");
         
@@ -36,7 +36,7 @@ public class LevelFourIntro : MonoBehaviour
 
         // Show the Terms & Condition on screen (at 43 sec)
         trolleyMovement.followSpline = true;
-        yield return curtainController.OpenCurtains();
+        // yield return curtainController.OpenCurtains();
 
         
 
