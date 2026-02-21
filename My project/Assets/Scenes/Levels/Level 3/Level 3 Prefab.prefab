@@ -127,7 +127,6 @@ GameObject:
   - component: {fileID: 8889299198541110022}
   - component: {fileID: 5969884957224454161}
   - component: {fileID: 3680733563081611235}
-  - component: {fileID: 306924781181216175}
   - component: {fileID: 7906974131451981232}
   m_Layer: 0
   m_Name: LevelEndTriggerA
@@ -243,21 +242,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EndTrigger
   outcomeId: track_a
   trolleyTag: Trolley
---- !u!114 &306924781181216175
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 346647040983609103}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6fc036bc9f24d41188fefbf6f8f83feb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::LevelOneEndSequence
-  endTrigger: {fileID: 3680733563081611235}
-  endingClip: {fileID: 8300000, guid: 07fe6d75beb7e43f6ac7c73da284ec81, type: 3}
-  levelTwoAIntroClip: {fileID: 8300000, guid: 1383d0cb6684b4120b6933a0ed5631b2, type: 3}
 --- !u!114 &7906974131451981232
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1746,7 +1730,6 @@ GameObject:
   - component: {fileID: 3569096791817435330}
   - component: {fileID: 2695783114245728423}
   - component: {fileID: 3080934632226850187}
-  - component: {fileID: 9056769602395586338}
   - component: {fileID: 1037993031854091840}
   m_Layer: 0
   m_Name: LevelEndTriggerB
@@ -1862,21 +1845,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EndTrigger
   outcomeId: track_b
   trolleyTag: Trolley
---- !u!114 &9056769602395586338
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5488885839212302271}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6df1dcdca65f6481c85228925847edf0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::LevelOneTrackB
-  endTrigger: {fileID: 3080934632226850187}
-  endingClip: {fileID: 8300000, guid: 26999ab0b72a940a489de53412b275f0, type: 3}
-  levelTwoBIntroClip: {fileID: 8300000, guid: 8b7f88536505d49ce95cd3b88635519e, type: 3}
 --- !u!114 &1037993031854091840
 MonoBehaviour:
   m_ObjectHideFlags: 0
