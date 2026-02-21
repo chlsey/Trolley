@@ -4204,7 +4204,7 @@ MonoBehaviour:
   voiceoverClip: {fileID: 8300000, guid: 6f7b2278f93984e02bb95bf2031bf227, type: 3}
   showSubtitle: 1
   subtitleText: testing!
-  subtitleDurationSeconds: 10
+  subtitleDurationMilliseconds: 10
 --- !u!65 &561571062
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -17850,7 +17850,7 @@ MonoBehaviour:
   voiceoverClip: {fileID: 8300000, guid: e7471d38a8b0e4f18a326a615fa60fca, type: 3}
   showSubtitle: 1
   subtitleText: testing!
-  subtitleDurationSeconds: 10
+  subtitleDurationMilliseconds: 10
 --- !u!65 &1214255896
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -23449,10 +23449,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2231197303374407951, guid: 84dda41276ab5d1419380658eadb80c8, type: 3}
-      propertyPath: far clip plane
-      value: 2000
-      objectReference: {fileID: 0}
     - target: {fileID: 2430468705607740957, guid: b61b808ce2be8e04883b1b25c998fdfb, type: 3}
       propertyPath: m_Name
       value: Player1
@@ -23509,6 +23505,10 @@ PrefabInstance:
       propertyPath: destination
       value: 
       objectReference: {fileID: 1872370505}
+    - target: {fileID: 2231197303374407951, guid: 84dda41276ab5d1419380658eadb80c8, type: 3}
+      propertyPath: far clip plane
+      value: 2000
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
