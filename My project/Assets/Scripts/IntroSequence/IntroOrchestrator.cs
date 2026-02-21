@@ -52,6 +52,9 @@ public class IntroOrchestrator : MonoBehaviour
     {
         
         LightsOff();
+
+        LightManager.Instance.TurnOffArchLights();
+        LightManager.Instance.TurnOffWalkwayLights();
         // yield return CurtainController.Instance.OpenCurtains();
 
         VOManager.Instance.PlayLine(introClip);
@@ -78,6 +81,9 @@ public class IntroOrchestrator : MonoBehaviour
         // open curtains
         // yield return StartCoroutine(OpenCurtains());
         yield return CurtainController.Instance.OpenCurtains();
+
+        LightManager.Instance.TurnOnArchLights();
+        LightManager.Instance.TurnOnWalkwayLights();
 
 
         VOManager.Instance.StartBackgroundMusic(introBGM);
