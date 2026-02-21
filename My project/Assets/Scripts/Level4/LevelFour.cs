@@ -7,7 +7,6 @@ public class LevelFourIntro : MonoBehaviour
     public AudioClip levelFourIntroClip;  
 
     public TrolleyMovement trolleyMovement;
-    // public CurtainController curtainController;
 
     public Light trackOneLight;
     public Light trackTwoLight;

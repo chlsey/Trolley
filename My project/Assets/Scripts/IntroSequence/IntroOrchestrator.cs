@@ -57,7 +57,6 @@ public class IntroOrchestrator : MonoBehaviour
 
         LightManager.Instance.TurnOffArchLights();
         LightManager.Instance.TurnOffWalkwayLights();
-        // yield return CurtainController.Instance.OpenCurtains();
 
         // Subtitles EXAMPLE for intro orchestration
         // Add a subtitles line for each, where the parameters are:
@@ -104,7 +103,7 @@ public class IntroOrchestrator : MonoBehaviour
 
         // open curtains
         // yield return StartCoroutine(OpenCurtains());
-        yield return CurtainController.Instance.OpenCurtains();
+        yield return CurtainController.Instance.OpenIntroCurtains();
 
         LightManager.Instance.TurnOnArchLights();
         LightManager.Instance.TurnOnWalkwayLights();
