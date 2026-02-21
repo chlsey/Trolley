@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class lever : MonoBehaviour
+public class Lever : MonoBehaviour
 {
     public TrolleyMovement trolleyMovement;
     public RedGreenLight redGreenLight;
