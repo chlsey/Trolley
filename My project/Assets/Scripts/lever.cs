@@ -3,6 +3,7 @@ using UnityEngine;
 public class lever : MonoBehaviour
 {
     public TrolleyMovement trolleyMovement;
+    public CatapultProjectile catapultProjectile;
     public RedGreenLight redGreenLight;
 
     public GreenRedLight greenRedLight;
@@ -25,7 +26,7 @@ public class lever : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (nearLever && Input.GetKeyDown(KeyCode.E))
+        if (nearLever && Input.GetKeyDown(KeyCode.E) && trolleyMovement)
         {
             trolleyMovement.SwitchTrack();
             redGreenLight.Toggle();
@@ -35,6 +36,16 @@ public class lever : MonoBehaviour
             audioSource.PlayOneShot(switchSound);
             Debug.Log("TrackSwitched");
             rating.ChangeRating(-0.5f);
+            leverFlipped = true;
+            enabled = false;
+        }
+        if (nearLever && Input.GetKeyDown(KeyCode.E) && catapultProjectile)
+        {
+            catapultProjectile.Launch();
+            anim.SetTrigger("Switch");
+            armAnim.SetTrigger("Switch");
+            audioSource.PlayOneShot(switchSound);
+            rating.ChangeRating(0.5f);
             leverFlipped = true;
             enabled = false;
         }

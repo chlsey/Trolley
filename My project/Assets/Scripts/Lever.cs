@@ -3,6 +3,7 @@ using UnityEngine;
 public class lever : MonoBehaviour
 {
     public TrolleyMovement trolleyMovement;
+    public CatapultProjectile catapultProjectile;
     public RedGreenLight redGreenLight;
 
     public GreenRedLight greenRedLight;
@@ -12,6 +13,8 @@ public class lever : MonoBehaviour
     public AudioSource audioSource;
     public AudioClip switchSound;
     public VOManager voManager;
+    public Rating rating;
+    public bool leverFlipped = false;
 
     private bool nearLever;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -23,7 +26,7 @@ public class lever : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (nearLever && Input.GetKeyDown(KeyCode.E))
+        if (nearLever && Input.GetKeyDown(KeyCode.E) && trolleyMovement)
         {
             trolleyMovement.SwitchTrack();
             redGreenLight.Toggle();
@@ -32,6 +35,18 @@ public class lever : MonoBehaviour
             armAnim.SetTrigger("Switch");
             audioSource.PlayOneShot(switchSound);
             Debug.Log("TrackSwitched");
+            rating.ChangeRating(-0.5f);
+            leverFlipped = true;
+            enabled = false;
+        }
+        if (nearLever && Input.GetKeyDown(KeyCode.E) && catapultProjectile)
+        {
+            catapultProjectile.Launch();
+            anim.SetTrigger("Switch");
+            armAnim.SetTrigger("Switch");
+            audioSource.PlayOneShot(switchSound);
+            rating.ChangeRating(0.5f);
+            leverFlipped = true;
             enabled = false;
         }
     }
@@ -47,17 +62,19 @@ public class lever : MonoBehaviour
 
     void Awake()
     {
-        trolleyMovement ??= FindObjectOfType<TrolleyMovement>();
+        trolleyMovement ??= FindFirstObjectByType<TrolleyMovement>();
         if (redGreenLight == null)
-            redGreenLight = FindObjectOfType<RedGreenLight>();
+            redGreenLight = FindFirstObjectByType<RedGreenLight>();
         if (greenRedLight == null)
-            greenRedLight = FindObjectOfType<GreenRedLight>();
+            greenRedLight = FindFirstObjectByType<GreenRedLight>();
         if (anim == null)
             anim = GetComponent<Animator>();
         if (armAnim == null)
             armAnim = GetComponentInChildren<Animator>();
         if (audioSource == null)
             audioSource = GetComponent<AudioSource>();
+        if (rating == null)
+            rating = FindFirstObjectByType<Rating>();
     }
     
 }
