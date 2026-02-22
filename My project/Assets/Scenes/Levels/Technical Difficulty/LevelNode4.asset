@@ -10,12 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ed1ad3dd735fd4c4d94eb07b40352263, type: 3}
-  m_Name: LevelNode1
+  m_Name: LevelNode4
   m_EditorClassIdentifier: Assembly-CSharp::LevelNode
   id: 
-  stageSetPrefab: {fileID: 6209571718411646602, guid: 14b201330016e4e1591f8b1b7181cc82, type: 3}
+  stageSetPrefab: {fileID: 6234442539142351137, guid: 3127aecc711fb43639be26f1d236060a, type: 3}
   outgoingEdges:
-  - outcomeId: track_a
-    nextNode: {fileID: 11400000, guid: 915037b2d3a9d0f43a6f07fd6e0b008b, type: 2}
-  - outcomeId: track_b
-    nextNode: {fileID: 11400000, guid: 11ed6a54734664bae8bd13aed8a2329d, type: 2}
+  - outcomeId: 
+    nextNode: {fileID: 11400000, guid: ffa911f64461b4ff483455d98fc79491, type: 2}

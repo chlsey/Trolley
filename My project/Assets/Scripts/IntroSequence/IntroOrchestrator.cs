@@ -1,5 +1,7 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class IntroOrchestrator : MonoBehaviour
 {
@@ -50,12 +52,33 @@ public class IntroOrchestrator : MonoBehaviour
 
     private IEnumerator PlayIntroSequence()
     {
-        
+        Debug.Log("PlayIntroSequence started");
         LightsOff();
 
         LightManager.Instance.TurnOffArchLights();
         LightManager.Instance.TurnOffWalkwayLights();
-        // yield return CurtainController.Instance.OpenCurtains();
+
+        // Subtitles EXAMPLE for intro orchestration
+        // Add a subtitles line for each, where the parameters are:
+        // (Subtitle Sentence, start time in milliseconds after audio is triggered, duration in milliseconds)
+        VOManager.Instance.ShowSubtitle(new List<VOManager.SubtitleLine>
+        {
+            new VOManager.SubtitleLine("Welcome… welcome… welcome…", 814f, 2421f),
+
+            new VOManager.SubtitleLine("to The Trolley Show!", 3795f, 2500f),
+
+            new VOManager.SubtitleLine("I'll be your host for the show,", 7462f, 1500f),
+
+            new VOManager.SubtitleLine("and tonight, you get to be the most powerful person in the room.", 9000f, 4500f),
+
+            new VOManager.SubtitleLine("No pressure.", 14114f, 532f),
+
+            new VOManager.SubtitleLine("Here on The Trolley Show, we take life’s toughest philosophical questions…", 16233f, 6000f),
+
+            new VOManager.SubtitleLine("…and we solve them…", 22500f, 1500f),
+
+            new VOManager.SubtitleLine("in the most exciting way.", 24000f, 2000f),
+        });
 
         VOManager.Instance.PlayLine(introClip);
 
@@ -80,7 +103,7 @@ public class IntroOrchestrator : MonoBehaviour
 
         // open curtains
         // yield return StartCoroutine(OpenCurtains());
-        yield return CurtainController.Instance.OpenCurtains();
+        yield return CurtainController.Instance.OpenIntroCurtains();
 
         LightManager.Instance.TurnOnArchLights();
         LightManager.Instance.TurnOnWalkwayLights();
@@ -90,8 +113,26 @@ public class IntroOrchestrator : MonoBehaviour
 
         // yield return new WaitForSeconds(2);
 
-        // transition VO
+        VOManager.Instance.ShowSubtitle(new List<VOManager.SubtitleLine>
+        {
+            new VOManager.SubtitleLine("A trolley is speeding down the tracks.", 640f, 2500f),
+
+            new VOManager.SubtitleLine("Straight ahead… are five people.", 3360f, 4000f),
+
+            new VOManager.SubtitleLine("But! You have a lever.", 7500f, 2800f),
+
+            new VOManager.SubtitleLine("Pull it, and the trolley switches tracks, where only one would be the victim.", 10500f, 8000f),
+
+            new VOManager.SubtitleLine("That’s right. For the next ten seconds…", 19000f, 3000f),
+
+            new VOManager.SubtitleLine("You are judge, jury, and, really, executioner.", 21700f, 5500f),
+
+            new VOManager.SubtitleLine("So show us.", 27000f, 2500f),
+
+            new VOManager.SubtitleLine("What choice will you make?", 30000f, 3000f),
+        });
         VOManager.Instance.PlayLine(transitionClip);
+        
 
         yield return new WaitForSeconds(1);
 

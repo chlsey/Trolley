@@ -9,7 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1bd286b5fbcc1854c8aae749e0599e7e, type: 3}
+  m_Script: {fileID: 11500000, guid: 6b0f1910ff01d44e8a221efa85eb6d97, type: 3}
   m_Name: TrolleyGraph
   m_EditorClassIdentifier: Assembly-CSharp::LevelGraph
-  startNode: {fileID: 11400000, guid: f62f2b83c680d6943a2d8857f9dbd374, type: 2}
+  graph: {fileID: 0}
+  stageRoot: {fileID: 0}

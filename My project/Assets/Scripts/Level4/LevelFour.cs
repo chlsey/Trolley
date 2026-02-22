@@ -52,6 +52,7 @@ public class LevelFourIntro : MonoBehaviour
     private IEnumerator PlayLevelFourIntroSeq()
     {
         // yield return CurtainController.Instance.CloseCurtains();
+        // yield return CurtainController.Instance.CloseCurtains();
         VOManager.Instance.PlayLine(levelFourIntroClip);
         Debug.Log("lvl 4 intro played!");
         
