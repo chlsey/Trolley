@@ -3,7 +3,7 @@ using UnityEngine;
 public class CatapultProjectile : MonoBehaviour
 {
     private Rigidbody rb;
-    public float launchForce = 500f;
+    public float launchForce = 1000f;
     public Vector3 launchDirection = new Vector3(0, 1, 1);
 
     void Start()
