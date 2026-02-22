@@ -5,6 +5,10 @@ public class LevelTwoBTrackA : MonoBehaviour
 {
     public EndTrigger endTrigger;
 
+    [Header("VO Clips")]
+    public AudioClip endingClip;      
+    public AudioClip levelThreeIntroClip;  
+
     private void OnTriggerEnter(Collider other)
     {
         StartCoroutine(EndSequence());
