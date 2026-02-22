@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ed1ad3dd735fd4c4d94eb07b40352263, type: 3}
-  m_Name: LevelNode4
+  m_Name: TechnicalDifficultyNode
   m_EditorClassIdentifier: Assembly-CSharp::LevelNode
   id: 
   stageSetPrefab: {fileID: 6234442539142351137, guid: 3127aecc711fb43639be26f1d236060a, type: 3}
