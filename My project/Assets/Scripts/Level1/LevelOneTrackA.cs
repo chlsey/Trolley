@@ -16,6 +16,8 @@ public class LevelOneTrackA : MonoBehaviour
 
     private IEnumerator EndSequence()
     {
+        yield return CurtainController.Instance.CloseCurtains();
+
         VOManager.Instance.PlayLine(endingClip);
 
         yield return new WaitForSeconds(endingClip.length);
@@ -23,6 +25,8 @@ public class LevelOneTrackA : MonoBehaviour
         VOManager.Instance.PlayLine(levelTwoAIntroClip);
 
         yield return new WaitForSeconds(5f);
+
+        yield return CurtainController.Instance.OpenCurtains();
 
         // curtains open back up
 

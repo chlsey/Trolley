@@ -663,8 +663,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LevelOneEndSequence
   endTrigger: {fileID: 3680733563081611235}
-  endingClip: {fileID: 8300000, guid: 07fe6d75beb7e43f6ac7c73da284ec81, type: 3}
-  levelTwoAIntroClip: {fileID: 8300000, guid: 1383d0cb6684b4120b6933a0ed5631b2, type: 3}
+  endingClip: {fileID: 8300000, guid: 9ddd2de1709484a3bb63a132bb525bbf, type: 3}
+  levelTwoAIntroClip: {fileID: 8300000, guid: 468303d3683a846988c578f4e01a25ca, type: 3}
 --- !u!1 &355883649247720024
 GameObject:
   m_ObjectHideFlags: 0
@@ -4640,6 +4640,8 @@ MonoBehaviour:
   splat: {fileID: 8300000, guid: 9cb76e52c66ca9845b3b11aea3d61ec7, type: 3}
   applause: {fileID: 8300000, guid: 54c92324773dd4d40abe4cc91d401f22, type: 3}
   ParticlePrefab: {fileID: 4938095755617958529, guid: 2e79f16be10fbd14f8d5ef191f8db4aa, type: 3}
+  Lever: {fileID: 7310875333360241009}
+  rating: {fileID: 0}
 --- !u!1 &2610514555329130290
 GameObject:
   m_ObjectHideFlags: 0
@@ -8731,7 +8733,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LevelOneTrackB
   endTrigger: {fileID: 3080934632226850187}
   endingClip: {fileID: 8300000, guid: 26999ab0b72a940a489de53412b275f0, type: 3}
-  levelTwoBIntroClip: {fileID: 8300000, guid: 8b7f88536505d49ce95cd3b88635519e, type: 3}
+  levelTwoBIntroClip: {fileID: 8300000, guid: c2a47a634ddca4b5ca915e1d8c41167a, type: 3}
 --- !u!1 &5531776639227954716
 GameObject:
   m_ObjectHideFlags: 0
@@ -10455,6 +10457,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   trolleyMovement: {fileID: 8449752393565524978}
+  catapultProjectile: {fileID: 0}
   redGreenLight: {fileID: 0}
   greenRedLight: {fileID: 0}
   anim: {fileID: 2069867800835237834}
@@ -10462,6 +10465,8 @@ MonoBehaviour:
   audioSource: {fileID: 1649778477524365988}
   switchSound: {fileID: 8300000, guid: 0cec5d2f5e8c38a4e8cfd748bddd427f, type: 3}
   voManager: {fileID: 0}
+  rating: {fileID: 0}
+  leverFlipped: 0
 --- !u!95 &2069867800835237834
 Animator:
   serializedVersion: 7

@@ -9,7 +9,7 @@ public class trainBehaviour : MonoBehaviour
     public AudioClip splat;
     public AudioClip applause;
     public GameObject ParticlePrefab;
-    public lever Lever;
+    public Lever Lever;
     public Rating rating;
 
     private bool audioPlayed = false;
@@ -45,7 +45,7 @@ public class trainBehaviour : MonoBehaviour
     void Awake()
     {
         rating ??= FindFirstObjectByType<Rating>();
-        Lever ??= FindFirstObjectByType<lever>();
+        Lever ??= FindFirstObjectByType<Lever>();
     }
 }
 
