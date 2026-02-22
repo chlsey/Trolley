@@ -39,6 +39,8 @@ public class Level3TrackA : MonoBehaviour, IStageSetReceiver
 
     private IEnumerator EndSequence()
     {
+        yield return CurtainController.Instance.CloseCurtains();
+
         // IsCat = false → cat was on Track A → trolley hit Track A → cat killed
         // IsCat = true  → dog was on Track A → trolley hit Track A → dog killed
         if (!_isCat)
@@ -69,6 +71,8 @@ public class Level3TrackA : MonoBehaviour, IStageSetReceiver
             VOManager.Instance.PlayLine(nextLevelIntroClip);
             yield return new WaitForSeconds(nextLevelIntroClip.length);
         }
+
+        yield return CurtainController.Instance.OpenCurtains();
 
         endTrigger.TriggerEnd();
     }
