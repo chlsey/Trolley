@@ -13,7 +13,5 @@ MonoBehaviour:
   m_Name: TechnicalDifficultyNode
   m_EditorClassIdentifier: Assembly-CSharp::LevelNode
   id: 
-  stageSetPrefab: {fileID: 6234442539142351137, guid: 3127aecc711fb43639be26f1d236060a, type: 3}
-  outgoingEdges:
-  - outcomeId: 
-    nextNode: {fileID: 11400000, guid: ffa911f64461b4ff483455d98fc79491, type: 2}
+  stageSetPrefab: {fileID: 4523443780599229090, guid: 9eb9a839b963f44528b836d71a390faf, type: 3}
+  outgoingEdges: []

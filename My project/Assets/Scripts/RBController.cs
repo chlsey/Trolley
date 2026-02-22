@@ -19,7 +19,6 @@ public class RBController : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.L))
         {
-            
             EnableRigidbody();
         }
         
