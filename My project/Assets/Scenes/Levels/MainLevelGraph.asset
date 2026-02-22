@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2ccc103a72b94579b942401823814e1, type: 3}
   m_Name: MainLevelGraph
   m_EditorClassIdentifier: Assembly-CSharp::LevelGraph
-  startNode: {fileID: 11400000, guid: d837bf1b8982d4c9384cfc49412bcf7a, type: 2}
+  startNode: {fileID: 11400000, guid: ffa911f64461b4ff483455d98fc79491, type: 2}

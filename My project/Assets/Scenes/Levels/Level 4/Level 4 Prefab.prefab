@@ -7419,9 +7419,7 @@ Transform:
   m_LocalScale: {x: 0.5239322, y: 0.61651105, z: 0.5239322}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 7774151456228652161}
   - {fileID: 5682718766855183296}
-  - {fileID: 6591369848804826584}
   m_Father: {fileID: 6273054663324307943}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!95 &3705834508993417917
@@ -7458,8 +7456,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 465cdbc405a59495bbbb46cb5e59a75f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CurtainController
+  rightIntroCurtain: {fileID: 0}
+  leftIntroCurtain: {fileID: 0}
   rightCurtain: {fileID: 0}
-  leftCurtain: {fileID: 7774151456228652161}
+  leftCurtain: {fileID: 0}
   curtainOpenDistance: 4
   curtainOpenDuration: 1
 --- !u!1 &4902455874466505511
@@ -9140,6 +9140,7 @@ MonoBehaviour:
   spline1: {fileID: 0}
   currentSpline: {fileID: 0}
   followSpline: 0
+  audioSource: {fileID: 1858662644168821373}
 --- !u!54 &6853909986410414613
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -9545,6 +9546,7 @@ Transform:
   - {fileID: 8315010417935586415}
   - {fileID: 8925778236953060010}
   - {fileID: 6697035325478415620}
+  - {fileID: 2684850740640716179}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6327053084150235747

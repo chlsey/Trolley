@@ -13,6 +13,7 @@ public class TrolleyMovement : MonoBehaviour
     public SplineContainer spline1;
     public SplineContainer currentSpline;
     public bool followSpline = true;
+    public AudioSource audioSource;
     private float distanceAlongSpline = 0f;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -72,7 +73,7 @@ public class TrolleyMovement : MonoBehaviour
 
     private IEnumerator SlowBrakeCoroutine()
     {
-
+        audioSource.Stop();
         float decelerationRate = 0.5f; 
 
         while (moveSpeed > 0)
