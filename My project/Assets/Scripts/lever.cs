@@ -13,6 +13,8 @@ public class Lever : MonoBehaviour
     public AudioSource audioSource;
     public AudioClip switchSound;
     public VOManager voManager;
+    public Rating rating;
+    public bool leverFlipped = false;
 
     private bool nearLever;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -32,7 +34,6 @@ public class Lever : MonoBehaviour
             anim.SetTrigger("Switch");
             armAnim.SetTrigger("Switch");
             audioSource.PlayOneShot(switchSound);
-            Debug.Log("TrackSwitched");
             Debug.Log("Track Switched");
             rating.ChangeRating(-0.5f);
             leverFlipped = true;
@@ -61,17 +62,19 @@ public class Lever : MonoBehaviour
 
     void Awake()
     {
-        trolleyMovement ??= FindObjectOfType<TrolleyMovement>();
+        trolleyMovement ??= FindFirstObjectByType<TrolleyMovement>();
         if (redGreenLight == null)
-            redGreenLight = FindObjectOfType<RedGreenLight>();
+            redGreenLight = FindFirstObjectByType<RedGreenLight>();
         if (greenRedLight == null)
-            greenRedLight = FindObjectOfType<GreenRedLight>();
+            greenRedLight = FindFirstObjectByType<GreenRedLight>();
         if (anim == null)
             anim = GetComponent<Animator>();
         if (armAnim == null)
             armAnim = GetComponentInChildren<Animator>();
         if (audioSource == null)
             audioSource = GetComponent<AudioSource>();
+        if (rating == null)
+            rating = FindFirstObjectByType<Rating>();
     }
     
 }
