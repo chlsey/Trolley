@@ -17,6 +17,7 @@ public class Level3TrackB : MonoBehaviour, IStageSetReceiver
     private bool _isCat; // false = cat on Track A, true = cat on Track B
     private Vector3 _catStartPos;
     private Quaternion _catStartRot;
+    private bool _catReachedFirstWaypoint;
 
     public void Initialize(GameState state)
     {
@@ -55,6 +56,15 @@ public class Level3TrackB : MonoBehaviour, IStageSetReceiver
                 catObject.transform.position = _catStartPos;
                 catObject.transform.rotation = _catStartRot;
                 catObject.SetActive(true);
+
+                var walk = catObject.GetComponent<CatWalkPath>();
+                if (walk != null)
+                {
+                    _catReachedFirstWaypoint = false;
+                    walk.onFirstWaypointReached.AddListener(() => _catReachedFirstWaypoint = true);
+                    walk.StartWalking();
+                    yield return new WaitUntil(() => _catReachedFirstWaypoint);
+                }
             }
 
             VOManager.Instance.PlayLine(catEscapesClip);
