@@ -10,12 +10,15 @@ public class JumbotronButton : MonoBehaviour
     public bool LeftScreen;
     private bool nearRightButton;
     private bool nearLeftButton;
+    public Animator armAnim;
+    public GameObject qPrompt;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         nearRightButton = false;
         nearLeftButton = false;
+        qPrompt.SetActive(false);
     }
 
     // Update is called once per frame
@@ -23,17 +26,19 @@ public class JumbotronButton : MonoBehaviour
     {
         if (nearRightButton && Input.GetKeyDown(KeyCode.Q))
         {
+            armAnim.SetTrigger("PressButton");
             anim.SetTrigger("Pressed");
             jumbotronCameraAngleSwitcher.CycleMaterial();
             audioSource.PlayOneShot(clickSound);
         }
     }
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         if(RightScreen)
         {
             nearRightButton = true;
-            Debug.Log("nearRightButton");
+        
+            qPrompt.SetActive(true);
         }
     }
     private void OnTriggerExit(Collider other)
@@ -41,7 +46,8 @@ public class JumbotronButton : MonoBehaviour
         if(RightScreen)
         {
             nearRightButton = false;
-            Debug.Log("goneRightButton");
+            
+            qPrompt.SetActive(false);
         }
     }
 }

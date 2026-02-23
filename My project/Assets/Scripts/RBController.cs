@@ -47,7 +47,7 @@ public class RBController : MonoBehaviour
         {
             audioSource.PlayOneShot(glassBreaking);
 
-            // meshRenderer.enabled = false;
+            meshRenderer.enabled = false;
 
             Debug.Log("hitGround");
         }
