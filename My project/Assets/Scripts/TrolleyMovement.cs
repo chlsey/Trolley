@@ -7,6 +7,10 @@ public class TrolleyMovement : MonoBehaviour
     
     internal bool switched;
     public float moveSpeed;
+    private float uphillSlowdown = 2f;   
+    private float downhillSpeedup = 0.5f;
+    private float minSlopeSpeedMultiplier = 0.01f;
+    private float maxSlopeSpeedMultiplier = 1.5f;
 
     public SplineContainer spline1;
     public SplineContainer spline2;
@@ -48,17 +52,32 @@ public class TrolleyMovement : MonoBehaviour
         
         // Set rotation to face forward direction
         transform.rotation = Quaternion.LookRotation(currentTangent, currentUp);
+
+        Vector3 forwardVector = ((Vector3)currentTangent).normalized;
+        Vector3 upVector = ((Vector3)currentUp).normalized;
+        float slopeSpeedMultiplier = GetSlopeSpeedMultiplier(forwardVector, upVector);
+        float splineSpeedMultiplier = currentSpline.CompareTag("Loopty") ? 4f : 1f;
+        float finalSpeed = moveSpeed * splineSpeedMultiplier * slopeSpeedMultiplier;
         
-        // Increase the speed when it's moving through the rollercoaster
-        if(currentSpline.tag == "Loopty")
-        {   
-            distanceAlongSpline += moveSpeed * 4 * Time.deltaTime;
-            
-        }
-        else
+        distanceAlongSpline += finalSpeed * Time.deltaTime;
+    }
+
+    private float GetSlopeSpeedMultiplier(Vector3 forwardVector, Vector3 upVector)
+    {
+        Vector3 gravityAlongTrack = Vector3.ProjectOnPlane(Physics.gravity.normalized, upVector);
+        float slopeDirection = Vector3.Dot(forwardVector, gravityAlongTrack);
+
+        float slopeMultiplier = 1f;
+        if (slopeDirection < 0f)
         {
-            distanceAlongSpline += moveSpeed * Time.deltaTime;
+            slopeMultiplier += slopeDirection * uphillSlowdown;
         }
+        else if (slopeDirection > 0f)
+        {
+            slopeMultiplier += slopeDirection * downhillSpeedup;
+        }
+
+        return Mathf.Clamp(slopeMultiplier, minSlopeSpeedMultiplier, maxSlopeSpeedMultiplier);
     }
 
     public void SwitchTrack() {

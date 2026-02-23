@@ -69,6 +69,37 @@ public class LevelDirector : MonoBehaviour
             EndLevel("error_missing_stage_root");
             return;
         }
+        // THIS CODE RUNS ANY PRESPAWN HOOKS YOU HAVE FOR SIMPLICITY
+        // JUST IMPLEMENT A SCRIPT OF THE LEVELNODEHOOK ABSTRACT CLASS (LOOK AT LevelNodeHook.cs)
+        if (node.preSpawnHooks != null)
+        {
+            for (int i = 0; i < node.preSpawnHooks.Count; i++)
+            {
+                LevelNodeHook hook = node.preSpawnHooks[i];
+                if (hook == null)
+                {
+                    continue;
+                }
+
+                try
+                {
+                    hook.Execute(node, state);
+                }
+                catch (Exception ex)
+                {
+                    Debug.LogError(
+                        $"LevelDirector.Run pre-spawn hook '{hook.name}' failed on node '{node.id}'.\n{ex}"
+                    );
+                    EndLevel("error_pre_spawn_hook");
+                    return;
+                }
+
+                if (_hasEnded)
+                {
+                    return;
+                }
+            }
+        }
 
         if (node.stageSetPrefab == null)
         {

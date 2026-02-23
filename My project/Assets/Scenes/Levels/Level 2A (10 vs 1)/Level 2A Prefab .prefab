@@ -8597,8 +8597,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TrolleyMovement
   moveSpeed: 0.03
-  spline: {fileID: 6323433496694445882}
-  spline1: {fileID: 5825456004872650089}
+  uphillSlowdown: 0.9999
+  downhillSpeedup: 0.9999
+  minSlopeSpeedMultiplier: 0.01
+  maxSlopeSpeedMultiplier: 2
+  spline1: {fileID: 6323433496694445882}
+  spline2: {fileID: 5825456004872650089}
   currentSpline: {fileID: 0}
   followSpline: 1
 --- !u!54 &4461113840018519082
