@@ -78,13 +78,13 @@ public class Level3TrackB : MonoBehaviour, IStageSetReceiver
 
         yield return new WaitForSeconds(3f);
 
-        if (nextLevelIntroClip != null)
-        {
-            VOManager.Instance.PlayLine(nextLevelIntroClip);
-            yield return new WaitForSeconds(nextLevelIntroClip.length);
-        }
+        // if (nextLevelIntroClip != null)
+        // {
+        //     VOManager.Instance.PlayLine(nextLevelIntroClip);
+        //     yield return new WaitForSeconds(nextLevelIntroClip.length);
+        // }
 
-        yield return CurtainController.Instance.OpenCurtains();
+        // yield return CurtainController.Instance.OpenCurtains();
 
         endTrigger.TriggerEnd();
     }

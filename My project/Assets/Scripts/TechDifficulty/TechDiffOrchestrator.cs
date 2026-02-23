@@ -38,8 +38,10 @@ public class TechDiffOrchestrator : MonoBehaviour
 
     private IEnumerator PlayTechDiffLevel()
     {
-        VOManager.Instance.PlayLine(techDiffIntroClip1);
-        yield return new WaitForSeconds(3);
+        // VOManager.Instance.PlayLine(techDiffIntroClip1);
+        // yield return new WaitForSeconds(3);
+
+        VOManager.Instance.StopBackgroundMusic();
 
         VOManager.Instance.PlaySoundFX(powerDownSFX);
 

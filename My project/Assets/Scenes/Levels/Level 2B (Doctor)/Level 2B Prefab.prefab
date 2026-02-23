@@ -4373,8 +4373,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LevelTwoBTrackB
   endTrigger: {fileID: 3910096988358334192}
-  endingClip: {fileID: 0}
-  levelThreeIntroClip: {fileID: 0}
+  endingClip: {fileID: 8300000, guid: a77598650a3214a91bb862efe752e8e2, type: 3}
+  levelThreeIntroClip: {fileID: 8300000, guid: 3e96d8287039945ee8e558c93089ce13, type: 3}
 --- !u!1 &3323156076112833249
 GameObject:
   m_ObjectHideFlags: 0
@@ -5766,8 +5766,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LevelTwoBTrackA
   endTrigger: {fileID: 1782038434116938819}
-  endingClip: {fileID: 0}
-  levelThreeIntroClip: {fileID: 0}
+  endingClip: {fileID: 8300000, guid: ed8d141206879405bb017a917eefb3a0, type: 3}
+  levelThreeIntroClip: {fileID: 8300000, guid: 3e96d8287039945ee8e558c93089ce13, type: 3}
 --- !u!1 &4014997487665035627
 GameObject:
   m_ObjectHideFlags: 0
@@ -10207,6 +10207,7 @@ MonoBehaviour:
     m_Bits: 8
   audioSource: {fileID: 0}
   glassBreaking: {fileID: 0}
+  dropped: 0
 --- !u!1 &6769373110572928556
 GameObject:
   m_ObjectHideFlags: 0
