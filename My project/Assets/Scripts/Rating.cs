@@ -35,6 +35,10 @@ public class Rating : MonoBehaviour
     public float secondsToFillGraph = 5f;
     public float pointInterval = 0.05f;
 
+    [Header("Shader")]
+    [Tooltip("Assign an Unlit/Texture shader (or URP Unlit) here so it works in builds.")]
+    public Shader graphShader;
+
     [Header("Texture Resolution")]
     public int texWidth = 256;
     public int texHeight = 128;
@@ -65,11 +69,12 @@ public class Rating : MonoBehaviour
 
         if (ratingDisplayRenderer != null)
         {
-            Shader shader = Shader.Find("Unlit/Texture");
-            if (shader == null)
-                shader = Shader.Find("Universal Render Pipeline/Unlit");
+            if (graphShader == null)
+                graphShader = Shader.Find("Unlit/Texture");
+            if (graphShader == null)
+                graphShader = Shader.Find("Universal Render Pipeline/Unlit");
 
-            Material mat = new Material(shader);
+            Material mat = new Material(graphShader);
             mat.mainTexture = _tex;
             ratingDisplayRenderer.material = mat;
         }

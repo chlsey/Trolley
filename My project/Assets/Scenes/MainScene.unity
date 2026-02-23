@@ -19644,6 +19644,7 @@ MonoBehaviour:
   ratingLerpSpeed: 1.5
   secondsToFillGraph: 5
   pointInterval: 0.05
+  graphShader: {fileID: 10752, guid: 0000000000000000f000000000000000, type: 0}
   texWidth: 256
   texHeight: 128
 --- !u!4 &1326629877
