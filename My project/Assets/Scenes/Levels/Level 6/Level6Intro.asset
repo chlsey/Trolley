@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Level6Intro
   m_EditorClassIdentifier: Assembly-CSharp::IntroAudioHook
   clip: {fileID: 8300000, guid: 5e38b355954016f4eaad413e9a858536, type: 3}
-  durationSeconds: 0
+  durationSeconds: 35
