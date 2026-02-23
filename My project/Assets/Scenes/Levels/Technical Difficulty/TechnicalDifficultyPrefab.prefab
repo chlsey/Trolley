@@ -9442,7 +9442,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6273054663324307943}
   m_Layer: 0
-  m_Name: Level 4 Prefab
+  m_Name: TechnicalDifficultyPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
