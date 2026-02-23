@@ -8,16 +8,18 @@ public class TrolleyMovement : MonoBehaviour
     internal bool switched;
     public float moveSpeed;
 
-    public SplineContainer spline;
     public SplineContainer spline1;
+    public SplineContainer spline2;
     public SplineContainer currentSpline;
     public bool followSpline = true;
     private float distanceAlongSpline = 0f;
+    Rigidbody rb;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {   
-        currentSpline = spline;
+        rb = GetComponent<Rigidbody>();
+        currentSpline = spline1;
     }
 
     // Update is called once per frame
@@ -33,6 +35,7 @@ public class TrolleyMovement : MonoBehaviour
 
     private void MoveTrolley()
     {
+        
         if (currentSpline == null) return;
 
         float splineLength = currentSpline.CalculateLength();
@@ -44,17 +47,26 @@ public class TrolleyMovement : MonoBehaviour
         transform.position = currentPos;
         
         // Set rotation to face forward direction
-        transform.rotation = Quaternion.LookRotation(currentTangent);
+        transform.rotation = Quaternion.LookRotation(currentTangent, currentUp);
         
-        distanceAlongSpline += moveSpeed * Time.deltaTime;
+        // Increase the speed when it's moving through the rollercoaster
+        if(currentSpline.tag == "Loopty")
+        {   
+            distanceAlongSpline += moveSpeed * 4 * Time.deltaTime;
+            
+        }
+        else
+        {
+            distanceAlongSpline += moveSpeed * Time.deltaTime;
+        }
     }
 
     public void SwitchTrack() {
-        if (currentSpline == spline) {
-            currentSpline = spline1;
+        if (currentSpline == spline1) {
+            currentSpline = spline2;
         }
         else {
-            currentSpline = spline;    
+            currentSpline = spline1;    
         }
     }
 }
