@@ -10,7 +10,6 @@ public class RBController : MonoBehaviour
 
     void Start()
     {
-        
         rb = GetComponent<Rigidbody>();
         DisableRigidbody();
     }
@@ -19,6 +18,20 @@ public class RBController : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.L))
         {
+
+            // destroy mesh collider immediately when key is pressed
+            if (meshRenderer != null)
+            {
+                MeshCollider mc = meshRenderer.GetComponent<MeshCollider>();
+                if (mc != null)
+                    Destroy(mc);
+            }
+            else
+            {
+                // catch the next update check as a warning rather than throw an error
+                Debug.LogWarning("meshRenderer is null");
+            }
+
             EnableRigidbody();
         }
         
@@ -28,7 +41,9 @@ public class RBController : MonoBehaviour
         if ((layerMask.value & (1 << other.gameObject.layer)) > 0 )
         {
             audioSource.PlayOneShot(glassBreaking);
-            meshRenderer.enabled = false;
+
+            // meshRenderer.enabled = false;
+
             Debug.Log("hitGround");
         }
     }
