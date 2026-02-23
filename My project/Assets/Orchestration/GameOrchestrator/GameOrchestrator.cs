@@ -14,6 +14,7 @@ public class GameOrchestrator : MonoBehaviour
     private void Start()
     {
         state = new GameState();
+        state.IsCat = MenuController.IsCat;
 
         if (graph == null)
         {
