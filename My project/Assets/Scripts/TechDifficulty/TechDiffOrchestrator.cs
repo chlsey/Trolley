@@ -7,6 +7,7 @@ public class TechDiffOrchestrator : MonoBehaviour
     [Header("VO Clips")]
     public AudioClip techDiffIntroClip1;  
     public AudioClip techDiffIntroClip2;  
+    public AudioClip droppedClip;  
     public AudioClip powerDownSFX;
     public AudioClip whirSFX;
 
@@ -29,7 +30,10 @@ public class TechDiffOrchestrator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+       if (RBController.Instance.dropped)
+        {
+            
+        }
     }
 
     private IEnumerator PlayTechDiffLevel()

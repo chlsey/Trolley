@@ -2,14 +2,17 @@ using UnityEngine;
 
 public class RBController : MonoBehaviour
 {
+ public static RBController Instance;
  private Rigidbody rb;
  public MeshRenderer meshRenderer;
  public LayerMask layerMask;
  public AudioSource audioSource;
  public AudioClip glassBreaking;
+ public bool dropped = false;
 
     void Start()
     {
+        Instance = this;
         rb = GetComponent<Rigidbody>();
         DisableRigidbody();
     }
@@ -18,6 +21,8 @@ public class RBController : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.L))
         {
+
+            dropped = true;
 
             // destroy mesh collider immediately when key is pressed
             if (meshRenderer != null)
