@@ -1,12 +1,20 @@
 using UnityEngine;
 using System.Collections.Generic;
 
+public enum RatingMode
+{
+    Default,        // Level 1 & 2: flip = lose rating, no flip = gain rating
+    AlwaysIncrease, // Level 3: both outcomes increase rating
+    Inverted        // Level 4 & 6: flip = gain rating, no flip = lose rating
+}
+
 /// <summary>
 /// Draws a scrolling rating graph directly onto the RatingDisplay cube as a texture.
 /// Attach to the "Rating" parent object. Other scripts call ChangeRating() or SetRating().
 /// </summary>
 public class Rating : MonoBehaviour
 {
+    public static RatingMode CurrentMode = RatingMode.Default;
     public Renderer ratingDisplayRenderer;
     public Color backgroundColor = new Color(0f, 0f, 0f, 0.9f);
     public Color lineColor = Color.magenta;
