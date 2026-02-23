@@ -4740,6 +4740,7 @@ MonoBehaviour:
   startPoint: {fileID: 6984885849663785510}
   endPoint: {fileID: 4599358453300418679}
   clockHand: {fileID: 7713707553008388032}
+  rotate: 0
 --- !u!1 &1864275222217343698
 GameObject:
   m_ObjectHideFlags: 0
@@ -8601,6 +8602,7 @@ MonoBehaviour:
   spline1: {fileID: 5825456004872650089}
   currentSpline: {fileID: 0}
   followSpline: 1
+  audioSource: {fileID: 0}
 --- !u!54 &4461113840018519082
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -20887,6 +20889,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 430260475848115835}
+  - component: {fileID: 3150961380409800090}
   m_Layer: 0
   m_Name: 'Level 2A Prefab '
   m_TagString: Untagged
@@ -20916,6 +20919,19 @@ Transform:
   - {fileID: 9128710341064995716}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3150961380409800090
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8318156876920128248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c6cdc20f9df542418759249030fe42e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LevelRatingSetup
+  ratingMode: 0
 --- !u!1 &8328782097285140272
 GameObject:
   m_ObjectHideFlags: 0

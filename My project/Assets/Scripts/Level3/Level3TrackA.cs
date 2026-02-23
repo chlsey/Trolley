@@ -76,6 +76,8 @@ public class Level3TrackA : MonoBehaviour, IStageSetReceiver
             yield return new WaitForSeconds(killDogClip.length);
         }
 
+        yield return new WaitForSeconds(3f);
+
         if (nextLevelIntroClip != null)
         {
             VOManager.Instance.PlayLine(nextLevelIntroClip);

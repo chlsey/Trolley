@@ -19,19 +19,45 @@ public class trainBehaviour : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
+        UnityEngine.Debug.Log($"[trainBehaviour] OnTriggerEnter: {other.gameObject.name}, layer={other.gameObject.layer}, audioPlayed={audioPlayed}, layerMask={layerMask.value}");
         if (audioPlayed) return;
         if ((layerMask.value & (1 << other.gameObject.layer)) > 0)
         {
             if (!Lever.leverFlipped)
             {
-                UnityEngine.Debug.Log("Lever not flipped, good job!");
-                rating.ChangeRating(0.15f);
+                switch (Rating.CurrentMode)
+                {
+                    case RatingMode.Default:
+                        UnityEngine.Debug.Log("Lever not flipped, good job!");
+                        rating.ChangeRating(0.15f);
+                        break;
+                    case RatingMode.AlwaysIncrease:
+                        UnityEngine.Debug.Log("Lever not flipped, audience loves it!");
+                        rating.ChangeRating(0.15f);
+                        break;
+                    case RatingMode.Inverted:
+                        UnityEngine.Debug.Log("Lever not flipped, audience disappointed!");
+                        rating.ChangeRating(-0.10f);
+                        break;
+                }
             }
-
-            if (Lever.leverFlipped)
+            else
             {
-                UnityEngine.Debug.Log("Lever flipped, bad job!");
-                rating.ChangeRating(-0.10f);
+                switch (Rating.CurrentMode)
+                {
+                    case RatingMode.Default:
+                        UnityEngine.Debug.Log("Lever flipped, bad job!");
+                        rating.ChangeRating(-0.10f);
+                        break;
+                    case RatingMode.AlwaysIncrease:
+                        UnityEngine.Debug.Log("Lever flipped, audience still loves it!");
+                        rating.ChangeRating(0.15f);
+                        break;
+                    case RatingMode.Inverted:
+                        UnityEngine.Debug.Log("Lever flipped, audience approves!");
+                        rating.ChangeRating(0.15f);
+                        break;
+                }
             }
             audioPlayed = true;
             audioSource.PlayOneShot(splat);
@@ -42,6 +68,11 @@ public class trainBehaviour : MonoBehaviour
     }
 
     
+    public void ResetTrain()
+    {
+        audioPlayed = false;
+    }
+
     void Awake()
     {
         rating ??= FindFirstObjectByType<Rating>();
