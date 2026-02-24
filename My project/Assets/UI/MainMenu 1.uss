@@ -1,0 +1,45 @@
+:root {
+}
+
+.background-image {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-image: url("project://database/Assets/UI/UI%20Textures/TrolleyMenu_V01.png?fileID=2800000&guid=5ab8fa95f2193b4449cb4ad6d67e99de&type=3#TrolleyMenu_V01");
+    -unity-background-scale-mode: scale-to-fit;
+    top: auto;
+}
+
+.root {
+    position: absolute;
+}
+
+.panel {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.main-menu-button {
+    position: absolute;
+    align-self: center;
+    align-items: center;
+    border-top-left-radius: 500px;
+    border-top-right-radius: 500px;
+    border-bottom-right-radius: 500px;
+    border-bottom-left-radius: 500px;
+    border-top-width: 0;
+    border-right-width: 0;
+    border-bottom-width: 0;
+    border-left-width: 0;
+    border-left-color: rgba(168, 118, 118, 0);
+    border-right-color: rgba(168, 118, 118, 0);
+    border-top-color: rgba(168, 118, 118, 0);
+    border-bottom-color: rgba(168, 118, 118, 0);
+    background-color: rgba(255, 249, 110, 0);
+}
+
+.main-menu-button:hover {
+    position: absolute;
+    background-color: rgba(255, 253, 134, 0.45);
+}

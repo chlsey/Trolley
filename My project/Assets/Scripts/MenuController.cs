@@ -22,41 +22,43 @@ public class MenuController : MonoBehaviour
 
         playButton.RegisterCallback<ClickEvent>(ClickPlay);
         exitButton.RegisterCallback<ClickEvent>(ClickExit);
+        
 
-        // Pet selection screen
-        petSelect = root.Q("PetSelect");
-        var catButton = root.Q("Cat_Button") as Button;
-        var dogButton = root.Q("Dog_Button") as Button;
+        // // Pet selection screen
+        // petSelect = root.Q("PetSelect");
+        // var catButton = root.Q("Cat_Button") as Button;
+        // var dogButton = root.Q("Dog_Button") as Button;
 
-        if (catButton != null)
-            catButton.RegisterCallback<ClickEvent>(ClickCat);
-        if (dogButton != null)
-            dogButton.RegisterCallback<ClickEvent>(ClickDog);
+        // if (catButton != null)
+        //     catButton.RegisterCallback<ClickEvent>(ClickCat);
+        // if (dogButton != null)
+        //     dogButton.RegisterCallback<ClickEvent>(ClickDog);
 
-        // Hide pet select at start
-        if (petSelect != null)
-            petSelect.style.display = DisplayStyle.None;
+        // // Hide pet select at start
+        // if (petSelect != null)
+        //     petSelect.style.display = DisplayStyle.None;
     }
 
     private void ClickPlay(ClickEvent evt)
     {
-        if (mainMenu != null)
-            mainMenu.style.display = DisplayStyle.None;
-        if (petSelect != null)
-            petSelect.style.display = DisplayStyle.Flex;
+        SceneManager.LoadScene("MainScene");
+        // if (mainMenu != null)
+        //     mainMenu.style.display = DisplayStyle.None;
+        // if (petSelect != null)
+        //     petSelect.style.display = DisplayStyle.Flex;
     }
 
-    private void ClickCat(ClickEvent evt)
-    {
-        IsCat = true;
-        SceneManager.LoadScene(1);
-    }
+    // private void ClickCat(ClickEvent evt)
+    // {
+    //     IsCat = true;
+    //     SceneManager.LoadScene(1);
+    // }
 
-    private void ClickDog(ClickEvent evt)
-    {
-        IsCat = false;
-        SceneManager.LoadScene(1);
-    }
+    // private void ClickDog(ClickEvent evt)
+    // {
+    //     IsCat = false;
+    //     SceneManager.LoadScene(1);
+    // }
 
     private void ClickExit(ClickEvent evt)
     {

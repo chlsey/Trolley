@@ -9,6 +9,8 @@ public class LevelOneTrackA : MonoBehaviour
     public AudioClip endingClip;      
     public AudioClip levelTwoAIntroClip;  
 
+    public AudioClip bgMusic;
+
     private bool hasTriggered = false;
 
     private void OnTriggerEnter(Collider other)
@@ -21,6 +23,8 @@ public class LevelOneTrackA : MonoBehaviour
 
     private IEnumerator EndSequence()
     {
+        VOManager.Instance.StopBackgroundMusic();
+
         yield return CurtainController.Instance.CloseCurtains();
 
         VOManager.Instance.PlayLine(endingClip);
@@ -30,6 +34,8 @@ public class LevelOneTrackA : MonoBehaviour
         VOManager.Instance.PlayLine(levelTwoAIntroClip);
 
         yield return new WaitForSeconds(5f);
+
+        VOManager.Instance.StartBackgroundMusic(bgMusic);
 
         yield return CurtainController.Instance.OpenCurtains();
 

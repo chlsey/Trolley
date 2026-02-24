@@ -69,6 +69,13 @@ public class LightManager : MonoBehaviour
         
     }
 
+    public void TurnOffTrackB()
+    {
+        trackBLight.enabled = false;
+    }
+
+    
+
     public IEnumerator TurnOffAllLights(float seconds)
     {
         List<Light> allLights = new List<Light>();

@@ -9,6 +9,7 @@ public class RBController : MonoBehaviour
  public AudioSource audioSource;
  public AudioClip glassBreaking;
  public TechDiffOrchestrator techDiffOrchestrator;
+
  
 
     void Start()
@@ -21,11 +22,11 @@ public class RBController : MonoBehaviour
 
     void Update()
     {
-        techDiffOrchestrator = FindObjectOfType<TechDiffOrchestrator>();
-        if(techDiffOrchestrator.pressL && Input.GetKeyDown(KeyCode.L))
+        // techDiffOrchestrator = FindObjectOfType<TechDiffOrchestrator>();
+        // if(techDiffOrchestrator.pressL && Input.GetKeyDown(KeyCode.L))
+        if(Input.GetKeyDown(KeyCode.L))
         {
-
-            dropped = true;
+            GameState.Instance.cageDropped = true;
 
             // destroy mesh collider immediately when key is pressed
             if (meshRenderer != null)

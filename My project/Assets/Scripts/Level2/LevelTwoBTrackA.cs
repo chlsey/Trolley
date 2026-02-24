@@ -20,18 +20,20 @@ public class LevelTwoBTrackA : MonoBehaviour
     }
     private IEnumerator EndSequence()
     {
+        VOManager.Instance.StopBackgroundMusic();
+
         VOManager.Instance.PlayLine(endingClip);
 
         yield return new WaitForSeconds(7);
 
-        // StartCoroutine(CurtainController.Instance.CloseCurtains());
+        StartCoroutine(CurtainController.Instance.CloseCurtains());
 
-        yield return new WaitForSeconds(endingClip.length - 7);
+        yield return new WaitForSeconds(endingClip.length - 4);
 
 
-        VOManager.Instance.PlayLine(levelThreeIntroClip);
+        // VOManager.Instance.PlayLine(levelThreeIntroClip);
 
-        yield return new WaitForSeconds(3);
+        // yield return new WaitForSeconds(3);
 
         // StartCoroutine(CurtainController.Instance.OpenCurtains());
 

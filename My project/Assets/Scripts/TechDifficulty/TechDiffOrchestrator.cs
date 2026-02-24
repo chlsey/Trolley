@@ -8,6 +8,7 @@ public class TechDiffOrchestrator : MonoBehaviour
     public AudioClip techDiffIntroClip1;  
     public AudioClip techDiffIntroClip2;  
     public AudioClip droppedClip;  
+    public AudioClip cageRantClip;
     public AudioClip powerDownSFX;
     public AudioClip whirSFX;
 
@@ -19,23 +20,42 @@ public class TechDiffOrchestrator : MonoBehaviour
     public Transform cat;
     private float catDistance = 8;
     private float catTime = 5;
-    public bool pressL;
+    private VideoPlayer videoPlayer;
+    private bool triggered = false;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        pressL = false;;
         StartCoroutine(PlayTechDiffLevel());
     }
 
     // Update is called once per frame
     void Update()
     {
-       if (RBController.Instance.dropped)
+        
+        if (Input.GetKeyDown(KeyCode.L) && !triggered)
         {
-            
+            triggered = true;
+            StartCoroutine(DropSequence());
         }
+    }
+
+    private IEnumerator DropSequence()
+    {
+        videoPlayer.Pause();
+        yield return StartCoroutine(
+        VOManager.Instance.PlayLineWait(droppedClip)
+        );
+
+        yield return StartCoroutine(EscapeCoroutine());
+    }
+
+    private IEnumerator EscapeCoroutine()
+    {
+        yield return new WaitForSeconds(1);
+        StartCoroutine(VOManager.Instance.PlayLineWait(cageRantClip));
+
     }
 
     private IEnumerator PlayTechDiffLevel()
@@ -53,13 +73,13 @@ public class TechDiffOrchestrator : MonoBehaviour
 
         VOManager.Instance.PlayLine(techDiffIntroClip2);
 
-        yield return new WaitForSeconds(10);
+        yield return new WaitForSeconds(6);
 
         VOManager.Instance.PlaySoundFX(whirSFX);
 
         StartCoroutine(LowerProjector());
 
-        VideoPlayer videoPlayer = projector.GetComponent<VideoPlayer>();
+        videoPlayer = projector.GetComponent<VideoPlayer>();
 
         yield return new WaitForSeconds(5);
 
@@ -100,7 +120,6 @@ public class TechDiffOrchestrator : MonoBehaviour
 
     private IEnumerator LowerCat()
     {
-        pressL = true;
         Vector3 start = cat.position;
         Vector3 end = start - Vector3.up * catDistance;
         float elapsed = 0f;

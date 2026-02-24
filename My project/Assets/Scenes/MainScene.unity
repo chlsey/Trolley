@@ -1845,7 +1845,7 @@ MonoBehaviour:
     m_Bits: 0
   audioSource: {fileID: 0}
   glassBreaking: {fileID: 0}
-  dropped: 0
+  techDiffOrchestrator: {fileID: 0}
 --- !u!1 &170736482
 GameObject:
   m_ObjectHideFlags: 0
@@ -17945,7 +17945,7 @@ MonoBehaviour:
     m_Bits: 520
   audioSource: {fileID: 1047759882}
   glassBreaking: {fileID: 8300000, guid: dbcb0115b7933114980faa794515898c, type: 3}
-  dropped: 0
+  techDiffOrchestrator: {fileID: 0}
 --- !u!54 &1047759879
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -19575,7 +19575,7 @@ MonoBehaviour:
     m_Bits: 0
   audioSource: {fileID: 0}
   glassBreaking: {fileID: 0}
-  dropped: 0
+  techDiffOrchestrator: {fileID: 0}
 --- !u!82 &1290942466
 AudioSource:
   m_ObjectHideFlags: 0
@@ -20305,7 +20305,7 @@ MonoBehaviour:
   leftIntroCurtain: {fileID: 642536676}
   rightCurtain: {fileID: 896702102}
   leftCurtain: {fileID: 1044197503}
-  curtainOpenDistance: 7
+  curtainOpenDistance: 8
   curtainOpenDuration: 1
 --- !u!4 &1430821337 stripped
 Transform:

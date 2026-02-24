@@ -6,8 +6,11 @@ public class LevelFourChoiceB : MonoBehaviour
     public EndTrigger endTrigger;
     public Lever lever;
     public AudioClip levelFourEndingTwo;
+    private bool hasTriggered = false;
     void OnTriggerEnter(Collider other)
     {
+        if (hasTriggered) return;
+        
         if(lever.leverFlipped == false)
         {
             StopAllCoroutines();
@@ -18,6 +21,7 @@ public class LevelFourChoiceB : MonoBehaviour
 
     private IEnumerator EndSequence()
     {
+        VOManager.Instance.StopBackgroundMusic();
         VOManager.Instance.PlayLine(levelFourEndingTwo);
 
         StartCoroutine(CurtainController.Instance.CloseCurtains());
