@@ -3576,7 +3576,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   targetRenderer: {fileID: 829787858}
-  newMaterial: {fileID: 2100000, guid: 2613ca1c3182041b484e170ea501eb1a, type: 2}
+  newMaterial: {fileID: 2100000, guid: be76c52e7172641588d10c5c6e0b2e48, type: 2}
 --- !u!65 &1595270117
 BoxCollider:
   m_ObjectHideFlags: 0
