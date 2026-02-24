@@ -19,7 +19,7 @@
     <ui:VisualElement name="PetSelect" style="width: 100%; height: 100%; position: absolute; align-items: center; justify-content: center; background-color: rgba(0, 0, 0, 0.85);">
         <ui:Label text="Cat or Dog?" style="font-size: 48px; color: white; margin-bottom: 40px; -unity-font-style: bold;"/>
         <ui:VisualElement style="flex-direction: row;">
-            <ui:Button text="Cat" name="Cat_Button" classqte; font-size: 32px; margin-right: 40px;"/>
+            <ui:Button text="Cat" name="Cat_Button" class="main-menu-button"; font-size: 32px; margin-right: 40px;"/>
             <ui:Button text="Dog" name="Dog_Button" class="main-menu-button" style="position: relative; width: 200px; height: 80px; color: white; font-size: 32px;"/>
         </ui:VisualElement>
     </ui:VisualElement>
