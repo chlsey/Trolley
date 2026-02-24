@@ -7,16 +7,20 @@ public class RBController : MonoBehaviour
  public LayerMask layerMask;
  public AudioSource audioSource;
  public AudioClip glassBreaking;
+ public TechDiffOrchestrator techDiffOrchestrator;
+ 
 
     void Start()
     {
+        
         rb = GetComponent<Rigidbody>();
         DisableRigidbody();
     }
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.L))
+        techDiffOrchestrator = FindObjectOfType<TechDiffOrchestrator>();
+        if(techDiffOrchestrator.pressL && Input.GetKeyDown(KeyCode.L))
         {
 
             // destroy mesh collider immediately when key is pressed

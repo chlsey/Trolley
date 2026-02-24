@@ -18,11 +18,13 @@ public class TechDiffOrchestrator : MonoBehaviour
     public Transform cat;
     private float catDistance = 8;
     private float catTime = 5;
+    public bool pressL;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        pressL = false;;
         StartCoroutine(PlayTechDiffLevel());
     }
 
@@ -92,6 +94,7 @@ public class TechDiffOrchestrator : MonoBehaviour
 
     private IEnumerator LowerCat()
     {
+        pressL = true;
         Vector3 start = cat.position;
         Vector3 end = start - Vector3.up * catDistance;
         float elapsed = 0f;
