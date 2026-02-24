@@ -45,24 +45,31 @@ public class LevelFourIntro : MonoBehaviour
     private IEnumerator PlayLevelFourEndingOne()
     {
         VOManager.Instance.PlayLine(levelFourEndingOne);
-        yield return new WaitForSeconds(16);
+        yield return new WaitForSeconds(6);
+        StartCoroutine(CurtainController.Instance.CloseCurtains());
+
+        yield return new WaitForSeconds(8);
         endTrigger.TriggerEnd();
         
     }
     private IEnumerator PlayLevelFourIntroSeq()
     {
-        // yield return CurtainController.Instance.CloseCurtains();
-        // yield return CurtainController.Instance.CloseCurtains();
         VOManager.Instance.PlayLine(levelFourIntroClip);
         Debug.Log("lvl 4 intro played!");
         
-        yield return new WaitForSeconds(13);
+        yield return new WaitForSeconds(10);
         // // Show volunteer on screen
-
-        // Show jimmy waving (at 15 seconds)
-        yield return new WaitForSeconds(2);
         jimmyLight.intensity = 30000f;
         VOManager.Instance.PlaySoundFX(lightsOn);
+
+        // Show jimmy waving (at 15 seconds)
+        yield return new WaitForSeconds(3);
+        // jimmyLight.intensity = 30000f;
+        // VOManager.Instance.PlaySoundFX(lightsOn);
+
+        StartCoroutine(CurtainController.Instance.OpenCurtains());
+
+        yield return new WaitForSeconds(2);
 
         // Gasp, lights turn red "Oh no where's the second track" (at 23 sec)
         yield return new WaitForSeconds(8);
@@ -71,9 +78,8 @@ public class LevelFourIntro : MonoBehaviour
         yield return new WaitForSeconds(6);
 
         // Show the Terms & Condition on screen (at 43 sec)
-        yield return new WaitForSeconds(14);
+        yield return new WaitForSeconds(9);
         trolleyMovement.followSpline = true;
         clock.rotate = true;
-        // yield return curtainController.OpenCurtains();
     }
 }

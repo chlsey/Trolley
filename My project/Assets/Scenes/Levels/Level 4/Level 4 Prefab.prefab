@@ -3026,8 +3026,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0346fbd85159448249a1a2231b404b78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LevelFourIntro
-  levelFourIntroClip: {fileID: 8300000, guid: 369ef903749864bf5a0a0d5ed4700d49, type: 3}
-  levelFourEndingOne: {fileID: 8300000, guid: b09002aca114c46c3936b3a2c8c29aa2, type: 3}
+  levelFourIntroClip: {fileID: 8300000, guid: 89606b6ee0a2b43f2af5402153f08d36, type: 3}
+  levelFourEndingOne: {fileID: 8300000, guid: bb283f37a44fb4a60add03013a91f7c0, type: 3}
   lightsOn: {fileID: 8300000, guid: d788c5525137f42098ab88dde65f8426, type: 3}
   endTrigger: {fileID: 8573081843787145155}
   trolleyMovement: {fileID: 447587643234576057}
@@ -5381,6 +5381,7 @@ MonoBehaviour:
     m_Bits: 8
   audioSource: {fileID: 0}
   glassBreaking: {fileID: 0}
+  dropped: 0
 --- !u!1 &3320460664830144253
 GameObject:
   m_ObjectHideFlags: 0
@@ -6788,7 +6789,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LevelFourChoiceB
   endTrigger: {fileID: 3587571459067399953}
   lever: {fileID: 8785346180366330955}
-  levelFourEndingTwo: {fileID: 8300000, guid: 84b0bcb645ddd4ef48f6aa70ef772a7d, type: 3}
+  levelFourEndingTwo: {fileID: 8300000, guid: a631f824582404ab3bb7fb05901274d6, type: 3}
 --- !u!1 &4120744507886261661
 GameObject:
   m_ObjectHideFlags: 0
@@ -9518,6 +9519,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6273054663324307943}
+  - component: {fileID: 929900526373322648}
   m_Layer: 0
   m_Name: Level 4 Prefab
   m_TagString: Untagged
@@ -9549,6 +9551,19 @@ Transform:
   - {fileID: 2684850740640716179}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &929900526373322648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6234442539142351137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c6cdc20f9df542418759249030fe42e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LevelRatingSetup
+  ratingMode: 2
 --- !u!1 &6327053084150235747
 GameObject:
   m_ObjectHideFlags: 0

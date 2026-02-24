@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: LevelNode2A
   m_EditorClassIdentifier: Assembly-CSharp::LevelNode
   id: 
-  stageSetPrefab: {fileID: 8318156876920128248, guid: 3298f2dc8920a4c1e8abd378fd9fc4c3, type: 3}
+  stageSetPrefab: {fileID: 6209571718411646602, guid: 3656c2ff12c374e4aa887f45925ce2f0, type: 3}
   outgoingEdges:
   - outcomeId: track_a
+    nextNode: {fileID: 11400000, guid: c1431cf871345e048aabaf06984f25c4, type: 2}
+  - outcomeId: track_b
     nextNode: {fileID: 11400000, guid: c1431cf871345e048aabaf06984f25c4, type: 2}

@@ -1845,6 +1845,7 @@ MonoBehaviour:
     m_Bits: 0
   audioSource: {fileID: 0}
   glassBreaking: {fileID: 0}
+  dropped: 0
 --- !u!1 &170736482
 GameObject:
   m_ObjectHideFlags: 0
@@ -17944,6 +17945,7 @@ MonoBehaviour:
     m_Bits: 520
   audioSource: {fileID: 1047759882}
   glassBreaking: {fileID: 8300000, guid: dbcb0115b7933114980faa794515898c, type: 3}
+  dropped: 0
 --- !u!54 &1047759879
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -19573,6 +19575,7 @@ MonoBehaviour:
     m_Bits: 0
   audioSource: {fileID: 0}
   glassBreaking: {fileID: 0}
+  dropped: 0
 --- !u!82 &1290942466
 AudioSource:
   m_ObjectHideFlags: 0
@@ -19831,6 +19834,7 @@ MonoBehaviour:
   ratingLerpSpeed: 1.5
   secondsToFillGraph: 5
   pointInterval: 0.05
+  graphShader: {fileID: 10752, guid: 0000000000000000f000000000000000, type: 0}
   texWidth: 256
   texHeight: 128
 --- !u!4 &1326629877
@@ -25023,7 +25027,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -6525119081428381912, guid: f9d564b2ee1e547c2b8967c3b10e3411, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -4992713366939064104, guid: f9d564b2ee1e547c2b8967c3b10e3411, type: 3}
       propertyPath: m_IsActive
@@ -25093,6 +25097,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Curtains
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f9d564b2ee1e547c2b8967c3b10e3411, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2264405053934887240, guid: f9d564b2ee1e547c2b8967c3b10e3411, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -25111,7 +25119,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2944833031015051417, guid: f9d564b2ee1e547c2b8967c3b10e3411, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4251271220174651916, guid: f9d564b2ee1e547c2b8967c3b10e3411, type: 3}
       propertyPath: m_LocalPosition.y

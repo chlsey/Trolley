@@ -1,13 +1,26 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UI/MainMenu.uss?fileID=7433441132597879392&amp;guid=ec295e58ac3044e47bd7b67a8c611b1a&amp;type=3#MainMenu"/>
-    <ui:VisualElement name="Root" class="root" style="width: 100%; height: 100%;">
-        <ui:VisualElement name="Background_Image" class="background-image" style="flex-grow: 1;"/>
+
+    <!-- Main Menu -->
+    <ui:VisualElement name="MainMenu" style="width: 100%; height: 100%;">
+        <ui:VisualElement name="Root" class="root" style="width: 100%; height: 100%;">
+            <ui:VisualElement name="Background_Image" class="background-image" style="flex-grow: 1;"/>
+        </ui:VisualElement>
+        <ui:VisualElement name="Panel" class="panel" style="position: absolute;">
+            <ui:VisualElement name="Button_Container" style="flex-grow: 1;">
+                <ui:Button text="" display-tooltip-when-elided="true" name="Play_Button" icon-image="" emoji-fallback-support="false" class="main-menu-button" style="top: 63%; left: 4%; width: 22%; height: 20%;"/>
+                <ui:Button text="" name="Settings_Button" class="main-menu-button" style="top: 49%; left: 31%; width: 41%; height: 20%;"/>
+                <ui:Button text="" name="Exit_Button" class="main-menu-button" style="top: 74%; left: 41%; width: 22%; height: 20%;"/>
+            </ui:VisualElement>
+        </ui:VisualElement>
     </ui:VisualElement>
-    <ui:VisualElement name="Panel" class="panel" style="position: absolute;">
-        <ui:VisualElement name="Button_Container" style="flex-grow: 1;">
-            <ui:Button text="" display-tooltip-when-elided="true" name="Play_Button" icon-image="" emoji-fallback-support="false" class="main-menu-button" style="top: 63%; left: 4%; width: 22%; height: 20%;"/>
-            <ui:Button text="" name="Settings_Button" class="main-menu-button" style="top: 49%; left: 31%; width: 41%; height: 20%;"/>
-            <ui:Button text="" name="Exit_Button" class="main-menu-button" style="top: 74%; left: 41%; width: 22%; height: 20%;"/>
+
+    <!-- Pet Selection Screen -->
+    <ui:VisualElement name="PetSelect" style="width: 100%; height: 100%; position: absolute; align-items: center; justify-content: center; background-color: rgba(0, 0, 0, 0.85);">
+        <ui:Label text="Cat or Dog?" style="font-size: 48px; color: white; margin-bottom: 40px; -unity-font-style: bold;"/>
+        <ui:VisualElement style="flex-direction: row;">
+            <ui:Button text="Cat" name="Cat_Button" class="main-menu-button" style="position: relative; width: 200px; height: 80px; color: white; font-size: 32px; margin-right: 40px;"/>
+            <ui:Button text="Dog" name="Dog_Button" class="main-menu-button" style="position: relative; width: 200px; height: 80px; color: white; font-size: 32px;"/>
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

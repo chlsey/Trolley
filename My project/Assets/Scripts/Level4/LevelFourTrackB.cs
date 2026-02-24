@@ -19,6 +19,9 @@ public class LevelFourChoiceB : MonoBehaviour
     private IEnumerator EndSequence()
     {
         VOManager.Instance.PlayLine(levelFourEndingTwo);
+
+        StartCoroutine(CurtainController.Instance.CloseCurtains());
+
         yield return new WaitForSeconds(15f);  
         endTrigger.TriggerEnd(); 
 

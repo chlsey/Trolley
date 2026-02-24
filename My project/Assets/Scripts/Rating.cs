@@ -1,12 +1,20 @@
 using UnityEngine;
 using System.Collections.Generic;
 
+public enum RatingMode
+{
+    Default,        // Level 1 & 2: flip = lose rating, no flip = gain rating
+    AlwaysIncrease, // Level 3: both outcomes increase rating
+    Inverted        // Level 4 & 6: flip = gain rating, no flip = lose rating
+}
+
 /// <summary>
 /// Draws a scrolling rating graph directly onto the RatingDisplay cube as a texture.
 /// Attach to the "Rating" parent object. Other scripts call ChangeRating() or SetRating().
 /// </summary>
 public class Rating : MonoBehaviour
 {
+    public static RatingMode CurrentMode = RatingMode.Default;
     public Renderer ratingDisplayRenderer;
     public Color backgroundColor = new Color(0f, 0f, 0f, 0.9f);
     public Color lineColor = Color.magenta;
@@ -26,6 +34,10 @@ public class Rating : MonoBehaviour
     public float ratingLerpSpeed = 1f;
     public float secondsToFillGraph = 5f;
     public float pointInterval = 0.05f;
+
+    [Header("Shader")]
+    [Tooltip("Assign an Unlit/Texture shader (or URP Unlit) here so it works in builds.")]
+    public Shader graphShader;
 
     [Header("Texture Resolution")]
     public int texWidth = 256;
@@ -57,11 +69,12 @@ public class Rating : MonoBehaviour
 
         if (ratingDisplayRenderer != null)
         {
-            Shader shader = Shader.Find("Unlit/Texture");
-            if (shader == null)
-                shader = Shader.Find("Universal Render Pipeline/Unlit");
+            if (graphShader == null)
+                graphShader = Shader.Find("Unlit/Texture");
+            if (graphShader == null)
+                graphShader = Shader.Find("Universal Render Pipeline/Unlit");
 
-            Material mat = new Material(shader);
+            Material mat = new Material(graphShader);
             mat.mainTexture = _tex;
             ratingDisplayRenderer.material = mat;
         }
