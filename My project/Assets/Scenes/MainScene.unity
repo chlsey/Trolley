@@ -25662,6 +25662,14 @@ PrefabInstance:
       propertyPath: stepInterval
       value: 0.3
       objectReference: {fileID: 0}
+    - target: {fileID: 9100402339330515259, guid: b61b808ce2be8e04883b1b25c998fdfb, type: 3}
+      propertyPath: sensX
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 9100402339330515259, guid: b61b808ce2be8e04883b1b25c998fdfb, type: 3}
+      propertyPath: sensY
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 2231197303374407951, guid: 84dda41276ab5d1419380658eadb80c8, type: 3}
       propertyPath: far clip plane
       value: 2000
