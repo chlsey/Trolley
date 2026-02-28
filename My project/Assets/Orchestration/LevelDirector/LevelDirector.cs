@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using UnityEngine;
 
 // Optional interface for StageSet scripts that want GameState at spawn time.
@@ -39,18 +40,18 @@ public class LevelDirector : MonoBehaviour
         }
     }
 
-    public void Run(LevelNode node, GameState state, Transform stageRoot, Action<string> onOutcome)
+    public IEnumerator Run(LevelNode node, GameState state, Transform stageRoot, Action<string> onOutcome)
     {
         if (_hasRun)
         {
             Debug.LogWarning("LevelDirector.Run called more than once; ignoring.");
-            return;
+            yield break;
         }
 
         if (Active != this)
         {
             Debug.LogWarning("LevelDirector.Run called on a non-active instance; ignoring.");
-            return;
+            yield break;
         }
 
         _hasRun = true;
@@ -60,23 +61,43 @@ public class LevelDirector : MonoBehaviour
         {
             Debug.LogError("LevelDirector.Run called with a null LevelNode.");
             EndLevel("error_missing_node");
-            return;
+            yield break;
         }
 
         if (stageRoot == null)
         {
             Debug.LogError("LevelDirector.Run missing StageRoot.");
             EndLevel("error_missing_stage_root");
-            return;
+            yield break;
+        }
+        // THIS CODE RUNS ANY PRESPAWN HOOKS YOU HAVE FOR SIMPLICITY
+        // JUST IMPLEMENT A SCRIPT OF THE LEVELNODEHOOK ABSTRACT CLASS (LOOK AT LevelNodeHook.cs)
+        if (node.preSpawnHooks != null)
+        {
+            for (int i = 0; i < node.preSpawnHooks.Count; i++)
+            {
+                LevelNodeHook hook = node.preSpawnHooks[i];
+                if (hook == null)
+                {
+                    continue;
+                }
+
+                yield return StartCoroutine(hook.Execute(node, state));
+
+                if (_hasEnded)
+                {
+                    yield break;
+                }
+            }
         }
 
         if (node.stageSetPrefab == null)
         {
             Debug.LogError($"LevelDirector.Run missing StageSet prefab on node '{node.id}'.");
             EndLevel("error_missing_stage_prefab");
-            return;
+            yield break;
         }
-
+         Debug.LogError("what the fuck");
         _stageInstance = Instantiate(node.stageSetPrefab, stageRoot, false);
         _stageInstance.name = node.stageSetPrefab.name;
 
