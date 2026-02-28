@@ -9,16 +9,31 @@ public class LevelTwoBTrackA : MonoBehaviour
     public AudioClip endingClip;      
     public AudioClip levelThreeIntroClip;  
 
+    private bool hasTriggered = false;
+
     private void OnTriggerEnter(Collider other)
     {
+        if (hasTriggered) return;
+
+        hasTriggered = true;
         StartCoroutine(EndSequence());
     }
-
     private IEnumerator EndSequence()
     {
-        yield return new WaitForSeconds(13f);
+        VOManager.Instance.PlayLine(endingClip);
 
-        Debug.Log("track b ending complete");
+        yield return new WaitForSeconds(7);
+
+        // StartCoroutine(CurtainController.Instance.CloseCurtains());
+
+        yield return new WaitForSeconds(endingClip.length - 7);
+
+
+        VOManager.Instance.PlayLine(levelThreeIntroClip);
+
+        yield return new WaitForSeconds(3);
+
+        // StartCoroutine(CurtainController.Instance.OpenCurtains());
 
         // call endtrigger
         endTrigger.TriggerEnd();

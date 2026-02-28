@@ -1,4 +1,6 @@
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 
 public class LightManager : MonoBehaviour
 {
@@ -67,6 +69,48 @@ public class LightManager : MonoBehaviour
         
     }
 
-    
+    public IEnumerator TurnOffAllLights(float seconds)
+    {
+        List<Light> allLights = new List<Light>();
 
+        allLights.AddRange(archLights);
+        allLights.AddRange(walkLights);
+
+        allLights.Add(mainLight1);
+        allLights.Add(mainLight2);
+        allLights.Add(mainLight3);
+
+        allLights.Add(trackALight);
+        allLights.Add(trackBLight);
+
+        // store starting intensities
+        Dictionary<Light, float> startIntensities = new Dictionary<Light, float>();
+
+        foreach (Light light in allLights)
+        {
+            if (light != null)
+                startIntensities[light] = light.intensity;
+        }
+
+        float elapsed = 0f;
+
+        while (elapsed < seconds)
+        {
+            elapsed += Time.deltaTime;
+            float t = Mathf.SmoothStep(0f, 1f, elapsed / seconds);
+
+            foreach (Light light in startIntensities.Keys)
+            {
+                light.intensity = Mathf.Lerp(startIntensities[light], 0f, t);
+            }
+
+            yield return null;
+        }
+
+        foreach (Light light in startIntensities.Keys)
+        {
+            light.intensity = 0f;
+            light.enabled = false;
+        }
+    }
 }

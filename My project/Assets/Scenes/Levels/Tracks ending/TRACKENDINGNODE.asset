@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: TRACKENDINGNODE
   m_EditorClassIdentifier: Assembly-CSharp::LevelNode
   id: TRACKENDING
-  stageSetPrefab: {fileID: 5767754331037569921, guid: 45c9008775ebf8b4d90de8fd6440d353, type: 3}
+  stageSetPrefab: {fileID: 5767754331037569921, guid: 1393bd488feec4cb19dc53d1bd0c05d2, type: 3}
   outgoingEdges:
   - outcomeId: track_a
     nextNode: {fileID: 11400000, guid: ffa911f64461b4ff483455d98fc79491, type: 2}

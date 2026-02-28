@@ -26,7 +26,7 @@ public class Lever : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (nearLever && Input.GetKeyDown(KeyCode.E) && trolleyMovement)
+        if (nearLever && Input.GetKeyDown(KeyCode.E) && trolleyMovement && !catapultProjectile)
         {
             trolleyMovement.SwitchTrack();
             redGreenLight.Toggle();
@@ -35,6 +35,7 @@ public class Lever : MonoBehaviour
             armAnim.SetTrigger("Switch");
             audioSource.PlayOneShot(switchSound);
             Debug.Log("TrackSwitched");
+            Debug.Log("Track Switched");
             rating.ChangeRating(-0.5f);
             leverFlipped = true;
             enabled = false;

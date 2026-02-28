@@ -3058,6 +3058,7 @@ MonoBehaviour:
   spline1: {fileID: 3571198170207449756}
   currentSpline: {fileID: 0}
   followSpline: 1
+  audioSource: {fileID: 0}
 --- !u!54 &7117187126573805383
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -7458,6 +7459,7 @@ MonoBehaviour:
   startPoint: {fileID: 7797339768633841892}
   endPoint: {fileID: 755996871692507008}
   clockHand: {fileID: 1784040656730219161}
+  rotate: 0
 --- !u!1 &4680962051398895929
 GameObject:
   m_ObjectHideFlags: 0
@@ -9597,6 +9599,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5127235080379492989}
+  - component: {fileID: 6236330993282413279}
   m_Layer: 0
   m_Name: Level 1 Prefab
   m_TagString: Untagged
@@ -9626,6 +9629,19 @@ Transform:
   - {fileID: 8512763559592190131}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6236330993282413279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6209571718411646602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c6cdc20f9df542418759249030fe42e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LevelRatingSetup
+  ratingMode: 0
 --- !u!1 &6234574125223245977
 GameObject:
   m_ObjectHideFlags: 0

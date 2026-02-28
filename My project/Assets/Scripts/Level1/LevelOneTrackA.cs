@@ -9,8 +9,13 @@ public class LevelOneTrackA : MonoBehaviour
     public AudioClip endingClip;      
     public AudioClip levelTwoAIntroClip;  
 
+    private bool hasTriggered = false;
+
     private void OnTriggerEnter(Collider other)
     {
+        if (hasTriggered) return;
+
+        hasTriggered = true;
         StartCoroutine(EndSequence());
     }
 

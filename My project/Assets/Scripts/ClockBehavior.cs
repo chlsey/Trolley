@@ -13,7 +13,7 @@ public class ClockBehavior : MonoBehaviour
     private GameObject endPoint;
     [SerializeField]
     private GameObject clockHand;
-    private bool rotate; // bool to make trolley stop once its past end point
+    public bool rotate; // bool to make trolley stop once its past end point
     private float trolleyProgress; // a value from 0 to 1 of how far along the trolley is along the path
     private float pathLength;
 

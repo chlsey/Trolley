@@ -1,3 +1,4 @@
+using System.Collections;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Splines;
@@ -16,6 +17,7 @@ public class TrolleyMovement : MonoBehaviour
     public SplineContainer spline2;
     public SplineContainer currentSpline;
     public bool followSpline = true;
+    public AudioSource audioSource;
     private float distanceAlongSpline = 0f;
     Rigidbody rb;
 
@@ -87,5 +89,35 @@ public class TrolleyMovement : MonoBehaviour
         else {
             currentSpline = spline1;    
         }
+    }
+
+    // used for the huge fan level
+    public void OnTriggerEnter(Collider other)
+    {
+        if(other.tag == "huge_fan")
+        {
+            Debug.Log("huge fan hits trolley");
+            StartCoroutine(SlowBrakeCoroutine());
+        }
+        
+    }
+
+    private IEnumerator SlowBrakeCoroutine()
+    {
+        audioSource.Stop();
+        float decelerationRate = 0.5f; 
+
+        while (moveSpeed > 0)
+        {
+            moveSpeed -= decelerationRate * Time.deltaTime;
+            
+            // Prevent moveSpeed from going negative
+            if (moveSpeed < 0) moveSpeed = 0;
+
+            yield return null; // Wait for the next frame
+        }
+        
+        Debug.Log("Trolley has come to a complete stop.");
+        // yield return null;
     }
 }

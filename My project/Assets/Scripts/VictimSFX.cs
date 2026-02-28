@@ -1,7 +1,7 @@
 using UnityEngine;
 using TMPro;
 
-public class VictinSFX : MonoBehaviour
+public class VictimSFX : MonoBehaviour
 {
     public AudioSource audioSource;
     public AudioClip splat;
@@ -25,7 +25,7 @@ public class VictinSFX : MonoBehaviour
             triggered = true;
             anim.SetTrigger("dead");
             KillCounter.AddKill();
-
+            VOManager.Instance.PlaySoundFX(splat);
         }
     }
 

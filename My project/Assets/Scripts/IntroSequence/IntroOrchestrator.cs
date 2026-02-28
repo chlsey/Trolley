@@ -63,22 +63,24 @@ public class IntroOrchestrator : MonoBehaviour
         // (Subtitle Sentence, start time in milliseconds after audio is triggered, duration in milliseconds)
         VOManager.Instance.ShowSubtitle(new List<VOManager.SubtitleLine>
         {
-            new VOManager.SubtitleLine("Welcome… welcome… welcome…", 814f, 2421f),
+            new VOManager.SubtitleLine("Welcome… welcome… welcome…", 1514f, 2421f),
 
-            new VOManager.SubtitleLine("to The Trolley Show!", 3795f, 2500f),
+            new VOManager.SubtitleLine("to The Trolley Show!", 4395f, 2500f),
 
-            new VOManager.SubtitleLine("I'll be your host for the show,", 7462f, 1500f),
+            new VOManager.SubtitleLine("I'll be your host for the show,", 8162f, 1600f),
 
-            new VOManager.SubtitleLine("and tonight, you get to be the most powerful person in the room.", 9000f, 4500f),
+            new VOManager.SubtitleLine("and tonight, you get to be the most powerful person in the room.", 9900f, 4500f),
 
-            new VOManager.SubtitleLine("No pressure.", 14114f, 532f),
+            new VOManager.SubtitleLine("No pressure.", 14814f, 1032f),
 
             new VOManager.SubtitleLine("Here on The Trolley Show, we take life’s toughest philosophical questions…", 16233f, 6000f),
 
-            new VOManager.SubtitleLine("…and we solve them…", 22500f, 1500f),
+            new VOManager.SubtitleLine("…and we solve them…", 23500f, 1500f),
 
-            new VOManager.SubtitleLine("in the most exciting way.", 24000f, 2000f),
+            new VOManager.SubtitleLine("in the most exciting way.", 25000f, 2000f),
         });
+
+       yield return new WaitForSeconds(1);
 
         VOManager.Instance.PlayLine(introClip);
 
