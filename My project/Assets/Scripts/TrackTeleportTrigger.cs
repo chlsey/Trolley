@@ -16,7 +16,7 @@ public class TrackTeleportTrigger : MonoBehaviour
         
         PlayerMovement pm = other.GetComponentInParent<PlayerMovement>();
 
-        pm.TeleportToTrack();
+        // pm.TeleportToTrack();
         Debug.Log("teleport");
         
     }
