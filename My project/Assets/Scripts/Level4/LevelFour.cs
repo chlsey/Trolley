@@ -8,6 +8,8 @@ public class LevelFourIntro : MonoBehaviour
     public AudioClip levelFourEndingOne;
     public AudioClip lightsOn;
     public AudioClip gasp;
+    public AudioClip clockSFX;
+    public AudioClip platformerTransitionClip;
 
     public AudioClip lvlMusic;
 
@@ -31,6 +33,8 @@ public class LevelFourIntro : MonoBehaviour
         clock.rotate = false;
         trolleyMovement.followSpline = false;
         StartCoroutine(PlayLevelFourIntroSeq());
+        lever.enabled = false;
+        
     }
 
     void Update()
@@ -39,6 +43,7 @@ public class LevelFourIntro : MonoBehaviour
         {
             trolleyMovement.followSpline = true;
             Debug.Log("lvl4 ending 1");
+            // FindObjectOfType<LevelNameDisplay>().ShowLevelName("Make the trolley do a LOOP!");
             StopCoroutine(PlayLevelFourIntroSeq());
             StartCoroutine(PlayLevelFourEndingOne());
             endingStarted = true;   
@@ -50,15 +55,24 @@ public class LevelFourIntro : MonoBehaviour
         VOManager.Instance.StopBackgroundMusic();
         VOManager.Instance.PlayAudience(gasp);
         VOManager.Instance.PlayLine(levelFourEndingOne);
-        yield return new WaitForSeconds(6);
-        StartCoroutine(CurtainController.Instance.CloseCurtains());
 
-        yield return new WaitForSeconds(8);
+        yield return new WaitForSeconds(levelFourEndingOne.length); 
+
+
+        VOManager.Instance.PlayLine(platformerTransitionClip);
+
+        yield return new WaitForSeconds(platformerTransitionClip.length);
+
+        // scene change to platformer level
+        FindObjectOfType<NextScene>().TriggerSceneChange();
+
         endTrigger.TriggerEnd();
         
     }
     private IEnumerator PlayLevelFourIntroSeq()
     {
+        FindObjectOfType<LevelNameDisplay>().ShowLevelName("SPECIAL GUEST");
+
         VOManager.Instance.PlayLine(levelFourIntroClip);
         LightManager.Instance.TurnOffTrackB();
         Debug.Log("lvl 4 intro played!");
@@ -79,7 +93,7 @@ public class LevelFourIntro : MonoBehaviour
         // Show jimmy waving (at 15 seconds)
         yield return new WaitForSeconds(2);
 
-        StartCoroutine(CurtainController.Instance.OpenCurtains());
+        // StartCoroutine(CurtainController.Instance.OpenCurtains());
 
         // Gasp, lights turn red "Oh no where's the second track" (at 23 sec)
         yield return new WaitForSeconds(5);
@@ -91,5 +105,7 @@ public class LevelFourIntro : MonoBehaviour
         yield return new WaitForSeconds(9);
         trolleyMovement.followSpline = true;
         clock.rotate = true;
+        VOManager.Instance.PlaySoundFX(clockSFX);
+        lever.enabled = true;
     }
 }

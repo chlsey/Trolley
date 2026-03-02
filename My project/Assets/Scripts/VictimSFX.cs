@@ -19,6 +19,8 @@ public class VictimSFX : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log("Triggered by: " + other.name + " on object: " + gameObject.name);
+        
         if (triggered) return;
 
         if ((layerMask.value & (1 << other.gameObject.layer)) > 0 )

@@ -28,7 +28,8 @@ public class Lever : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        gotInput = Input.GetKeyDown(KeyCode.E) || Gamepad.current.buttonWest.isPressed;
+        gotInput = Input.GetKeyDown(KeyCode.E) ||
+           (Gamepad.current != null && Gamepad.current.buttonWest.isPressed);
         if (nearLever && gotInput && trolleyMovement && !catapultProjectile)
         {
             trolleyMovement.SwitchTrack();
@@ -40,7 +41,7 @@ public class Lever : MonoBehaviour
             Debug.Log("TrackSwitched");
             Debug.Log("Track Switched");
             leverFlipped = true;
-            enabled = false;
+            // enabled = false;
         }
         if (nearLever && gotInput && catapultProjectile)
         {
@@ -49,7 +50,7 @@ public class Lever : MonoBehaviour
             armAnim.SetTrigger("Switch");
             audioSource.PlayOneShot(switchSound);
             leverFlipped = true;
-            enabled = false;
+            // enabled = false;
         }
     }
 

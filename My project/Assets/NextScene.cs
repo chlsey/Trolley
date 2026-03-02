@@ -8,12 +8,23 @@ public class NextScene : MonoBehaviour
     public RBController rBController;
     public Health health;
 
+    private bool triggered = false;
+
     private void OnTriggerEnter(Collider other)
     {
+        TriggerSceneChange();
+    }
+
+    public void TriggerSceneChange()
+    {
+        if (triggered) return; 
+        triggered = true;
+
         rBController.EnableRigidbody();
         StartCoroutine(LoadNextScene());
     }
-     private IEnumerator LoadNextScene()
+
+    public IEnumerator LoadNextScene()
     {
         yield return new WaitForSeconds(1);
         health.TriggerFadeToBlack();

@@ -40,7 +40,7 @@ public class Level3TrackA : MonoBehaviour, IStageSetReceiver
 
     private IEnumerator EndSequence()
     {
-        yield return CurtainController.Instance.CloseCurtains();
+        // yield return CurtainController.Instance.CloseCurtains();
 
         // IsCat = false → cat was on Track A → trolley hit Track A → cat killed
         // IsCat = true  → dog was on Track A → trolley hit Track A → dog killed

@@ -97,7 +97,7 @@ public class LevelDirector : MonoBehaviour
             EndLevel("error_missing_stage_prefab");
             yield break;
         }
-         Debug.LogError("what the fuck");
+        //  Debug.LogError("what the fuck");
         _stageInstance = Instantiate(node.stageSetPrefab, stageRoot, false);
         _stageInstance.name = node.stageSetPrefab.name;
 

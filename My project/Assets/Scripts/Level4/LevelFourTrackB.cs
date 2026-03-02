@@ -6,6 +6,8 @@ public class LevelFourChoiceB : MonoBehaviour
     public EndTrigger endTrigger;
     public Lever lever;
     public AudioClip levelFourEndingTwo;
+    public AudioClip platformerTransitionClip;
+
     private bool hasTriggered = false;
     void OnTriggerEnter(Collider other)
     {
@@ -24,9 +26,16 @@ public class LevelFourChoiceB : MonoBehaviour
         VOManager.Instance.StopBackgroundMusic();
         VOManager.Instance.PlayLine(levelFourEndingTwo);
 
-        StartCoroutine(CurtainController.Instance.CloseCurtains());
+        // StartCoroutine(CurtainController.Instance.CloseCurtains());
+        yield return new WaitForSeconds(levelFourEndingTwo.length); 
 
-        yield return new WaitForSeconds(15f);  
+        VOManager.Instance.PlayLine(platformerTransitionClip);
+        yield return new WaitForSeconds(platformerTransitionClip.length);
+
+        // scene change to platformer level
+
+        FindObjectOfType<NextScene>().TriggerSceneChange();
+
         endTrigger.TriggerEnd(); 
 
     }

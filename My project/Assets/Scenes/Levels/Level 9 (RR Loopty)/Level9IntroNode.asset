@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fa31915e5440d64295bd3d7d2b8cc7e, type: 3}
+  m_Name: Level9IntroNode
+  m_EditorClassIdentifier: Assembly-CSharp::IntroAudioHook
+  clip: {fileID: 8300000, guid: 38938eebd64804dc7aa16305c9b23e14, type: 3}
+  durationSeconds: 5
