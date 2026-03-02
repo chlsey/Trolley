@@ -1,0 +1,30 @@
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
+public class Door : MonoBehaviour
+{
+    public string sceneToLoad;
+    private bool nearDoor;
+    public GameObject ePrompt;
+
+
+    void Start()
+    {
+        nearDoor = false;
+        ePrompt.SetActive(false);
+    }
+    void Update()
+    {
+        if(nearDoor && Input.GetKeyDown(KeyCode.E))
+        {
+            SceneManager.LoadScene(sceneToLoad);
+        }
+        
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        nearDoor = true;
+        ePrompt.SetActive(true);
+    }
+    
+}

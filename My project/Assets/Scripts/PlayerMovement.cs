@@ -1,6 +1,8 @@
 using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
+    [SerializeField]
+    public Rigidbody platformRb;
     public PlayerCamera cam;
     public GameObject arms;
     public Transform destination;
@@ -23,8 +25,8 @@ public class PlayerMovement : MonoBehaviour
     public KeyCode jumpKey = KeyCode.Space;
     Vector3 moveDirection;
     Rigidbody rb;
-    
-    
+
+
     private void Start()
     {
         readyToJump = true;
@@ -64,18 +66,33 @@ public class PlayerMovement : MonoBehaviour
     {
         moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
         if (grounded)
+        {
             rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
+        }
         else
+        {
             rb.AddForce(moveDirection.normalized * moveSpeed * 10f * airMultiplier, ForceMode.Force);
+        }
     }
     private void SpeedControl()
     {
-        Vector3 flatVel = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z);
-        if (flatVel.magnitude > moveSpeed)
+    if (platformRb != null)
         {
-            Vector3 limitedVel = flatVel.normalized * moveSpeed;
-            rb.linearVelocity = new Vector3(limitedVel.x, rb.linearVelocity.y, limitedVel.z);
+            // Get the platform's current velocity
+            Vector3 platformVel = platformRb.linearVelocity;
+
+            // Calculate the player's horizontal velocity relative to the world
+            Vector3 currentHorizontalVel = new Vector3(rb.linearVelocity.x, 0, rb.linearVelocity.z);
+            Vector3 platformHorizontalVel = new Vector3(platformVel.x, 0, platformVel.z);
+
+            // This is the magic part: 
+            // We set the velocity to be (Platform Speed) + (Player's own walking speed)
+            // We subtract the platform speed from our current speed to see how fast WE are walking
+            Vector3 playerWalkingVel = currentHorizontalVel - platformHorizontalVel;
+
+            rb.linearVelocity = new Vector3(platformHorizontalVel.x, rb.linearVelocity.y, platformHorizontalVel.z) + playerWalkingVel;
         }
+
     }
     private void Jump()
     {
@@ -111,24 +128,24 @@ public class PlayerMovement : MonoBehaviour
     }
     public void TeleportToTrack()
     {
-        cam.tiltZ = -90f;   
+        cam.tiltZ = -90f;
 
-        
+
         transform.rotation = Quaternion.Euler(-90f, 180f, 0f);
 
-      
+
         cam.SetRotation(-90f, -90f);
 
         cam.clampView = true;
-        cam.minX =-20f;
-        cam.maxX =20f;
-        cam.minY = cam.yRotation - 25f; 
+        cam.minX = -20f;
+        cam.maxX = 20f;
+        cam.minY = cam.yRotation - 25f;
         cam.maxY = cam.yRotation + 25f;
         arms.SetActive(false);
         gameObject.transform.position = destination.transform.position;
 
 
-        PlayerMovement pm = GetComponent<PlayerMovement>(); 
+        PlayerMovement pm = GetComponent<PlayerMovement>();
         pm.enabled = false;
     }
 }
