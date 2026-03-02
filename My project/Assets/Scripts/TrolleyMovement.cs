@@ -15,6 +15,7 @@ public class TrolleyMovement : MonoBehaviour
     public bool followSpline = true;
     public AudioSource audioSource;
     public Rigidbody rb;
+    public GameObject lever;
     private float distanceAlongSpline = 0f;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -47,6 +48,11 @@ public class TrolleyMovement : MonoBehaviour
         rb.MovePosition(currentPos);
         //Quaternion correction = Quaternion.Euler(0, 90, 0);
         rb.MoveRotation(Quaternion.LookRotation(currentUp));
+
+        if(lever)
+        {
+            lever.transform.position = currentPos;
+        }
 
         distanceAlongSpline += moveSpeed * Time.deltaTime;
     }

@@ -28,7 +28,7 @@ public class Lever : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        gotInput = Input.GetKeyDown(KeyCode.E) || Gamepad.current.buttonWest.isPressed;
+        gotInput = Input.GetKeyDown(KeyCode.E);
         if (nearLever && gotInput && trolleyMovement && !catapultProjectile)
         {
             trolleyMovement.SwitchTrack();

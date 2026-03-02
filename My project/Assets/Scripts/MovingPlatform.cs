@@ -11,12 +11,13 @@ public class MovingPlatform : MonoBehaviour
         if (other.tag.Equals("Player"))
         {
             Debug.Log("Player detected");
-            PlayerMovement pm = other.GetComponentInParent<PlayerMovement>();
-            if (pm != null)
-            {
-                pm.platformRb = platformRb;
-                Debug.Log("Player linked to platform velocity");
-            }
+            other.transform.root.SetParent(platform);
+            // PlayerMovement pm = other.GetComponentInParent<PlayerMovement>();
+            // if (pm != null)
+            // {
+            //     pm.platformRb = platformRb;
+            //     Debug.Log("Player linked to platform velocity");
+            // }
         }
 
     }
@@ -25,12 +26,13 @@ public class MovingPlatform : MonoBehaviour
     {
         if (other.tag.Equals("Player"))
         {
-            PlayerMovement pm = other.GetComponentInParent<PlayerMovement>();
-            if (pm != null)
-            {
-                pm.platformRb = null;
-                Debug.Log("Player linked to platform velocity");
-            }
+            transform.DetachChildren();
+            // PlayerMovement pm = other.GetComponentInParent<PlayerMovement>();
+            // if (pm != null)
+            // {
+            //     pm.platformRb = null;
+            //     Debug.Log("Player linked to platform velocity");
+            // }
         }
 
     }
