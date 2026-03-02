@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed1ad3dd735fd4c4d94eb07b40352263, type: 3}
+  m_Name: LevelNode9
+  m_EditorClassIdentifier: Assembly-CSharp::LevelNode
+  id: 
+  stageSetPrefab: {fileID: 8318156876920128248, guid: 9783b8500bc414c31ae96194c2bf80a1, type: 3}
+  preSpawnHooks:
+  - {fileID: 11400000, guid: 479b150cb06584e9abc4ccfccd408e22, type: 2}
+  outgoingEdges:
+  - outcomeId: track_a
+    nextNode: {fileID: 11400000, guid: 1d60cec5f0c454ebba23be8b795e0e9f, type: 2}
+  - outcomeId: track_b
+    nextNode: {fileID: 11400000, guid: 1d60cec5f0c454ebba23be8b795e0e9f, type: 2}

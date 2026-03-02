@@ -10,8 +10,8 @@ public class CurtainController : MonoBehaviour
     [Header("Curtains")]
     public Transform rightIntroCurtain;
     public Transform leftIntroCurtain;
-    public Transform rightCurtain;
-    public Transform leftCurtain;
+    // public Transform rightCurtain;
+    // public Transform leftCurtain;
     public float curtainOpenDistance = 4f;
     public float curtainOpenDuration = 1f;
 
@@ -25,56 +25,56 @@ public class CurtainController : MonoBehaviour
         
     }
 
-    // Update is called once per frame
-    public IEnumerator OpenCurtains()
-    {
-        Vector3 leftStart = leftCurtain.position;
-        Vector3 rightStart = rightCurtain.position;
+    // // Update is called once per frame
+    // public IEnumerator OpenCurtains()
+    // {
+    //     Vector3 leftStart = leftCurtain.position;
+    //     Vector3 rightStart = rightCurtain.position;
 
-        Vector3 leftEnd = leftStart + Vector3.left * curtainOpenDistance;
-        Vector3 rightEnd = rightStart + Vector3.right * curtainOpenDistance;
+    //     Vector3 leftEnd = leftStart + Vector3.left * curtainOpenDistance;
+    //     Vector3 rightEnd = rightStart + Vector3.right * curtainOpenDistance;
 
-        float elapsed = 0f;
+    //     float elapsed = 0f;
 
-        while (elapsed < curtainOpenDuration)
-        {
-            float t = elapsed / curtainOpenDuration;
-            leftCurtain.position = Vector3.Lerp(leftStart, leftEnd, t);
-            rightCurtain.position = Vector3.Lerp(rightStart, rightEnd, t);
+    //     while (elapsed < curtainOpenDuration)
+    //     {
+    //         float t = elapsed / curtainOpenDuration;
+    //         leftCurtain.position = Vector3.Lerp(leftStart, leftEnd, t);
+    //         rightCurtain.position = Vector3.Lerp(rightStart, rightEnd, t);
 
-            elapsed += Time.deltaTime;
-            yield return null;
-        }
+    //         elapsed += Time.deltaTime;
+    //         yield return null;
+    //     }
 
-        leftCurtain.position = leftEnd;
-        rightCurtain.position = rightEnd;
-    }
+    //     leftCurtain.position = leftEnd;
+    //     rightCurtain.position = rightEnd;
+    // }
 
 
 
-    public IEnumerator CloseCurtains()
-    {
-        Vector3 leftStart = leftCurtain.position;
-        Vector3 rightStart = rightCurtain.position;
+    // public IEnumerator CloseCurtains()
+    // {
+    //     Vector3 leftStart = leftCurtain.position;
+    //     Vector3 rightStart = rightCurtain.position;
 
-        Vector3 leftEnd = leftStart - Vector3.left * curtainOpenDistance;
-        Vector3 rightEnd = rightStart - Vector3.right * curtainOpenDistance;
+    //     Vector3 leftEnd = leftStart - Vector3.left * curtainOpenDistance;
+    //     Vector3 rightEnd = rightStart - Vector3.right * curtainOpenDistance;
 
-        float elapsed = 0f;
+    //     float elapsed = 0f;
 
-        while (elapsed < curtainOpenDuration)
-        {
-            float t = elapsed / curtainOpenDuration;
-            leftCurtain.position = Vector3.Lerp(leftStart, leftEnd, t);
-            rightCurtain.position = Vector3.Lerp(rightStart, rightEnd, t);
+    //     while (elapsed < curtainOpenDuration)
+    //     {
+    //         float t = elapsed / curtainOpenDuration;
+    //         leftCurtain.position = Vector3.Lerp(leftStart, leftEnd, t);
+    //         rightCurtain.position = Vector3.Lerp(rightStart, rightEnd, t);
 
-            elapsed += Time.deltaTime;
-            yield return null;
-        }
+    //         elapsed += Time.deltaTime;
+    //         yield return null;
+    //     }
 
-        leftCurtain.position = leftEnd;
-        rightCurtain.position = rightEnd;
-    }
+    //     leftCurtain.position = leftEnd;
+    //     rightCurtain.position = rightEnd;
+    // }
 
 
     public IEnumerator OpenIntroCurtains()
@@ -103,8 +103,8 @@ public class CurtainController : MonoBehaviour
         leftIntroCurtain.gameObject.SetActive(false);
         rightIntroCurtain.gameObject.SetActive(false);
 
-        leftCurtain.gameObject.SetActive(true);
-        rightCurtain.gameObject.SetActive(true);
+        // leftCurtain.gameObject.SetActive(true);
+        // rightCurtain.gameObject.SetActive(true);
     }
 
 

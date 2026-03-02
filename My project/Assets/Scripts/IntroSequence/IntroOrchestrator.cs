@@ -42,6 +42,7 @@ public class IntroOrchestrator : MonoBehaviour
     [Header("Extra SFX")]
     public AudioClip lightOnClip;    
     public AudioClip introBGM; 
+    public AudioClip clock;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -80,13 +81,13 @@ public class IntroOrchestrator : MonoBehaviour
             new VOManager.SubtitleLine("in the most exciting way.", 25000f, 2000f),
         });
 
-       yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(1);
 
         VOManager.Instance.PlayLine(introClip);
 
         yield return new WaitForSeconds(5);
 
-        VOManager.Instance.PlayAudience(lightOnClip);
+        VOManager.Instance.PlaySoundFX(lightOnClip);
 
         yield return new WaitForSeconds(1);
 
@@ -279,6 +280,10 @@ public class IntroOrchestrator : MonoBehaviour
 
     private void StartMainScene()
     {
+        VOManager.Instance.PlaySoundFX(clock);
+
+        FindObjectOfType<LevelNameDisplay>().ShowLevelName("Level 1: 5 vs 1");
+
         Debug.Log("Intro complete → transition to main scene");
         LevelDirector.Active.EndLevel("track_a");
     }

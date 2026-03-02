@@ -7,9 +7,6 @@ public class LevelOneTrackA : MonoBehaviour
 
     [Header("VO Clips")]
     public AudioClip endingClip;      
-    public AudioClip levelTwoAIntroClip;  
-
-    public AudioClip bgMusic;
 
     private bool hasTriggered = false;
 
@@ -23,27 +20,13 @@ public class LevelOneTrackA : MonoBehaviour
 
     private IEnumerator EndSequence()
     {
-        VOManager.Instance.StopBackgroundMusic();
-
-        yield return CurtainController.Instance.CloseCurtains();
 
         VOManager.Instance.PlayLine(endingClip);
 
-        yield return new WaitForSeconds(endingClip.length);
+        yield return new WaitForSeconds(endingClip.length - 1);
 
-        VOManager.Instance.PlayLine(levelTwoAIntroClip);
+        FindObjectOfType<LevelNameDisplay>().ShowLevelName("Level 2: 10 v 1");
 
-        yield return new WaitForSeconds(5f);
-
-        VOManager.Instance.StartBackgroundMusic(bgMusic);
-
-        yield return CurtainController.Instance.OpenCurtains();
-
-        // curtains open back up
-
-        Debug.Log("track a ending complete");
-
-        // call endtrigger
         endTrigger.TriggerEnd();
     }
 }

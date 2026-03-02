@@ -663,9 +663,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LevelOneEndSequence
   endTrigger: {fileID: 3680733563081611235}
-  endingClip: {fileID: 8300000, guid: 9ddd2de1709484a3bb63a132bb525bbf, type: 3}
-  levelTwoAIntroClip: {fileID: 8300000, guid: 468303d3683a846988c578f4e01a25ca, type: 3}
-  bgMusic: {fileID: 8300000, guid: d947c19eb06d8bf4984ba95261bb4286, type: 3}
+  endingClip: {fileID: 8300000, guid: 273b842e83a2745b4a31557ca37b337c, type: 3}
 --- !u!1 &355883649247720024
 GameObject:
   m_ObjectHideFlags: 0
@@ -3057,8 +3055,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TrolleyMovement
   moveSpeed: 0.03
-  spline: {fileID: 5218481227957307532}
-  spline1: {fileID: 3571198170207449756}
+  spline1: {fileID: 5218481227957307532}
+  spline2: {fileID: 3571198170207449756}
   currentSpline: {fileID: 0}
   followSpline: 1
   audioSource: {fileID: 0}
@@ -4646,7 +4644,6 @@ MonoBehaviour:
   applause: {fileID: 8300000, guid: 54c92324773dd4d40abe4cc91d401f22, type: 3}
   ParticlePrefab: {fileID: 4938095755617958529, guid: 2e79f16be10fbd14f8d5ef191f8db4aa, type: 3}
   Lever: {fileID: 7310875333360241009}
-  rating: {fileID: 0}
 --- !u!1 &2610514555329130290
 GameObject:
   m_ObjectHideFlags: 0
@@ -5243,7 +5240,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   anim: {fileID: 8052672957577982439}
-  applause: {fileID: 8300000, guid: 54c92324773dd4d40abe4cc91d401f22, type: 3}
+  applause: {fileID: 0}
 --- !u!136 &8839254057242574653
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -8740,9 +8737,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LevelOneTrackB
   endTrigger: {fileID: 3080934632226850187}
-  endingClip: {fileID: 8300000, guid: 26999ab0b72a940a489de53412b275f0, type: 3}
-  levelTwoBIntroClip: {fileID: 8300000, guid: c2a47a634ddca4b5ca915e1d8c41167a, type: 3}
-  fasterLevelMusic: {fileID: 8300000, guid: de8183a8c88b1466cafa5cf273afde9b, type: 3}
+  endingClip: {fileID: 8300000, guid: e31f259a459ed4026bdd17351f040301, type: 3}
 --- !u!1 &5531776639227954716
 GameObject:
   m_ObjectHideFlags: 0
@@ -10417,6 +10412,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4805716973498990345}
   - component: {fileID: 3887864554566005152}
+  - component: {fileID: 3041919111158699310}
   - component: {fileID: 7310875333360241009}
   - component: {fileID: 2069867800835237834}
   - component: {fileID: 1649778477524365988}
@@ -10467,7 +10463,7 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 1.2
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7310875333360241009
+--- !u!114 &3041919111158699310
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -10475,6 +10471,26 @@ MonoBehaviour:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6757663488935734966}
   m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f02234da494a4a2594ed6047ccde868, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LeverNoRating
+  trolleyMovement: {fileID: 8449752393565524978}
+  catapultProjectile: {fileID: 0}
+  redGreenLight: {fileID: 0}
+  greenRedLight: {fileID: 0}
+  anim: {fileID: 2069867800835237834}
+  armAnim: {fileID: 0}
+  audioSource: {fileID: 1649778477524365988}
+  switchSound: {fileID: 8300000, guid: 0cec5d2f5e8c38a4e8cfd748bddd427f, type: 3}
+--- !u!114 &7310875333360241009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6757663488935734966}
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3d5eb10fcc45905478c25e4265ac29ed, type: 3}
   m_Name: 
@@ -12499,7 +12515,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   anim: {fileID: 581686929120822205}
-  applause: {fileID: 8300000, guid: 54c92324773dd4d40abe4cc91d401f22, type: 3}
+  applause: {fileID: 0}
 --- !u!136 &3561830406411440185
 CapsuleCollider:
   m_ObjectHideFlags: 0

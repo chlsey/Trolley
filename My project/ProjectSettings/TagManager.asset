@@ -7,6 +7,7 @@ TagManager:
   - Trolley
   - Lever
   - huge_fan
+  - Loopty
   layers:
   - Default
   - TransparentFX

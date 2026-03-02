@@ -46,9 +46,6 @@ public class EndTrigger : MonoBehaviour
 
     // private IEnumerator EndSequence()
     // {
-    //     yield return new WaitForSeconds(1);
-
-        
 
     //     // still goes to next node after done
     //     LevelDirector.Active.EndLevel(outcomeId);

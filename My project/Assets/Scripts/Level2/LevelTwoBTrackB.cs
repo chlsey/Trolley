@@ -26,7 +26,7 @@ public class LevelTwoBTrackB : MonoBehaviour
 
         yield return new WaitForSeconds(7);
 
-        StartCoroutine(CurtainController.Instance.CloseCurtains());
+        // StartCoroutine(CurtainController.Instance.CloseCurtains());
 
         yield return new WaitForSeconds(endingClip.length - 5);
         
