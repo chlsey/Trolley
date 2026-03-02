@@ -8,7 +8,10 @@ public class NextScene : MonoBehaviour
     public RBController rBController;
     public Health health;
 
-    private bool triggered = false;
+    public void triggerSceneLoad()
+    {
+        StartCoroutine(LoadNextScene());
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -24,11 +27,11 @@ public class NextScene : MonoBehaviour
         StartCoroutine(LoadNextScene());
     }
 
-    public IEnumerator LoadNextScene()
+    private IEnumerator LoadNextScene()
     {
-        yield return new WaitForSeconds(1);
         health.TriggerFadeToBlack();
         yield return new WaitForSeconds(1);
         SceneManager.LoadScene(sceneToLoad);
     }
+    
 }

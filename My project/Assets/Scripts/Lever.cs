@@ -40,6 +40,7 @@ public class Lever : MonoBehaviour
             audioSource.PlayOneShot(switchSound);
             Debug.Log("TrackSwitched");
             Debug.Log("Track Switched");
+            rating.ChangeRating(-0.5f);
             leverFlipped = true;
             // enabled = false;
         }
@@ -49,6 +50,7 @@ public class Lever : MonoBehaviour
             anim.SetTrigger("Switch");
             armAnim.SetTrigger("Switch");
             audioSource.PlayOneShot(switchSound);
+            rating.ChangeRating(0.5f);
             leverFlipped = true;
             // enabled = false;
         }

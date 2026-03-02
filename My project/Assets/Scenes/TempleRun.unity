@@ -2214,6 +2214,14 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9100402339330515259, guid: b61b808ce2be8e04883b1b25c998fdfb, type: 3}
+      propertyPath: sensX
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9100402339330515259, guid: b61b808ce2be8e04883b1b25c998fdfb, type: 3}
+      propertyPath: sensY
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2442645474099107289, guid: b61b808ce2be8e04883b1b25c998fdfb, type: 3}
     - {fileID: 8895381986654659772, guid: b61b808ce2be8e04883b1b25c998fdfb, type: 3}
