@@ -19,31 +19,31 @@ public class RBController : MonoBehaviour
         DisableRigidbody();
     }
 
-    void Update()
-    {
-        techDiffOrchestrator = FindObjectOfType<TechDiffOrchestrator>();
-        if(techDiffOrchestrator.pressL && Input.GetKeyDown(KeyCode.L))
-        {
+   // void Update()
+   // {
+       // techDiffOrchestrator = FindObjectOfType<TechDiffOrchestrator>();
+       // if(techDiffOrchestrator.pressL && Input.GetKeyDown(KeyCode.L))
+       // {
 
-            dropped = true;
+            
 
             // destroy mesh collider immediately when key is pressed
-            if (meshRenderer != null)
-            {
-                MeshCollider mc = meshRenderer.GetComponent<MeshCollider>();
-                if (mc != null)
-                    Destroy(mc);
-            }
-            else
-            {
+           // if (meshRenderer != null)
+            //{
+               // MeshCollider mc = meshRenderer.GetComponent<MeshCollider>();
+               // if (mc != null)
+                   // Destroy(mc);
+            //}
+           // else
+           // {
                 // catch the next update check as a warning rather than throw an error
-                Debug.LogWarning("meshRenderer is null");
-            }
+                //Debug.LogWarning("meshRenderer is null");
+           // }
 
-            EnableRigidbody();
-        }
+            //EnableRigidbody();
+        //}
         
-    }
+    //}
     private void OnTriggerEnter(Collider other)
     {
         if ((layerMask.value & (1 << other.gameObject.layer)) > 0 )

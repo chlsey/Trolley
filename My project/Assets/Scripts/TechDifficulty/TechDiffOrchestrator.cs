@@ -32,10 +32,7 @@ public class TechDiffOrchestrator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       if (RBController.Instance.dropped)
-        {
-            
-        }
+    
     }
 
     private IEnumerator PlayTechDiffLevel()

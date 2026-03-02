@@ -14,6 +14,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ExitHallwaySequence.unity
     guid: e0154db5c466b264983190fc68f3fec3
+  - enabled: 1
+    path: Assets/Scenes/TempleRun.unity
+    guid: aed67fcd80c597f4bb9ab19c9dc2008e
+  - enabled: 1
+    path: Assets/Scenes/FPS.unity
+    guid: 2f84c436d93ad7949b4f352e97355efd
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

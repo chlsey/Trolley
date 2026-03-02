@@ -7,6 +7,7 @@ public class VictimSFX : MonoBehaviour
     public AudioClip splat;
     public LayerMask layerMask;
     public Animator anim;
+    public AudioClip applause;
     // public static int killCount = 0;
     private bool triggered = false;
     // public TextMeshPro text;
@@ -25,7 +26,9 @@ public class VictimSFX : MonoBehaviour
             triggered = true;
             anim.SetTrigger("dead");
             KillCounter.AddKill();
-            VOManager.Instance.PlaySoundFX(splat);
+            //VOManager.Instance.PlaySoundFX(splat);
+            audioSource.PlayOneShot(splat);
+            audioSource.PlayOneShot(applause);
         }
     }
 

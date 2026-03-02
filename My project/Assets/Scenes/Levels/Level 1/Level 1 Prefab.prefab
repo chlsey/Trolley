@@ -1004,6 +1004,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   anim: {fileID: 8547931285912806747}
+  applause: {fileID: 0}
 --- !u!136 &2970963394106615223
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1423,6 +1424,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   anim: {fileID: 3930712108471030613}
+  applause: {fileID: 0}
 --- !u!136 &4789846363743353220
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -3832,6 +3834,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   anim: {fileID: 4450523312455926405}
+  applause: {fileID: 0}
 --- !u!136 &79450422430686250
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -5239,6 +5242,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   anim: {fileID: 8052672957577982439}
+  applause: {fileID: 8300000, guid: 54c92324773dd4d40abe4cc91d401f22, type: 3}
 --- !u!136 &8839254057242574653
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -6318,6 +6322,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   anim: {fileID: 5608631584154695420}
+  applause: {fileID: 0}
 --- !u!136 &5757615910169794919
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -10647,6 +10652,7 @@ MonoBehaviour:
     m_Bits: 8
   audioSource: {fileID: 0}
   glassBreaking: {fileID: 0}
+  techDiffOrchestrator: {fileID: 0}
 --- !u!1 &6771335596741132232
 GameObject:
   m_ObjectHideFlags: 0
@@ -12491,6 +12497,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   anim: {fileID: 581686929120822205}
+  applause: {fileID: 8300000, guid: 54c92324773dd4d40abe4cc91d401f22, type: 3}
 --- !u!136 &3561830406411440185
 CapsuleCollider:
   m_ObjectHideFlags: 0
