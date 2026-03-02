@@ -49,11 +49,11 @@ public class GameOrchestrator : MonoBehaviour
             directorObject.transform.SetParent(transform);
             var director = directorObject.AddComponent<LevelDirector>();
 
-            director.Run(currentNode, state, stageRoot, outcome =>
+            yield return StartCoroutine(director.Run(currentNode, state, stageRoot, outcome =>
             {
                 outcomeId = outcome;
                 outcomeReceived = true;
-            });
+            }));
 
             // Wait for the level to report an outcome via the callback.
             yield return new WaitUntil(() => outcomeReceived);

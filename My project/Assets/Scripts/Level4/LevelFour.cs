@@ -7,6 +7,9 @@ public class LevelFourIntro : MonoBehaviour
     public AudioClip levelFourIntroClip;  
     public AudioClip levelFourEndingOne;
     public AudioClip lightsOn;
+    public AudioClip gasp;
+
+    public AudioClip lvlMusic;
 
     public EndTrigger endTrigger;
     public TrolleyMovement trolleyMovement;
@@ -44,6 +47,8 @@ public class LevelFourIntro : MonoBehaviour
 
     private IEnumerator PlayLevelFourEndingOne()
     {
+        VOManager.Instance.StopBackgroundMusic();
+        VOManager.Instance.PlayAudience(gasp);
         VOManager.Instance.PlayLine(levelFourEndingOne);
         yield return new WaitForSeconds(6);
         StartCoroutine(CurtainController.Instance.CloseCurtains());
@@ -55,27 +60,32 @@ public class LevelFourIntro : MonoBehaviour
     private IEnumerator PlayLevelFourIntroSeq()
     {
         VOManager.Instance.PlayLine(levelFourIntroClip);
+        LightManager.Instance.TurnOffTrackB();
         Debug.Log("lvl 4 intro played!");
+
+        yield return new WaitForSeconds(3);
+
+        VOManager.Instance.StopBackgroundMusic();
+
+        yield return new WaitForSeconds(3);
+
+        VOManager.Instance.StartBackgroundMusic(lvlMusic);
         
-        yield return new WaitForSeconds(10);
+        yield return new WaitForSeconds(7);
         // // Show volunteer on screen
         jimmyLight.intensity = 30000f;
         VOManager.Instance.PlaySoundFX(lightsOn);
 
         // Show jimmy waving (at 15 seconds)
-        yield return new WaitForSeconds(3);
-        // jimmyLight.intensity = 30000f;
-        // VOManager.Instance.PlaySoundFX(lightsOn);
+        yield return new WaitForSeconds(2);
 
         StartCoroutine(CurtainController.Instance.OpenCurtains());
 
-        yield return new WaitForSeconds(2);
-
         // Gasp, lights turn red "Oh no where's the second track" (at 23 sec)
-        yield return new WaitForSeconds(8);
+        yield return new WaitForSeconds(5);
 
         // "That's right! your lever will push jimmy onto the tracks" (at 29 sec)
-        yield return new WaitForSeconds(6);
+        // yield return new WaitForSeconds(6);
 
         // Show the Terms & Condition on screen (at 43 sec)
         yield return new WaitForSeconds(9);

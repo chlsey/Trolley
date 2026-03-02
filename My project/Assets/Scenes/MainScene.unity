@@ -17597,8 +17597,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 25
-  m_fontSizeBase: 25
+  m_fontSize: 60
+  m_fontSizeBase: 60
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -20393,7 +20393,7 @@ MonoBehaviour:
   leftIntroCurtain: {fileID: 642536676}
   rightCurtain: {fileID: 896702102}
   leftCurtain: {fileID: 1044197503}
-  curtainOpenDistance: 7
+  curtainOpenDistance: 8
   curtainOpenDuration: 1
 --- !u!4 &1430821337 stripped
 Transform:

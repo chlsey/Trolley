@@ -552,7 +552,7 @@ Transform:
   m_GameObject: {fileID: 346647040983609103}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 6.9, y: -6.5126896, z: 3.033409}
+  m_LocalPosition: {x: 8.39999, y: -6.5126896, z: 3.033409}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -665,6 +665,7 @@ MonoBehaviour:
   endTrigger: {fileID: 3680733563081611235}
   endingClip: {fileID: 8300000, guid: 9ddd2de1709484a3bb63a132bb525bbf, type: 3}
   levelTwoAIntroClip: {fileID: 8300000, guid: 468303d3683a846988c578f4e01a25ca, type: 3}
+  bgMusic: {fileID: 8300000, guid: d947c19eb06d8bf4984ba95261bb4286, type: 3}
 --- !u!1 &355883649247720024
 GameObject:
   m_ObjectHideFlags: 0
@@ -8628,7 +8629,7 @@ Transform:
   m_GameObject: {fileID: 5488885839212302271}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 6.900009, y: -6.5126896, z: 12.043411}
+  m_LocalPosition: {x: 8.4, y: -6.5126896, z: 12.043411}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8741,6 +8742,7 @@ MonoBehaviour:
   endTrigger: {fileID: 3080934632226850187}
   endingClip: {fileID: 8300000, guid: 26999ab0b72a940a489de53412b275f0, type: 3}
   levelTwoBIntroClip: {fileID: 8300000, guid: c2a47a634ddca4b5ca915e1d8c41167a, type: 3}
+  fasterLevelMusic: {fileID: 8300000, guid: de8183a8c88b1466cafa5cf273afde9b, type: 3}
 --- !u!1 &5531776639227954716
 GameObject:
   m_ObjectHideFlags: 0

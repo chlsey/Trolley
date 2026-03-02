@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Lever : MonoBehaviour
 {
@@ -17,6 +18,7 @@ public class Lever : MonoBehaviour
     public bool leverFlipped = false;
 
     private bool nearLever;
+    private bool gotInput;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -26,7 +28,8 @@ public class Lever : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (nearLever && Input.GetKeyDown(KeyCode.E) && trolleyMovement && !catapultProjectile)
+        gotInput = Input.GetKeyDown(KeyCode.E) || Gamepad.current.buttonWest.isPressed;
+        if (nearLever && gotInput && trolleyMovement && !catapultProjectile)
         {
             trolleyMovement.SwitchTrack();
             redGreenLight.Toggle();
@@ -39,7 +42,7 @@ public class Lever : MonoBehaviour
             leverFlipped = true;
             enabled = false;
         }
-        if (nearLever && Input.GetKeyDown(KeyCode.E) && catapultProjectile)
+        if (nearLever && gotInput && catapultProjectile)
         {
             catapultProjectile.Launch();
             anim.SetTrigger("Switch");

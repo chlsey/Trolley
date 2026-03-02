@@ -10,6 +10,8 @@ public class LevelOneTrackB : MonoBehaviour
     public AudioClip levelTwoBIntroClip;  
     private bool hasTriggered = false;
 
+    public AudioClip fasterLevelMusic;  
+
     private void OnTriggerEnter(Collider other)
     {
         if (hasTriggered) return;
@@ -26,13 +28,15 @@ public class LevelOneTrackB : MonoBehaviour
 
         yield return new WaitForSeconds(endingClip.length);
 
+        VOManager.Instance.StartBackgroundMusic(fasterLevelMusic);
+
         VOManager.Instance.PlayLine(levelTwoBIntroClip);
 
-        yield return new WaitForSeconds(8);
+        yield return new WaitForSeconds(13);
 
         StartCoroutine(CurtainController.Instance.OpenCurtains());
 
-        yield return new WaitForSeconds(7);
+        yield return new WaitForSeconds(1);
 
         Debug.Log("track a ending complete");
 
