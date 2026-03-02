@@ -10,7 +10,6 @@ public class MovingPlatform : MonoBehaviour
     {
         if (other.tag.Equals("Player"))
         {
-            Debug.Log("Player detected");
             other.transform.root.SetParent(platform);
             // PlayerMovement pm = other.GetComponentInParent<PlayerMovement>();
             // if (pm != null)

@@ -37,7 +37,6 @@ public class TrolleyMovementSubway : MonoBehaviour
 
     void OnTriggerEnter()
     {
-        Debug.Log("trigger entered, starting to move");
         followSpline = true;
     }
     private void MoveTrolley()
@@ -61,23 +60,4 @@ public class TrolleyMovementSubway : MonoBehaviour
         distanceAlongSpline += moveSpeed * Time.deltaTime;
     }
 
-
-    private IEnumerator SlowBrakeCoroutine()
-    {
-        audioSource.Stop();
-        float decelerationRate = 0.5f;
-
-        while (moveSpeed > 0)
-        {
-            moveSpeed -= decelerationRate * Time.deltaTime;
-
-            // Prevent moveSpeed from going negative
-            if (moveSpeed < 0) moveSpeed = 0;
-
-            yield return null; // Wait for the next frame
-        }
-
-        Debug.Log("Trolley has come to a complete stop.");
-        // yield return null;
-    }
 }

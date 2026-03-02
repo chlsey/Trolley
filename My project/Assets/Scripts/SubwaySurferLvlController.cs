@@ -19,7 +19,7 @@ public class SubwaySurferLvlController : MonoBehaviour
         {
             gameHasEnded = true;
             Debug.Log("GAME OVER");
-            Invoke("Restart", restartDelay);
+            // Invoke("Restart", restartDelay);
         }
 
     }
