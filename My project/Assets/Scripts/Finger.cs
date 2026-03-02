@@ -3,6 +3,7 @@ using UnityEngine;
 public class Finger : MonoBehaviour
 {
     public Animator animator;
+     public string leverTag = "Lever";
     private bool nearLever = false;
     
   
@@ -24,13 +25,19 @@ public class Finger : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
     
-        nearLever = true;
+        if (other.CompareTag(leverTag))
+        {
+            nearLever = true;
+        }
         
     }
     private void OnTriggerExit(Collider other)
     {
         
-        nearLever = false;
+        if (other.CompareTag(leverTag))
+        {
+            nearLever = false;
+        }
         
     }
 }

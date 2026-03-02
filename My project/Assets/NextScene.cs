@@ -8,16 +8,22 @@ public class NextScene : MonoBehaviour
     public RBController rBController;
     public Health health;
 
+    public void triggerSceneLoad()
+    {
+        StartCoroutine(LoadNextScene());
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         rBController.EnableRigidbody();
         StartCoroutine(LoadNextScene());
     }
-     private IEnumerator LoadNextScene()
+
+    private IEnumerator LoadNextScene()
     {
-        yield return new WaitForSeconds(1);
         health.TriggerFadeToBlack();
         yield return new WaitForSeconds(1);
         SceneManager.LoadScene(sceneToLoad);
     }
+    
 }
