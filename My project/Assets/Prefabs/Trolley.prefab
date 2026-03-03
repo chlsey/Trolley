@@ -432,10 +432,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TrolleyMovement
   moveSpeed: 0.03
-  spline: {fileID: 0}
   spline1: {fileID: 0}
+  spline2: {fileID: 0}
   currentSpline: {fileID: 0}
   followSpline: 1
+  audioSource: {fileID: 0}
+  rb: {fileID: 0}
+  lever: {fileID: 0}
 --- !u!54 &7051506164545977317
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -784,6 +787,9 @@ MonoBehaviour:
   splat: {fileID: 8300000, guid: 9cb76e52c66ca9845b3b11aea3d61ec7, type: 3}
   applause: {fileID: 8300000, guid: d75a64f6721ac6649bff15a8a460685b, type: 3}
   ParticlePrefab: {fileID: 4938095755617958529, guid: 2e79f16be10fbd14f8d5ef191f8db4aa, type: 3}
+  Lever: {fileID: 0}
+  rating: {fileID: 0}
+  trolley: {fileID: 0}
 --- !u!4 &4146973178999832107 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8762540054365680308, guid: 6a83982773f514fa884632efddfa0e2a, type: 3}

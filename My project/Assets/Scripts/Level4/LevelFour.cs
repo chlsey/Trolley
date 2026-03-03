@@ -41,12 +41,13 @@ public class LevelFourIntro : MonoBehaviour
     {
         if (lever.leverFlipped == true && endingStarted == false)
         {
+            endingStarted = true; 
             trolleyMovement.followSpline = true;
             Debug.Log("lvl4 ending 1");
             // FindObjectOfType<LevelNameDisplay>().ShowLevelName("Make the trolley do a LOOP!");
             StopCoroutine(PlayLevelFourIntroSeq());
             StartCoroutine(PlayLevelFourEndingOne());
-            endingStarted = true;   
+              
         }
     }
 
@@ -87,7 +88,7 @@ public class LevelFourIntro : MonoBehaviour
         
         yield return new WaitForSeconds(7);
         // // Show volunteer on screen
-        jimmyLight.intensity = 30000f;
+        jimmyLight.intensity = 2000f;
         VOManager.Instance.PlaySoundFX(lightsOn);
 
         // Show jimmy waving (at 15 seconds)
@@ -99,7 +100,7 @@ public class LevelFourIntro : MonoBehaviour
         yield return new WaitForSeconds(5);
 
         // "That's right! your lever will push jimmy onto the tracks" (at 29 sec)
-        // yield return new WaitForSeconds(6);
+        yield return new WaitForSeconds(6);
 
         // Show the Terms & Condition on screen (at 43 sec)
         yield return new WaitForSeconds(9);

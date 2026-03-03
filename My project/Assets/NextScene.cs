@@ -7,6 +7,7 @@ public class NextScene : MonoBehaviour
     public string sceneToLoad;
     public RBController rBController;
     public Health health;
+    private bool triggered = false;
 
     public void triggerSceneLoad()
     {

@@ -1209,11 +1209,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4895003472948095433, guid: c0e56157e5ffae74dbaf952fe91860cc, type: 3}
       propertyPath: sensX
-      value: 1
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 4895003472948095433, guid: c0e56157e5ffae74dbaf952fe91860cc, type: 3}
       propertyPath: sensY
-      value: 1
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 5403933936978416428, guid: c0e56157e5ffae74dbaf952fe91860cc, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2963,9 +2963,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'E to Use
-
-'
+  m_text: "\u53E3 to Use\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 617c06724d6306b4d80a3df10ec3768d, type: 2}
   m_sharedMaterial: {fileID: -5272392862168012325, guid: 617c06724d6306b4d80a3df10ec3768d, type: 2}
@@ -3726,9 +3724,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'E to Use
-
-'
+  m_text: "\u53E3 to Use"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 617c06724d6306b4d80a3df10ec3768d, type: 2}
   m_sharedMaterial: {fileID: -5272392862168012325, guid: 617c06724d6306b4d80a3df10ec3768d, type: 2}

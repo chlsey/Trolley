@@ -24,5 +24,6 @@ public class CatapultProjectile : MonoBehaviour
 
         // 4. Send it flying!
         rb.AddForce(launchDirection.normalized * launchForce, ForceMode.Impulse);
+        Debug.Log("jimmy launched!");
     }
 }

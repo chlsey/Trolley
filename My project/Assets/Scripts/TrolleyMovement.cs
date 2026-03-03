@@ -21,12 +21,10 @@ public class TrolleyMovement : MonoBehaviour
     public Rigidbody rb;
     public GameObject lever;
     private float distanceAlongSpline = 0f;
-    Rigidbody rb;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {   
-        rb = GetComponent<Rigidbody>();
         currentSpline = spline1;
     }
 
@@ -51,11 +49,21 @@ public class TrolleyMovement : MonoBehaviour
 
         currentSpline.Evaluate(distanceAlongSpline, out float3 currentPos, out float3 currentTangent, out float3 currentUp);
         
-        // Set transform position directly along spline
-        transform.position = currentPos;
+        // NOTE: only for subway surfers
+        if(rb) {
+            // move the trolley's RB
+            rb.MovePosition(currentPos);
+            // // Set rotation to face forward direction
+            rb.MoveRotation(Quaternion.LookRotation(currentUp));
+        }
+        else
+        {
+            // Set transform position directly along spline
+            transform.position = currentPos;
         
-        // Set rotation to face forward direction
-        transform.rotation = Quaternion.LookRotation(currentTangent, currentUp);
+            // Set rotation to face forward direction
+            transform.rotation = Quaternion.LookRotation(currentTangent);
+        }
 
         Vector3 forwardVector = ((Vector3)currentTangent).normalized;
         Vector3 upVector = ((Vector3)currentUp).normalized;

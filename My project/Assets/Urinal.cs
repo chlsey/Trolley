@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.InputSystem;
 
 public class Urinal : MonoBehaviour
 {
@@ -43,7 +44,7 @@ public class Urinal : MonoBehaviour
     {
         if(correctUrinal)
         {
-            if (nearUrinal && Input.GetKeyDown(KeyCode.E))
+            if (nearUrinal && (Input.GetKeyDown(KeyCode.E) || Gamepad.current.buttonWest.isPressed))
             {
                 anim.SetTrigger("PlayerPee");
                 Pee1anim.SetTrigger("Applause");
@@ -66,7 +67,7 @@ public class Urinal : MonoBehaviour
         }
         if(inCorrectUrinalRight)
         {
-            if (nearUrinal && Input.GetKeyDown(KeyCode.E))
+            if (nearUrinal && (Input.GetKeyDown(KeyCode.E) || Gamepad.current.buttonWest.isPressed))
             {
                 anim.SetTrigger("PlayerPee");
                 

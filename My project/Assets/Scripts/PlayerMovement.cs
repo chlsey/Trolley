@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField]
@@ -54,7 +55,7 @@ public class PlayerMovement : MonoBehaviour
     {
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
-        if (Input.GetKey(jumpKey) && readyToJump)
+        if ((Input.GetKey(jumpKey) || Gamepad.current.buttonSouth.isPressed) && readyToJump)
         {
             readyToJump = false;
             Jump();

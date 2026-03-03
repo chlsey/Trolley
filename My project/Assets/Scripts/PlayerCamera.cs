@@ -23,7 +23,7 @@ public class PlayerCamera : MonoBehaviour
     {
         // Get input values from both devices
         Vector2 mouseDelta = Mouse.current.delta.ReadValue();
-        Vector2 stickDelta = Gamepad.current != null ? Gamepad.current.rightStick.ReadValue() : Vector2.zero;
+        Vector2 stickDelta = Gamepad.current.rightStick.ReadValue();
 
         // Detect which device has movement (mouse gets priority)
         if (mouseDelta.sqrMagnitude > 0.1f) 

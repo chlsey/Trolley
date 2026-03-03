@@ -127,12 +127,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   trolleyMovement: {fileID: 0}
+  catapultProjectile: {fileID: 0}
   redGreenLight: {fileID: 0}
   greenRedLight: {fileID: 0}
   anim: {fileID: 2211667596631943093}
   armAnim: {fileID: 0}
   audioSource: {fileID: 197832044056532481}
   switchSound: {fileID: 8300000, guid: 0cec5d2f5e8c38a4e8cfd748bddd427f, type: 3}
+  voManager: {fileID: 0}
+  rating: {fileID: 0}
+  leverFlipped: 0
+  qPrompt: {fileID: 0}
 --- !u!95 &2211667596631943093
 Animator:
   serializedVersion: 7

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Finger : MonoBehaviour
 {
@@ -15,7 +16,7 @@ public class Finger : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (nearLever && Input.GetKeyDown(KeyCode.E))
+        if (nearLever && (Input.GetKeyDown(KeyCode.E) || Gamepad.current.buttonWest.isPressed))
         {
             animator.SetTrigger("Switch");
             

@@ -579,8 +579,7 @@ Transform:
   m_LocalPosition: {x: -19.83, y: 1.84, z: 31.77}
   m_LocalScale: {x: 4.559734, y: 2.9553068, z: 0.1280796}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1787481833}
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 180}
 --- !u!1 &231104983
@@ -614,7 +613,7 @@ Transform:
   m_LocalScale: {x: 3.5400224, y: 0.3246071, z: 0.21278708}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1916921279}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &231104985
 MonoBehaviour:
@@ -994,7 +993,7 @@ Transform:
   m_LocalScale: {x: 0.2976811, y: 2.3604395, z: 0.9708655}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1396037243}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &497250256
 MonoBehaviour:
@@ -1121,7 +1120,7 @@ Transform:
   m_LocalScale: {x: 0.21278717, y: 0.32460728, z: 3.5400229}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1713229091}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &555071413
 MonoBehaviour:
@@ -1741,7 +1740,7 @@ RectTransform:
   m_LocalScale: {x: 0.0040589594, y: 0.0040589594, z: 0.0040589594}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1860256630}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2342,7 +2341,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 426604408}
-  - {fileID: 1595270115}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1385799820
@@ -2480,18 +2478,10 @@ SceneRoots:
   - {fileID: 707514388}
   - {fileID: 35644203}
   - {fileID: 396067395}
-  - {fileID: 1713229091}
-  - {fileID: 1067680083}
-  - {fileID: 1926450754}
-  - {fileID: 1396037243}
-  - {fileID: 2071282239}
   - {fileID: 190963336}
   - {fileID: 196599373}
-  - {fileID: 1916921279}
-  - {fileID: 1093934367}
-  - {fileID: 1152936794}
-  - {fileID: 1735281227}
-  - {fileID: 1900661761}
   - {fileID: 87186231}
-  - {fileID: 2029991356}
-  - {fileID: 1860256630}
+  - {fileID: 231104984}
+  - {fileID: 497250255}
+  - {fileID: 555071412}
+  - {fileID: 774040329}

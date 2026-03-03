@@ -11,15 +11,18 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainScene.unity
     guid: 9ed6ea661e4c04fc2afc2c0199300245
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/ExitHallwaySequence.unity
     guid: e0154db5c466b264983190fc68f3fec3
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/TempleRun.unity
     guid: aed67fcd80c597f4bb9ab19c9dc2008e
   - enabled: 1
     path: Assets/Scenes/FPS.unity
     guid: 2f84c436d93ad7949b4f352e97355efd
+  - enabled: 1
+    path: Assets/Scenes/UrinalDilemma.unity
+    guid: 54c88726e57e3a048963aa37a01e3574
   m_configObjects:
     com.unity.dt.app-ui: {fileID: 11400000, guid: 1b1c20d82303e4b5781c3ef50ac1449f, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}

@@ -17,6 +17,6 @@ MonoBehaviour:
   preSpawnHooks: []
   outgoingEdges:
   - outcomeId: track_a
-    nextNode: {fileID: 11400000, guid: 80b784e90779e462ab39c40c8ada57c7, type: 2}
+    nextNode: {fileID: 11400000, guid: 9ba52532a7e3144968b66ffe0f388005, type: 2}
   - outcomeId: track_b
-    nextNode: {fileID: 11400000, guid: 80b784e90779e462ab39c40c8ada57c7, type: 2}
+    nextNode: {fileID: 11400000, guid: 9ba52532a7e3144968b66ffe0f388005, type: 2}

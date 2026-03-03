@@ -16,6 +16,7 @@ public class Lever : MonoBehaviour
     public VOManager voManager;
     public Rating rating;
     public bool leverFlipped = false;
+    public GameObject qPrompt;
 
     private bool nearLever;
     private bool gotInput;
@@ -23,13 +24,17 @@ public class Lever : MonoBehaviour
     void Start()
     {
         nearLever = false;
+        if(qPrompt != null) {
+            Debug.Log("qpromt exists!");
+            qPrompt.SetActive(false);
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
         gotInput = Input.GetKeyDown(KeyCode.E) ||
-           (Gamepad.current != null && Gamepad.current.buttonWest.isPressed);
+           (Gamepad.current != null && Gamepad.current.buttonWest.wasReleasedThisFrame);
         if (nearLever && gotInput && trolleyMovement && !catapultProjectile)
         {
             trolleyMovement.SwitchTrack();
@@ -40,9 +45,9 @@ public class Lever : MonoBehaviour
             audioSource.PlayOneShot(switchSound);
             Debug.Log("TrackSwitched");
             Debug.Log("Track Switched");
-            rating.ChangeRating(-0.5f);
+            // rating.ChangeRating(-0.5f);
             leverFlipped = true;
-            // enabled = false;
+            if(qPrompt != null) qPrompt.SetActive(true);
         }
         if (nearLever && gotInput && catapultProjectile)
         {
