@@ -16,7 +16,7 @@ public class Finger : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (nearLever && (Input.GetKeyDown(KeyCode.E) || Gamepad.current.buttonWest.isPressed))
+        if (nearLever && (Input.GetKeyDown(KeyCode.E) || (Gamepad.current != null && Gamepad.current.buttonWest.isPressed)))
         {
             animator.SetTrigger("Switch");
             

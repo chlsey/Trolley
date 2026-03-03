@@ -55,7 +55,7 @@ public class PlayerMovement : MonoBehaviour
     {
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
-        if ((Input.GetKey(jumpKey) || Gamepad.current.buttonSouth.isPressed) && readyToJump)
+        if ((Input.GetKey(jumpKey) || (Gamepad.current != null && Gamepad.current.buttonSouth.isPressed)) && readyToJump)
         {
             readyToJump = false;
             Jump();

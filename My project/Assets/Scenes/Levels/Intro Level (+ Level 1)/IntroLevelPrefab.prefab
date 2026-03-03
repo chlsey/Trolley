@@ -2158,6 +2158,7 @@ GameObject:
   - component: {fileID: 5843966229575708625}
   - component: {fileID: 4780166218774424690}
   - component: {fileID: 7159273064495653110}
+  - component: {fileID: 7706868893317449422}
   m_Layer: 0
   m_Name: TrackALight
   m_TagString: Untagged
@@ -2289,6 +2290,21 @@ MonoBehaviour:
   light: {fileID: 5843966229575708625}
   redColor: {r: 1, g: 0, b: 0, a: 1}
   greenColor: {r: 0, g: 1, b: 0, a: 1}
+--- !u!114 &7706868893317449422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1383394964016320953}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c8bca95f7c947b4db5fb152a0d693d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: com.cqf.urpvolumetricfog.runtime::VolumetricAdditionalLight
+  anisotropy: 0.25
+  scattering: 1
+  radius: 0.2
 --- !u!1 &1394417683591146666
 GameObject:
   m_ObjectHideFlags: 0
@@ -5514,6 +5530,7 @@ GameObject:
   - component: {fileID: 3852152702951774955}
   - component: {fileID: 1736123388476128676}
   - component: {fileID: 1833558264188493121}
+  - component: {fileID: 8236739349471366201}
   m_Layer: 0
   m_Name: Spot Light
   m_TagString: Untagged
@@ -5529,13 +5546,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3314569106315651071}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.7841306, y: 0.052148487, z: 0.071901664, w: -0.61420685}
-  m_LocalPosition: {x: -5.37, y: 9.885109, z: -16.46}
+  m_LocalRotation: {x: -0.8119376, y: 0.16275373, z: -0.029333886, w: -0.5598287}
+  m_LocalPosition: {x: -5.8600006, y: 9.6, z: -15.919998}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2033657025323411556}
-  m_LocalEulerAnglesHint: {x: 72.889, y: 576.94, z: -504.67902}
+  m_LocalEulerAnglesHint: {x: 66.728, y: 559.917, z: -504.14}
 --- !u!108 &1736123388476128676
 Light:
   m_ObjectHideFlags: 0
@@ -5630,6 +5647,21 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_RenderingLayers: 1
   m_ShadowRenderingLayers: 1
+--- !u!114 &8236739349471366201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3314569106315651071}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c8bca95f7c947b4db5fb152a0d693d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: com.cqf.urpvolumetricfog.runtime::VolumetricAdditionalLight
+  anisotropy: 0.25
+  scattering: 1
+  radius: 0.2
 --- !u!1 &3317044674812564127
 GameObject:
   m_ObjectHideFlags: 0
@@ -8143,6 +8175,7 @@ GameObject:
   - component: {fileID: 8183914992476133413}
   - component: {fileID: 316654448550560510}
   - component: {fileID: 8883220945419140255}
+  - component: {fileID: 5967781156291527424}
   m_Layer: 0
   m_Name: TrackBLight
   m_TagString: Untagged
@@ -8274,6 +8307,21 @@ MonoBehaviour:
   light: {fileID: 8183914992476133413}
   redColor: {r: 1, g: 0, b: 0, a: 1}
   greenColor: {r: 0, g: 1, b: 0, a: 1}
+--- !u!114 &5967781156291527424
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5014574574171312509}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c8bca95f7c947b4db5fb152a0d693d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: com.cqf.urpvolumetricfog.runtime::VolumetricAdditionalLight
+  anisotropy: 0.25
+  scattering: 1
+  radius: 0.2
 --- !u!1 &5025456135483854993
 GameObject:
   m_ObjectHideFlags: 0
@@ -9470,6 +9518,7 @@ GameObject:
   - component: {fileID: 4330953272638995553}
   - component: {fileID: 6009191080659529258}
   - component: {fileID: 5747713743349810143}
+  - component: {fileID: 7546878904242251918}
   m_Layer: 0
   m_Name: CurtainLight1 (2)
   m_TagString: Untagged
@@ -9485,13 +9534,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6216079193687186007}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.042956773, y: 0, z: 0, w: 0.99907696}
-  m_LocalPosition: {x: 5.3, y: 4.62, z: -35}
+  m_LocalRotation: {x: 0.20687525, y: -0, z: -0, w: 0.9783673}
+  m_LocalPosition: {x: 7.6600018, y: 8.088499, z: -29.504807}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2630297660007394051}
-  m_LocalEulerAnglesHint: {x: 4.924, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 23.879, y: 0, z: 0}
 --- !u!108 &6009191080659529258
 Light:
   m_ObjectHideFlags: 0
@@ -9505,8 +9554,8 @@ Light:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 1000
   m_Range: 100
-  m_SpotAngle: 30
-  m_InnerSpotAngle: 21.80208
+  m_SpotAngle: 24.38395
+  m_InnerSpotAngle: 17.988802
   m_CookieSize2D: {x: 0.5, y: 0.5}
   m_Shadows:
     m_Type: 0
@@ -9586,6 +9635,21 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_RenderingLayers: 1
   m_ShadowRenderingLayers: 1
+--- !u!114 &7546878904242251918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6216079193687186007}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c8bca95f7c947b4db5fb152a0d693d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: com.cqf.urpvolumetricfog.runtime::VolumetricAdditionalLight
+  anisotropy: 0.25
+  scattering: 1
+  radius: 0.2
 --- !u!1 &6223520074352118397
 GameObject:
   m_ObjectHideFlags: 0
@@ -10153,6 +10217,7 @@ GameObject:
   - component: {fileID: 3594560046888735837}
   - component: {fileID: 7153574832273370172}
   - component: {fileID: 4440178070255909436}
+  - component: {fileID: 1731981389827896579}
   m_Layer: 0
   m_Name: CurtainLight1
   m_TagString: Untagged
@@ -10168,13 +10233,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6430167496729134200}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.042956773, y: 0, z: 0, w: 0.99907696}
-  m_LocalPosition: {x: -4.37, y: 4.62, z: -33.64}
+  m_LocalRotation: {x: 0.20687525, y: -0, z: -0, w: 0.9783673}
+  m_LocalPosition: {x: -2.0099993, y: 8.47, z: -30.07}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2630297660007394051}
-  m_LocalEulerAnglesHint: {x: 4.924, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 23.879, y: 0, z: 0}
 --- !u!108 &7153574832273370172
 Light:
   m_ObjectHideFlags: 0
@@ -10188,8 +10253,8 @@ Light:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 1000
   m_Range: 100
-  m_SpotAngle: 30
-  m_InnerSpotAngle: 21.80208
+  m_SpotAngle: 25.809273
+  m_InnerSpotAngle: 19.122087
   m_CookieSize2D: {x: 0.5, y: 0.5}
   m_Shadows:
     m_Type: 0
@@ -10269,6 +10334,21 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_RenderingLayers: 1
   m_ShadowRenderingLayers: 1
+--- !u!114 &1731981389827896579
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6430167496729134200}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c8bca95f7c947b4db5fb152a0d693d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: com.cqf.urpvolumetricfog.runtime::VolumetricAdditionalLight
+  anisotropy: 0.25
+  scattering: 1
+  radius: 0.2
 --- !u!1 &6430728529772386398
 GameObject:
   m_ObjectHideFlags: 0
@@ -10692,6 +10772,7 @@ GameObject:
   - component: {fileID: 2916425167991026388}
   - component: {fileID: 7893355971481835246}
   - component: {fileID: 879181312711811710}
+  - component: {fileID: 3518473207658268496}
   m_Layer: 0
   m_Name: CurtainLight1 (1)
   m_TagString: Untagged
@@ -10707,13 +10788,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6798030448394770070}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.042956773, y: 0, z: 0, w: 0.99907696}
-  m_LocalPosition: {x: 0.49, y: 6.68, z: -27.91}
+  m_LocalRotation: {x: 0.20687525, y: -0, z: -0, w: 0.9783673}
+  m_LocalPosition: {x: 2.8500004, y: 10.549999, z: -30.330002}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2630297660007394051}
-  m_LocalEulerAnglesHint: {x: 4.924, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 23.879, y: 0, z: 0}
 --- !u!108 &7893355971481835246
 Light:
   m_ObjectHideFlags: 0
@@ -10727,8 +10808,8 @@ Light:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 1000
   m_Range: 1000
-  m_SpotAngle: 30
-  m_InnerSpotAngle: 21.80208
+  m_SpotAngle: 24.555737
+  m_InnerSpotAngle: 9.657857
   m_CookieSize2D: {x: 0.5, y: 0.5}
   m_Shadows:
     m_Type: 0
@@ -10808,6 +10889,21 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_RenderingLayers: 1
   m_ShadowRenderingLayers: 1
+--- !u!114 &3518473207658268496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6798030448394770070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c8bca95f7c947b4db5fb152a0d693d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: com.cqf.urpvolumetricfog.runtime::VolumetricAdditionalLight
+  anisotropy: 0.25
+  scattering: 1
+  radius: 0.2
 --- !u!1 &6817224466386497022
 GameObject:
   m_ObjectHideFlags: 0
