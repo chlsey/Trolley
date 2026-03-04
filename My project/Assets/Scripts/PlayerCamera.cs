@@ -22,6 +22,8 @@ public class PlayerCamera : MonoBehaviour
     }
     private void Update()
     {
+        if (PauseMenuController.IsPaused) return;
+
         // Get input values from both devices
         Vector2 mouseDelta = Mouse.current.delta.ReadValue();
         Vector2 stickDelta = (Gamepad.current != null) ? Gamepad.current.rightStick.ReadValue() : new Vector2(0,0);

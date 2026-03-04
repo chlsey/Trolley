@@ -12,6 +12,13 @@ public class MenuController : MonoBehaviour
 
     private void OnEnable()
     {
+        // Restore cursor so menu buttons are clickable after returning from gameplay
+        UnityEngine.Cursor.lockState = CursorLockMode.None;
+        UnityEngine.Cursor.visible = true;
+
+        // Ensure time is running (in case a pause menu or death screen froze it)
+        Time.timeScale = 1f;
+
         var uiDocument = GetComponent<UIDocument>();
         var root = uiDocument.rootVisualElement;
 
