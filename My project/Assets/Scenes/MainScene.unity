@@ -21368,7 +21368,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f31f6eae749a8549b9ef5e5a8a0bb3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  sceneToLoad: UrinalDilemma
+  sceneToLoad: ClusterTrucks
   rBController: {fileID: 1047759878}
   health: {fileID: 8570878366440145665}
 --- !u!65 &1612544343

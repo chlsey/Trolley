@@ -8,6 +8,7 @@ TagManager:
   - Lever
   - huge_fan
   - Loopty
+  - Truck
   layers:
   - Default
   - TransparentFX
@@ -21,8 +22,8 @@ TagManager:
   - chair
   - TrackTeleportTrigger
   - player
-  - 
-  - 
+  - ImmediateDeath
+  - Streetcar
   - 
   - 
   - 

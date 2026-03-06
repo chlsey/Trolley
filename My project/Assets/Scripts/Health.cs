@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using System.Collections;
+
 public class Health : MonoBehaviour
 {
     public AudioSource audioSource;
@@ -10,11 +12,8 @@ public class Health : MonoBehaviour
     public AudioListener audioListener;
     public float fadeDuration = 0.5f;
 
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
         uiImage.enabled = true;
         Color c = uiImage.color;
         c.a = 1f;
@@ -22,35 +21,40 @@ public class Health : MonoBehaviour
         TriggerFadeFromBlack();
     }
 
-    // Update is called once per frame
-    void Update()
+   private void OnCollisionEnter(Collision collision)
     {
-        
-    }
-    private void OnTriggerEnter(Collider other)
-    {
-
-        if ((layerMask.value & (1 << other.gameObject.layer)) > 0 )
+        if ((layerMask.value & (1 << collision.gameObject.layer)) > 0)
         {
             audioSource.PlayOneShot(audioClip);
-            StartCoroutine(FadeToBlack());
-            Debug.Log("Dead");
-            StartCoroutine(DisableAudioListener());
+            StartCoroutine(HandleDeathSequence());
         }
     }
+
+
+    private IEnumerator HandleDeathSequence()
+    {
+        StartCoroutine(DisableAudioListener());
+        yield return StartCoroutine(FadeToBlack());
+
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
     public void TriggerFadeToBlack()
     {
         StartCoroutine(FadeToBlack());
     }
+
     public void TriggerFadeFromBlack()
     {
         StartCoroutine(FadeFromBlack());
     }
-    private System.Collections.IEnumerator DisableAudioListener()
+
+    private IEnumerator DisableAudioListener()
     {
         yield return new WaitForSeconds(0.3f);
         audioListener.enabled = false;
     }
+
     private IEnumerator FadeToBlack()
     {
         float elapsed = 0f;
@@ -63,11 +67,12 @@ public class Health : MonoBehaviour
             uiImage.color = c;
             yield return null;
         }
+
         c.a = 1f;
         uiImage.color = c;
         yield return new WaitForSeconds(0.3f);
-        
     }
+
     private IEnumerator FadeFromBlack()
     {
         float elapsed = 0f;
@@ -83,8 +88,8 @@ public class Health : MonoBehaviour
             uiImage.color = c;
             yield return null;
         }
+
         c.a = 0f;
         uiImage.color = c;
     }
-
 }
