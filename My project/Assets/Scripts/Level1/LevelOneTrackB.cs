@@ -1,5 +1,6 @@
-using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
 public class LevelOneTrackB : MonoBehaviour
 {
@@ -22,6 +23,14 @@ public class LevelOneTrackB : MonoBehaviour
     {
 
         VOManager.Instance.PlayLine(endingClip);
+
+        VOManager.Instance.ShowSubtitle(new List<VOManager.SubtitleLine>
+        {
+            new VOManager.SubtitleLine("The classic utilitarian move", 100f, 2500f),
+
+            new VOManager.SubtitleLine("Alright. Let's tighten the margins", 2500f, 4000f),
+
+        });
 
         yield return new WaitForSeconds(endingClip.length - 4);
 
