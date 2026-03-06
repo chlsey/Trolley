@@ -23,6 +23,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/UrinalDilemma.unity
     guid: 54c88726e57e3a048963aa37a01e3574
+  - enabled: 1
+    path: Assets/Scenes/ClusterTrucks.unity
+    guid: 16965e84f688437499a5adb0212985f9
   m_configObjects:
     com.unity.dt.app-ui: {fileID: 11400000, guid: 1b1c20d82303e4b5781c3ef50ac1449f, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}

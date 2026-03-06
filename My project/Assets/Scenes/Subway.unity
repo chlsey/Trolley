@@ -12235,11 +12235,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9100402339330515259, guid: b61b808ce2be8e04883b1b25c998fdfb, type: 3}
       propertyPath: sensX
-      value: 200
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9100402339330515259, guid: b61b808ce2be8e04883b1b25c998fdfb, type: 3}
       propertyPath: sensY
-      value: 200
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -154,7 +154,7 @@ public class IntroOrchestrator : MonoBehaviour
 
         VOManager.Instance.PlaySoundFX(lightOnClip);
 
-        leverLight.intensity = 10000f;
+        leverLight.intensity = 2000f;
 
         yield return new WaitForSeconds(4);
 

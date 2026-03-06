@@ -6,7 +6,8 @@ public class Lever : MonoBehaviour
     public TrolleyMovement trolleyMovement;
     public CatapultProjectile catapultProjectile;
     public RedGreenLight redGreenLight;
-
+    public bool isClusterTruckLevel;
+    public NextScene nextScene;
     public GreenRedLight greenRedLight;
     public Animator anim;
 
@@ -48,6 +49,10 @@ public class Lever : MonoBehaviour
             // rating.ChangeRating(-0.5f);
             leverFlipped = true;
             if(qPrompt != null) qPrompt.SetActive(true);
+            if (isClusterTruckLevel)
+            {
+                nextScene.TriggerSceneChange();
+            }
         }
         if (nearLever && gotInput && catapultProjectile)
         {
@@ -55,7 +60,6 @@ public class Lever : MonoBehaviour
             anim.SetTrigger("Switch");
             armAnim.SetTrigger("Switch");
             audioSource.PlayOneShot(switchSound);
-            rating.ChangeRating(0.5f);
             leverFlipped = true;
             // enabled = false;
         }

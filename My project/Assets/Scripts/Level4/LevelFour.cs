@@ -66,7 +66,7 @@ public class LevelFourIntro : MonoBehaviour
 
         // scene change to platformer level
         FindObjectOfType<NextScene>().TriggerSceneChange();
-
+        
         endTrigger.TriggerEnd();
         
     }

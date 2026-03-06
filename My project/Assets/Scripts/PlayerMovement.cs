@@ -1,120 +1,158 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField]
-    public Rigidbody platformRb;
+    [SerializeField] public Rigidbody platformRb;
+
     public PlayerCamera cam;
     public GameObject arms;
     public Transform destination;
+
     public AudioSource footstepSource;
     public AudioClip[] footstepClips;
     public float stepInterval = 0.5f;
-    private float stepTimer;
-    public float moveSpeed;
-    public float groundDrag;
-    public float jumpForce;
-    public float jumpCooldown;
-    public float airMultiplier;
+    float stepTimer;
+
+    [Header("Movement")]
+    public float moveSpeed = 8f;
+    public float airMultiplier = 0.6f;
+
+    [Header("Jump")]
+    public float jumpForce = 7f;
+    public float jumpCooldown = 0.25f;
     bool readyToJump;
-    public float playerHeight;
+    bool canJump;
+
+    [Header("Ground Layers")]
     public LayerMask whatIsGround;
-    bool grounded;
+
     public Transform orientation;
+
     float horizontalInput;
     float verticalInput;
-    public KeyCode jumpKey = KeyCode.Space;
-    Vector3 moveDirection;
+
     Rigidbody rb;
 
+    public KeyCode jumpKey = KeyCode.Space;
 
-    private void Start()
+    void Awake()
+    {
+        rb = GetComponent<Rigidbody>();
+        rb.freezeRotation = true;
+        rb.interpolation = RigidbodyInterpolation.Interpolate;
+    }
+
+    void Start()
     {
         readyToJump = true;
         stepTimer = stepInterval;
     }
-    private void Awake()
-    {
-        rb = GetComponent<Rigidbody>();
-        rb.freezeRotation = true;
-    }
-    private void Update()
+
+    void Update()
     {
         if (PauseMenuController.IsPaused) return;
 
-        grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, whatIsGround);
         MyInput();
-
-        SpeedControl();
-        rb.linearDamping = grounded ? groundDrag : 0;
         HandleFootsteps();
     }
-    private void FixedUpdate()
+
+    void FixedUpdate()
     {
         MovePlayer();
     }
-    private void MyInput()
+
+    void MyInput()
     {
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
-        if ((Input.GetKey(jumpKey) || (Gamepad.current != null && Gamepad.current.buttonSouth.isPressed)) && readyToJump)
+
+        if ((Input.GetKey(jumpKey) ||
+            (Gamepad.current != null && Gamepad.current.buttonSouth.isPressed))
+            && readyToJump && canJump)
         {
             readyToJump = false;
             Jump();
-            Debug.Log("jumped!");
             Invoke(nameof(ResetJump), jumpCooldown);
         }
     }
-    private void MovePlayer()
+
+    void MovePlayer()
     {
-        moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
-        if (grounded)
+        Vector3 moveDir = orientation.forward * verticalInput + orientation.right * horizontalInput;
+        moveDir.Normalize();
+
+        float speed = canJump ? moveSpeed : moveSpeed * airMultiplier;
+
+        Vector3 targetVel = moveDir * speed;
+        Vector3 velocity = rb.linearVelocity;
+
+        Vector3 velocityChange = new Vector3(
+            targetVel.x - velocity.x,
+            0,
+            targetVel.z - velocity.z
+        );
+
+        rb.AddForce(velocityChange, ForceMode.VelocityChange);
+        if (canJump && platformRb != null)
         {
-            rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
-        }
-        else
-        {
-            rb.AddForce(moveDirection.normalized * moveSpeed * 10f * airMultiplier, ForceMode.Force);
+            Vector3 pv = platformRb.linearVelocity;
+            rb.linearVelocity = new Vector3(
+                rb.linearVelocity.x + pv.x,
+                rb.linearVelocity.y,
+                rb.linearVelocity.z + pv.z
+            );
         }
     }
-    private void SpeedControl()
+
+    void Jump()
     {
-    if (platformRb != null)
-        {
-            // Get the platform's current velocity
-            Vector3 platformVel = platformRb.linearVelocity;
-
-            // Calculate the player's horizontal velocity relative to the world
-            Vector3 currentHorizontalVel = new Vector3(rb.linearVelocity.x, 0, rb.linearVelocity.z);
-            Vector3 platformHorizontalVel = new Vector3(platformVel.x, 0, platformVel.z);
-
-            // This is the magic part: 
-            // We set the velocity to be (Platform Speed) + (Player's own walking speed)
-            // We subtract the platform speed from our current speed to see how fast WE are walking
-            Vector3 playerWalkingVel = currentHorizontalVel - platformHorizontalVel;
-
-            rb.linearVelocity = new Vector3(platformHorizontalVel.x, rb.linearVelocity.y, platformHorizontalVel.z) + playerWalkingVel;
-        }
-
+        rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0, rb.linearVelocity.z);
+        rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
     }
-    private void Jump()
-    {
-        rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z);
-        rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
-    }
-    private void ResetJump()
+
+    void ResetJump()
     {
         readyToJump = true;
     }
-    private void HandleFootsteps()
+
+    void OnCollisionStay(Collision collision)
     {
-        if (grounded && (Mathf.Abs(horizontalInput) > 0 || Mathf.Abs(verticalInput) > 0))
+        if (((1 << collision.gameObject.layer) & whatIsGround) != 0)
+        {
+            canJump = true;
+
+            foreach (var contact in collision.contacts)
+            {
+                if (Vector3.Dot(contact.normal, Vector3.up) > 0.5f)
+                {
+                    platformRb = collision.rigidbody;
+                    return;
+                }
+            }
+        }
+    }
+
+    void OnCollisionExit(Collision collision)
+    {
+        if (((1 << collision.gameObject.layer) & whatIsGround) != 0)
+        {
+            canJump = false;
+
+            if (collision.rigidbody == platformRb)
+                platformRb = null;
+        }
+    }
+
+    void HandleFootsteps()
+    {
+        if (canJump && (Mathf.Abs(horizontalInput) > 0 || Mathf.Abs(verticalInput) > 0))
         {
             stepTimer -= Time.deltaTime;
+
             if (stepTimer <= 0f)
             {
                 PlayFootstep();
-
                 stepTimer = stepInterval;
             }
         }
@@ -123,19 +161,20 @@ public class PlayerMovement : MonoBehaviour
             stepTimer = stepInterval;
         }
     }
-    private void PlayFootstep()
+
+    void PlayFootstep()
     {
         if (footstepClips.Length == 0 || footstepSource == null) return;
+
         int index = Random.Range(0, footstepClips.Length);
         footstepSource.PlayOneShot(footstepClips[index]);
     }
+
     public void TeleportToTrack()
     {
         cam.tiltZ = -90f;
 
-
         transform.rotation = Quaternion.Euler(-90f, 180f, 0f);
-
 
         cam.SetRotation(-90f, -90f);
 
@@ -144,11 +183,11 @@ public class PlayerMovement : MonoBehaviour
         cam.maxX = 20f;
         cam.minY = cam.yRotation - 25f;
         cam.maxY = cam.yRotation + 25f;
+
         arms.SetActive(false);
-        gameObject.transform.position = destination.transform.position;
 
+        transform.position = destination.position;
 
-        PlayerMovement pm = GetComponent<PlayerMovement>();
-        pm.enabled = false;
+        GetComponent<PlayerMovement>().enabled = false;
     }
 }
