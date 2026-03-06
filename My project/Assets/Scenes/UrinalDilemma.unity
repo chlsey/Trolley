@@ -2423,6 +2423,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4115278016392227077, guid: 238d4a83772160b41a7f4572a70637a4, type: 3}
+      propertyPath: m_Intensity
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 4766174410786628333, guid: 238d4a83772160b41a7f4572a70637a4, type: 3}
       propertyPath: m_Name
       value: Spot Light (5)

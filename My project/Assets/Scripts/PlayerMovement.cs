@@ -94,10 +94,6 @@ public class PlayerMovement : MonoBehaviour
         );
 
         rb.AddForce(velocityChange, ForceMode.VelocityChange);
-
-        // -----------------------------
-        // 🚀 Stick to moving trucks
-        // -----------------------------
         if (canJump && platformRb != null)
         {
             Vector3 pv = platformRb.linearVelocity;
@@ -120,9 +116,6 @@ public class PlayerMovement : MonoBehaviour
         readyToJump = true;
     }
 
-    // -----------------------------------------
-    // 🚚 Detect which truck the player is on
-    // -----------------------------------------
     void OnCollisionStay(Collision collision)
     {
         if (((1 << collision.gameObject.layer) & whatIsGround) != 0)
@@ -131,7 +124,6 @@ public class PlayerMovement : MonoBehaviour
 
             foreach (var contact in collision.contacts)
             {
-                // Only count as "standing on top"
                 if (Vector3.Dot(contact.normal, Vector3.up) > 0.5f)
                 {
                     platformRb = collision.rigidbody;
