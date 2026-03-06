@@ -1,10 +1,13 @@
 using UnityEngine;
+using System;
 
 public class FacePlayerModel : MonoBehaviour
 {
     public Transform player;
     public AudioSource audio;
     public AudioClip Slap;
+    private bool slapped = false;
+    private DateTime slappedTime;
 
     void Update()
     {
