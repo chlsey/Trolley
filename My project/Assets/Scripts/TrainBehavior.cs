@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections;
-using System.Diagnostics;
 using System.Collections.Generic;
+using UnityEngine.InputSystem;
+using System.Threading.Tasks;
 public class trainBehaviour : MonoBehaviour
 {
     public LayerMask layerMask;
@@ -64,6 +65,7 @@ public class trainBehaviour : MonoBehaviour
             audioSource.PlayOneShot(applause);
             UnityEngine.Debug.Log("Touched");
             Instantiate(ParticlePrefab, transform.position, transform.rotation);
+            TriggerShortRumble();
         }
     }
 
@@ -77,6 +79,24 @@ public class trainBehaviour : MonoBehaviour
     {
         // rating ??= FindFirstObjectByType<Rating>();
         Lever ??= FindFirstObjectByType<Lever>();
+    }
+
+    public async void TriggerShortRumble()
+    {
+        // Get the current active gamepad
+        var gamepad = Gamepad.current;
+
+        if (gamepad != null)
+        {
+            // Set motor speeds (0.0 to 1.0)
+            // Low frequency is heavy/thumpy, High frequency is sharp/buzzy
+            gamepad.SetMotorSpeeds(0.8f, 0.2f);
+
+            await Task.Delay(500);
+            Debug.Log("hit victim, rumbled");
+            // Reset motors to stop the vibration
+            gamepad.ResetHaptics();
+        }
     }
 }
 

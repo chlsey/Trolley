@@ -2,6 +2,8 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEngine.InputSystem;
+using System.Threading.Tasks;
 public class TrolleyBehaviour : MonoBehaviour
 {
     public LayerMask layerMask;
@@ -72,8 +74,25 @@ public class TrolleyBehaviour : MonoBehaviour
             audioPlayed = true;
             audioSource.PlayOneShot(splat);
             audioSource.PlayOneShot(applause);
-            UnityEngine.Debug.Log("Touched");
             Instantiate(ParticlePrefab, transform.position, transform.rotation);
+            TriggerShortRumble();
+        }
+    }
+    public async void TriggerShortRumble()
+    {
+        // Get the current active gamepad
+        var gamepad = Gamepad.current;
+
+        if (gamepad != null)
+        {
+            // Set motor speeds (0.0 to 1.0)
+            // Low frequency is heavy/thumpy, High frequency is sharp/buzzy
+            gamepad.SetMotorSpeeds(0.8f, 1.0f);
+
+            await Task.Delay(200);
+            Debug.Log("hit victim, rumbled");
+            // Reset motors to stop the vibration
+            gamepad.ResetHaptics();
         }
     }
 }

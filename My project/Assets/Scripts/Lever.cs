@@ -60,7 +60,6 @@ public class Lever : MonoBehaviour
             anim.SetTrigger("Switch");
             armAnim.SetTrigger("Switch");
             audioSource.PlayOneShot(switchSound);
-            rating.ChangeRating(0.5f);
             leverFlipped = true;
             // enabled = false;
         }
