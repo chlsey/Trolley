@@ -10,6 +10,7 @@ public class VOManager : MonoBehaviour
     public AudioSource audioSource;
 
     // Chelsey: added new audio sources for different audio types so they can overlap
+    
 
     [Header("Audio")]
     public AudioSource voiceSource;
@@ -23,12 +24,11 @@ public class VOManager : MonoBehaviour
     [System.Serializable]
     public struct SubtitleLine
     {
-        /// <summary>Subtitle text to display.</summary>
+        // Subtitle text to display.
         public string text;
-        /// <summary>When to show this line, in milliseconds from the sequence start.</summary>
+        // When to show this line, in milliseconds from the sequence start.
         public float timeStartMilliseconds;
-        /// <summary>How long this line should stay visible, in milliseconds.</summary>
-        [FormerlySerializedAs("durationMillieconds")]
+        // How long this line should stay visible, in milliseconds.
         public float durationMilliseconds;
 
         public SubtitleLine(string text, float timeStartMilliseconds, float durationMilliseconds)
@@ -40,13 +40,50 @@ public class VOManager : MonoBehaviour
     }
 
     private Coroutine subtitleCoroutine;
+    private float baseAudioSourceVolume;
+    private float baseVoiceSourceVolume;
+    private float baseAudienceSourceVolume;
+    private float baseMusicSourceVolume;
+    private float baseSfxSourceVolume;
 
-    // end of new things
+
 
 
     private void Awake()
     {
         Instance = this;
+        CacheBaseVolumes();
+    }
+
+    private void OnEnable()
+    {
+        SettingsManager.Instance.SettingsChanged += ApplySettings;
+    }
+
+    private void Start()
+    {
+        SettingsData settings = SettingsManager.Instance.GetSettingsData();
+        float generalAudioMultiplier = settings.generalAudioMultiplier;
+
+        if (audioSource != null)
+            audioSource.volume = baseAudioSourceVolume * generalAudioMultiplier;
+
+        if (voiceSource != null)
+            voiceSource.volume = baseVoiceSourceVolume * generalAudioMultiplier;
+
+        if (audienceSource != null)
+            audienceSource.volume = baseAudienceSourceVolume * generalAudioMultiplier;
+
+        if (musicSource != null)
+            musicSource.volume = baseMusicSourceVolume * generalAudioMultiplier;
+
+        if (sfxSource != null)
+            sfxSource.volume = baseSfxSourceVolume * generalAudioMultiplier;
+    }
+
+    private void OnDisable()
+    {
+        SettingsManager.Instance.SettingsChanged -= ApplySettings;
     }
 
     public void Play(AudioClip clip)
@@ -232,5 +269,32 @@ public class VOManager : MonoBehaviour
 
         subtitleCoroutine = null;
     }
-    
+
+    private void CacheBaseVolumes()
+    {
+        baseAudioSourceVolume = audioSource != null ? audioSource.volume : 0f;
+        baseVoiceSourceVolume = voiceSource != null ? voiceSource.volume : 0f;
+        baseAudienceSourceVolume = audienceSource != null ? audienceSource.volume : 0f;
+        baseMusicSourceVolume = musicSource != null ? musicSource.volume : 0f;
+        baseSfxSourceVolume = sfxSource != null ? sfxSource.volume : 0f;
+    }
+
+    private void ApplySettings(SettingsData settings)
+    {
+        if (audioSource != null)
+            audioSource.volume = baseAudioSourceVolume * settings.generalAudioMultiplier;
+
+        if (voiceSource != null)
+            voiceSource.volume = baseVoiceSourceVolume * settings.generalAudioMultiplier;
+
+        if (audienceSource != null)
+            audienceSource.volume = baseAudienceSourceVolume * settings.generalAudioMultiplier;
+
+        if (musicSource != null)
+            musicSource.volume = baseMusicSourceVolume * settings.generalAudioMultiplier;
+
+        if (sfxSource != null)
+            sfxSource.volume = baseSfxSourceVolume * settings.generalAudioMultiplier;
+    }
+
 }
