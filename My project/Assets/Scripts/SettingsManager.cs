@@ -15,6 +15,16 @@ public struct SettingsData
 // Exposes an event `SettingsChanged` that dependents subscribe to with a handler function.
 // Event passes a struct of settings that handlers use to update local values. 
 
+// FOR ANYONE DOING THE SETTINGS MENU
+// PLEASE LOOK AT EXAMPLE BELOW, DEMONSTRATION OF HOW TO GET CURRENT SETTINGS, AUDJUST SETTINGS, AND SAVE AUDJUSTED SETTINGS.
+// (Wrap this in a function and call it)
+// vvvvvvvvvvvvvvvvvvvvvvvvv
+//
+// SettingsData SettingsStruct = SettingsManager.Instance.GetSettingsData();
+// SettingsStruct.generalAudioMultiplier = 1.0f;
+// SettingsStruct.mouseSens = 0.1f;
+// SettingsManager.Instance.SaveSettings(SettingsStruct);
+
 
 // THIS MAKES SURE LOADING SETTINGS RUNS FIRST BEFORE ANY OTHER SCRIPT IN SCENE
 [DefaultExecutionOrder(-1)]
