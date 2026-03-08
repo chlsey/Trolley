@@ -104,6 +104,7 @@ public class LevelFourIntro : MonoBehaviour
 
         // Show the Terms & Condition on screen (at 43 sec)
         yield return new WaitForSeconds(9);
+        
         trolleyMovement.followSpline = true;
         clock.rotate = true;
         VOManager.Instance.PlaySoundFX(clockSFX);

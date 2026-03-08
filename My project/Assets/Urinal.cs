@@ -44,7 +44,7 @@ public class Urinal : MonoBehaviour
     {
         if(correctUrinal)
         {
-            if (nearUrinal && (Input.GetKeyDown(KeyCode.E) || Gamepad.current.buttonWest.isPressed))
+            if (nearUrinal && (Input.GetKeyDown(KeyCode.E) || (Gamepad.current != null && Gamepad.current.buttonWest.isPressed)))
             {
                 anim.SetTrigger("PlayerPee");
                 Pee1anim.SetTrigger("Applause");
@@ -67,7 +67,7 @@ public class Urinal : MonoBehaviour
         }
         if(inCorrectUrinalRight)
         {
-            if (nearUrinal && (Input.GetKeyDown(KeyCode.E) || Gamepad.current.buttonWest.isPressed))
+            if (nearUrinal && (Input.GetKeyDown(KeyCode.E) || (Gamepad.current != null && Gamepad.current.buttonWest.isPressed)))
             {
                 anim.SetTrigger("PlayerPee");
                 
