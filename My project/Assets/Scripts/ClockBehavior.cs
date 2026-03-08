@@ -33,10 +33,10 @@ public class ClockBehavior : MonoBehaviour
         if(rotate)
         {
             clockHand.transform.localRotation = Quaternion.Euler(0, 0, -trolleyProgress * 360);
-            // Gamepad.current.SetMotorSpeeds((float)Math.Pow(trolleyProgress, 2), (float)Math.Pow(trolleyProgress, 3));
+            Gamepad.current.SetMotorSpeeds((float)Math.Pow(trolleyProgress, 2), (float)Math.Pow(trolleyProgress, 3));
             if (Vector3.Distance(trolley.transform.position, endPoint.transform.position) < 1)
             {
-                // Gamepad.current.ResetHaptics();
+                Gamepad.current.ResetHaptics();
                 rotate = false;
             }
         }

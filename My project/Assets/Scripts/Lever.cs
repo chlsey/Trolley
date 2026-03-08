@@ -54,7 +54,7 @@ public class Lever : MonoBehaviour
                 nextScene.TriggerSceneChange();
             }
         }
-        if (nearLever && gotInput && catapultProjectile)
+        if (!leverFlipped && nearLever && gotInput && catapultProjectile)
         {
             catapultProjectile.Launch();
             anim.SetTrigger("Switch");
