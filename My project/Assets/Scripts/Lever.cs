@@ -29,6 +29,7 @@ public class Lever : MonoBehaviour
             Debug.Log("qpromt exists!");
             qPrompt.SetActive(false);
         }
+
     }
 
     // Update is called once per frame
@@ -89,6 +90,14 @@ public class Lever : MonoBehaviour
             audioSource = GetComponent<AudioSource>();
         if (rating == null)
             rating = FindFirstObjectByType<Rating>();
+
+        // Reset track lights to defaults: green on Track A, red on Track B
+        if (greenRedLight != null)
+            greenRedLight.SetGreen();
+        if (redGreenLight != null)
+            redGreenLight.SetRed();
+
+        Debug.Log($"Lever.Awake reset lights - greenRedLight: {greenRedLight}, redGreenLight: {redGreenLight}");
     }
     
 }
