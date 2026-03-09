@@ -27,6 +27,7 @@ Material:
   m_ValidKeywords:
   - _EMISSION
   - _RECEIVE_SHADOWS_OFF
+  - _SPECULAR_SETUP
   m_InvalidKeywords: []
   m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
@@ -36,7 +37,7 @@ Material:
     RenderType: Opaque
   disabledShaderPasses:
   - MOTIONVECTORS
-  m_LockedProperties: 
+  m_LockedProperties: _BaseColor _BaseMap
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -129,13 +130,13 @@ Material:
     - _SrcBlendAlpha: 1
     - _Surface: 0
     - _UVSec: 0
-    - _WorkflowMode: 1
+    - _WorkflowMode: 0
     - _XRMotionVectorsPass: 1
     - _ZWrite: 1
     m_Colors:
     - _BaseColor: {r: 0.8490566, g: 0.67373294, b: 0, a: 1}
     - _Color: {r: 0.8490566, g: 0.67373294, b: 0, a: 1}
-    - _EmissionColor: {r: 0.25, g: 0.07774124, b: 0, a: 1}
+    - _EmissionColor: {r: 15.094339, g: 8.619399, b: 0.9255967, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
