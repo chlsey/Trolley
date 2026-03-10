@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 public class Urinal : MonoBehaviour
 {
     public AudioSource[] applauseSources;
+    public AudioSource introSource;
     public Animator anim;
     public Animator Pee1anim;
     public Animator Pee2anim;
@@ -14,6 +15,8 @@ public class Urinal : MonoBehaviour
     public AudioSource audioSource;
     public AudioClip PeeSFX;
     public AudioClip Zipper;
+    public AudioClip correctVoiceLine;
+    public AudioClip wrongVoiceLine;
     public PlayerMovement playerMovement;
     public FacePlayerModel facePlayer; 
     public FacePlayerModel facePlayer2; 
@@ -54,7 +57,7 @@ public class Urinal : MonoBehaviour
 
                 audioSource.PlayOneShot(PeeSFX);
                 StartCoroutine(DisableMovement());
-                
+                introSource.enabled = false;
                 facePlayer.enabled = true;
                 facePlayer2.enabled = true;
                 facePlayer3.enabled = true;
@@ -63,17 +66,20 @@ public class Urinal : MonoBehaviour
                 {
                     source.enabled = true;
                 }
+                audioSource.PlayOneShot(correctVoiceLine);
             }
         }
         if(inCorrectUrinalRight)
         {
             if (nearUrinal && (Input.GetKeyDown(KeyCode.E) || (Gamepad.current != null && Gamepad.current.buttonWest.isPressed)))
             {
+                introSource.enabled = false;
                 anim.SetTrigger("PlayerPee");
                 
                 
                 StartCoroutine(SlapRightWithDelay());
                 audioSource.PlayOneShot(PeeSFX);
+                audioSource.PlayOneShot(wrongVoiceLine);
                 StartCoroutine(DisableMovement());
                 
             }

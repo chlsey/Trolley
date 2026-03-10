@@ -301,6 +301,7 @@ MonoBehaviour:
   - {fileID: 963823850}
   - {fileID: 122900911}
   - {fileID: 1862939428}
+  introSource: {fileID: 106157527}
   anim: {fileID: 1361707159}
   Pee1anim: {fileID: 2003541857}
   Pee2anim: {fileID: 1186022977}
@@ -310,6 +311,8 @@ MonoBehaviour:
   audioSource: {fileID: 52103143}
   PeeSFX: {fileID: 8300000, guid: 32903d2fcb453c64a90584363193d9e7, type: 3}
   Zipper: {fileID: 8300000, guid: ab506cc2465d34845bb6c1b006aa5646, type: 3}
+  correctVoiceLine: {fileID: 8300000, guid: 9c21aeccad1564a8b92d0dfbfdc44c2c, type: 3}
+  wrongVoiceLine: {fileID: 8300000, guid: 0f125ca3a203a45d7a2aebfa7113b53b, type: 3}
   playerMovement: {fileID: 861500493}
   facePlayer: {fileID: 2003541860}
   facePlayer2: {fileID: 1186022980}
@@ -435,6 +438,135 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &106157526
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 106157528}
+  - component: {fileID: 106157527}
+  m_Layer: 0
+  m_Name: IntroPlayer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!82 &106157527
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 106157526}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 8300000, guid: ad1f23ed9fe5c4fabba8b762e554188d, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!4 &106157528
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 106157526}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 411.22964, y: -0, z: -270.51697}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &122900910
 GameObject:
   m_ObjectHideFlags: 0
@@ -1440,6 +1572,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Urinal
   applauseSources: []
+  introSource: {fileID: 106157527}
   anim: {fileID: 1361707159}
   Pee1anim: {fileID: 0}
   Pee2anim: {fileID: 1186022977}
@@ -1449,6 +1582,8 @@ MonoBehaviour:
   audioSource: {fileID: 888858172}
   PeeSFX: {fileID: 8300000, guid: 32903d2fcb453c64a90584363193d9e7, type: 3}
   Zipper: {fileID: 8300000, guid: ab506cc2465d34845bb6c1b006aa5646, type: 3}
+  correctVoiceLine: {fileID: 8300000, guid: 9c21aeccad1564a8b92d0dfbfdc44c2c, type: 3}
+  wrongVoiceLine: {fileID: 8300000, guid: 0f125ca3a203a45d7a2aebfa7113b53b, type: 3}
   playerMovement: {fileID: 861500493}
   facePlayer: {fileID: 0}
   facePlayer2: {fileID: 0}
@@ -4274,3 +4409,4 @@ SceneRoots:
   - {fileID: 1759250302}
   - {fileID: 926588478}
   - {fileID: 1633025579}
+  - {fileID: 106157528}
