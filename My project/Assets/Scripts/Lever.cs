@@ -37,7 +37,7 @@ public class Lever : MonoBehaviour
     {
         gotInput = Input.GetKeyDown(KeyCode.E) ||
            (Gamepad.current != null && Gamepad.current.buttonWest.wasReleasedThisFrame);
-        if (nearLever && gotInput && trolleyMovement && !catapultProjectile)
+        if (!leverFlipped && nearLever && gotInput && trolleyMovement && !catapultProjectile)
         {
             trolleyMovement.SwitchTrack();
             redGreenLight.Toggle();
