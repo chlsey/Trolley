@@ -26,5 +26,10 @@ public class Door : MonoBehaviour
         nearDoor = true;
         ePrompt.SetActive(true);
     }
+    private void OnTriggerExit(Collider other)
+    {
+        nearDoor = false;
+        ePrompt.SetActive(false);
+    }
     
 }

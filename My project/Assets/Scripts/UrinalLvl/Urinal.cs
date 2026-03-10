@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 
 public class Urinal : MonoBehaviour
 {
+    public Door door; 
     public AudioSource[] applauseSources;
     public AudioSource introSource;
     public Animator anim;
@@ -30,6 +31,7 @@ public class Urinal : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        door.enabled = false;
         foreach (AudioSource source in applauseSources)
         {
             source.enabled = false;
@@ -67,6 +69,7 @@ public class Urinal : MonoBehaviour
                     source.enabled = true;
                 }
                 audioSource.PlayOneShot(correctVoiceLine);
+                door.enabled = true;
             }
         }
         if(inCorrectUrinalRight)
