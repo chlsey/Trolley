@@ -512,7 +512,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8879254362058354715, guid: 3d91cbb6a7bb0c44d815b8cd08e10000, type: 3}
   m_PrefabInstance: {fileID: 1376627441446062172}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1376627441446062173}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dab5c7d4c32e743048dfca98e2d5914f, type: 3}
@@ -2874,7 +2874,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3499785028837945148, guid: 3d91cbb6a7bb0c44d815b8cd08e10000, type: 3}
   m_PrefabInstance: {fileID: 1376627441446062172}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1180176546}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dab5c7d4c32e743048dfca98e2d5914f, type: 3}
@@ -18236,6 +18236,61 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1560438574}
   m_LocalEulerAnglesHint: {x: 37.925, y: 0, z: 0}
+--- !u!1 &1180176546 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6753159951942849690, guid: 3d91cbb6a7bb0c44d815b8cd08e10000, type: 3}
+  m_PrefabInstance: {fileID: 1376627441446062172}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1180176548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1180176546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b74686beb0670a4ea61325c0acf4411, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Splines::UnityEngine.Splines.SplineInstantiate
+  m_Container: {fileID: 288047044}
+  m_ItemsToInstantiate:
+  - prefab: {fileID: 0}
+    Prefab: {fileID: 3111540019140520951, guid: 5decae2646f8e405392cb2da92b9f258, type: 3}
+    probability: 0
+    Probability: 0
+  m_Method: 1
+  m_Space: 0
+  m_Spacing: {x: 1, y: 1}
+  m_Up: 2
+  m_Forward: 1
+  m_PositionOffset:
+    setup: 1
+    min: {x: 0, y: -1.5, z: 0}
+    max: {x: 0, y: 0, z: 1.5}
+    randomX: 0
+    randomY: 0
+    randomZ: 0
+    space: 0
+  m_RotationOffset:
+    setup: 0
+    min: {x: 0, y: 0, z: 0}
+    max: {x: 0, y: 0, z: 0}
+    randomX: 0
+    randomY: 0
+    randomZ: 0
+    space: 0
+  m_ScaleOffset:
+    setup: 0
+    min: {x: 0, y: 0, z: 0}
+    max: {x: 0, y: 0, z: 0}
+    randomX: 0
+    randomY: 0
+    randomZ: 0
+    space: 0
+  m_DeprecatedInstances: []
+  m_AutoRefresh: 1
+  m_Seed: -79434
 --- !u!1 &1186415201
 GameObject:
   m_ObjectHideFlags: 0
@@ -24531,8 +24586,69 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 177205350579230505, guid: 3d91cbb6a7bb0c44d815b8cd08e10000, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1576176166}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 462347724415493364, guid: 3d91cbb6a7bb0c44d815b8cd08e10000, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1376627441446062174}
+    - targetCorrespondingSourceObject: {fileID: 6753159951942849690, guid: 3d91cbb6a7bb0c44d815b8cd08e10000, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1180176548}
   m_SourcePrefab: {fileID: 100100000, guid: 3d91cbb6a7bb0c44d815b8cd08e10000, type: 3}
+--- !u!1 &1376627441446062173 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 462347724415493364, guid: 3d91cbb6a7bb0c44d815b8cd08e10000, type: 3}
+  m_PrefabInstance: {fileID: 1376627441446062172}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1376627441446062174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1376627441446062173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b74686beb0670a4ea61325c0acf4411, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Splines::UnityEngine.Splines.SplineInstantiate
+  m_Container: {fileID: 29214442}
+  m_ItemsToInstantiate:
+  - prefab: {fileID: 0}
+    Prefab: {fileID: 3111540019140520951, guid: 5decae2646f8e405392cb2da92b9f258, type: 3}
+    probability: 0
+    Probability: 0
+  m_Method: 1
+  m_Space: 0
+  m_Spacing: {x: 1.73, y: 1.73}
+  m_Up: 2
+  m_Forward: 1
+  m_PositionOffset:
+    setup: 1
+    min: {x: 0, y: -1.54, z: 0}
+    max: {x: 0, y: 0, z: 0}
+    randomX: 0
+    randomY: 0
+    randomZ: 0
+    space: 0
+  m_RotationOffset:
+    setup: 0
+    min: {x: 0, y: 0, z: 0}
+    max: {x: 0, y: 0, z: 0}
+    randomX: 0
+    randomY: 0
+    randomZ: 0
+    space: 0
+  m_ScaleOffset:
+    setup: 0
+    min: {x: 0, y: 0, z: 0}
+    max: {x: 0, y: 0, z: 0}
+    randomX: 0
+    randomY: 0
+    randomZ: 0
+    space: 0
+  m_DeprecatedInstances: []
+  m_AutoRefresh: 1
+  m_Seed: -24076
 --- !u!1001 &4237827771957536745
 PrefabInstance:
   m_ObjectHideFlags: 0
