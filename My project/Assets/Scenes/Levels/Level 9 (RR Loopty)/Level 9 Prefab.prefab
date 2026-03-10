@@ -296,6 +296,7 @@ MonoBehaviour:
   endPoint: {fileID: 4599358453300418679}
   clockHand: {fileID: 7713707553008388032}
   rotate: 0
+  trolleyProgress: 0
 --- !u!1 &3418425487073136108
 GameObject:
   m_ObjectHideFlags: 0
@@ -351,6 +352,8 @@ MonoBehaviour:
   currentSpline: {fileID: 0}
   followSpline: 1
   audioSource: {fileID: 0}
+  rb: {fileID: 0}
+  lever: {fileID: 0}
 --- !u!54 &4461113840018519082
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -751,6 +754,8 @@ MonoBehaviour:
   applause: {fileID: 8300000, guid: 54c92324773dd4d40abe4cc91d401f22, type: 3}
   ParticlePrefab: {fileID: 4938095755617958529, guid: 2e79f16be10fbd14f8d5ef191f8db4aa, type: 3}
   Lever: {fileID: 0}
+  rating: {fileID: 0}
+  trolley: {fileID: 0}
 --- !u!1 &3852297839634734245
 GameObject:
   m_ObjectHideFlags: 0
@@ -1885,11 +1890,11 @@ GameObject:
   m_Component:
   - component: {fileID: 6385505226932233273}
   - component: {fileID: 1728284391774182929}
-  - component: {fileID: 7809117317775223949}
   - component: {fileID: 42560968501923628}
   - component: {fileID: 2369921388985714151}
   - component: {fileID: 5841666663226180096}
   - component: {fileID: 630335164746071475}
+  - component: {fileID: 2837161734885362134}
   m_Layer: 0
   m_Name: Lever (1)
   m_TagString: Lever
@@ -1935,29 +1940,6 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 1.2
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7809117317775223949
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6478594639261809128}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d5eb10fcc45905478c25e4265ac29ed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
-  trolleyMovement: {fileID: 5464797430492771700}
-  catapultProjectile: {fileID: 0}
-  redGreenLight: {fileID: 0}
-  greenRedLight: {fileID: 0}
-  anim: {fileID: 42560968501923628}
-  armAnim: {fileID: 0}
-  audioSource: {fileID: 2369921388985714151}
-  switchSound: {fileID: 8300000, guid: 0cec5d2f5e8c38a4e8cfd748bddd427f, type: 3}
-  voManager: {fileID: 0}
-  rating: {fileID: 0}
-  leverFlipped: 0
 --- !u!95 &42560968501923628
 Animator:
   serializedVersion: 7
@@ -2123,6 +2105,26 @@ MonoBehaviour:
   audioSource: {fileID: 0}
   glassBreaking: {fileID: 0}
   techDiffOrchestrator: {fileID: 0}
+--- !u!114 &2837161734885362134
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6478594639261809128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f02234da494a4a2594ed6047ccde868, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LeverNoRating
+  trolleyMovement: {fileID: 5464797430492771700}
+  catapultProjectile: {fileID: 0}
+  redGreenLight: {fileID: 0}
+  greenRedLight: {fileID: 0}
+  anim: {fileID: 42560968501923628}
+  armAnim: {fileID: 0}
+  audioSource: {fileID: 2369921388985714151}
+  switchSound: {fileID: 8300000, guid: 0cec5d2f5e8c38a4e8cfd748bddd427f, type: 3}
 --- !u!1 &6984885849663785510
 GameObject:
   m_ObjectHideFlags: 0
