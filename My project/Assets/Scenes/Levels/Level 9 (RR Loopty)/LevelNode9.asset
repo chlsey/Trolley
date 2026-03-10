@@ -14,8 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LevelNode
   id: 
   stageSetPrefab: {fileID: 8318156876920128248, guid: 9783b8500bc414c31ae96194c2bf80a1, type: 3}
-  preSpawnHooks:
-  - {fileID: 11400000, guid: 479b150cb06584e9abc4ccfccd408e22, type: 2}
+  preSpawnHooks: []
   outgoingEdges:
   - outcomeId: track_a
     nextNode: {fileID: 11400000, guid: 1d60cec5f0c454ebba23be8b795e0e9f, type: 2}

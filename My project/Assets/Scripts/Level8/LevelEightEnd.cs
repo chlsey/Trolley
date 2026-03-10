@@ -13,7 +13,7 @@ public class LevelEightEnd : MonoBehaviour
 
         hasTriggered = true;
 
-        FindObjectOfType<LevelNameDisplay>().ShowLevelName("JUST PULL IT");
+        FindObjectOfType<LevelNameDisplay>().ShowLevelName("PULL to LOOP");
 
         endTrigger.TriggerEnd();
     }

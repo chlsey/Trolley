@@ -1,11 +1,11 @@
 using UnityEngine;
 using System.Collections;
 
-public class LevelSixEnd : MonoBehaviour
+public class LevelSevenEnd : MonoBehaviour
 {
     public EndTrigger endTrigger;
 
-    public AudioClip legalClip;
+    // public AudioClip legalClip;
 
     private bool hasTriggered = false;
 
@@ -17,7 +17,7 @@ public class LevelSixEnd : MonoBehaviour
 
         FindObjectOfType<LevelNameDisplay>().ShowLevelName("RAPID: 1 v 91382028392983982398");
 
-        VOManager.Instance.PlayLine(legalClip);
+        // VOManager.Instance.PlayLine(legalClip);
 
         endTrigger.TriggerEnd();
     }

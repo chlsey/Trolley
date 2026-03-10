@@ -26,9 +26,9 @@ public class LevelOneTrackA : MonoBehaviour
 
         VOManager.Instance.ShowSubtitle(new List<VOManager.SubtitleLine>
         {
-            new VOManager.SubtitleLine("WOW!", 640f, 1000f),
+            new VOManager.SubtitleLine("WOW!", 240f, 900f),
 
-            new VOManager.SubtitleLine("Ok...", 1640f, 1000f),
+            new VOManager.SubtitleLine("Ok...", 1240f, 1000f),
 
             new VOManager.SubtitleLine("What about ten people?", 2640f, 1500f),
 

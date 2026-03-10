@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class ClusterTrucksVoiceController : MonoBehaviour
@@ -12,16 +13,30 @@ public class ClusterTrucksVoiceController : MonoBehaviour
     public AudioClip catMeow;
     public AudioClip themeSong;
     public Health healthScript;
+    public PlayerMovement playerMovement;
     bool failedSeqStarted;
+    static bool playedIntro = false;
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        failedSeqStarted = false;
-        StartCoroutine(PlayClusterTruckIntro());
+        if (!SubwayGameManager.Instance.playedIntro)
+        {
+            StopCoroutine(PlayClusterTruckIntro());
+            StartCoroutine(PlayClusterTruckIntro());
+        } else
+        {
+            VOManager.Instance.StartBackgroundMusic(themeSong);
+        }
     }
 
     void Update()
     {
+        if (failedSeqStarted == false && healthScript.isDeathCoroutinePlaying == true && !SubwayGameManager.Instance.playedIntro)
+        {
+            StopCoroutine(PlayClusterTruckIntro());
+            return;
+        }
         if(failedSeqStarted == false && healthScript.isDeathCoroutinePlaying == true)
         {
             Debug.Log("player died, playing random Voiceline");
@@ -33,12 +48,41 @@ public class ClusterTrucksVoiceController : MonoBehaviour
     private IEnumerator PlayClusterTruckIntro()
     {
         VOManager.Instance.PlayLine(introPt1);
+
+        VOManager.Instance.ShowSubtitle(new List<VOManager.SubtitleLine>
+        {
+            new VOManager.SubtitleLine("Hear that?", 240f, 2500f),
+
+        });
+
         yield return new WaitForSeconds(2);
         VOManager.Instance.PlaySoundFX(catMeow);
+
+        VOManager.Instance.ShowSubtitle(new List<VOManager.SubtitleLine>
+        {
+            new VOManager.SubtitleLine("*MEOW*", 440f, 2000f),
+
+        });
+
         yield return new WaitForSeconds(2);
         VOManager.Instance.PlayLine(introPt2);
+
+        VOManager.Instance.ShowSubtitle(new List<VOManager.SubtitleLine>
+        {
+            new VOManager.SubtitleLine("That's right, we've got your beloved cat Daisy tied to a trolley heading down the cliff.", 240f, 8000f),
+
+        });
         yield return new WaitForSeconds(8);
+        SubwayGameManager.Instance.playedIntro = true;
         VOManager.Instance.PlayLine(introPt3);
+
+        VOManager.Instance.ShowSubtitle(new List<VOManager.SubtitleLine>
+        {
+            new VOManager.SubtitleLine("Get to it, flip the lever, and Daisy lives another day.", 240f, 6000f),
+
+            new VOManager.SubtitleLine("Good luck, and try not to fall off!", 6040f, 5000f),
+
+        });
         yield return new WaitForSeconds(8);
         VOManager.Instance.StartBackgroundMusic(themeSong);
     }
@@ -53,20 +97,49 @@ public class ClusterTrucksVoiceController : MonoBehaviour
         {
             case 1:
                 VOManager.Instance.PlayLine(fail1);
+                VOManager.Instance.ShowSubtitle(new List<VOManager.SubtitleLine>
+                {
+                    new VOManager.SubtitleLine("Daisy's waiting for you!", 140f, 4000f),
+
+                });
                 break;
             case 2:
                 VOManager.Instance.PlayLine(fail2);
+                VOManager.Instance.ShowSubtitle(new List<VOManager.SubtitleLine>
+                {
+                    new VOManager.SubtitleLine("Daisy's losing faith...", 140f, 4000f),
+
+                });
                 break;         
             case 3:
                 VOManager.Instance.PlayLine(fail3);
+                
+                VOManager.Instance.ShowSubtitle(new List<VOManager.SubtitleLine>
+                {
+                    new VOManager.SubtitleLine("Come on.. you can't give up.", 140f, 4000f),
+
+                });
                 break;
 
             default:
                 VOManager.Instance.PlayLine(fail1);
+                VOManager.Instance.ShowSubtitle(new List<VOManager.SubtitleLine>
+                {
+                    new VOManager.SubtitleLine("Daisy's waiting for you!", 140f, 4000f),
+
+                });
+                
                 break;
         }
 
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(10);
         failedSeqStarted = false;
+    }
+
+    IEnumerator DisableMovement()
+    {
+        playerMovement.enabled = false;
+        yield return new WaitForSeconds(15);
+        playerMovement.enabled = true;
     }
 }

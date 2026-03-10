@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Collections.Generic;
 
 public class HonkLever : MonoBehaviour
 {
@@ -46,6 +47,14 @@ public class HonkLever : MonoBehaviour
                 VOManager.Instance.PlaySoundFX(honk);
 
                 VOManager.Instance.PlayLine(noWorkClip);
+
+                VOManager.Instance.ShowSubtitle(new List<VOManager.SubtitleLine>
+                {
+                    new VOManager.SubtitleLine("Whoops! Forgot to tell ya,", 560f, 1500f),
+
+                    new VOManager.SubtitleLine("that one doesn’t work.", 2200f, 1600f),
+
+                });
             }
         
         }

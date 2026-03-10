@@ -694,7 +694,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LevelSixEnd
   endTrigger: {fileID: 3680733563081611235}
-  legalClip: {fileID: 8300000, guid: ccbdf36e1db4445d08825a63a7a73c6a, type: 3}
 --- !u!1 &355883649247720024
 GameObject:
   m_ObjectHideFlags: 0
@@ -2991,6 +2990,8 @@ MonoBehaviour:
   trolleyMovement: {fileID: 8449752393565524978}
   catapultProjectile: {fileID: 0}
   redGreenLight: {fileID: 0}
+  isClusterTruckLevel: 0
+  nextScene: {fileID: 0}
   greenRedLight: {fileID: 0}
   anim: {fileID: 1610391491329111489}
   armAnim: {fileID: 0}
@@ -2999,6 +3000,7 @@ MonoBehaviour:
   voManager: {fileID: 0}
   rating: {fileID: 0}
   leverFlipped: 0
+  qPrompt: {fileID: 0}
 --- !u!95 &1610391491329111489
 Animator:
   serializedVersion: 7
@@ -3409,6 +3411,8 @@ MonoBehaviour:
   currentSpline: {fileID: 0}
   followSpline: 1
   audioSource: {fileID: 0}
+  rb: {fileID: 0}
+  lever: {fileID: 0}
 --- !u!54 &7117187126573805383
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5025,6 +5029,8 @@ MonoBehaviour:
   applause: {fileID: 8300000, guid: 54c92324773dd4d40abe4cc91d401f22, type: 3}
   ParticlePrefab: {fileID: 4938095755617958529, guid: 2e79f16be10fbd14f8d5ef191f8db4aa, type: 3}
   Lever: {fileID: 0}
+  rating: {fileID: 0}
+  trolley: {fileID: 0}
 --- !u!1 &2610514555329130290
 GameObject:
   m_ObjectHideFlags: 0
@@ -7844,6 +7850,7 @@ MonoBehaviour:
   endPoint: {fileID: 755996871692507008}
   clockHand: {fileID: 1784040656730219161}
   rotate: 0
+  trolleyProgress: 0
 --- !u!1 &4680962051398895929
 GameObject:
   m_ObjectHideFlags: 0
@@ -9245,7 +9252,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LevelSixEnd
   endTrigger: {fileID: 3080934632226850187}
-  legalClip: {fileID: 8300000, guid: ccbdf36e1db4445d08825a63a7a73c6a, type: 3}
 --- !u!1 &5531776639227954716
 GameObject:
   m_ObjectHideFlags: 0

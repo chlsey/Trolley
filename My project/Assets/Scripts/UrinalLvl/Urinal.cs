@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.InputSystem;
+using System.Collections.Generic;
 
 public class Urinal : MonoBehaviour
 {
@@ -69,6 +70,14 @@ public class Urinal : MonoBehaviour
                     source.enabled = true;
                 }
                 audioSource.PlayOneShot(correctVoiceLine);
+
+                VOManager.Instance.ShowSubtitle(new List<VOManager.SubtitleLine>
+                {
+                    new VOManager.SubtitleLine(" Yes! Yes! what a fine choice!", 140f, 4200f),
+
+                });
+
+
                 door.enabled = true;
             }
         }
@@ -83,6 +92,15 @@ public class Urinal : MonoBehaviour
                 StartCoroutine(SlapRightWithDelay());
                 audioSource.PlayOneShot(PeeSFX);
                 audioSource.PlayOneShot(wrongVoiceLine);
+
+                VOManager.Instance.ShowSubtitle(new List<VOManager.SubtitleLine>
+                {
+                    new VOManager.SubtitleLine("…What", 140f, 2000f),
+                    new VOManager.SubtitleLine("You’ve broken the sacred bathroom rules.", 2000f, 3000f),
+                    new VOManager.SubtitleLine("Disgusting..", 5000f, 3000f),
+
+                });
+
                 StartCoroutine(DisableMovement());
                 
             }

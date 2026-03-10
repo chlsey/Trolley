@@ -22,7 +22,7 @@ public class PlayerMovement : MonoBehaviour
     public float jumpForce = 7f;
     public float jumpCooldown = 0.25f;
     bool readyToJump;
-    bool canJump;
+    public bool canJump;
 
     [Header("Ground Layers")]
     public LayerMask whatIsGround;

@@ -213,6 +213,55 @@ Transform:
   - {fileID: 9134680079091054436}
   m_Father: {fileID: 6385505226932233273}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1618866751997044294
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4812526079815120913}
+  - component: {fileID: 304736105752542375}
+  m_Layer: 0
+  m_Name: Level9IntroSubtitles
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4812526079815120913
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1618866751997044294}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 11.80892, y: -28.50169, z: 48.4367}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 430260475848115835}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &304736105752542375
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1618866751997044294}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c258b3e83a8d490eb2ccf48450b6378, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  levelNineIntroClip: {fileID: 8300000, guid: 38938eebd64804dc7aa16305c9b23e14, type: 3}
+  clockSFX: {fileID: 8300000, guid: 69d28c0f385d84c09abb70dee6e11bfa, type: 3}
+  trolleyMovement: {fileID: 5464797430492771700}
+  lever: {fileID: 7809117317775223949}
+  clock: {fileID: 5774442226077781794}
 --- !u!1 &1669127868772378033
 GameObject:
   m_ObjectHideFlags: 0
@@ -296,6 +345,7 @@ MonoBehaviour:
   endPoint: {fileID: 4599358453300418679}
   clockHand: {fileID: 7713707553008388032}
   rotate: 0
+  trolleyProgress: 0
 --- !u!1 &3418425487073136108
 GameObject:
   m_ObjectHideFlags: 0
@@ -325,7 +375,7 @@ Transform:
   m_GameObject: {fileID: 3418425487073136108}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.4446392, y: 7.198311, z: 8.103409}
+  m_LocalPosition: {x: -17.7, y: 7.198311, z: 8.103409}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -351,6 +401,8 @@ MonoBehaviour:
   currentSpline: {fileID: 0}
   followSpline: 1
   audioSource: {fileID: 0}
+  rb: {fileID: 0}
+  lever: {fileID: 0}
 --- !u!54 &4461113840018519082
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -751,6 +803,8 @@ MonoBehaviour:
   applause: {fileID: 8300000, guid: 54c92324773dd4d40abe4cc91d401f22, type: 3}
   ParticlePrefab: {fileID: 4938095755617958529, guid: 2e79f16be10fbd14f8d5ef191f8db4aa, type: 3}
   Lever: {fileID: 0}
+  rating: {fileID: 0}
+  trolley: {fileID: 0}
 --- !u!1 &3852297839634734245
 GameObject:
   m_ObjectHideFlags: 0
@@ -1950,6 +2004,8 @@ MonoBehaviour:
   trolleyMovement: {fileID: 5464797430492771700}
   catapultProjectile: {fileID: 0}
   redGreenLight: {fileID: 0}
+  isClusterTruckLevel: 0
+  nextScene: {fileID: 0}
   greenRedLight: {fileID: 0}
   anim: {fileID: 42560968501923628}
   armAnim: {fileID: 0}
@@ -1958,6 +2014,7 @@ MonoBehaviour:
   voManager: {fileID: 0}
   rating: {fileID: 0}
   leverFlipped: 0
+  qPrompt: {fileID: 0}
 --- !u!95 &42560968501923628
 Animator:
   serializedVersion: 7
@@ -2336,6 +2393,7 @@ Transform:
   - {fileID: 6077761175141122544}
   - {fileID: 4770003950358734331}
   - {fileID: 9128710341064995716}
+  - {fileID: 4812526079815120913}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8389860608933089906
@@ -2741,7 +2799,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f08260f37fec56345a83b5eac7f6f154, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::VictinSFX
-  audioSource: {fileID: 0}
+  audioSource: {fileID: 6098805460258354918}
   splat: {fileID: 8300000, guid: 9cb76e52c66ca9845b3b11aea3d61ec7, type: 3}
   layerMask:
     serializedVersion: 2
@@ -3018,7 +3076,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f08260f37fec56345a83b5eac7f6f154, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::VictinSFX
-  audioSource: {fileID: 0}
+  audioSource: {fileID: 6940472383079304064}
   splat: {fileID: 8300000, guid: 9cb76e52c66ca9845b3b11aea3d61ec7, type: 3}
   layerMask:
     serializedVersion: 2
@@ -3300,7 +3358,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f08260f37fec56345a83b5eac7f6f154, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::VictinSFX
-  audioSource: {fileID: 0}
+  audioSource: {fileID: 2382002087830224396}
   splat: {fileID: 8300000, guid: 9cb76e52c66ca9845b3b11aea3d61ec7, type: 3}
   layerMask:
     serializedVersion: 2
@@ -3587,7 +3645,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f08260f37fec56345a83b5eac7f6f154, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::VictinSFX
-  audioSource: {fileID: 0}
+  audioSource: {fileID: 728766024663834773}
   splat: {fileID: 8300000, guid: 9cb76e52c66ca9845b3b11aea3d61ec7, type: 3}
   layerMask:
     serializedVersion: 2
@@ -3869,7 +3927,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f08260f37fec56345a83b5eac7f6f154, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::VictinSFX
-  audioSource: {fileID: 0}
+  audioSource: {fileID: 412573992390826648}
   splat: {fileID: 8300000, guid: 9cb76e52c66ca9845b3b11aea3d61ec7, type: 3}
   layerMask:
     serializedVersion: 2
