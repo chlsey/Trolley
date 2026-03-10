@@ -43,10 +43,11 @@ public class IntroOrchestrator : MonoBehaviour
     public AudioClip lightOnClip;    
     public AudioClip introBGM; 
     public AudioClip clock;
-
+    public bool deathCoroutinePlaying;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
-    {
+    {   
+        deathCoroutinePlaying = false;
         StartCoroutine(PlayIntroSequence());
     }
 

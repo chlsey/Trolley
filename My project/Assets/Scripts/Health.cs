@@ -11,9 +11,11 @@ public class Health : MonoBehaviour
     public LayerMask layerMask;
     public AudioListener audioListener;
     public float fadeDuration = 0.5f;
+    public bool isDeathCoroutinePlaying;
 
     void Start()
     {
+        isDeathCoroutinePlaying = false;
         uiImage.enabled = true;
         Color c = uiImage.color;
         c.a = 1f;
@@ -26,6 +28,7 @@ public class Health : MonoBehaviour
         if ((layerMask.value & (1 << collision.gameObject.layer)) > 0)
         {
             audioSource.PlayOneShot(audioClip);
+            isDeathCoroutinePlaying = true;
             StartCoroutine(HandleDeathSequence());
         }
     }
@@ -33,9 +36,9 @@ public class Health : MonoBehaviour
 
     private IEnumerator HandleDeathSequence()
     {
-        StartCoroutine(DisableAudioListener());
+        yield return new WaitForSeconds(3f);
+        // StartCoroutine(DisableAudioListener());
         yield return StartCoroutine(FadeToBlack());
-
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
