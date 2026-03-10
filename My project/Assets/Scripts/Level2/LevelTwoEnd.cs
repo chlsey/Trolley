@@ -32,7 +32,7 @@ public class LevelTwoEnd : MonoBehaviour
 
             new VOManager.SubtitleLine("Let’s speed things up some more shall we?", 1840f, 3500f),
 
-            new VOManager.SubtitleLine("Ladies and gentlemen, let’s fire up the rapid rounds?", 5440f, 5000f),
+            new VOManager.SubtitleLine("Ladies and gentlemen, let’s fire up the rapid rounds!", 5440f, 5000f),
 
             new VOManager.SubtitleLine("Try not to kill that many people will ya?", 11240f, 2500f),
 

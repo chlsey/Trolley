@@ -28,7 +28,9 @@ public class LevelOneTrackB : MonoBehaviour
         {
             new VOManager.SubtitleLine("The classic utilitarian move", 100f, 2500f),
 
-            new VOManager.SubtitleLine("Alright. Let's tighten the margins", 2500f, 4000f),
+            new VOManager.SubtitleLine("Alright. Let's tighten the margins.", 2500f, 4000f),
+
+            new VOManager.SubtitleLine("Now it’s five on one track, four on the other.", 6500f, 5000f),
 
         });
 

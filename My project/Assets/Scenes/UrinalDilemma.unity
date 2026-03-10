@@ -630,6 +630,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   urinal1: {fileID: 888858173}
   urinal2: {fileID: 52103138}
+  bgMusicUrinal: {fileID: 8300000, guid: ba37167b92cd00446b3490b1ab480e13, type: 3}
 --- !u!1 &122900910
 GameObject:
   m_ObjectHideFlags: 0
@@ -5139,7 +5140,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.836
+  m_Volume: 0.915
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -5479,7 +5480,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.855
+  m_Volume: 0.123
   m_Pitch: 1
   Loop: 0
   Mute: 0

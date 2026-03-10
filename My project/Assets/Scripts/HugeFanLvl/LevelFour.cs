@@ -112,7 +112,9 @@ public class LevelFourIntro : MonoBehaviour
 
             new VOManager.SubtitleLine("That's right, ", 18540f, 1500f),
 
-            new VOManager.SubtitleLine("this time, your lever will push Jimmy onto the tracks before the trolley gets to the five people to save them.", 19540f, 8000f),
+            new VOManager.SubtitleLine("this time, your lever will push Jimmy onto the tracks", 19540f, 4000f),
+
+            new VOManager.SubtitleLine("before the trolley gets to the five people to save them.", 23540f, 4000f),
 
             new VOManager.SubtitleLine("Jimmy’s fine with it!", 27040f, 2000f),
 

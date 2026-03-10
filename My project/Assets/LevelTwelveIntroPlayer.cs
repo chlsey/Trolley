@@ -7,11 +7,14 @@ public class LevelTwelveIntroPlayer : MonoBehaviour
 
     public Urinal urinal1;
     public Urinal urinal2;
+    public AudioClip bgMusicUrinal;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         // urinal1.enabled = false;
         // urinal2.enabled = false;
+        VOManager.Instance.StopBackgroundMusic();
+        VOManager.Instance.StartBackgroundMusic(bgMusicUrinal);
 
         VOManager.Instance.ShowSubtitle(new List<VOManager.SubtitleLine>
         {
