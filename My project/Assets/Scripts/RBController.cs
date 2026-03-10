@@ -49,7 +49,7 @@ public class RBController : MonoBehaviour
     {
         if ((layerMask.value & (1 << other.gameObject.layer)) > 0 )
         {
-            audioSource.PlayOneShot(glassBreaking);
+            // audioSource.PlayOneShot(glassBreaking);
 
             meshRenderer.enabled = false;
 
