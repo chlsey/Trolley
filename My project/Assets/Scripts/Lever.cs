@@ -39,6 +39,7 @@ public class Lever : MonoBehaviour
            (Gamepad.current != null && Gamepad.current.buttonWest.wasReleasedThisFrame);
         if (!leverFlipped && nearLever && gotInput && trolleyMovement && !catapultProjectile)
         {
+            leverFlipped = true;
             trolleyMovement.SwitchTrack();
             redGreenLight.Toggle();
             greenRedLight.Toggle();
@@ -48,7 +49,7 @@ public class Lever : MonoBehaviour
             Debug.Log("TrackSwitched");
             Debug.Log("Track Switched");
             // rating.ChangeRating(-0.5f);
-            leverFlipped = true;
+            
             if(qPrompt != null) qPrompt.SetActive(true);
             if (isClusterTruckLevel)
             {

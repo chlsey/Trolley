@@ -10,7 +10,7 @@ public class Health : MonoBehaviour
     public RawImage uiImage;
     public LayerMask layerMask;
     public AudioListener audioListener;
-    public float fadeDuration = 0.5f;
+    public float fadeDuration = 0.25f;
     public bool isDeathCoroutinePlaying;
 
     void Start()
@@ -36,10 +36,14 @@ public class Health : MonoBehaviour
 
     private IEnumerator HandleDeathSequence()
     {
-        yield return new WaitForSeconds(3f);
+        
         // StartCoroutine(DisableAudioListener());
         yield return StartCoroutine(FadeToBlack());
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+    public void HandleDeathSequenceTrigger()
+    {
+        StartCoroutine(HandleDeathSequence());
     }
 
     public void TriggerFadeToBlack()
@@ -73,7 +77,7 @@ public class Health : MonoBehaviour
 
         c.a = 1f;
         uiImage.color = c;
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(1.5f);
     }
 
     private IEnumerator FadeFromBlack()
