@@ -61,20 +61,66 @@ public class PauseMenuController : MonoBehaviour
         var uiDoc = pauseMenuUI.GetComponent<UIDocument>();
         var root = uiDoc.rootVisualElement;
 
-        var playButton = root.Q("Play_Button") as Button;
+        var volumeSlider = root.Q("Volume_Slider") as Slider; 
+        var mouseSensSlider = root.Q("Mouse_Slider") as Slider;
+        var controllerSensSlider = root.Q("Controller_Slider") as Slider;
+        var unpauseButton = root.Q("Unpause_Button") as Button;
         var exitButton = root.Q("Exit_Button") as Button;
 
+        //This was the simplest way I could get the sliders to keep their positions when closing and reopening the menu
+        SettingsData SettingsStruct = SettingsManager.Instance.GetSettingsData();
+        volumeSlider.value = SettingsStruct.generalAudioMultiplier;
+        mouseSensSlider.value = SettingsStruct.mouseSens;
+        controllerSensSlider.value = SettingsStruct.controllerSens;
+
         // Unregister first to avoid stacking duplicate callbacks
-        if (playButton != null)
+        if (volumeSlider != null)
         {
-            playButton.UnregisterCallback<ClickEvent>(OnClickContinue);
-            playButton.RegisterCallback<ClickEvent>(OnClickContinue);
+            volumeSlider.UnregisterCallback<ChangeEvent<float>>(ChangeVolume);
+            volumeSlider.RegisterCallback<ChangeEvent<float>>(ChangeVolume);
+        }
+        if (mouseSensSlider != null)
+        {
+            mouseSensSlider.UnregisterCallback<ChangeEvent<float>>(ChangeMouseSens);
+            mouseSensSlider.RegisterCallback<ChangeEvent<float>>(ChangeMouseSens);
+        }
+        if (controllerSensSlider != null)
+        {
+            controllerSensSlider.UnregisterCallback<ChangeEvent<float>>(ChangeControllerSens);
+            controllerSensSlider.RegisterCallback<ChangeEvent<float>>(ChangeControllerSens);
+        }
+        if (unpauseButton != null)
+        {
+            unpauseButton.UnregisterCallback<ClickEvent>(OnClickContinue);
+            unpauseButton.RegisterCallback<ClickEvent>(OnClickContinue);
         }
         if (exitButton != null)
         {
             exitButton.UnregisterCallback<ClickEvent>(OnClickExit);
             exitButton.RegisterCallback<ClickEvent>(OnClickExit);
         }
+    }
+
+    private void ChangeVolume(ChangeEvent<float> evt)
+    {
+        SettingsData SettingsStruct = SettingsManager.Instance.GetSettingsData();
+        SettingsStruct.generalAudioMultiplier = evt.newValue;
+        SettingsManager.Instance.SaveSettings(SettingsStruct);
+        
+    }
+
+    private void ChangeMouseSens(ChangeEvent<float> evt)
+    {
+        SettingsData SettingsStruct = SettingsManager.Instance.GetSettingsData();
+        SettingsStruct.mouseSens = evt.newValue;
+        SettingsManager.Instance.SaveSettings(SettingsStruct);
+    }
+
+    private void ChangeControllerSens(ChangeEvent<float> evt)
+    {
+        SettingsData SettingsStruct = SettingsManager.Instance.GetSettingsData();
+        SettingsStruct.controllerSens = evt.newValue;
+        SettingsManager.Instance.SaveSettings(SettingsStruct);
     }
 
     private void OnClickContinue(ClickEvent evt)

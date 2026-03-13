@@ -1,0 +1,11 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement style="flex-grow: 1; position: absolute; width: 100%; height: 100%;">
+        <ui:VisualElement name="Options_Holder" style="flex-grow: 1; position: absolute; top: auto; left: auto; width: 100%; height: 100%;">
+            <ui:Slider label="Volume" value="42" high-value="1" fill="true" name="Volume_Slider"/>
+            <ui:Slider label="Mouse Sensitivity" value="0.1" high-value="0.5" fill="true" name="Mouse_Slider"/>
+            <ui:Slider label="Controller Sensitivity" value="150" high-value="300" fill="true" name="Controller_Slider"/>
+            <ui:Button text="Return" name="Unpause_Button"/>
+            <ui:Button text="Exit Game" name="Exit_Button"/>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
