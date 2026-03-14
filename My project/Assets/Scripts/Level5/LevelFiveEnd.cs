@@ -13,7 +13,7 @@ public class LevelFiveEnd : MonoBehaviour
 
         hasTriggered = true;
 
-        FindObjectOfType<LevelNameDisplay>().ShowLevelName("Two levers");
+        FindObjectOfType<LevelNameDisplay>().ShowLevelName("your girlfriend");
 
         endTrigger.TriggerEnd();
     }

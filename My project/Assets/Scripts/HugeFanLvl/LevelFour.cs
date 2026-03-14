@@ -107,24 +107,20 @@ public class LevelFourIntro : MonoBehaviour
             new VOManager.SubtitleLine("We’ve got a lucky fan from the audience who will be with us.", 7640f, 3200f),
 
             new VOManager.SubtitleLine("Can you give us a little wave Jimmy!", 10800f, 2500f),
+            
+            new VOManager.SubtitleLine("That's right, ", 14740f, 1500f),
 
-            new VOManager.SubtitleLine("*Gasp* Where is the second track?", 15040f, 2300f),
+            new VOManager.SubtitleLine("this time, your lever will push Jimmy onto the tracks", 15740f, 4000f),
 
-            new VOManager.SubtitleLine("That's right, ", 18540f, 1500f),
+            new VOManager.SubtitleLine("before the trolley gets to the five people to save them.", 19740f, 4000f),
 
-            new VOManager.SubtitleLine("this time, your lever will push Jimmy onto the tracks", 19540f, 4000f),
+            new VOManager.SubtitleLine("Jimmy's fine with it!", 23240f, 2000f),
 
-            new VOManager.SubtitleLine("before the trolley gets to the five people to save them.", 23540f, 4000f),
+            new VOManager.SubtitleLine("he signed our terms and conditions which SPECIFICALLY said:", 25240f, 3900f),
 
-            new VOManager.SubtitleLine("Jimmy’s fine with it!", 27040f, 2000f),
+            new VOManager.SubtitleLine("an audience member at any moment can be asked to participate in the trolley problem....", 30040f, 3000f),
 
-            new VOManager.SubtitleLine("he signed our terms and conditions which SPECIFICALLY said:", 29040f, 3900f),
-
-            new VOManager.SubtitleLine("an audience member at any moment can be asked to participate in the trolley problem....", 33840f, 3000f),
-
-            new VOManager.SubtitleLine("...this show is not responsible for any harm that may be caused to them at any point....", 37040f, 3000f),
-        
-
+            new VOManager.SubtitleLine("...this show is not responsible for any harm that may be caused to them at any point....", 33240f, 3000f),
         });
 
         yield return new WaitForSeconds(3);
@@ -152,7 +148,7 @@ public class LevelFourIntro : MonoBehaviour
         yield return new WaitForSeconds(6);
 
         // Show the Terms & Condition on screen (at 43 sec)
-        yield return new WaitForSeconds(9);
+        yield return new WaitForSeconds(3);
         
         trolleyMovement.followSpline = true;
         clock.rotate = true;
