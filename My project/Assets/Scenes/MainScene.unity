@@ -4637,8 +4637,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   light: {fileID: 518225812}
-  redColor: {r: 1, g: 0, b: 0, a: 1}
-  greenColor: {r: 0, g: 1, b: 0, a: 1}
+  redColor: {r: 0.21960786, g: 0.21960786, b: 0.21960786, a: 0}
+  greenColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!114 &518225811
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16308,8 +16308,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   light: {fileID: 889305712}
-  redColor: {r: 1, g: 0, b: 0, a: 1}
-  greenColor: {r: 0, g: 1, b: 0, a: 1}
+  redColor: {r: 0.34901962, g: 0.34901962, b: 0.34901962, a: 0}
+  greenColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!114 &889305711
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24815,6 +24815,10 @@ PrefabInstance:
       propertyPath: m_Volume
       value: 0.369
       objectReference: {fileID: 0}
+    - target: {fileID: 1818812378295052463, guid: d67e9b20b8c034b4fbd4fd32167c0ec2, type: 3}
+      propertyPath: m_Resource
+      value: 
+      objectReference: {fileID: 8300000, guid: b86cd521cb29548afb513cbfd88e6965, type: 3}
     - target: {fileID: 3973713250021954162, guid: d67e9b20b8c034b4fbd4fd32167c0ec2, type: 3}
       propertyPath: spline
       value: 
@@ -24879,6 +24883,10 @@ PrefabInstance:
       propertyPath: Loop
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6296206639365706513, guid: d67e9b20b8c034b4fbd4fd32167c0ec2, type: 3}
+      propertyPath: m_Resource
+      value: 
+      objectReference: {fileID: 8300000, guid: a532f4e5c46b7424b861b587f735983b, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
