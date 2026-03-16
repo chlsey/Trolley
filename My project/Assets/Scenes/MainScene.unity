@@ -22245,6 +22245,8 @@ MonoBehaviour:
   startPoint: {fileID: 1576176165}
   endPoint: {fileID: 808882097}
   clockHand: {fileID: 85325067}
+  trolleyEnterAudio: {fileID: 0}
+  audioTriggerProgress: 0.8
   rotate: 0
   trolleyProgress: 0
 --- !u!4 &1771651699
