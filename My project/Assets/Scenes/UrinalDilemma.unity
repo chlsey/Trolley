@@ -304,7 +304,7 @@ MonoBehaviour:
   - {fileID: 1862939428}
   introSource: {fileID: 106157527}
   anim: {fileID: 1361707159}
-  Pee1anim: {fileID: 0}
+  Pee1anim: {fileID: 1344806132}
   Pee2anim: {fileID: 1186022977}
   Pee3anim: {fileID: 829972019}
   Pee4anim: {fileID: 27087744}
@@ -315,7 +315,7 @@ MonoBehaviour:
   correctVoiceLine: {fileID: 8300000, guid: 9c21aeccad1564a8b92d0dfbfdc44c2c, type: 3}
   wrongVoiceLine: {fileID: 8300000, guid: 0f125ca3a203a45d7a2aebfa7113b53b, type: 3}
   playerMovement: {fileID: 861500493}
-  facePlayer: {fileID: 0}
+  facePlayer: {fileID: 1344806130}
   facePlayer2: {fileID: 1186022980}
   facePlayer3: {fileID: 829972022}
   facePlayer4: {fileID: 27087742}
@@ -2364,7 +2364,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50792f0bdb918d14a9c9ac3f65c8942c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Door
-  sceneToLoad: MenuScene
+  sceneToLoad: CrossyRoad
   ePrompt: {fileID: 379189833}
 --- !u!65 &1051883966
 BoxCollider:
@@ -3393,7 +3393,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f31f6eae749a8549b9ef5e5a8a0bb3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NextScene
-  sceneToLoad: MenuScene
+  sceneToLoad: CrossyRoad
   rBController: {fileID: 0}
   health: {fileID: 861500489}
 --- !u!136 &1186022982
@@ -3509,6 +3509,27 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 28098c05372d4734aa97703b3102fdf9, type: 3}
   m_PrefabInstance: {fileID: 1640651385}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1344806130 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4221263778952985241, guid: f9726d65b0458db4bae2e8754527ddbc, type: 3}
+  m_PrefabInstance: {fileID: 4371672226496025969}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19e9542c384bff408a08551274a83a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+--- !u!82 &1344806131 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 7038782399848076291, guid: f9726d65b0458db4bae2e8754527ddbc, type: 3}
+  m_PrefabInstance: {fileID: 4371672226496025969}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1344806132 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5019719555885806123, guid: f9726d65b0458db4bae2e8754527ddbc, type: 3}
+  m_PrefabInstance: {fileID: 4371672226496025969}
   m_PrefabAsset: {fileID: 0}
 --- !u!95 &1361707159 stripped
 Animator:
@@ -5988,6 +6009,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pee1Model
       objectReference: {fileID: 0}
+    - target: {fileID: 4221263778952985241, guid: f9726d65b0458db4bae2e8754527ddbc, type: 3}
+      propertyPath: Slap
+      value: 
+      objectReference: {fileID: 8300000, guid: 9cb76e52c66ca9845b3b11aea3d61ec7, type: 3}
+    - target: {fileID: 4221263778952985241, guid: f9726d65b0458db4bae2e8754527ddbc, type: 3}
+      propertyPath: audio
+      value: 
+      objectReference: {fileID: 1344806131}
     - target: {fileID: 4221263778952985241, guid: f9726d65b0458db4bae2e8754527ddbc, type: 3}
       propertyPath: player
       value: 
