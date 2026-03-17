@@ -788,6 +788,7 @@ MonoBehaviour:
   lightOnClip: {fileID: 8300000, guid: d788c5525137f42098ab88dde65f8426, type: 3}
   introBGM: {fileID: 8300000, guid: d947c19eb06d8bf4984ba95261bb4286, type: 3}
   clock: {fileID: 8300000, guid: 69d28c0f385d84c09abb70dee6e11bfa, type: 3}
+  deathCoroutinePlaying: 0
 --- !u!1 &684435200255945834
 GameObject:
   m_ObjectHideFlags: 0
@@ -2289,7 +2290,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   light: {fileID: 5843966229575708625}
   redColor: {r: 1, g: 0, b: 0, a: 1}
-  greenColor: {r: 0, g: 1, b: 0, a: 1}
+  greenColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!114 &7706868893317449422
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7787,6 +7788,7 @@ MonoBehaviour:
   endPoint: {fileID: 0}
   clockHand: {fileID: 5403676864557859492}
   rotate: 0
+  trolleyProgress: 0
 --- !u!1 &4793020540809003149
 GameObject:
   m_ObjectHideFlags: 0
@@ -8306,7 +8308,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   light: {fileID: 8183914992476133413}
   redColor: {r: 1, g: 0, b: 0, a: 1}
-  greenColor: {r: 0, g: 1, b: 0, a: 1}
+  greenColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!114 &5967781156291527424
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12744,6 +12746,8 @@ MonoBehaviour:
   trolleyMovement: {fileID: 0}
   catapultProjectile: {fileID: 0}
   redGreenLight: {fileID: 0}
+  isClusterTruckLevel: 0
+  nextScene: {fileID: 0}
   greenRedLight: {fileID: 0}
   anim: {fileID: 909624869000262239}
   armAnim: {fileID: 0}

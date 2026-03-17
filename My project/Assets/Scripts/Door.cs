@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
 
 public class Door : MonoBehaviour
 {
@@ -15,8 +16,10 @@ public class Door : MonoBehaviour
     }
     void Update()
     {
-        if(nearDoor && Input.GetKeyDown(KeyCode.E))
+        if(nearDoor && (Input.GetKeyDown(KeyCode.E) ||
+           (Gamepad.current != null && Gamepad.current.buttonWest.wasReleasedThisFrame)))
         {
+            VOManager.Instance.StopBackgroundMusic();
             SceneManager.LoadScene(sceneToLoad);
         }
         

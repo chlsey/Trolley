@@ -85,6 +85,7 @@ public class Urinal : MonoBehaviour
         {
             if (nearUrinal && (Input.GetKeyDown(KeyCode.E) || (Gamepad.current != null && Gamepad.current.buttonWest.isPressed)))
             {
+                VOManager.Instance.StopBackgroundMusic();
                 introSource.enabled = false;
                 anim.SetTrigger("PlayerPee");
                 

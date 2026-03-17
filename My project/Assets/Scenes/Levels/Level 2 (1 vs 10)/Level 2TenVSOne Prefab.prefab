@@ -4374,11 +4374,11 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: 2cf780354dbd2c042b40892f7e57f52b, type: 3}
-  m_PlayOnAwake: 1
+  m_Resource: {fileID: 8300000, guid: a532f4e5c46b7424b861b587f735983b, type: 3}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -5342,6 +5342,8 @@ MonoBehaviour:
   currentSpline: {fileID: 0}
   followSpline: 1
   audioSource: {fileID: 0}
+  rb: {fileID: 0}
+  lever: {fileID: 0}
 --- !u!54 &7117187126573805383
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -7434,6 +7436,8 @@ MonoBehaviour:
   applause: {fileID: 8300000, guid: 54c92324773dd4d40abe4cc91d401f22, type: 3}
   ParticlePrefab: {fileID: 4938095755617958529, guid: 2e79f16be10fbd14f8d5ef191f8db4aa, type: 3}
   Lever: {fileID: 7310875333360241009}
+  rating: {fileID: 0}
+  trolley: {fileID: 0}
 --- !u!1 &2610514555329130290
 GameObject:
   m_ObjectHideFlags: 0
@@ -12487,7 +12491,10 @@ MonoBehaviour:
   startPoint: {fileID: 7797339768633841892}
   endPoint: {fileID: 755996871692507008}
   clockHand: {fileID: 1784040656730219161}
+  trolleyEnterAudio: {fileID: 3098879050352973216}
+  audioTriggerProgress: 0.8
   rotate: 0
+  trolleyProgress: 0
 --- !u!1 &4680962051398895929
 GameObject:
   m_ObjectHideFlags: 0
@@ -17996,6 +18003,8 @@ MonoBehaviour:
   trolleyMovement: {fileID: 8449752393565524978}
   catapultProjectile: {fileID: 0}
   redGreenLight: {fileID: 0}
+  isClusterTruckLevel: 0
+  nextScene: {fileID: 0}
   greenRedLight: {fileID: 0}
   anim: {fileID: 2069867800835237834}
   armAnim: {fileID: 0}
@@ -18004,6 +18013,7 @@ MonoBehaviour:
   voManager: {fileID: 0}
   rating: {fileID: 0}
   leverFlipped: 0
+  qPrompt: {fileID: 0}
 --- !u!95 &2069867800835237834
 Animator:
   serializedVersion: 7

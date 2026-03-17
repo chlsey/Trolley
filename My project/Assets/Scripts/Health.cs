@@ -10,8 +10,10 @@ public class Health : MonoBehaviour
     public RawImage uiImage;
     public LayerMask layerMask;
     public AudioListener audioListener;
+    public NextScene nextSceneLoader;
     public float fadeDuration = 0.25f;
     public bool isDeathCoroutinePlaying;
+    static int deathCount = 0;
 
     void Start()
     {
@@ -37,9 +39,21 @@ public class Health : MonoBehaviour
     private IEnumerator HandleDeathSequence()
     {
         
+        deathCount++;
         // StartCoroutine(DisableAudioListener());
         yield return StartCoroutine(FadeToBlack());
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        //Debug.Log("death count");
+        //Debug.Log(deathCount);
+        if(deathCount > 3)
+        {
+            // Debug.Log("died too many times, loading next scene");
+            nextSceneLoader.TriggerSceneChange();
+        }
+        else
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+        
     }
     public void HandleDeathSequenceTrigger()
     {

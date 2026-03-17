@@ -13,7 +13,7 @@ public class LevelFourEnd : MonoBehaviour
 
         hasTriggered = true;
 
-        FindObjectOfType<LevelNameDisplay>().ShowLevelName("10 worms v 9 worms");
+        FindObjectOfType<LevelNameDisplay>().ShowLevelName("10 worms v 3 worms");
 
         endTrigger.TriggerEnd();
     }

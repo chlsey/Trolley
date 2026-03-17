@@ -46434,6 +46434,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 331858242}
     - target: {fileID: 1363208505815843076, guid: c0e56157e5ffae74dbaf952fe91860cc, type: 3}
+      propertyPath: nextSceneLoader
+      value: 
+      objectReference: {fileID: 953664935}
+    - target: {fileID: 1363208505815843076, guid: c0e56157e5ffae74dbaf952fe91860cc, type: 3}
       propertyPath: layerMask.m_Bits
       value: 4224
       objectReference: {fileID: 0}

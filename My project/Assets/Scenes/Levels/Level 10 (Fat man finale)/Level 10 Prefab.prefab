@@ -9123,6 +9123,8 @@ MonoBehaviour:
   startPoint: {fileID: 1672715238273551843}
   endPoint: {fileID: 4120744507886261661}
   clockHand: {fileID: 8544032891421129483}
+  trolleyEnterAudio: {fileID: 5476779697210113091}
+  audioTriggerProgress: 0.9
   rotate: 0
   trolleyProgress: 0
 --- !u!1 &6019476624911199923
@@ -10606,11 +10608,11 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: 2cf780354dbd2c042b40892f7e57f52b, type: 3}
-  m_PlayOnAwake: 1
+  m_Resource: {fileID: 8300000, guid: a532f4e5c46b7424b861b587f735983b, type: 3}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
