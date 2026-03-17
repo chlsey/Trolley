@@ -9,6 +9,7 @@ TagManager:
   - huge_fan
   - Loopty
   - Truck
+  - Vehicle
   layers:
   - Default
   - TransparentFX
