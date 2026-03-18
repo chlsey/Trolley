@@ -847,7 +847,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   archLights:
   - {fileID: 268665604}
-  - {fileID: 14565918}
+  - {fileID: 0}
   - {fileID: 1446322020}
   - {fileID: 1459635962}
   - {fileID: 1744432526}
@@ -857,7 +857,7 @@ MonoBehaviour:
   - {fileID: 1403092638}
   - {fileID: 224355744}
   - {fileID: 1283837257}
-  - {fileID: 265183888}
+  - {fileID: 0}
   - {fileID: 2002004071}
   walkLights:
   - {fileID: 131836138}
@@ -2728,15 +2728,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: TEST
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 617c06724d6306b4d80a3df10ec3768d, type: 2}
-  m_sharedMaterial: {fileID: -5272392862168012325, guid: 617c06724d6306b4d80a3df10ec3768d, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: d41c1c574d9a944a894f6bbf5e16df33, type: 2}
+  m_sharedMaterial: {fileID: -2409339427613772652, guid: d41c1c574d9a944a894f6bbf5e16df33, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190335
-  m_fontColor: {r: 1, g: 0, b: 0, a: 1}
+    rgba: 4284337663
+  m_fontColor: {r: 1, g: 0.8040582, b: 0.36320752, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -2826,7 +2826,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -5272392862168012325, guid: 617c06724d6306b4d80a3df10ec3768d, type: 2}
+  - {fileID: -2409339427613772652, guid: d41c1c574d9a944a894f6bbf5e16df33, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -16922,8 +16922,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 777663d8322eb453da744659877a0c7e, type: 2}
+  m_sharedMaterial: {fileID: 2503320779844430176, guid: 777663d8322eb453da744659877a0c7e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -24188,15 +24188,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: THE TROLLEY SHOW
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 617c06724d6306b4d80a3df10ec3768d, type: 2}
-  m_sharedMaterial: {fileID: -5272392862168012325, guid: 617c06724d6306b4d80a3df10ec3768d, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: d41c1c574d9a944a894f6bbf5e16df33, type: 2}
+  m_sharedMaterial: {fileID: -2409339427613772652, guid: d41c1c574d9a944a894f6bbf5e16df33, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190335
-  m_fontColor: {r: 1, g: 0, b: 0, a: 1}
+    rgba: 4284337919
+  m_fontColor: {r: 1, g: 0.80784315, b: 0.3647059, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -24286,7 +24286,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -5272392862168012325, guid: 617c06724d6306b4d80a3df10ec3768d, type: 2}
+  - {fileID: -2409339427613772652, guid: d41c1c574d9a944a894f6bbf5e16df33, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
