@@ -61,49 +61,19 @@ public class PauseMenuController : MonoBehaviour
         var uiDoc = pauseMenuUI.GetComponent<UIDocument>();
         var root = uiDoc.rootVisualElement;
 
-        // Pages
-        var mainPage = root.Q("MainPage");
-        var settingsPage = root.Q("SettingsPage");
-
-        // Always show main page first, hide settings
-        mainPage.style.display = DisplayStyle.Flex;
-        settingsPage.style.display = DisplayStyle.None;
-
-        // Main page buttons (same names as MainMenu.uxml)
-        var playButton = root.Q("Play_Button") as Button;
-        var settingsButton = root.Q("Settings_Button") as Button;
-        var exitButton = root.Q("Exit_Button") as Button;
-
-        // Settings page elements
-        var volumeSlider = root.Q("Volume_Slider") as Slider;
+        var volumeSlider = root.Q("Volume_Slider") as Slider; 
         var mouseSensSlider = root.Q("Mouse_Slider") as Slider;
         var controllerSensSlider = root.Q("Controller_Slider") as Slider;
-        var backButton = root.Q("Back_Button") as Button;
+        var unpauseButton = root.Q("Unpause_Button") as Button;
+        var exitButton = root.Q("Exit_Button") as Button;
 
-        // Load current settings into sliders
-        SettingsData settings = SettingsManager.Instance.GetSettingsData();
-        if (volumeSlider != null) volumeSlider.value = settings.generalAudioMultiplier;
-        if (mouseSensSlider != null) mouseSensSlider.value = settings.mouseSens;
-        if (controllerSensSlider != null) controllerSensSlider.value = settings.controllerSens;
+        //This was the simplest way I could get the sliders to keep their positions when closing and reopening the menu
+        SettingsData SettingsStruct = SettingsManager.Instance.GetSettingsData();
+        volumeSlider.value = SettingsStruct.generalAudioMultiplier;
+        mouseSensSlider.value = SettingsStruct.mouseSens;
+        controllerSensSlider.value = SettingsStruct.controllerSens;
 
-        // Wire main page buttons
-        if (playButton != null)
-        {
-            playButton.UnregisterCallback<ClickEvent>(OnClickContinue);
-            playButton.RegisterCallback<ClickEvent>(OnClickContinue);
-        }
-        if (settingsButton != null)
-        {
-            settingsButton.UnregisterCallback<ClickEvent>(OnClickSettings);
-            settingsButton.RegisterCallback<ClickEvent>(OnClickSettings);
-        }
-        if (exitButton != null)
-        {
-            exitButton.UnregisterCallback<ClickEvent>(OnClickExit);
-            exitButton.RegisterCallback<ClickEvent>(OnClickExit);
-        }
-
-        // Wire settings page
+        // Unregister first to avoid stacking duplicate callbacks
         if (volumeSlider != null)
         {
             volumeSlider.UnregisterCallback<ChangeEvent<float>>(ChangeVolume);
@@ -119,11 +89,38 @@ public class PauseMenuController : MonoBehaviour
             controllerSensSlider.UnregisterCallback<ChangeEvent<float>>(ChangeControllerSens);
             controllerSensSlider.RegisterCallback<ChangeEvent<float>>(ChangeControllerSens);
         }
-        if (backButton != null)
+        if (unpauseButton != null)
         {
-            backButton.UnregisterCallback<ClickEvent>(OnClickBack);
-            backButton.RegisterCallback<ClickEvent>(OnClickBack);
+            unpauseButton.UnregisterCallback<ClickEvent>(OnClickContinue);
+            unpauseButton.RegisterCallback<ClickEvent>(OnClickContinue);
         }
+        if (exitButton != null)
+        {
+            exitButton.UnregisterCallback<ClickEvent>(OnClickExit);
+            exitButton.RegisterCallback<ClickEvent>(OnClickExit);
+        }
+    }
+
+    private void ChangeVolume(ChangeEvent<float> evt)
+    {
+        SettingsData SettingsStruct = SettingsManager.Instance.GetSettingsData();
+        SettingsStruct.generalAudioMultiplier = evt.newValue;
+        SettingsManager.Instance.SaveSettings(SettingsStruct);
+        
+    }
+
+    private void ChangeMouseSens(ChangeEvent<float> evt)
+    {
+        SettingsData SettingsStruct = SettingsManager.Instance.GetSettingsData();
+        SettingsStruct.mouseSens = evt.newValue;
+        SettingsManager.Instance.SaveSettings(SettingsStruct);
+    }
+
+    private void ChangeControllerSens(ChangeEvent<float> evt)
+    {
+        SettingsData SettingsStruct = SettingsManager.Instance.GetSettingsData();
+        SettingsStruct.controllerSens = evt.newValue;
+        SettingsManager.Instance.SaveSettings(SettingsStruct);
     }
 
     private void OnClickContinue(ClickEvent evt)
@@ -131,50 +128,12 @@ public class PauseMenuController : MonoBehaviour
         Resume();
     }
 
-    private void OnClickSettings(ClickEvent evt)
-    {
-        var uiDoc = pauseMenuUI.GetComponent<UIDocument>();
-        var root = uiDoc.rootVisualElement;
-        root.Q("MainPage").style.display = DisplayStyle.None;
-        root.Q("SettingsPage").style.display = DisplayStyle.Flex;
-    }
-
-    private void OnClickBack(ClickEvent evt)
-    {
-        var uiDoc = pauseMenuUI.GetComponent<UIDocument>();
-        var root = uiDoc.rootVisualElement;
-        root.Q("SettingsPage").style.display = DisplayStyle.None;
-        root.Q("MainPage").style.display = DisplayStyle.Flex;
-    }
-
     private void OnClickExit(ClickEvent evt)
     {
-#if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
-#else
+        Time.timeScale = 1f;
+        AudioListener.pause = false;
+        IsPaused = false;
         Application.Quit();
-#endif
-    }
-
-    private void ChangeVolume(ChangeEvent<float> evt)
-    {
-        SettingsData settings = SettingsManager.Instance.GetSettingsData();
-        settings.generalAudioMultiplier = evt.newValue;
-        SettingsManager.Instance.SaveSettings(settings);
-    }
-
-    private void ChangeMouseSens(ChangeEvent<float> evt)
-    {
-        SettingsData settings = SettingsManager.Instance.GetSettingsData();
-        settings.mouseSens = evt.newValue;
-        SettingsManager.Instance.SaveSettings(settings);
-    }
-
-    private void ChangeControllerSens(ChangeEvent<float> evt)
-    {
-        SettingsData settings = SettingsManager.Instance.GetSettingsData();
-        settings.controllerSens = evt.newValue;
-        SettingsManager.Instance.SaveSettings(settings);
     }
 
     private void OnDestroy()

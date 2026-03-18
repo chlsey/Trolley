@@ -3,12 +3,12 @@
     <ui:VisualElement name="MainMenu" style="width: 100%; height: 100%;">
         <ui:VisualElement name="Root" class="root" style="width: 100%; height: 100%;">
             <ui:VisualElement name="Background_Image" class="background-image" style="flex-grow: 1;"/>
-        </ui:VisualElement>
-        <ui:VisualElement name="Panel" class="panel" style="position: absolute;">
-            <ui:VisualElement name="Button_Container" style="flex-grow: 1;">
-                <ui:Button text="" display-tooltip-when-elided="true" name="Play_Button" icon-image="" emoji-fallback-support="false" class="main-menu-button" style="top: 63%; left: 4%; width: 22%; height: 20%;"/>
-                <ui:Button text="" name="Settings_Button" class="main-menu-button" style="top: 49%; left: 31%; width: 41%; height: 20%;"/>
-                <ui:Button text="" name="Exit_Button" class="main-menu-button" style="top: 74%; left: 41%; width: 22%; height: 20%;"/>
+            <ui:VisualElement name="Panel" class="panel" style="position: absolute;">
+                <ui:VisualElement name="Button_Container" style="flex-grow: 1;">
+                    <ui:Button text="" display-tooltip-when-elided="true" name="Play_Button" icon-image="" emoji-fallback-support="false" class="main-menu-button" style="top: 63%; left: 4%; width: 22%; height: 20%;"/>
+                    <ui:Button text="" name="Settings_Button" class="main-menu-button" style="top: 49%; left: 31%; width: 41%; height: 20%;"/>
+                    <ui:Button text="" name="Exit_Button" class="main-menu-button" style="top: 74%; left: 41%; width: 22%; height: 20%;"/>
+                </ui:VisualElement>
             </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>

@@ -21227,7 +21227,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1577381315}
-  - component: {fileID: 1577381314}
+  - component: {fileID: 1577381316}
   m_Layer: 0
   m_Name: PauseMenu
   m_TagString: Untagged
@@ -21235,19 +21235,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1577381314
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1577381313}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e2a510fa92b792449a9e35fce127b3a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PauseMenuController
-  pauseMenuUI: {fileID: 1020471289}
 --- !u!4 &1577381315
 Transform:
   m_ObjectHideFlags: 0
@@ -21264,6 +21251,19 @@ Transform:
   - {fileID: 1020471291}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1577381316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1577381313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca09eaddc4fe91346826cfd40b12c86b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PauseMenuController
+  pauseMenuUI: {fileID: 1020471289}
 --- !u!1001 &1591550824
 PrefabInstance:
   m_ObjectHideFlags: 0

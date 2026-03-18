@@ -22,12 +22,16 @@ public class MenuController : MonoBehaviour
         var uiDocument = GetComponent<UIDocument>();
         var root = uiDocument.rootVisualElement;
 
+        var playButton = root.Q("Play_Button") as Button;
+
         // Main menu
         mainMenu = root.Q("MainMenu");
-        var playButton = root.Q("Play_Button") as Button;
+        
+        var settingsButton = root.Q("Settings_Button") as Button;
         var exitButton = root.Q("Exit_Button") as Button;
 
         playButton.RegisterCallback<ClickEvent>(ClickPlay);
+        settingsButton.RegisterCallback<ClickEvent>(ClickSettings);
         exitButton.RegisterCallback<ClickEvent>(ClickExit);
         
 
@@ -66,6 +70,11 @@ public class MenuController : MonoBehaviour
     //     IsCat = false;
     //     SceneManager.LoadScene(1);
     // }
+
+    private void ClickSettings(ClickEvent evt)
+    {
+        Debug.Log("Settings Pressed");
+    }
 
     private void ClickExit(ClickEvent evt)
     {
