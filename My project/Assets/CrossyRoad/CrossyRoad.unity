@@ -2110,6 +2110,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   audioListener: {fileID: 0}
+  nextSceneLoader: {fileID: 0}
   fadeDuration: 0.25
   isDeathCoroutinePlaying: 0
 --- !u!4 &824921349
@@ -2549,7 +2550,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 27804bc1dcc654943ba517589afa3d03, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.6
   m_Pitch: 1
   Loop: 1
   Mute: 0

@@ -567,3 +567,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Road
   vehicles:
   - {fileID: 7872888443558147769, guid: 329cb625a9dcbe042afcb3d125e61082, type: 3}
+  - {fileID: 7872888443558147769, guid: cc0033337ced5974681b4abf4c91b9b6, type: 3}
