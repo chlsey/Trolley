@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Controls;
 
 public class GameManager : MonoBehaviour {
 
@@ -22,6 +23,8 @@ public Animator anim;
 [SerializeField] private int spawnDistance = 20;
 public AudioClip Jump;
 public AudioSource audioSource;
+float horizontalInput;
+float verticalInput;
 
 enum GameState {
     Ready,
@@ -81,17 +84,21 @@ private bool InStartArea(Vector2Int location) {
 void Update() {
     if (gameState == GameState.Ready) {
       Vector2Int moveDirection = Vector2Int.zero;
+      horizontalInput = Input.GetAxisRaw("Horizontal");
+      verticalInput = Input.GetAxisRaw("Vertical");
+      
+      bool sideways = Mathf.Abs(horizontalInput) > Mathf.Abs(verticalInput);
 
-      if (Keyboard.current.upArrowKey.wasPressedThisFrame) {
+      if (Keyboard.current.upArrowKey.wasPressedThisFrame || (!sideways && verticalInput > 0)) {
         character.localRotation = Quaternion.identity;
         moveDirection.y = 1;
-      } else if (Keyboard.current.downArrowKey.wasPressedThisFrame) {
+      } else if (Keyboard.current.downArrowKey.wasPressedThisFrame || (!sideways && verticalInput < 0) ) {
         character.localRotation = Quaternion.Euler(0, 180, 0);
         moveDirection.y = -1;
-      } else if (Keyboard.current.leftArrowKey.wasPressedThisFrame) {
+      } else if (Keyboard.current.leftArrowKey.wasPressedThisFrame || (sideways && horizontalInput < 0)) {
         character.localRotation = Quaternion.Euler(0, -90, 0);
         moveDirection.x = -1;
-      } else if (Keyboard.current.rightArrowKey.wasPressedThisFrame) {
+      } else if (Keyboard.current.rightArrowKey.wasPressedThisFrame || (sideways && horizontalInput > 0)) {
         character.localRotation = Quaternion.Euler(0, 90, 0);
         moveDirection.x = 1;
       }

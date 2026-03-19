@@ -1,0 +1,72 @@
+:root {
+}
+
+.pause-menu-buttons {
+    -unity-background-image-tint-color: rgba(55, 55, 55, 0);
+    border-left-color: rgb(113, 88, 67);
+    border-right-color: rgb(113, 88, 67);
+    border-top-color: rgb(113, 88, 67);
+    border-bottom-color: rgb(113, 88, 67);
+    background-color: rgb(255, 225, 206);
+    border-top-width: 6px;
+    border-right-width: 6px;
+    border-bottom-width: 6px;
+    border-left-width: 6px;
+    flex-grow: 1;
+    width: 57px;
+    -unity-font-definition: url("project://database/Assets/UI/UI%20Textures/ITCGaramondStd-BdCond.otf?fileID=12800000&guid=32d475e0d1034f443b328fdf926d6df9&type=3#ITCGaramondStd-BdCond");
+    font-size: 48px;
+    height: 72px;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+    border-bottom-left-radius: 6px;
+    bottom: -48px;
+    -unity-text-align: upper-center;
+}
+
+.option-sliders {
+    -unity-font-definition: url("project://database/Assets/UI/UI%20Textures/ITCGaramondStd-BdCond.otf?fileID=12800000&guid=32d475e0d1034f443b328fdf926d6df9&type=3#ITCGaramondStd-BdCond");
+    font-size: 46px;
+    text-shadow: 0 0 0 rgb(53, 44, 38);
+    color: rgb(35, 29, 25);
+}
+
+.unity-base-slider__dragger {
+    width: 25px;
+    height: 25px;
+    background-color: rgb(255, 225, 206);
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+    border-left-color: rgb(113, 88, 67);
+    border-right-color: rgb(113, 88, 67);
+    border-top-color: rgb(113, 88, 67);
+    border-bottom-color: rgb(113, 88, 67);
+    border-top-width: 3px;
+    border-right-width: 3px;
+    border-bottom-width: 3px;
+    border-left-width: 3px;
+}
+
+.unity-base-slider__tracker {
+    border-left-color: rgb(113, 88, 67);
+    border-right-color: rgb(113, 88, 67);
+    border-top-color: rgb(113, 88, 67);
+    border-bottom-color: rgb(113, 88, 67);
+    border-top-width: 1px;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    width: auto;
+    background-color: rgb(190, 161, 143);
+}
+
+.unity-base-slider__fill {
+    border-left-color: rgb(113, 88, 67);
+    border-right-color: rgb(113, 88, 67);
+    border-top-color: rgb(113, 88, 67);
+    border-bottom-color: rgb(113, 88, 67);
+    background-color: rgb(255, 225, 206);
+}
