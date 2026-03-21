@@ -576,8 +576,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   stageLights: {fileID: 32951335}
-  minTime: 0.6
-  maxTime: 0.6
+  minTime: 0.5
+  maxTime: 0.5
 --- !u!114 &32951334
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1698,8 +1698,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   stageLights: {fileID: 180934945}
-  minTime: 0.6
-  maxTime: 0.6
+  minTime: 0.5
+  maxTime: 0.5
 --- !u!114 &180934944
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2735,8 +2735,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4284337663
-  m_fontColor: {r: 1, g: 0.8040582, b: 0.36320752, a: 1}
+    rgba: 4278208767
+  m_fontColor: {r: 1, g: 0.28122446, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -3539,7 +3539,7 @@ Transform:
   m_GameObject: {fileID: 347645701}
   serializedVersion: 2
   m_LocalRotation: {x: -0.06469472, y: -0.691648, z: -0.06624454, w: 0.7162747}
-  m_LocalPosition: {x: -7.1352386, y: 1.1293316, z: 14.665649}
+  m_LocalPosition: {x: -7.1352386, y: 2.43, z: 14.665649}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -16764,7 +16764,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.346
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -20304,8 +20304,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   stageLights: {fileID: 1480070177}
-  minTime: 0.6
-  maxTime: 0.6
+  minTime: 0.5
+  maxTime: 0.5
 --- !u!114 &1480070176
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23995,7 +23995,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -1605705024695921718, guid: f9d564b2ee1e547c2b8967c3b10e3411, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -8.22
+      value: -11.07
       objectReference: {fileID: 0}
     - target: {fileID: -1605705024695921718, guid: f9d564b2ee1e547c2b8967c3b10e3411, type: 3}
       propertyPath: m_LocalPosition.y
@@ -24003,7 +24003,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -1605705024695921718, guid: f9d564b2ee1e547c2b8967c3b10e3411, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.2
+      value: 0.47
       objectReference: {fileID: 0}
     - target: {fileID: -1405031122685678533, guid: f9d564b2ee1e547c2b8967c3b10e3411, type: 3}
       propertyPath: m_LocalPosition.y
@@ -24195,8 +24195,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4284337919
-  m_fontColor: {r: 1, g: 0.80784315, b: 0.3647059, a: 1}
+    rgba: 4278196216
+  m_fontColor: {r: 0.9716981, g: 0.08997204, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:

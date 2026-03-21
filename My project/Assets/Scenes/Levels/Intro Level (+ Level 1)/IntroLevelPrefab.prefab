@@ -781,7 +781,7 @@ MonoBehaviour:
   trolleyLight: {fileID: 5737502597132106478}
   oneLight: {fileID: 8183914992476133413}
   fiveLight: {fileID: 5843966229575708625}
-  introClip: {fileID: 8300000, guid: cf886e64976414110b6ff52466510057, type: 3}
+  introClip: {fileID: 8300000, guid: ae575ece78c484bebb448b46cf760695, type: 3}
   transitionClip: {fileID: 8300000, guid: 6532fc078bea34cc08d89b4c40edc7b6, type: 3}
   trolleyClip: {fileID: 8300000, guid: cf38f33f4d54cdf408af14a15955aac3, type: 3}
   applauseClip: {fileID: 8300000, guid: 54c92324773dd4d40abe4cc91d401f22, type: 3}
@@ -5548,7 +5548,7 @@ Transform:
   m_GameObject: {fileID: 3314569106315651071}
   serializedVersion: 2
   m_LocalRotation: {x: -0.8119376, y: 0.16275373, z: -0.029333886, w: -0.5598287}
-  m_LocalPosition: {x: -5.8600006, y: 9.6, z: -15.919998}
+  m_LocalPosition: {x: -6.21, y: 12, z: -19.26}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5563,10 +5563,10 @@ Light:
   m_GameObject: {fileID: 3314569106315651071}
   m_Enabled: 1
   serializedVersion: 12
-  m_Type: 0
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1000
-  m_Range: 5
+  m_Type: 2
+  m_Color: {r: 0.8867924, g: 0.69013745, b: 0.3890174, a: 1}
+  m_Intensity: 50
+  m_Range: 8.8
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize2D: {x: 0.5, y: 0.5}
@@ -5655,7 +5655,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3314569106315651071}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5c8bca95f7c947b4db5fb152a0d693d8, type: 3}
   m_Name: 
@@ -7787,6 +7787,8 @@ MonoBehaviour:
   startPoint: {fileID: 0}
   endPoint: {fileID: 0}
   clockHand: {fileID: 5403676864557859492}
+  trolleyEnterAudio: {fileID: 0}
+  audioTriggerProgress: 0.95
   rotate: 0
   trolleyProgress: 0
 --- !u!1 &4793020540809003149
@@ -9536,13 +9538,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6216079193687186007}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.20687525, y: -0, z: -0, w: 0.9783673}
-  m_LocalPosition: {x: 7.6600018, y: 8.088499, z: -29.504807}
+  m_LocalRotation: {x: 0.06996621, y: -0, z: -0, w: 0.99754936}
+  m_LocalPosition: {x: 7.6600018, y: 8.309078, z: -41.322075}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2630297660007394051}
-  m_LocalEulerAnglesHint: {x: 23.879, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 8.024, y: 0, z: 0}
 --- !u!108 &6009191080659529258
 Light:
   m_ObjectHideFlags: 0
@@ -9553,8 +9555,8 @@ Light:
   m_Enabled: 1
   serializedVersion: 12
   m_Type: 0
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1000
+  m_Color: {r: 0, g: 0.757931, b: 1, a: 1}
+  m_Intensity: 0
   m_Range: 100
   m_SpotAngle: 24.38395
   m_InnerSpotAngle: 17.988802
@@ -10235,13 +10237,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6430167496729134200}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.20687525, y: -0, z: -0, w: 0.9783673}
-  m_LocalPosition: {x: -2.0099993, y: 8.47, z: -30.07}
+  m_LocalRotation: {x: 0.06996621, y: -0, z: -0, w: 0.99754936}
+  m_LocalPosition: {x: -2.0099993, y: 8.521658, z: -41.97}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2630297660007394051}
-  m_LocalEulerAnglesHint: {x: 23.879, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 8.024, y: 0, z: 0}
 --- !u!108 &7153574832273370172
 Light:
   m_ObjectHideFlags: 0
@@ -10253,7 +10255,7 @@ Light:
   serializedVersion: 12
   m_Type: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1000
+  m_Intensity: 0
   m_Range: 100
   m_SpotAngle: 25.809273
   m_InnerSpotAngle: 19.122087
@@ -10790,13 +10792,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6798030448394770070}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.20687525, y: -0, z: -0, w: 0.9783673}
-  m_LocalPosition: {x: 2.8500004, y: 10.549999, z: -30.330002}
+  m_LocalRotation: {x: 0.06996621, y: -0, z: -0, w: 0.99754936}
+  m_LocalPosition: {x: 2.8500004, y: 10.4515, z: -42.788353}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2630297660007394051}
-  m_LocalEulerAnglesHint: {x: 23.879, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 8.024, y: 0, z: 0}
 --- !u!108 &7893355971481835246
 Light:
   m_ObjectHideFlags: 0
@@ -10808,7 +10810,7 @@ Light:
   serializedVersion: 12
   m_Type: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1000
+  m_Intensity: 0
   m_Range: 1000
   m_SpotAngle: 24.555737
   m_InnerSpotAngle: 9.657857

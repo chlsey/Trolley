@@ -28,7 +28,18 @@ public class LightManager : MonoBehaviour
     {
         Instance = this;
     }
-
+    public void TurnOnRGBLights()
+    {
+        mainLight1.enabled = true;
+        mainLight2.enabled = true;
+        mainLight3.enabled = true;   
+    }
+    public void TurnOffRGBLights()
+    {
+        mainLight1.enabled = false;
+        mainLight2.enabled = false;
+        mainLight3.enabled = false;   
+    }
     public void TurnOffArchLights()
     {
         foreach (Light light in archLights)
