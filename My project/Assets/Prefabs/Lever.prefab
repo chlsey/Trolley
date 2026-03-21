@@ -60,6 +60,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8391222552659086748, guid: 762a75f710f6a6142b10207b6a1f27ed, type: 3}
+      propertyPath: m_Name
+      value: Lever_Mesh
+      objectReference: {fileID: 0}
     - target: {fileID: -7194095599716473668, guid: 762a75f710f6a6142b10207b6a1f27ed, type: 3}
       propertyPath: m_CastShadows
       value: 0
@@ -84,9 +88,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 762a75f710f6a6142b10207b6a1f27ed, type: 3}
       insertIndex: -1
       addedObject: {fileID: 197832044056532481}
-    - targetCorrespondingSourceObject: {fileID: 674216140917715737, guid: 762a75f710f6a6142b10207b6a1f27ed, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2301425876849639580}
   m_SourcePrefab: {fileID: 100100000, guid: 762a75f710f6a6142b10207b6a1f27ed, type: 3}
 --- !u!1 &3133905984979408658 stripped
 GameObject:
@@ -129,6 +130,8 @@ MonoBehaviour:
   trolleyMovement: {fileID: 0}
   catapultProjectile: {fileID: 0}
   redGreenLight: {fileID: 0}
+  isClusterTruckLevel: 0
+  nextScene: {fileID: 0}
   greenRedLight: {fileID: 0}
   anim: {fileID: 2211667596631943093}
   armAnim: {fileID: 0}
@@ -257,29 +260,3 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!1 &3379946230201850202 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 674216140917715737, guid: 762a75f710f6a6142b10207b6a1f27ed, type: 3}
-  m_PrefabInstance: {fileID: 2863364889653946947}
-  m_PrefabAsset: {fileID: 0}
---- !u!65 &2301425876849639580
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3379946230201850202}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.01042305, y: 0.0038220112, z: 0.009075522}
-  m_Center: {x: 0.0012287922, y: -0.00000000239604, z: 0.004472028}

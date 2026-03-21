@@ -21,17 +21,18 @@ public class ClusterTrucksVoiceController : MonoBehaviour
     bool failedSeqStarted;
     static bool playedIntro = false;
     private bool wasGrounded = true;
-    
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private Coroutine introCoroutine;
+
     void Start()
     {
+        // Always start the theme song
+        VOManager.Instance.StartBackgroundMusic(themeSong);
+
         if (!SubwayGameManager.Instance.playedIntro)
         {
-            StopCoroutine(PlayClusterTruckIntro());
-            StartCoroutine(PlayClusterTruckIntro());
-        } else
-        {
-            VOManager.Instance.StartBackgroundMusic(themeSong);
+            if (introCoroutine != null)
+                StopCoroutine(introCoroutine);
+            introCoroutine = StartCoroutine(PlayClusterTruckIntro());
         }
     }
 
@@ -50,13 +51,21 @@ public class ClusterTrucksVoiceController : MonoBehaviour
 
         if (failedSeqStarted == false && healthScript.isDeathCoroutinePlaying == true && !SubwayGameManager.Instance.playedIntro)
         {
-            StopCoroutine(PlayClusterTruckIntro());
+            if (introCoroutine != null)
+            {
+                StopCoroutine(introCoroutine);
+                introCoroutine = null;
+            }
             return;
         }
         if(failedSeqStarted == false && healthScript.isDeathCoroutinePlaying == true)
         {
             Debug.Log("player died, playing random Voiceline");
-            StopCoroutine(PlayClusterTruckIntro());
+            if (introCoroutine != null)
+            {
+                StopCoroutine(introCoroutine);
+                introCoroutine = null;
+            }
             StartCoroutine(PlayDeathVoiceLine());
             failedSeqStarted = true;
         }
@@ -100,7 +109,6 @@ public class ClusterTrucksVoiceController : MonoBehaviour
 
         });
         yield return new WaitForSeconds(8);
-        VOManager.Instance.StartBackgroundMusic(themeSong);
     }
 
     private IEnumerator PlayDeathVoiceLine()
