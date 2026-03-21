@@ -12,10 +12,15 @@ public class ClusterTrucksVoiceController : MonoBehaviour
     public AudioClip fail3;
     public AudioClip catMeow;
     public AudioClip themeSong;
+    public AudioClip jumpSound;
+    [Range(0f, 1f)]
+    public float jumpVolume = 0.5f;
     public Health healthScript;
     public PlayerMovement playerMovement;
+    public AudioSource sfxSource;
     bool failedSeqStarted;
     static bool playedIntro = false;
+    private bool wasGrounded = true;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -32,6 +37,17 @@ public class ClusterTrucksVoiceController : MonoBehaviour
 
     void Update()
     {
+        // Detect jump: player was grounded last frame but isn't now
+        if (jumpSound != null && playerMovement != null && VOManager.Instance != null)
+        {
+            bool grounded = playerMovement.canJump;
+            if (wasGrounded && !grounded)
+            {
+                VOManager.Instance.sfxSource.PlayOneShot(jumpSound, jumpVolume);
+            }
+            wasGrounded = grounded;
+        }
+
         if (failedSeqStarted == false && healthScript.isDeathCoroutinePlaying == true && !SubwayGameManager.Instance.playedIntro)
         {
             StopCoroutine(PlayClusterTruckIntro());

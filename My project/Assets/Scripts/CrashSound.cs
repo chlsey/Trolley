@@ -4,15 +4,11 @@ public class CrashSound : MonoBehaviour
 {
     public AudioSource audioSource;
     public AudioClip crash;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    [Range(0f, 1f)]
+    public float volume = 0.4f;
 
-    // Update is called once per frame
     private void OnTriggerEnter(Collider other)
     {
-        audioSource.PlayOneShot(crash);
+        audioSource.PlayOneShot(crash, volume);
     }
 }
