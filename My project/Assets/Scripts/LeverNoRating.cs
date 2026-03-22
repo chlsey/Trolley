@@ -47,6 +47,13 @@ public class LeverNoRating : MonoBehaviour
             audioSource.PlayOneShot(switchSound);
             enabled = false;
         }
+        else if (nearLever && gotInput)
+        {
+            anim.SetTrigger("Switch");
+            armAnim.SetTrigger("Switch");
+            audioSource.PlayOneShot(switchSound);
+            enabled = false;
+        }
     }
 
     private void OnTriggerEnter(Collider other)

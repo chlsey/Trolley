@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine.Serialization;
+using Unity.VisualScripting;
 
 public class VOManager : MonoBehaviour
 {
@@ -20,7 +21,8 @@ public class VOManager : MonoBehaviour
     
     [Header("Subtitles")]
     public TextMeshProUGUI subtitleText;
-
+    [UnitHeaderInspectable("Tutorial Prompts")]
+    public TextMeshProUGUI tutorialPrompt;
     [System.Serializable]
     public struct SubtitleLine
     {
@@ -220,7 +222,28 @@ public class VOManager : MonoBehaviour
         ClearSubtitle();
 
         var queuedLines = new List<SubtitleLine>(subtitleLines);
-        subtitleCoroutine = StartCoroutine(RunSubtitleSequence(queuedLines));
+        subtitleCoroutine = StartCoroutine(RunSubtitleSequence(queuedLines, subtitleText));
+    }
+
+        public void ShowPrompt(List<SubtitleLine> subtitleLines)
+    {
+        for (int index = 0; index < subtitleLines.Count; index++)
+        {
+            if (subtitleLines[index].timeStartMilliseconds < 0f)
+            {
+                Debug.LogWarning($"VOManager: subtitle line {index} must have timeStartMilliseconds >= 0.", this);
+                return;
+            }
+
+            if (subtitleLines[index].durationMilliseconds <= 0f)
+            {
+                Debug.LogWarning($"VOManager: subtitle line {index} must have durationMilliseconds > 0.", this);
+                return;
+            }
+        }
+
+        var queuedLines = new List<SubtitleLine>(subtitleLines);
+        subtitleCoroutine = StartCoroutine(RunSubtitleSequence(queuedLines, tutorialPrompt));
     }
 
     public void ClearSubtitle()
@@ -235,8 +258,9 @@ public class VOManager : MonoBehaviour
             subtitleText.text = string.Empty;
     }
 
-    private IEnumerator RunSubtitleSequence(List<SubtitleLine> subtitleLines)
+    private IEnumerator RunSubtitleSequence(List<SubtitleLine> subtitleLines, TextMeshProUGUI displayMesh)
     {
+
         subtitleLines.Sort((left, right) => left.timeStartMilliseconds.CompareTo(right.timeStartMilliseconds));
 
         float elapsedMilliseconds = 0f;
@@ -255,7 +279,7 @@ public class VOManager : MonoBehaviour
                 elapsedMilliseconds = line.timeStartMilliseconds;
             }
 
-            subtitleText.text = line.text ?? string.Empty;
+            displayMesh.text = line.text ?? string.Empty;
 
             float lineEndMilliseconds = line.timeStartMilliseconds + line.durationMilliseconds;
             float hideAtMilliseconds = Mathf.Min(lineEndMilliseconds, nextLineStartMilliseconds);
@@ -267,12 +291,12 @@ public class VOManager : MonoBehaviour
                 elapsedMilliseconds = hideAtMilliseconds;
             }
 
-            if (lineEndMilliseconds <= nextLineStartMilliseconds && subtitleText != null)
-                subtitleText.text = string.Empty;
+            if (lineEndMilliseconds <= nextLineStartMilliseconds && displayMesh != null)
+                displayMesh.text = string.Empty;
         }
 
-        if (subtitleText != null)
-            subtitleText.text = string.Empty;
+        if (displayMesh != null)
+            displayMesh.text = string.Empty;
 
         subtitleCoroutine = null;
     }

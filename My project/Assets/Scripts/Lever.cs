@@ -17,7 +17,6 @@ public class Lever : MonoBehaviour
     public VOManager voManager;
     public Rating rating;
     public bool leverFlipped = false;
-    public GameObject qPrompt;
 
     private bool nearLever;
     private bool gotInput;
@@ -25,10 +24,6 @@ public class Lever : MonoBehaviour
     void Start()
     {
         nearLever = false;
-        if(qPrompt != null) {
-            Debug.Log("qpromt exists!");
-            qPrompt.SetActive(false);
-        }
 
     }
 
@@ -50,7 +45,6 @@ public class Lever : MonoBehaviour
             Debug.Log("Track Switched");
             // rating.ChangeRating(-0.5f);
             
-            if(qPrompt != null) qPrompt.SetActive(true);
             if (isClusterTruckLevel)
             {
                 nextScene.TriggerSceneChange();

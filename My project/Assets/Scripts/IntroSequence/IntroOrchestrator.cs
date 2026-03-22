@@ -47,6 +47,7 @@ public class IntroOrchestrator : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {   
+        leverLight.intensity = 0;
         deathCoroutinePlaying = false;
         StartCoroutine(PlayIntroSequence());
     }
@@ -58,7 +59,12 @@ public class IntroOrchestrator : MonoBehaviour
         Debug.Log("PlayIntroSequence started");
         LightManager.Instance.TurnOffRGBLights();
         // TODO: 0:03 use L to move R to look
-
+        VOManager.Instance.ShowPrompt(new List<VOManager.SubtitleLine>
+        {
+            new VOManager.SubtitleLine("Use <sprite index=8> to move,  <sprite index=9> to look", 0, 3000),
+            new VOManager.SubtitleLine("Press <sprite index=1> to flip the lever", 4500, 6500),
+        });
+        
 
         // Subtitles EXAMPLE for intro orchestration
         // Add a subtitles line for each, where the parameters are:
@@ -82,11 +88,12 @@ public class IntroOrchestrator : MonoBehaviour
         yield return new WaitForSeconds(4);
 
         // 0:23 The trolley showwwww
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(2.3f);
         // curtain opens
         yield return CurtainController.Instance.OpenIntroCurtains();
         VOManager.Instance.PlayAudience(applauseClip);
         CurtainLightsOff();
+        VOManager.Instance.PlaySoundFX(lightOnClip);
         LightManager.Instance.TurnOnRGBLights();
         LightManager.Instance.TurnOnArchLights();
         LightManager.Instance.TurnOnWalkwayLights();
@@ -121,7 +128,7 @@ public class IntroOrchestrator : MonoBehaviour
         
 
         // 0:28 a trolley is speeding down the tracks
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(5.7f);
         VOManager.Instance.PlaySoundFX(lightOnClip);
         trolleyLight.intensity = 10000f;
         VOManager.Instance.PlaySoundFX(trolleyClip);

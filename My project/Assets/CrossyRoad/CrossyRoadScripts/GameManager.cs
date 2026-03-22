@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Controls;
+using System.Threading.Tasks;
 
 public class GameManager : MonoBehaviour {
 
@@ -128,7 +129,7 @@ void Update() {
         }
       }
     }
-    if (gameState == GameState.Dead && Keyboard.current.spaceKey.wasPressedThisFrame) {
+    if (gameState == GameState.Dead && (Keyboard.current.spaceKey.wasPressedThisFrame || Gamepad.current.buttonSouth.wasPressedThisFrame)) {
       NewLevel();
     }
     Vector3 cameraPosition = new(character.position.x + 2, 4, character.position.z - 3);
@@ -173,8 +174,21 @@ void Update() {
     }
   }
 
-  public void PlayerCollision() {
+  public async Task PlayerCollisionAsync() {
     gameState = GameState.Dead;
     deathText.enabled = true;
+    var gamepad = Gamepad.current;
+
+    if (gamepad != null)
+    {
+        // Set motor speeds (0.0 to 1.0)
+        // Low frequency is heavy/thumpy, High frequency is sharp/buzzy
+        gamepad.SetMotorSpeeds(0.8f, 0.2f);
+
+        await Task.Delay(200);
+        Debug.Log("hit victim, rumbled");
+        // Reset motors to stop the vibration
+        gamepad.ResetHaptics();
+    }
   }
 }
