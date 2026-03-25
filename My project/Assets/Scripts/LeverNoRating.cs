@@ -13,12 +13,14 @@ public class LeverNoRating : MonoBehaviour
     public Animator armAnim;
     public AudioSource audioSource;
     public AudioClip switchSound;
+    public bool leverFlipped;
 
     private bool nearLever;
     private bool gotInput;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        leverFlipped = false;
         nearLever = false;
     }
 
@@ -38,6 +40,7 @@ public class LeverNoRating : MonoBehaviour
             Debug.Log("TrackSwitched");
             Debug.Log("Track Switched");
             enabled = false;
+            leverFlipped = true;
         }
         if (nearLever && gotInput && catapultProjectile)
         {
@@ -46,6 +49,7 @@ public class LeverNoRating : MonoBehaviour
             armAnim.SetTrigger("Switch");
             audioSource.PlayOneShot(switchSound);
             enabled = false;
+            leverFlipped = true;
         }
         else if (nearLever && gotInput)
         {
@@ -53,6 +57,8 @@ public class LeverNoRating : MonoBehaviour
             armAnim.SetTrigger("Switch");
             audioSource.PlayOneShot(switchSound);
             enabled = false;
+            Debug.Log("lever flipped in lever script");
+            leverFlipped = true;
         }
     }
 

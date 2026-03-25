@@ -31,8 +31,8 @@ public class IntroOrchestrator : MonoBehaviour
 
 
     [Header("VO Clips")]
-    public AudioClip introClip;      
-    public AudioClip transitionClip;  
+    public AudioClip introClipPart1;      
+    public AudioClip introClipPart2;  
     public AudioClip trolleyClip;  
 
 
@@ -44,7 +44,8 @@ public class IntroOrchestrator : MonoBehaviour
     public AudioClip introBGM; 
     public AudioClip clock;
     public bool deathCoroutinePlaying;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
+    public LeverNoRating lever;
     void Start()
     {   
         leverLight.intensity = 0;
@@ -52,43 +53,49 @@ public class IntroOrchestrator : MonoBehaviour
         StartCoroutine(PlayIntroSequence());
     }
 
-
-    private IEnumerator PlayIntroSequence()
-    {
-        VOManager.Instance.PlayLine(introClip);
-        Debug.Log("PlayIntroSequence started");
-        LightManager.Instance.TurnOffRGBLights();
-        // TODO: 0:03 use L to move R to look
-        VOManager.Instance.ShowPrompt(new List<VOManager.SubtitleLine>
-        {
-            new VOManager.SubtitleLine("Use <sprite index=8> to move,  <sprite index=9> to look", 0, 3000),
-            new VOManager.SubtitleLine("Press <sprite index=1> to flip the lever", 4500, 6500),
-        });
-        
-
-        // Subtitles EXAMPLE for intro orchestration
+    // Subtitles EXAMPLE for intro orchestration
         // Add a subtitles line for each, where the parameters are:
         // (Subtitle Sentence, start time in milliseconds after audio is triggered, duration in milliseconds)
         // VOManager.Instance.ShowSubtitle(new List<VOManager.SubtitleLine>
         // {
         //     new VOManager.SubtitleLine("Welcome… welcome… welcome…", 1514f, 2421f),
         // });
+    private IEnumerator PlayIntroSequence()
+    {
+
+        LightManager.Instance.TurnOffRGBLights();
+        VOManager.Instance.ShowPrompt(new List<VOManager.SubtitleLine>
+        {
+            new VOManager.SubtitleLine("Use <sprite index=8> to move,  <sprite index=9> to look", 0, 3000),
+            
+        });
+        
+        yield return new WaitForSeconds(3f);
+
+        VOManager.Instance.PlayLine(introClipPart1);
+        Debug.Log("PlayIntroSequence started");
 
         // 0:06 lever check
-        yield return new WaitForSeconds(6);
-        // TODO: show prompt for lever
-        // 0:16 drum rolls spinning lights on
-        yield return new WaitForSeconds(10);
+        VOManager.Instance.ShowPrompt(new List<VOManager.SubtitleLine>
+        {
+            new VOManager.SubtitleLine("Press <sprite index=1> to flip the lever", 4500, 6500)
+            
+        });
+        yield return new WaitUntil(() => lever.leverFlipped == true);
+
+
+        Debug.Log("lever flipped, continuing");
+        VOManager.Instance.PlayLine(introClipPart2);
+        // 0:09 drum rolls spinning lights on
+        yield return new WaitForSeconds(9);
         VOManager.Instance.PlaySoundFX(lightOnClip);
         CurtainLightsOn();
         lightRoutine = StartCoroutine(GyrateCurtainLights());
         LightsOff();
 
-        // 0:20 Welcome
-        yield return new WaitForSeconds(4);
 
-        // 0:23 The trolley showwwww
-        yield return new WaitForSeconds(2.3f);
+        // 0:17 The trolley showwwww
+        yield return new WaitForSeconds(7.6f);
         // curtain opens
         yield return CurtainController.Instance.OpenIntroCurtains();
         VOManager.Instance.PlayAudience(applauseClip);
@@ -127,36 +134,36 @@ public class IntroOrchestrator : MonoBehaviour
 
         
 
-        // 0:28 a trolley is speeding down the tracks
-        yield return new WaitForSeconds(5.7f);
+        // 0:22 a trolley is speeding down the tracks
+        yield return new WaitForSeconds(5f);
         VOManager.Instance.PlaySoundFX(lightOnClip);
         trolleyLight.intensity = 10000f;
         VOManager.Instance.PlaySoundFX(trolleyClip);
 
         
-        // 0:33 FIVE people
-        yield return new WaitForSeconds(2.5f);
+        // 0:26 FIVE people
+        yield return new WaitForSeconds(3.5f);
         VOManager.Instance.PlaySoundFX(lightOnClip);
         fiveLight.intensity = 1000f;
 
         
-        // 0:37 you have a LEVER
-        yield return new WaitForSeconds(5);
+        // 0:30 you have a LEVER
+        yield return new WaitForSeconds(4.5f);
         VOManager.Instance.PlaySoundFX(lightOnClip);
 
-        leverLight.intensity = 100;
+        leverLight.intensity = 1000f;
 
         
-        // 0:42 only one would be the victim
-        yield return new WaitForSeconds(5);
+        // 0:37 only one would be the victim
+        yield return new WaitForSeconds(6.8f);
         fiveLight.intensity = 0f;
         oneLight.intensity = 1000f;
 
         leverLight.intensity = 0;
         VOManager.Instance.PlaySoundFX(lightOnClip);
         
-        // ends at 59:00
-        yield return new WaitForSeconds(17);
+        // ends at 0:47
+        yield return new WaitForSeconds(8f);
         StartMainScene();
 
     }

@@ -781,14 +781,15 @@ MonoBehaviour:
   trolleyLight: {fileID: 5737502597132106478}
   oneLight: {fileID: 8183914992476133413}
   fiveLight: {fileID: 5843966229575708625}
-  introClip: {fileID: 8300000, guid: ae575ece78c484bebb448b46cf760695, type: 3}
-  transitionClip: {fileID: 8300000, guid: 6532fc078bea34cc08d89b4c40edc7b6, type: 3}
+  introClipPart1: {fileID: 8300000, guid: f16c1f9e0898e480389469faedde452e, type: 3}
+  introClipPart2: {fileID: 8300000, guid: a71ec52defda34744b15929b282f35b2, type: 3}
   trolleyClip: {fileID: 8300000, guid: cf38f33f4d54cdf408af14a15955aac3, type: 3}
   applauseClip: {fileID: 8300000, guid: 54c92324773dd4d40abe4cc91d401f22, type: 3}
   lightOnClip: {fileID: 8300000, guid: d788c5525137f42098ab88dde65f8426, type: 3}
   introBGM: {fileID: 8300000, guid: d947c19eb06d8bf4984ba95261bb4286, type: 3}
   clock: {fileID: 8300000, guid: 69d28c0f385d84c09abb70dee6e11bfa, type: 3}
   deathCoroutinePlaying: 0
+  lever: {fileID: 1615145351102789549}
 --- !u!1 &684435200255945834
 GameObject:
   m_ObjectHideFlags: 0
@@ -12877,6 +12878,7 @@ MonoBehaviour:
   armAnim: {fileID: 0}
   audioSource: {fileID: 7009028107128116554}
   switchSound: {fileID: 8300000, guid: 0cec5d2f5e8c38a4e8cfd748bddd427f, type: 3}
+  leverFlipped: 0
 --- !u!114 &4783698521265436472
 MonoBehaviour:
   m_ObjectHideFlags: 0
