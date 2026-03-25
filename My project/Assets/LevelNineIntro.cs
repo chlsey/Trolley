@@ -9,7 +9,7 @@ public class LevelNineIntro : MonoBehaviour
 
     public TrolleyMovement trolleyMovement;
     // public CurtainController curtainController;
-    public Lever lever;
+    public LeverNoRating lever;
     public ClockBehavior clock;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -39,6 +39,7 @@ public class LevelNineIntro : MonoBehaviour
         trolleyMovement.followSpline = true;
         clock.rotate = true;
         VOManager.Instance.PlaySoundFX(clockSFX);
+        Debug.Log($"Lever Enabled");
         lever.enabled = true;
 
     }

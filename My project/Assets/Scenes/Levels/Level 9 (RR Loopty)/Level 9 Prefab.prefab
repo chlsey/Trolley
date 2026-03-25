@@ -260,7 +260,7 @@ MonoBehaviour:
   levelNineIntroClip: {fileID: 8300000, guid: 38938eebd64804dc7aa16305c9b23e14, type: 3}
   clockSFX: {fileID: 8300000, guid: 69d28c0f385d84c09abb70dee6e11bfa, type: 3}
   trolleyMovement: {fileID: 5464797430492771700}
-  lever: {fileID: 7809117317775223949}
+  lever: {fileID: 2237587694657564075}
   clock: {fileID: 5774442226077781794}
 --- !u!1 &1669127868772378033
 GameObject:
@@ -1941,7 +1941,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6385505226932233273}
   - component: {fileID: 1728284391774182929}
-  - component: {fileID: 7809117317775223949}
   - component: {fileID: 42560968501923628}
   - component: {fileID: 2369921388985714151}
   - component: {fileID: 5841666663226180096}
@@ -1992,32 +1991,6 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 1.2
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7809117317775223949
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6478594639261809128}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d5eb10fcc45905478c25e4265ac29ed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
-  trolleyMovement: {fileID: 5464797430492771700}
-  catapultProjectile: {fileID: 0}
-  redGreenLight: {fileID: 0}
-  isClusterTruckLevel: 0
-  nextScene: {fileID: 0}
-  greenRedLight: {fileID: 0}
-  anim: {fileID: 42560968501923628}
-  armAnim: {fileID: 0}
-  audioSource: {fileID: 2369921388985714151}
-  switchSound: {fileID: 8300000, guid: 0cec5d2f5e8c38a4e8cfd748bddd427f, type: 3}
-  voManager: {fileID: 0}
-  rating: {fileID: 0}
-  leverFlipped: 0
-  qPrompt: {fileID: 0}
 --- !u!95 &42560968501923628
 Animator:
   serializedVersion: 7
@@ -2203,6 +2176,7 @@ MonoBehaviour:
   armAnim: {fileID: 0}
   audioSource: {fileID: 2369921388985714151}
   switchSound: {fileID: 8300000, guid: 0cec5d2f5e8c38a4e8cfd748bddd427f, type: 3}
+  leverFlipped: 0
 --- !u!1 &6984885849663785510
 GameObject:
   m_ObjectHideFlags: 0

@@ -24,7 +24,7 @@ public class Lever : MonoBehaviour
     void Start()
     {
         nearLever = false;
-
+        Debug.Log($"{nameof(Lever)} enabled, nearLever set back to false");
     }
 
     // Update is called once per frame
@@ -35,6 +35,7 @@ public class Lever : MonoBehaviour
         if (!leverFlipped && nearLever && gotInput && trolleyMovement && !catapultProjectile)
         {
             leverFlipped = true;
+            Debug.Log($"SwitchTrack called by {nameof(Lever)} on {gameObject.name}");
             trolleyMovement.SwitchTrack();
             redGreenLight.Toggle();
             greenRedLight.Toggle();
@@ -64,6 +65,7 @@ public class Lever : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         nearLever = true;
+        Debug.Log($"nearLever set true by {nameof(Lever)} on {gameObject.name}");
     }
     private void OnTriggerExit(Collider other)
     {
