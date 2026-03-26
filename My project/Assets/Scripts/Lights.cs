@@ -4,7 +4,7 @@ public class Lights : MonoBehaviour
 {
     public Light stageLights;
     public float minTime = 0.1f;
-    public float maxTime = 0.5f;
+    public float maxTime = 0.3f;
 
     void Start()
     {

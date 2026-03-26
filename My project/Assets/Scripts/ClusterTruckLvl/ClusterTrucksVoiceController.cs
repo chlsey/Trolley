@@ -12,35 +12,60 @@ public class ClusterTrucksVoiceController : MonoBehaviour
     public AudioClip fail3;
     public AudioClip catMeow;
     public AudioClip themeSong;
+    public AudioClip jumpSound;
+    [Range(0f, 1f)]
+    public float jumpVolume = 0.5f;
     public Health healthScript;
     public PlayerMovement playerMovement;
+    public AudioSource sfxSource;
     bool failedSeqStarted;
     static bool playedIntro = false;
-    
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private bool wasGrounded = true;
+    private Coroutine introCoroutine;
+
     void Start()
     {
+        // Always start the theme song
+        VOManager.Instance.StartBackgroundMusic(themeSong);
+
         if (!SubwayGameManager.Instance.playedIntro)
         {
-            StopCoroutine(PlayClusterTruckIntro());
-            StartCoroutine(PlayClusterTruckIntro());
-        } else
-        {
-            VOManager.Instance.StartBackgroundMusic(themeSong);
+            if (introCoroutine != null)
+                StopCoroutine(introCoroutine);
+            introCoroutine = StartCoroutine(PlayClusterTruckIntro());
         }
     }
 
     void Update()
     {
+        // Detect jump: player was grounded last frame but isn't now
+        if (jumpSound != null && playerMovement != null && VOManager.Instance != null)
+        {
+            bool grounded = playerMovement.canJump;
+            if (wasGrounded && !grounded)
+            {
+                VOManager.Instance.sfxSource.PlayOneShot(jumpSound, jumpVolume);
+            }
+            wasGrounded = grounded;
+        }
+
         if (failedSeqStarted == false && healthScript.isDeathCoroutinePlaying == true && !SubwayGameManager.Instance.playedIntro)
         {
-            StopCoroutine(PlayClusterTruckIntro());
+            if (introCoroutine != null)
+            {
+                StopCoroutine(introCoroutine);
+                introCoroutine = null;
+            }
             return;
         }
         if(failedSeqStarted == false && healthScript.isDeathCoroutinePlaying == true)
         {
             Debug.Log("player died, playing random Voiceline");
-            StopCoroutine(PlayClusterTruckIntro());
+            if (introCoroutine != null)
+            {
+                StopCoroutine(introCoroutine);
+                introCoroutine = null;
+            }
             StartCoroutine(PlayDeathVoiceLine());
             failedSeqStarted = true;
         }
@@ -84,7 +109,6 @@ public class ClusterTrucksVoiceController : MonoBehaviour
 
         });
         yield return new WaitForSeconds(8);
-        VOManager.Instance.StartBackgroundMusic(themeSong);
     }
 
     private IEnumerator PlayDeathVoiceLine()

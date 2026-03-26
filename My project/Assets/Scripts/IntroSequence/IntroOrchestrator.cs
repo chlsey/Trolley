@@ -31,8 +31,8 @@ public class IntroOrchestrator : MonoBehaviour
 
 
     [Header("VO Clips")]
-    public AudioClip introClip;      
-    public AudioClip transitionClip;  
+    public AudioClip introClipPart1;      
+    public AudioClip introClipPart2;  
     public AudioClip trolleyClip;  
 
 
@@ -44,129 +44,126 @@ public class IntroOrchestrator : MonoBehaviour
     public AudioClip introBGM; 
     public AudioClip clock;
     public bool deathCoroutinePlaying;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
+    public LeverNoRating lever;
     void Start()
     {   
+        leverLight.intensity = 0;
         deathCoroutinePlaying = false;
         StartCoroutine(PlayIntroSequence());
     }
 
-
-    private IEnumerator PlayIntroSequence()
-    {
-        Debug.Log("PlayIntroSequence started");
-        LightsOff();
-
-        LightManager.Instance.TurnOffArchLights();
-        LightManager.Instance.TurnOffWalkwayLights();
-
-        // Subtitles EXAMPLE for intro orchestration
+    // Subtitles EXAMPLE for intro orchestration
         // Add a subtitles line for each, where the parameters are:
         // (Subtitle Sentence, start time in milliseconds after audio is triggered, duration in milliseconds)
-        VOManager.Instance.ShowSubtitle(new List<VOManager.SubtitleLine>
+        // VOManager.Instance.ShowSubtitle(new List<VOManager.SubtitleLine>
+        // {
+        //     new VOManager.SubtitleLine("Welcome… welcome… welcome…", 1514f, 2421f),
+        // });
+    private IEnumerator PlayIntroSequence()
+    {
+
+        LightManager.Instance.TurnOffRGBLights();
+        VOManager.Instance.ShowPrompt(new List<VOManager.SubtitleLine>
         {
-            new VOManager.SubtitleLine("Welcome… welcome… welcome…", 1514f, 2421f),
-
-            new VOManager.SubtitleLine("to The Trolley Show!", 4395f, 2500f),
-
-            new VOManager.SubtitleLine("I'll be your host for the show,", 8162f, 1600f),
-
-            new VOManager.SubtitleLine("and tonight, you get to be the most powerful person in the room.", 9900f, 4500f),
-
-            new VOManager.SubtitleLine("No pressure.", 14814f, 1032f),
-
-            new VOManager.SubtitleLine("Here on The Trolley Show, we take life’s toughest philosophical questions…", 16233f, 6000f),
-
-            new VOManager.SubtitleLine("…and we solve them…", 23500f, 1500f),
-
-            new VOManager.SubtitleLine("in the most exciting way.", 25000f, 2000f),
+            new VOManager.SubtitleLine("Use <sprite index=8> to move,  <sprite index=9> to look", 0, 3000),
+            
         });
+        
+        yield return new WaitForSeconds(3f);
 
-        yield return new WaitForSeconds(1);
+        VOManager.Instance.PlayLine(introClipPart1);
+        Debug.Log("PlayIntroSequence started");
 
-        VOManager.Instance.PlayLine(introClip);
+        // 0:06 lever check
+        VOManager.Instance.ShowPrompt(new List<VOManager.SubtitleLine>
+        {
+            new VOManager.SubtitleLine("Press <sprite index=1> to flip the lever", 4500, 6500)
+            
+        });
+        yield return new WaitUntil(() => lever.leverFlipped == true);
 
-        yield return new WaitForSeconds(5);
 
+        Debug.Log("lever flipped, continuing");
+        VOManager.Instance.PlayLine(introClipPart2);
+        // 0:09 drum rolls spinning lights on
+        yield return new WaitForSeconds(9);
         VOManager.Instance.PlaySoundFX(lightOnClip);
-
-        yield return new WaitForSeconds(1);
-
-        LightsOn();
-
-        Debug.Log("lights on");
-
+        CurtainLightsOn();
         lightRoutine = StartCoroutine(GyrateCurtainLights());
+        LightsOff();
 
-        yield return new WaitForSeconds(introClip.length - 8);
 
-        VOManager.Instance.PlayAudience(applauseClip);
-
-        StopCoroutine(lightRoutine);
-        MoveLightsAsideAndDim();
-
-        // open curtains
-        // yield return StartCoroutine(OpenCurtains());
+        // 0:17 The trolley showwwww
+        yield return new WaitForSeconds(7.6f);
+        // curtain opens
         yield return CurtainController.Instance.OpenIntroCurtains();
-
+        VOManager.Instance.PlayAudience(applauseClip);
+        CurtainLightsOff();
+        VOManager.Instance.PlaySoundFX(lightOnClip);
+        LightManager.Instance.TurnOnRGBLights();
         LightManager.Instance.TurnOnArchLights();
         LightManager.Instance.TurnOnWalkwayLights();
-
-
+        // theme starts playing
         VOManager.Instance.StartBackgroundMusic(introBGM);
-
-        // yield return new WaitForSeconds(2);
-
-        VOManager.Instance.ShowSubtitle(new List<VOManager.SubtitleLine>
-        {
-            new VOManager.SubtitleLine("A trolley is speeding down the tracks.", 640f, 2500f),
-
-            new VOManager.SubtitleLine("Straight ahead… are five people.", 3360f, 4000f),
-
-            new VOManager.SubtitleLine("But! You have a lever.", 7500f, 2800f),
-
-            new VOManager.SubtitleLine("Pull it, and the trolley switches tracks, where only one would be the victim.", 10500f, 8000f),
-
-            new VOManager.SubtitleLine("That’s right. For the next ten seconds…", 19000f, 3000f),
-
-            new VOManager.SubtitleLine("You are judge, jury, and, really, executioner.", 21700f, 5500f),
-
-            new VOManager.SubtitleLine("So show us.", 27000f, 2500f),
-
-            new VOManager.SubtitleLine("What choice will you make?", 30000f, 3000f),
-        });
-        VOManager.Instance.PlayLine(transitionClip);
         
 
-        yield return new WaitForSeconds(1);
 
+        // VOManager.Instance.ShowSubtitle(new List<VOManager.SubtitleLine>
+        // {
+        //     new VOManager.SubtitleLine("A trolley is speeding down the tracks.", 640f, 2500f),
+
+        //     new VOManager.SubtitleLine("Straight ahead… are five people.", 3360f, 4000f),
+
+        //     new VOManager.SubtitleLine("But! You have a lever.", 7500f, 2800f),
+
+        //     new VOManager.SubtitleLine("Pull it, and the trolley switches tracks, where only one would be the victim.", 10500f, 8000f),
+
+        //     new VOManager.SubtitleLine("That’s right. For the next ten seconds…", 19000f, 3000f),
+
+        //     new VOManager.SubtitleLine("You are judge, jury, and, really, executioner.", 21700f, 5500f),
+
+        //     new VOManager.SubtitleLine("So show us.", 27000f, 2500f),
+
+        //     new VOManager.SubtitleLine("What choice will you make?", 30000f, 3000f),
+        // });
+        
+
+
+        
+
+        
+
+        // 0:22 a trolley is speeding down the tracks
+        yield return new WaitForSeconds(5f);
         VOManager.Instance.PlaySoundFX(lightOnClip);
-
         trolleyLight.intensity = 10000f;
-
         VOManager.Instance.PlaySoundFX(trolleyClip);
 
-        yield return new WaitForSeconds(4);
-
+        
+        // 0:26 FIVE people
+        yield return new WaitForSeconds(3.5f);
         VOManager.Instance.PlaySoundFX(lightOnClip);
-        fiveLight.intensity = 100f;
+        fiveLight.intensity = 1000f;
 
-        yield return new WaitForSeconds(5);
-
+        
+        // 0:30 you have a LEVER
+        yield return new WaitForSeconds(4.5f);
         VOManager.Instance.PlaySoundFX(lightOnClip);
 
-        leverLight.intensity = 2000f;
+        leverLight.intensity = 1000f;
 
-        yield return new WaitForSeconds(4);
-
+        
+        // 0:37 only one would be the victim
+        yield return new WaitForSeconds(6.8f);
         fiveLight.intensity = 0f;
-        oneLight.intensity = 100f;
+        oneLight.intensity = 1000f;
 
         leverLight.intensity = 0;
         VOManager.Instance.PlaySoundFX(lightOnClip);
-
-        yield return new WaitForSeconds(10);
-
+        
+        // ends at 0:47
+        yield return new WaitForSeconds(8f);
         StartMainScene();
 
     }
@@ -203,20 +200,22 @@ public class IntroOrchestrator : MonoBehaviour
 
     private void LightsOff()
     {
-        curtainLight1.intensity = 0f;
-        curtainLight2.intensity = 0f;
-        curtainLight3.intensity = 0f;
         leverLight.intensity = 0f;
         trolleyLight.intensity = 0f;
         oneLight.intensity = 0f;
         fiveLight.intensity = 0f;
     }
-
-        private void LightsOn()
+    private void CurtainLightsOff()
     {
-        curtainLight1.intensity = 100f;
-        curtainLight2.intensity = 100f;
-        curtainLight3.intensity = 100f;
+        curtainLight1.intensity = 0f;
+        curtainLight2.intensity = 0f;
+        curtainLight3.intensity = 0f;
+    }
+    private void CurtainLightsOn()
+    {
+        curtainLight1.intensity = 1000f;
+        curtainLight2.intensity = 1000f;
+        curtainLight3.intensity = 1000f;
     }
 
     private void MoveLightsAsideAndDim()

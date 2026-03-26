@@ -20,7 +20,7 @@ public void Kill(Vector3 collisionPoint) {
     deathParticles.transform.position = collisionPoint;
     deathParticles.transform.LookAt(transform.position + Vector3.up);
     deathParticles.Play();
-    gameManager.PlayerCollision();
+    gameManager.PlayerCollisionAsync();
     }
 
 public void Reset() {

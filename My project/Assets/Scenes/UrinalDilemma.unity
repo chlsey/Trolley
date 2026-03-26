@@ -877,10 +877,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u53E3 to Use"
+  m_text: <sprite index=1> Open
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 617c06724d6306b4d80a3df10ec3768d, type: 2}
-  m_sharedMaterial: {fileID: -5272392862168012325, guid: 617c06724d6306b4d80a3df10ec3768d, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 777663d8322eb453da744659877a0c7e, type: 2}
+  m_sharedMaterial: {fileID: 2503320779844430176, guid: 777663d8322eb453da744659877a0c7e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -896,7 +896,7 @@ MonoBehaviour:
     bottomLeft: {r: 1, g: 1, b: 1, a: 1}
     bottomRight: {r: 1, g: 1, b: 1, a: 1}
   m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 0}
+  m_spriteAsset: {fileID: 11400000, guid: e1da7f0e06d8a4ac187844796a6ddd29, type: 2}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
   m_TextStyleHashCode: -1183493901
@@ -6388,10 +6388,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u53E3 to Use"
+  m_text: <sprite index=1>Use
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 617c06724d6306b4d80a3df10ec3768d, type: 2}
-  m_sharedMaterial: {fileID: -5272392862168012325, guid: 617c06724d6306b4d80a3df10ec3768d, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 777663d8322eb453da744659877a0c7e, type: 2}
+  m_sharedMaterial: {fileID: 2503320779844430176, guid: 777663d8322eb453da744659877a0c7e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -6407,7 +6407,7 @@ MonoBehaviour:
     bottomLeft: {r: 1, g: 1, b: 1, a: 1}
     bottomRight: {r: 1, g: 1, b: 1, a: 1}
   m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 0}
+  m_spriteAsset: {fileID: 11400000, guid: e1da7f0e06d8a4ac187844796a6ddd29, type: 2}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
   m_TextStyleHashCode: -1183493901
@@ -6454,7 +6454,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0.0012207032, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -6839,6 +6839,28 @@ PrefabInstance:
     - target: {fileID: 3887237010870440128, guid: d1fa5b990bc5b4f44a1da46563c05234, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 3985268575368227742, guid: d1fa5b990bc5b4f44a1da46563c05234, type: 3}
+      propertyPath: m_text
+      value: '<sprite index=1> Use
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 3985268575368227742, guid: d1fa5b990bc5b4f44a1da46563c05234, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 777663d8322eb453da744659877a0c7e, type: 2}
+    - target: {fileID: 3985268575368227742, guid: d1fa5b990bc5b4f44a1da46563c05234, type: 3}
+      propertyPath: m_spriteAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: e1da7f0e06d8a4ac187844796a6ddd29, type: 2}
+    - target: {fileID: 3985268575368227742, guid: d1fa5b990bc5b4f44a1da46563c05234, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2503320779844430176, guid: 777663d8322eb453da744659877a0c7e, type: 2}
+    - target: {fileID: 3985268575368227742, guid: d1fa5b990bc5b4f44a1da46563c05234, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6965423962592220645, guid: d1fa5b990bc5b4f44a1da46563c05234, type: 3}
       propertyPath: m_Name
