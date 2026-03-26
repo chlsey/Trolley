@@ -10,6 +10,7 @@ TagManager:
   - Loopty
   - Truck
   - Vehicle
+  - Recorder
   layers:
   - Default
   - TransparentFX

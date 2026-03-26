@@ -131,12 +131,13 @@ public class PlayerMovement : MonoBehaviour
     {
         if (((1 << collision.gameObject.layer) & whatIsGround) != 0)
         {
-            canJump = true;
+            canJump = false; 
 
             foreach (var contact in collision.contacts)
             {
                 if (Vector3.Dot(contact.normal, Vector3.up) > 0.5f)
                 {
+                    canJump = true;
                     platformRb = collision.rigidbody;
                     return;
                 }

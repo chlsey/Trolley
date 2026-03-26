@@ -6,24 +6,33 @@ public class StallDoor : MonoBehaviour
     public Animator anim;
     public Collider doorCollider; 
     public float disable = 1.5f; 
+    public GameObject ePrompt;
 
     private bool isOpening = false;
     private bool playerInRange = false;
 
+    void Start()
+    {
+        ePrompt.SetActive(false);
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         playerInRange = true;
+        ePrompt.SetActive(true);
     }
 
     private void OnTriggerExit(Collider other)
     {
         playerInRange = false;
+        ePrompt.SetActive(false);
     }
 
     void Update()
     {
         if (playerInRange && !isOpening && (Input.GetKeyDown(KeyCode.E) || (Gamepad.current != null && Gamepad.current.buttonWest.wasPressedThisFrame)))
         {
+            ePrompt.SetActive(false);
             isOpening = true;
 
             anim.SetTrigger("Open");
