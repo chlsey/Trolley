@@ -77,38 +77,39 @@ public class ClusterTrucksVoiceController : MonoBehaviour
         VOManager.Instance.ShowSubtitle(new List<VOManager.SubtitleLine>
         {
             new VOManager.SubtitleLine("Hear that?", 240f, 2500f),
-
         });
 
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSecondsRealtime(2);
+
         VOManager.Instance.PlaySoundFX(catMeow);
 
         VOManager.Instance.ShowSubtitle(new List<VOManager.SubtitleLine>
         {
             new VOManager.SubtitleLine("*MEOW*", 440f, 2000f),
-
         });
 
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSecondsRealtime(2);
+
         VOManager.Instance.PlayLine(introPt2);
 
         VOManager.Instance.ShowSubtitle(new List<VOManager.SubtitleLine>
         {
             new VOManager.SubtitleLine("That's right, we've got your beloved cat Daisy tied to a trolley heading down the cliff.", 240f, 8000f),
-
         });
-        yield return new WaitForSeconds(8);
+
+        yield return new WaitForSecondsRealtime(8);
+
         SubwayGameManager.Instance.playedIntro = true;
+
         VOManager.Instance.PlayLine(introPt3);
 
         VOManager.Instance.ShowSubtitle(new List<VOManager.SubtitleLine>
         {
             new VOManager.SubtitleLine("Get to it, flip the lever, and Daisy lives another day.", 240f, 6000f),
-
             new VOManager.SubtitleLine("Good luck, and try not to fall off!", 6040f, 5000f),
-
         });
-        yield return new WaitForSeconds(8);
+
+        yield return new WaitForSecondsRealtime(8);
     }
 
     private IEnumerator PlayDeathVoiceLine()

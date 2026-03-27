@@ -4,6 +4,8 @@ using UnityEngine.InputSystem;
 public class StallDoor : MonoBehaviour
 {
     public Animator anim;
+    public AudioSource audio;
+    public AudioClip fart;
     public Collider doorCollider; 
     public float disable = 1.5f; 
     public GameObject ePrompt;
@@ -34,10 +36,10 @@ public class StallDoor : MonoBehaviour
         {
             ePrompt.SetActive(false);
             isOpening = true;
-
+            
             anim.SetTrigger("Open");
             Debug.Log("OpenStall");
-
+            audio.PlayOneShot(fart);
             StartCoroutine(DisableCollider());
         }
     }

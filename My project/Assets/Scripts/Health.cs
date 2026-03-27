@@ -5,6 +5,7 @@ using System.Collections;
 
 public class Health : MonoBehaviour
 {
+    public bool skipFade = false;
     public AudioSource audioSource;
     public AudioClip audioClip;
     public RawImage uiImage;
@@ -22,7 +23,15 @@ public class Health : MonoBehaviour
         Color c = uiImage.color;
         c.a = 1f;
         uiImage.color = c;
-        TriggerFadeFromBlack();
+
+        if (!skipFade)
+            TriggerFadeFromBlack();
+        else
+        {
+            c.a = 0f;
+            uiImage.color = c;
+            
+        }
     }
 
    private void OnCollisionEnter(Collision collision)
