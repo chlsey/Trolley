@@ -52,6 +52,7 @@ public class MenuController : MonoBehaviour
 
     private void ClickPlay(ClickEvent evt)
     {
+        KillCounter.ResetKillCount();
         SceneManager.LoadScene("MainScene");
         // if (mainMenu != null)
         //     mainMenu.style.display = DisplayStyle.None;

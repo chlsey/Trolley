@@ -6,9 +6,21 @@ public class KillCounter : MonoBehaviour
     public TextMeshPro text;  // Assign in Inspector
     public static int killCount = 0;
 
+    // Resets every time Unity enters Play mode (handles editor Play button)
+    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
+    private static void ResetOnPlay()
+    {
+        killCount = 0;
+    }
+
+    public static void ResetKillCount()
+    {
+        killCount = 0;
+    }
+
     void Start()
     {
-        text.text = "KILLS: 0";
+        text.text = "KILLS: " + killCount;
     }
 
     public static void AddKill()
