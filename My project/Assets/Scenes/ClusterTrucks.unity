@@ -606,7 +606,7 @@ GameObject:
   - component: {fileID: 6243949}
   - component: {fileID: 6243948}
   m_Layer: 5
-  m_Name: Canvas (Temp subtitle)
+  m_Name: Canvas Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -47109,7 +47109,7 @@ PrefabInstance:
     - target: {fileID: 1363208505815843076, guid: c0e56157e5ffae74dbaf952fe91860cc, type: 3}
       propertyPath: uiImage
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 331858242}
     - target: {fileID: 1363208505815843076, guid: c0e56157e5ffae74dbaf952fe91860cc, type: 3}
       propertyPath: skipFade
       value: 0
