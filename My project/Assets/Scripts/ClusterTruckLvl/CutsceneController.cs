@@ -13,6 +13,7 @@ public class CutsceneController : MonoBehaviour
     {
         if (ClusterGameManager.Instance.cutsceneHasPlayed)
         {
+            director.Stop();
             cutsceneCamera.SetActive(false);
             playerCamera.SetActive(true);
             playerMovement.enabled = true;

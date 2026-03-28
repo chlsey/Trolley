@@ -72,6 +72,7 @@ public class ClusterTrucksVoiceController : MonoBehaviour
     }
     private IEnumerator PlayClusterTruckIntro()
     {
+        Debug.Log("Intro playing");
         VOManager.Instance.PlayLine(introPt1);
 
         VOManager.Instance.ShowSubtitle(new List<VOManager.SubtitleLine>
