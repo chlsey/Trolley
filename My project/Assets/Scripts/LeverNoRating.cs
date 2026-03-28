@@ -22,6 +22,7 @@ public class LeverNoRating : MonoBehaviour
     {
         leverFlipped = false;
         nearLever = false;
+        Debug.Log($"{nameof(LeverNoRating)} enabled, nearLever set back to false");
     }
 
     // Update is called once per frame
@@ -31,6 +32,7 @@ public class LeverNoRating : MonoBehaviour
            (Gamepad.current != null && Gamepad.current.buttonWest.isPressed);
         if (nearLever && gotInput && trolleyMovement && !catapultProjectile)
         {
+            Debug.Log($"SwitchTrack called by {nameof(LeverNoRating)} on {gameObject.name}");
             trolleyMovement.SwitchTrack();
             redGreenLight.Toggle();
             greenRedLight.Toggle();
@@ -65,6 +67,7 @@ public class LeverNoRating : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         nearLever = true;
+        Debug.Log($"nearLever set true by {nameof(LeverNoRating)} on {gameObject.name}");
     }
     private void OnTriggerExit(Collider other)
     {
