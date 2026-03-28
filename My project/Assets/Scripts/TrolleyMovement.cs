@@ -5,12 +5,11 @@ using UnityEngine.Splines;
 
 public class TrolleyMovement : MonoBehaviour
 {
-
     internal bool switched;
     public float moveSpeed;
     private float uphillSlowdown = 2f;   
-    private float downhillSpeedup = 0.5f;
-    private float minSlopeSpeedMultiplier = 0.01f;
+    private float downhillSpeedup = 0.35f;
+    private float minSlopeSpeedMultiplier = 0.45f;
     private float maxSlopeSpeedMultiplier = 1.5f;
 
     public SplineContainer spline1;
@@ -61,14 +60,14 @@ public class TrolleyMovement : MonoBehaviour
             // Set transform position directly along spline
             transform.position = currentPos;
         
-            // Set rotation to face forward direction
-            transform.rotation = Quaternion.LookRotation(currentTangent);
+            // Follow the spline's forward and banking in non-Rigidbody mode.
+            transform.rotation = Quaternion.LookRotation(currentTangent, currentUp);
         }
 
         Vector3 forwardVector = ((Vector3)currentTangent).normalized;
         Vector3 upVector = ((Vector3)currentUp).normalized;
         float slopeSpeedMultiplier = GetSlopeSpeedMultiplier(forwardVector, upVector);
-        float splineSpeedMultiplier = currentSpline.CompareTag("Loopty") ? 4f : 1f;
+        float splineSpeedMultiplier = currentSpline.CompareTag("Loopty") ? 4.75f : 1f;
         float finalSpeed = moveSpeed * splineSpeedMultiplier * slopeSpeedMultiplier;
         
         distanceAlongSpline += finalSpeed * Time.deltaTime;
