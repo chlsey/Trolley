@@ -16,6 +16,13 @@ public class Health : MonoBehaviour
     public bool isDeathCoroutinePlaying;
     static int deathCount = 0;
 
+    // yo macro below tells the function to run any time a new session is started or sm shi
+    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
+    private static void ResetStats()
+    {
+        deathCount = 0;
+    }
+
     void Start()
     {
         isDeathCoroutinePlaying = false;
