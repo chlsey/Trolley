@@ -3,11 +3,11 @@
 
 .pause-menu-buttons {
     -unity-background-image-tint-color: rgba(55, 55, 55, 0);
-    border-left-color: rgb(113, 88, 67);
-    border-right-color: rgb(113, 88, 67);
-    border-top-color: rgb(113, 88, 67);
-    border-bottom-color: rgb(113, 88, 67);
-    background-color: rgb(255, 225, 206);
+    border-left-color: rgb(72, 12, 12);
+    border-right-color: rgb(72, 12, 12);
+    border-top-color: rgb(72, 12, 12);
+    border-bottom-color: rgb(72, 12, 12);
+    background-color: rgb(240, 225, 201);
     border-top-width: 6px;
     border-right-width: 6px;
     border-bottom-width: 6px;
@@ -23,27 +23,31 @@
     border-bottom-left-radius: 6px;
     bottom: -48px;
     -unity-text-align: upper-center;
+    -unity-text-outline-color: rgb(33, 35, 35);
+    -unity-text-outline-width: 2px;
+    color: rgb(172, 42, 42);
 }
 
 .option-sliders {
     -unity-font-definition: url("project://database/Assets/UI/UI%20Textures/ITCGaramondStd-BdCond.otf?fileID=12800000&guid=32d475e0d1034f443b328fdf926d6df9&type=3#ITCGaramondStd-BdCond");
     font-size: 46px;
     text-shadow: 0 0 0 rgb(53, 44, 38);
-    color: rgb(35, 29, 25);
+    color: rgb(172, 42, 42);
+    -unity-text-outline-color: rgb(33, 35, 35);
 }
 
 .unity-base-slider__dragger {
     width: 25px;
     height: 25px;
-    background-color: rgb(255, 225, 206);
+    background-color: rgb(172, 42, 42);
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
     border-bottom-right-radius: 15px;
     border-bottom-left-radius: 15px;
-    border-left-color: rgb(113, 88, 67);
-    border-right-color: rgb(113, 88, 67);
-    border-top-color: rgb(113, 88, 67);
-    border-bottom-color: rgb(113, 88, 67);
+    border-left-color: rgb(33, 35, 35);
+    border-right-color: rgb(33, 35, 35);
+    border-top-color: rgb(33, 35, 35);
+    border-bottom-color: rgb(33, 35, 35);
     border-top-width: 3px;
     border-right-width: 3px;
     border-bottom-width: 3px;
@@ -51,22 +55,26 @@
 }
 
 .unity-base-slider__tracker {
-    border-left-color: rgb(113, 88, 67);
-    border-right-color: rgb(113, 88, 67);
-    border-top-color: rgb(113, 88, 67);
-    border-bottom-color: rgb(113, 88, 67);
+    border-left-color: rgb(33, 35, 35);
+    border-right-color: rgb(33, 35, 35);
+    border-top-color: rgb(33, 35, 35);
+    border-bottom-color: rgb(33, 35, 35);
     border-top-width: 1px;
     border-right-width: 1px;
     border-bottom-width: 1px;
     border-left-width: 1px;
     width: auto;
-    background-color: rgb(190, 161, 143);
+    background-color: rgb(240, 225, 201);
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
 }
 
 .unity-base-slider__fill {
-    border-left-color: rgb(113, 88, 67);
-    border-right-color: rgb(113, 88, 67);
-    border-top-color: rgb(113, 88, 67);
-    border-bottom-color: rgb(113, 88, 67);
-    background-color: rgb(255, 225, 206);
+    border-left-color: rgb(33, 35, 35);
+    border-right-color: rgb(33, 35, 35);
+    border-top-color: rgb(33, 35, 35);
+    border-bottom-color: rgb(33, 35, 35);
+    background-color: rgb(172, 42, 42);
 }

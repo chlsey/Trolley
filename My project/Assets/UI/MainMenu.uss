@@ -21,25 +21,92 @@
 }
 
 .main-menu-button {
+    color: rgba(255, 255, 255, 0);
     position: absolute;
-    align-self: center;
-    align-items: center;
-    border-top-left-radius: 500px;
-    border-top-right-radius: 500px;
-    border-bottom-right-radius: 500px;
-    border-bottom-left-radius: 500px;
-    border-top-width: 0;
-    border-right-width: 0;
-    border-bottom-width: 0;
-    border-left-width: 0;
-    border-left-color: rgba(168, 118, 118, 0);
-    border-right-color: rgba(168, 118, 118, 0);
-    border-top-color: rgba(168, 118, 118, 0);
-    border-bottom-color: rgba(168, 118, 118, 0);
-    background-color: rgba(255, 249, 110, 0);
+    background-color: rgba(0, 0, 0, 0);
+    border-left-color: rgba(0, 0, 0, 0);
+    border-right-color: rgba(0, 0, 0, 0);
+    border-top-color: rgba(0, 0, 0, 0);
+    border-bottom-color: rgba(0, 0, 0, 0);
 }
 
-.main-menu-button:hover {
-    position: absolute;
-    background-color: rgba(255, 253, 134, 0.45);
+.play-button {
+    background-image: url("project://database/Assets/UI/UI%20Textures/Button_Play.png?fileID=2800000&guid=09a540f379483fb4f99dd6a6a1ce1b54&type=3#Button_Play");
+    background-color: rgba(0, 0, 0, 0);
+    -unity-background-image-tint-color: rgb(255, 255, 255);
+    -unity-background-scale-mode: scale-to-fit;
+}
+
+.play-button:hover {
+    background-image: url("project://database/Assets/UI/UI%20Textures/Button_Play_Pressed.png?fileID=2800000&guid=ddec4a88f5fa1ef429502eaa489ad638&type=3#Button_Play_Pressed");
+}
+
+.settings-button {
+    background-image: url("project://database/Assets/UI/UI%20Textures/Button_Settings.png?fileID=2800000&guid=e8e70d9760b73dd4dbcad2d239c44935&type=3#Button_Settings");
+    -unity-background-scale-mode: scale-to-fit;
+}
+
+.settings-button:hover {
+    background-image: url("project://database/Assets/UI/UI%20Textures/Button_Settings_Pressed.png?fileID=2800000&guid=64ed679e97c19434586e79bab52a2558&type=3#Button_Settings_Pressed");
+}
+
+.exit-button {
+    background-image: url("project://database/Assets/UI/UI%20Textures/Button_Exit.png?fileID=2800000&guid=cd349a1822a82e74fba6ab265019d02e&type=3#Button_Exit");
+    -unity-background-scale-mode: scale-to-fit;
+}
+
+.exit-button:hover {
+    background-image: url("project://database/Assets/UI/UI%20Textures/Button_Exit_Pressed.png?fileID=2800000&guid=c1c16098975a02e40b54032ec0a8200e&type=3#Button_Exit_Pressed");
+}
+
+.return-button {
+    background-image: url("project://database/Assets/UI/UI%20Textures/Button_Return.png?fileID=2800000&guid=cafc4807cf691b840a79b5cddd411642&type=3#Button_Return");
+    -unity-background-scale-mode: scale-to-fit;
+}
+
+.return-button:hover {
+    background-image: url("project://database/Assets/UI/UI%20Textures/Button_Return_Pressed.png?fileID=2800000&guid=c107e733318f7c54183b272d994be9b5&type=3#Button_Return_Pressed");
+}
+
+.unity-base-slider__dragger {
+    width: 25px;
+    height: 25px;
+    background-color: rgb(172, 42, 42);
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+    border-left-color: rgb(33, 35, 35);
+    border-right-color: rgb(33, 35, 35);
+    border-top-color: rgb(33, 35, 35);
+    border-bottom-color: rgb(33, 35, 35);
+    border-top-width: 3px;
+    border-right-width: 3px;
+    border-bottom-width: 3px;
+    border-left-width: 3px;
+}
+
+.unity-base-slider__tracker {
+    border-left-color: rgb(33, 35, 35);
+    border-right-color: rgb(33, 35, 35);
+    border-top-color: rgb(33, 35, 35);
+    border-bottom-color: rgb(33, 35, 35);
+    border-top-width: 1px;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    width: auto;
+    background-color: rgb(240, 225, 201);
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+
+.unity-base-slider__fill {
+    border-left-color: rgb(33, 35, 35);
+    border-right-color: rgb(33, 35, 35);
+    border-top-color: rgb(33, 35, 35);
+    border-bottom-color: rgb(33, 35, 35);
+    background-color: rgb(172, 42, 42);
 }
