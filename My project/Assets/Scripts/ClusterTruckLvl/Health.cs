@@ -36,7 +36,7 @@ public class Health : MonoBehaviour
 
    private void OnCollisionEnter(Collision collision)
     {
-        if ((layerMask.value & (1 << collision.gameObject.layer)) > 0)
+        if ((layerMask.value & (1 << collision.gameObject.layer)) > 0 && !isDeathCoroutinePlaying)
         {
             audioSource.PlayOneShot(audioClip);
             isDeathCoroutinePlaying = true;
@@ -55,11 +55,12 @@ public class Health : MonoBehaviour
         //Debug.Log(deathCount);
         if(deathCount > 3)
         {
-            // Debug.Log("died too many times, loading next scene");
+            Debug.Log("died too many times, loading next scene");
             nextSceneLoader.TriggerSceneChange();
         }
         else
         {
+            Debug.Log("normal reload");
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
         

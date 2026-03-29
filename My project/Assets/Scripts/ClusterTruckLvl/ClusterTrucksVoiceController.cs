@@ -158,6 +158,7 @@ public class ClusterTrucksVoiceController : MonoBehaviour
                 break;
         }
 
+        VOManager.Instance.ClearSubtitle();
         yield return new WaitForSeconds(10);
         failedSeqStarted = false;
     }

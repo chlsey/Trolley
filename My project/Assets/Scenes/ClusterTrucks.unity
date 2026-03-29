@@ -169741,7 +169741,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '*MEOWS*'
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 777663d8322eb453da744659877a0c7e, type: 2}
   m_sharedMaterial: {fileID: 2503320779844430176, guid: 777663d8322eb453da744659877a0c7e, type: 2}
@@ -225749,6 +225749,7 @@ SceneRoots:
   - {fileID: 953664936}
   - {fileID: 1261898851}
   - {fileID: 6243951}
+  - {fileID: 1144320048}
   - {fileID: 1227679823}
   - {fileID: 1260763974}
   - {fileID: 884195159}
@@ -225758,15 +225759,14 @@ SceneRoots:
   - {fileID: 711185454}
   - {fileID: 516182042}
   - {fileID: 167956554}
-  - {fileID: 1144320048}
   - {fileID: 2133904886}
   - {fileID: 1503478973}
   - {fileID: 1778107938}
   - {fileID: 1484373408}
   - {fileID: 1263031345}
+  - {fileID: 363577538}
   - {fileID: 541473776}
   - {fileID: 1331819465}
-  - {fileID: 363577538}
   - {fileID: 1991199794}
   - {fileID: 1927080768}
   - {fileID: 33257314}
