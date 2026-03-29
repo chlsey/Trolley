@@ -1,13 +1,25 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UI/MainMenu.uss?fileID=7433441132597879392&amp;guid=ec295e58ac3044e47bd7b67a8c611b1a&amp;type=3#MainMenu"/>
     <ui:VisualElement name="MainMenu" style="width: 100%; height: 100%;">
-        <ui:VisualElement name="Root" class="root" style="width: 100%; height: 100%;">
-            <ui:VisualElement name="Background_Image" class="background-image" style="flex-grow: 1;"/>
-            <ui:VisualElement name="Panel" class="panel" style="position: absolute;">
+        <ui:VisualElement name="Root" class="root" style="width: 100%; height: 100%; background-image: url(&quot;project://database/Assets/UI/UI%20Textures/CurtainBG.png?fileID=2800000&amp;guid=6e0c78425f166c345931933f80a69197&amp;type=3#CurtainBG&quot;);">
+            <ui:VisualElement name="Main_Menu" style="flex-grow: 1; position: absolute; width: 100%; height: 100%;">
+                <ui:VisualElement name="Background_Image" class="background-image" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/UI/UI%20Textures/TrolleyMenu_V02.png?fileID=2800000&amp;guid=434f22fc56cdc0d46ac19d43642d1d12&amp;type=3#TrolleyMenu_V02&quot;);"/>
                 <ui:VisualElement name="Button_Container" style="flex-grow: 1;">
-                    <ui:Button text="" display-tooltip-when-elided="true" name="Play_Button" icon-image="" emoji-fallback-support="false" class="main-menu-button" style="top: 63%; left: 4%; width: 22%; height: 20%;"/>
-                    <ui:Button text="" name="Settings_Button" class="main-menu-button" style="top: 49%; left: 31%; width: 41%; height: 20%;"/>
-                    <ui:Button text="" name="Exit_Button" class="main-menu-button" style="top: 74%; left: 41%; width: 22%; height: 20%;"/>
+                    <ui:Button text="" display-tooltip-when-elided="true" name="Play_Button" icon-image="" emoji-fallback-support="false" class="main-menu-button play-button" style="top: 67%; left: 10%; width: 11%; height: 10%;"/>
+                    <ui:Button text="" name="Settings_Button" class="main-menu-button settings-button" style="top: 67%; left: 24.5%; width: 22%; height: 10%;"/>
+                    <ui:Button text="" name="Exit_Button" class="main-menu-button exit-button" style="top: 67%; left: 49.5%; width: 11%; height: 10%;"/>
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="Settings_Menu" enabled="false" style="flex-grow: 1; visibility: hidden;">
+                <ui:VisualElement name="Background_Image" class="background-image" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/UI/UI%20Textures/TrolleyMenu_Settings.png?fileID=2800000&amp;guid=c0f2803392566ac43bea4eefdb4b36d1&amp;type=3#TrolleyMenu_Settings&quot;);"/>
+                <ui:VisualElement name="Button_Container" style="flex-grow: 1;">
+                    <ui:Button text="Button" name="Return_Button" class="main-menu-button return-button" style="top: 73%; left: 24.5%; width: 19%; height: 10%;"/>
+                    <ui:VisualElement name="Options_Container" style="flex-grow: 1; width: 62%; left: 5%; position: absolute; top: 39%;">
+                        <ui:Slider label="Volume" value="0.5" high-value="1" name="Volume_Slider" inverted="false" fill="true" style="-unity-font-definition: url(&quot;project://database/Assets/UI/UI%20Textures/ITCGaramondStd-BdCond.otf?fileID=12800000&amp;guid=32d475e0d1034f443b328fdf926d6df9&amp;type=3#ITCGaramondStd-BdCond&quot;); font-size: 42px; -unity-text-outline-color: rgb(33, 35, 35); -unity-text-outline-width: 2px; color: rgb(172, 42, 42);"/>
+                        <ui:Label text="Sensitivity" style="-unity-font-definition: url(&quot;project://database/Assets/UI/UI%20Textures/ITCGaramondStd-BdCond.otf?fileID=12800000&amp;guid=32d475e0d1034f443b328fdf926d6df9&amp;type=3#ITCGaramondStd-BdCond&quot;); font-size: 42px; -unity-font-style: bold; color: rgb(172, 42, 42); -unity-text-outline-width: 2px; -unity-text-outline-color: rgb(33, 35, 35);"/>
+                        <ui:Slider label="Mouse" value="42" high-value="0.5" name="Mouse_Slider" fill="true" style="font-size: 42px; -unity-font-definition: url(&quot;project://database/Assets/UI/UI%20Textures/ITCGaramondStd-BdCond.otf?fileID=12800000&amp;guid=32d475e0d1034f443b328fdf926d6df9&amp;type=3#ITCGaramondStd-BdCond&quot;); -unity-text-outline-width: 2px; -unity-text-outline-color: rgb(33, 35, 35); color: rgb(172, 42, 42);"/>
+                        <ui:Slider label="Controller" value="42" high-value="150" name="Controller_Slider" fill="true" style="font-size: 42px; -unity-font-definition: url(&quot;project://database/Assets/UI/UI%20Textures/ITCGaramondStd-BdCond.otf?fileID=12800000&amp;guid=32d475e0d1034f443b328fdf926d6df9&amp;type=3#ITCGaramondStd-BdCond&quot;); -unity-text-outline-width: 2px; -unity-text-outline-color: rgb(33, 35, 35); color: rgb(172, 42, 42);"/>
+                    </ui:VisualElement>
                 </ui:VisualElement>
             </ui:VisualElement>
         </ui:VisualElement>
