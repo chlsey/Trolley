@@ -36,8 +36,10 @@ public class Health : MonoBehaviour
 
    private void OnCollisionEnter(Collision collision)
     {
-        if ((layerMask.value & (1 << collision.gameObject.layer)) > 0 && !isDeathCoroutinePlaying)
+        if (isDeathCoroutinePlaying) return;
+        if ((layerMask.value & (1 << collision.gameObject.layer)) > 0)
         {
+            Debug.Log("starting death coroutine");
             audioSource.PlayOneShot(audioClip);
             isDeathCoroutinePlaying = true;
             StartCoroutine(HandleDeathSequence());
@@ -51,8 +53,8 @@ public class Health : MonoBehaviour
         deathCount++;
         // StartCoroutine(DisableAudioListener());
         yield return StartCoroutine(FadeToBlack());
-        //Debug.Log("death count");
-        //Debug.Log(deathCount);
+        Debug.Log("death count");
+        Debug.Log(deathCount);
         if(deathCount > 3)
         {
             Debug.Log("died too many times, loading next scene");

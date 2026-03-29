@@ -115,7 +115,7 @@ public class ClusterTrucksVoiceController : MonoBehaviour
 
     private IEnumerator PlayDeathVoiceLine()
     {
-        Debug.Log("player died, playing random Voiceline");
+        Debug.Log("player died, playing random voiceline");
         // will randomly choose a death clip to play out of 3
         VOManager.Instance.StopAllCoroutines();
         int randomInt = Random.Range(1, 4);
@@ -157,8 +157,6 @@ public class ClusterTrucksVoiceController : MonoBehaviour
                 
                 break;
         }
-
-        VOManager.Instance.ClearSubtitle();
         yield return new WaitForSeconds(10);
         failedSeqStarted = false;
     }
