@@ -55,12 +55,12 @@ public class VOManager : MonoBehaviour
     {
         if (Instance != null)
         {
-            Destroy(gameObject);
+            Destroy(this.gameObject);
             return;
         }
 
         Instance = this;
-        DontDestroyOnLoad(gameObject);
+        DontDestroyOnLoad(this.gameObject);
         CacheBaseVolumes();
     }
 

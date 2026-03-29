@@ -129,7 +129,7 @@ void Update() {
         }
       }
     }
-    if (gameState == GameState.Dead && (Keyboard.current.spaceKey.wasPressedThisFrame || Gamepad.current.buttonSouth.wasPressedThisFrame)) {
+    if (gameState == GameState.Dead && (Keyboard.current.spaceKey.wasPressedThisFrame || (Gamepad.current != null && Gamepad.current.buttonSouth.wasPressedThisFrame))) {
       NewLevel();
     }
     Vector3 cameraPosition = new(character.position.x + 2, 4, character.position.z - 3);
