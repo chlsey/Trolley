@@ -108,7 +108,6 @@ public class ClusterTrucksVoiceController : MonoBehaviour
         {
             new VOManager.SubtitleLine("Get to it, flip the lever, and Daisy lives another day.", 240f, 6000f),
             new VOManager.SubtitleLine("Good luck, and try not to fall off!", 6040f, 5000f),
-            new VOManager.SubtitleLine(" ", 11040f, 0f),
         });
 
         yield return new WaitForSecondsRealtime(8);
