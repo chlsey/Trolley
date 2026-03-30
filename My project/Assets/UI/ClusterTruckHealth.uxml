@@ -1,0 +1,10 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/ClusterTruckHealth.uss?fileID=7433441132597879392&amp;guid=6e40869829007604ea2b9985352e6323&amp;type=3#ClusterTruckHealth"/>
+    <ui:VisualElement name="Root" style="flex-grow: 1; position: absolute; width: 100%; height: 100%;">
+        <ui:VisualElement name="Hearts_Container" style="flex-grow: 1; position: absolute; top: 0%; left: -2%; width: 15%; height: 38%;">
+            <ui:VisualElement name="Heart_Graphic" class="Heart_Graphic" style="flex-grow: 1;"/>
+            <ui:VisualElement name="Heart_Graphic" class="Heart_Graphic" style="flex-grow: 1;"/>
+            <ui:VisualElement name="Heart_Graphic" class="Heart_Graphic" style="flex-grow: 1;"/>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

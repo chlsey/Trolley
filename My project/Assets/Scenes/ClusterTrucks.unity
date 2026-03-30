@@ -47336,6 +47336,11 @@ MonoBehaviour:
   m_BeforeTransparentBundles: []
   m_BeforeStackBundles: []
   m_AfterStackBundles: []
+--- !u!1 &446599970 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7735057603086622755, guid: c0e56157e5ffae74dbaf952fe91860cc, type: 3}
+  m_PrefabInstance: {fileID: 446599966}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &446796486
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -78747,7 +78752,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1363208505815843076, guid: c0e56157e5ffae74dbaf952fe91860cc, type: 3}
   m_PrefabInstance: {fileID: 446599966}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 446599970}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 08f781823be57e54e97f299aa53f364e, type: 3}
@@ -130456,8 +130461,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1263031340}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.107752606, y: 0.23044306, z: -0.025685541, w: 0.9667604}
-  m_LocalPosition: {x: 323.12564, y: 6.998463, z: -28.39126}
+  m_LocalRotation: {x: 0.058624126, y: 0.039483048, z: -0.0050465716, w: 0.9974863}
+  m_LocalPosition: {x: 309.2893, y: 22.196728, z: -349.7153}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -154002,7 +154007,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6100389820538841654, guid: c0e56157e5ffae74dbaf952fe91860cc, type: 3}
   m_PrefabInstance: {fileID: 446599966}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 446599970}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3260669387d2547088ae6ef9d9f9a9d1, type: 3}
@@ -184129,6 +184134,76 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0f842266c141d424280aa27c2a160cd0, type: 3}
+--- !u!1 &1763928647
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1763928650}
+  - component: {fileID: 1763928649}
+  - component: {fileID: 1763928648}
+  m_Layer: 5
+  m_Name: HealthUIDocument
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1763928648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1763928647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c90362c283b905945a20291793598076, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  healthUI: {fileID: 1763928647}
+  player: {fileID: 446599970}
+--- !u!114 &1763928649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1763928647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 19102, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.dll::UnityEngine.UIElements.UIDocument
+  m_PanelSettings: {fileID: 11400000, guid: a99931c3d5a71d3459ce51cbb8ec7d34, type: 2}
+  m_ParentUI: {fileID: 0}
+  sourceAsset: {fileID: 9197481963319205126, guid: d34c360d4ffb1834bbfd2e87ccf96670, type: 3}
+  m_SortingOrder: 0
+  m_Position: 0
+  m_WorldSpaceSizeMode: 1
+  m_WorldSpaceWidth: 1920
+  m_WorldSpaceHeight: 1080
+  m_PivotReferenceSize: 0
+  m_Pivot: 0
+  m_WorldSpaceCollider: {fileID: 0}
+--- !u!4 &1763928650
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1763928647}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1763970573 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 0f842266c141d424280aa27c2a160cd0, type: 3}
@@ -225770,3 +225845,4 @@ SceneRoots:
   - {fileID: 1991199794}
   - {fileID: 1927080768}
   - {fileID: 33257314}
+  - {fileID: 1763928650}

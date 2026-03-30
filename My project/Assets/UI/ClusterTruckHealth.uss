@@ -1,0 +1,9 @@
+VisualElement {
+}
+
+.Heart_Graphic {
+    background-image: url("project://database/Assets/UI/UI%20Textures/Trolley_Heart.png?fileID=2800000&guid=455a1225d00e63644897e7a759a03b83&type=3#Trolley_Heart");
+    -unity-background-image-tint-color: rgb(255, 255, 255);
+    -unity-background-scale-mode: scale-to-fit;
+    align-items: center;
+}
