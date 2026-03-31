@@ -11,7 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainScene.unity
     guid: 9ed6ea661e4c04fc2afc2c0199300245
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/ExitHallwaySequence.unity
     guid: e0154db5c466b264983190fc68f3fec3
   - enabled: 0
@@ -32,6 +32,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SeperateBathroom.unity
     guid: 69b5533c665f9b641a63b389cea443b5
+  - enabled: 1
+    path: Assets/Scenes/TrackEnding.unity
+    guid: e210bfcc58380fa48bb02d401cd9f017
+  - enabled: 1
+    path: Assets/Scenes/3ChoiceRoom.unity
+    guid: 0c674c786b7ac3446a0e89e2ba923b2b
   m_configObjects:
     com.unity.dt.app-ui: {fileID: 11400000, guid: 1b1c20d82303e4b5781c3ef50ac1449f, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
