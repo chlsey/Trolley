@@ -82,16 +82,28 @@ public class IntroOrchestrator : MonoBehaviour
             
         });
         yield return new WaitUntil(() => lever.leverFlipped == true);
-
-
         Debug.Log("lever flipped, continuing");
+
+
         VOManager.Instance.PlayLine(introClipPart2);
+
         // 0:09 drum rolls spinning lights on
         yield return new WaitForSeconds(9);
         VOManager.Instance.PlaySoundFX(lightOnClip);
         CurtainLightsOn();
         lightRoutine = StartCoroutine(GyrateCurtainLights());
         LightsOff();
+
+        // narrator lines
+        VOManager.Instance.ShowSubtitle(new List<VOManager.SubtitleLine>
+        {
+            new VOManager.SubtitleLine("Welcome… welcome… welcome…", 3280f, 3150f),
+
+            new VOManager.SubtitleLine("To the Trolley Show!", 6200f, 3450f),
+
+            new VOManager.SubtitleLine("I'll be your host for the show, and tonight", 9900f, 4421f),
+
+        });
 
 
         // 0:17 The trolley showwwww
@@ -106,36 +118,34 @@ public class IntroOrchestrator : MonoBehaviour
         LightManager.Instance.TurnOnWalkwayLights();
         // theme starts playing
         VOManager.Instance.StartBackgroundMusic(introBGM);
-        
-
-
-        // VOManager.Instance.ShowSubtitle(new List<VOManager.SubtitleLine>
-        // {
-        //     new VOManager.SubtitleLine("A trolley is speeding down the tracks.", 640f, 2500f),
-
-        //     new VOManager.SubtitleLine("Straight ahead… are five people.", 3360f, 4000f),
-
-        //     new VOManager.SubtitleLine("But! You have a lever.", 7500f, 2800f),
-
-        //     new VOManager.SubtitleLine("Pull it, and the trolley switches tracks, where only one would be the victim.", 10500f, 8000f),
-
-        //     new VOManager.SubtitleLine("That’s right. For the next ten seconds…", 19000f, 3000f),
-
-        //     new VOManager.SubtitleLine("You are judge, jury, and, really, executioner.", 21700f, 5500f),
-
-        //     new VOManager.SubtitleLine("So show us.", 27000f, 2500f),
-
-        //     new VOManager.SubtitleLine("What choice will you make?", 30000f, 3000f),
-        // });
-        
-
-
-        
-
-        
+            
 
         // 0:22 a trolley is speeding down the tracks
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(4.5f);
+
+        VOManager.Instance.ShowSubtitle(new List<VOManager.SubtitleLine>
+        {
+            new VOManager.SubtitleLine("A trolley is speeding down the tracks.", 0f, 2500f),
+
+            new VOManager.SubtitleLine("Straight ahead… are five people.", 2500f, 4100f),
+
+            new VOManager.SubtitleLine("But! You have a lever.", 6700f, 2800f),
+
+            new VOManager.SubtitleLine("Pull it, and the trolley switches tracks, where only one would be the victim.", 9600f, 8000f),
+
+            // // new VOManager.SubtitleLine("That’s right. For the next ten seconds…", 19000f, 3000f),
+
+            // // new VOManager.SubtitleLine("You are judge, jury, and, really, executioner.", 21700f, 5500f),
+
+            // new VOManager.SubtitleLine("So show us.", 27000f, 2500f),
+            
+            new VOManager.SubtitleLine("So show us.", 17400f, 2300f),
+
+            new VOManager.SubtitleLine("What choice will you make?", 19600f, 3000f),
+        });
+
+        yield return new WaitForSeconds(.5f);
+
         VOManager.Instance.PlaySoundFX(lightOnClip);
         trolleyLight.intensity = 10000f;
         VOManager.Instance.PlaySoundFX(trolleyClip);
@@ -145,6 +155,8 @@ public class IntroOrchestrator : MonoBehaviour
         yield return new WaitForSeconds(3.5f);
         VOManager.Instance.PlaySoundFX(lightOnClip);
         fiveLight.intensity = 1000f;
+
+
 
         
         // 0:30 you have a LEVER
