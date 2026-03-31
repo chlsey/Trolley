@@ -17,7 +17,7 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Movement")]
     public float moveSpeed = 8f;
-    public float airMultiplier = 0.6f;
+    public float airMultiplier = 0.85f;
     public float oppositeAirMultiplier = 0.4f;
 
     // ONLY RUNS ON CLUSTER TRUCKS
@@ -145,46 +145,58 @@ public class PlayerMovement : MonoBehaviour
     // This is intended to make jumping feel more consistent between jumping with the trolleys vs jumping against/adjacent
     Vector3 GetDirectionalAirVelocity()
     {
-        // get the regular air velocity first so the global version preserves the old feel when aligned
-        Vector3 regularAirVelocity = GetRegularAirVelocity();
-
-        // flatten the direction of the trolley's and the players for horizontal only comparison
-        Vector3 inputDirXZPlane = Vector3.ProjectOnPlane(regularAirVelocity, Vector3.up);
+        Vector3 moveDir = orientation.forward * verticalInput + orientation.right * horizontalInput;
+        Vector3 inputDirXZPlane = Vector3.ProjectOnPlane(moveDir, Vector3.up);
         Vector3 trolleyDirXZPlane = Vector3.ProjectOnPlane(worldDireciton, Vector3.up);
+        float inputMagnitude = Mathf.Clamp01(inputDirXZPlane.magnitude);
 
-        if (trolleyDirXZPlane.sqrMagnitude < 0.0001f)
-            return lastVel + regularAirVelocity;
 
         inputDirXZPlane.Normalize();
         trolleyDirXZPlane.Normalize();
 
         // calc dot product between planes to get difference in alignment
         float alignment = Vector3.Dot(inputDirXZPlane, trolleyDirXZPlane);
-        // apply air multipler on scale between regular air multipler (moving with trolleys) vs opposite air multipler (moving against trolleys)
-        float directionalAirMultiplier = Mathf.Lerp(oppositeAirMultiplier, airMultiplier, (alignment + 1f) * 0.5f);
-        float directionalScale = Mathf.Abs(airMultiplier) > 0.0001f ? directionalAirMultiplier / airMultiplier : 0f;
 
-        Vector3 directionalAirVelocity = regularAirVelocity * directionalScale;
-        Vector3 carryAlongWorld = Vector3.Project(lastVel, trolleyDirXZPlane);
-        Vector3 carrySideways = lastVel - carryAlongWorld;
+        // remap dot from -1..1 to 0..1 so we can lerp our drag values
+        float directionalBlend = (alignment + 1f) * 0.5f;
+
+        // bias the blend harder toward opposite air drag so sideways jumps get dragged more too
+        directionalBlend *= directionalBlend;
+        directionalBlend *= directionalBlend * directionalBlend;
+
+        // apply air multipler on scale between regular air multipler (moving with trolleys) vs opposite air multipler (moving against trolleys)
+        float directionalAirMultiplier = Mathf.Lerp(oppositeAirMultiplier, airMultiplier, directionalBlend);
+
+        // build the players intended air movement from input dir and the scaled multiplier
+        Vector3 directionalAirVelocity = inputDirXZPlane * (moveSpeed * directionalAirMultiplier * inputMagnitude);
+
+        // split lastVelocity into world direction vs leftover sideways so we can compare the forward parts cleanly
+        Vector3 lastVelocityAlongWorld = Vector3.Project(lastVel, trolleyDirXZPlane);
+        Vector3 lastVelocitySideways = lastVel - lastVelocityAlongWorld;
+
+        // do the same split for this frames air input
         Vector3 airAlongWorld = Vector3.Project(directionalAirVelocity, trolleyDirXZPlane);
         Vector3 airSideways = directionalAirVelocity - airAlongWorld;
 
-        float carryWorldSpeed = Vector3.Dot(carryAlongWorld, trolleyDirXZPlane);
+        // convert the world direction pieces into signed speeds for easier combine logic
+        float lastVelocityWorldSpeed = Vector3.Dot(lastVelocityAlongWorld, trolleyDirXZPlane);
         float airWorldSpeed = Vector3.Dot(airAlongWorld, trolleyDirXZPlane);
 
-        if (Mathf.Abs(carryWorldSpeed) > 0.0001f &&
+        if (Mathf.Abs(lastVelocityWorldSpeed) > 0.0001f &&
             Mathf.Abs(airWorldSpeed) > 0.0001f &&
-            Mathf.Sign(carryWorldSpeed) == Mathf.Sign(airWorldSpeed))
+            Mathf.Sign(lastVelocityWorldSpeed) == Mathf.Sign(airWorldSpeed))
         {
-            airWorldSpeed = Mathf.Sign(airWorldSpeed) * Mathf.Max(Mathf.Abs(carryWorldSpeed), Mathf.Abs(airWorldSpeed));
+            // if both push the same way, keep the stronger one instead of stacking into mach fuck
+            airWorldSpeed = Mathf.Sign(airWorldSpeed) * Mathf.Max(Mathf.Abs(lastVelocityWorldSpeed), Mathf.Abs(airWorldSpeed));
         }
         else
         {
-            airWorldSpeed = carryWorldSpeed + airWorldSpeed;
+            // if they oppose each other, combine them normally so the input can fight the lastVelocity
+            airWorldSpeed = lastVelocityWorldSpeed + airWorldSpeed;
         }
 
-        return trolleyDirXZPlane * airWorldSpeed + carrySideways + airSideways;
+        // apply the multiplier and shi to our calced velocities
+        return trolleyDirXZPlane * airWorldSpeed + lastVelocitySideways + airSideways;
     }
 
     void Jump()
