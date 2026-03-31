@@ -36,6 +36,9 @@ EditorBuildSettings:
     path: Assets/Scenes/TrackEnding.unity
     guid: e210bfcc58380fa48bb02d401cd9f017
   - enabled: 1
+    path: Assets/Scenes/CoasterEnding.unity
+    guid: c6395d5bf08ec7b4e8ff5fca41d57673
+  - enabled: 1
     path: Assets/Scenes/3ChoiceRoom.unity
     guid: 0c674c786b7ac3446a0e89e2ba923b2b
   m_configObjects:
