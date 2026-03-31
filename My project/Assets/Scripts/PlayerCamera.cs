@@ -26,6 +26,21 @@ public class PlayerCamera : MonoBehaviour
     public float tiltZ = 0f;
 
     private bool isUsingGamepad = false;
+    private bool rideViewActive = false;
+    private Transform rideReference;
+    private float rideXRotation;
+    private float rideYRotation;
+    private float rideMinX = -20f;
+    private float rideMaxX = 20f;
+    private float rideMinY = -35f;
+    private float rideMaxY = 35f;
+
+    private bool savedClampView;
+    private float savedMinX;
+    private float savedMaxX;
+    private float savedMinY;
+    private float savedMaxY;
+    private float savedTiltZ;
 
     private void Start()
     {
@@ -76,6 +91,28 @@ public class PlayerCamera : MonoBehaviour
             inputY = mouseDelta.y * mouseSensY;
         }
 
+        if (rideViewActive)
+        {
+            rideYRotation += inputX;
+            rideXRotation -= inputY;
+
+            rideXRotation = Mathf.Clamp(rideXRotation, rideMinX, rideMaxX);
+            rideYRotation = Mathf.Clamp(rideYRotation, rideMinY, rideMaxY);
+
+            if (rideReference != null)
+            {
+                transform.rotation = rideReference.rotation * Quaternion.Euler(rideXRotation, rideYRotation, 0f);
+
+                if (orientation != null)
+                {
+                    float baseYaw = rideReference.eulerAngles.y;
+                    orientation.rotation = Quaternion.Euler(0f, baseYaw + rideYRotation, 0f);
+                }
+            }
+
+            return;
+        }
+
         yRotation += inputX;
         xRotation -= inputY;
 
@@ -101,11 +138,66 @@ public class PlayerCamera : MonoBehaviour
         yRotation = y;
     }
 
+    public void BeginRideView(Transform reference, float minRideX, float maxRideX, float minRideY, float maxRideY)
+    {
+        if (reference == null)
+            return;
+
+        savedClampView = clampView;
+        savedMinX = minX;
+        savedMaxX = maxX;
+        savedMinY = minY;
+        savedMaxY = maxY;
+        savedTiltZ = tiltZ;
+
+        rideReference = reference;
+        rideMinX = minRideX;
+        rideMaxX = maxRideX;
+        rideMinY = minRideY;
+        rideMaxY = maxRideY;
+        rideXRotation = 0f;
+        rideYRotation = 0f;
+        rideViewActive = true;
+        tiltZ = 0f;
+
+        transform.rotation = rideReference.rotation;
+
+        if (orientation != null)
+            orientation.rotation = Quaternion.Euler(0f, rideReference.eulerAngles.y, 0f);
+    }
+
+    public void ClearRideView()
+    {
+        rideViewActive = false;
+        rideReference = null;
+        rideXRotation = 0f;
+        rideYRotation = 0f;
+
+        clampView = savedClampView;
+        minX = savedMinX;
+        maxX = savedMaxX;
+        minY = savedMinY;
+        maxY = savedMaxY;
+        tiltZ = savedTiltZ;
+
+        Vector3 euler = transform.rotation.eulerAngles;
+        xRotation = NormalizeAngle(euler.x);
+        yRotation = NormalizeAngle(euler.y);
+    }
+
     private void ApplySettings(SettingsData settings)
     {
         mouseSensX = settings.mouseSens;
         mouseSensY = settings.mouseSens;
         controllerSensX = settings.controllerSens;
         controllerSensY = settings.controllerSens;
+    }
+
+    private float NormalizeAngle(float angle)
+    {
+        if (angle > 180f)
+            angle -= 360f;
+
+        return angle;
     }
 }
