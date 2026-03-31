@@ -63,26 +63,26 @@ public class IntroOrchestrator : MonoBehaviour
     private IEnumerator PlayIntroSequence()
     {
 
-        // LightManager.Instance.TurnOffRGBLights();
-        // VOManager.Instance.ShowPrompt(new List<VOManager.SubtitleLine>
-        // {
-        //     new VOManager.SubtitleLine("Use <sprite index=8> to move,  <sprite index=9> to look", 0, 3000),
+        LightManager.Instance.TurnOffRGBLights();
+        VOManager.Instance.ShowPrompt(new List<VOManager.SubtitleLine>
+        {
+            new VOManager.SubtitleLine("Use <sprite index=8> to move,  <sprite index=9> to look", 0, 3000),
             
-        // });
+        });
         
-        // yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(3f);
 
-        // VOManager.Instance.PlayLine(introClipPart1);
-        // Debug.Log("PlayIntroSequence started");
+        VOManager.Instance.PlayLine(introClipPart1);
+        Debug.Log("PlayIntroSequence started");
 
-        // // 0:06 lever check
-        // VOManager.Instance.ShowPrompt(new List<VOManager.SubtitleLine>
-        // {
-        //     new VOManager.SubtitleLine("Press <sprite index=1> to flip the lever", 4500, 6500)
+        // 0:06 lever check
+        VOManager.Instance.ShowPrompt(new List<VOManager.SubtitleLine>
+        {
+            new VOManager.SubtitleLine("Press <sprite index=1> to flip the lever", 4500, 6500)
             
-        // });
-        // yield return new WaitUntil(() => lever.leverFlipped == true);
-        // Debug.Log("lever flipped, continuing");
+        });
+        yield return new WaitUntil(() => lever.leverFlipped == true);
+        Debug.Log("lever flipped, continuing");
 
 
         VOManager.Instance.PlayLine(introClipPart2);
