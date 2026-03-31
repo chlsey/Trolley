@@ -18,6 +18,11 @@ public class PlayerMovement : MonoBehaviour
     [Header("Movement")]
     public float moveSpeed = 8f;
     public float airMultiplier = 0.6f;
+    public float oppositeAirMultiplier = 0.4f;
+
+    // ONLY RUNS ON CLUSTER TRUCKS
+    public bool useWorldDirectionalAirDrag = false;
+    public Vector3 worldDireciton = Vector3.forward;
 
     [Header("Jump")]
     public float jumpForce = 7f;
@@ -32,6 +37,7 @@ public class PlayerMovement : MonoBehaviour
 
     float horizontalInput;
     float verticalInput;
+    Vector3 lastVel;
 
     Rigidbody rb;
 
@@ -85,16 +91,18 @@ public class PlayerMovement : MonoBehaviour
 
         if (canJump)
         {
-            Vector3 moveDir = orientation.forward * verticalInput + orientation.right * horizontalInput;
-            moveDir.Normalize();
-            targetVel = moveDir * moveSpeed;
+            targetVel = GetGroundMoveVelocity();
         }
         else
         {
-            // calculate forward
-            Vector3 forwardAirVel = orientation.forward * (verticalInput * moveSpeed * airMultiplier);
-            Vector3 sidewaysAirVel = orientation.right * (horizontalInput * moveSpeed * sideAirMultiplier);
-            targetVel = forwardAirVel + sidewaysAirVel;
+            if (useWorldDirectionalAirDrag)
+            {
+                targetVel = GetDirectionalAirVelocity();
+            }
+            else
+            {
+                targetVel = GetRegularAirVelocity();
+            }
         }
 
         Vector3 velocityChange = new Vector3(
@@ -115,8 +123,78 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    Vector3 GetGroundMoveVelocity()
+    {
+        Vector3 moveDir = orientation.forward * verticalInput + orientation.right * horizontalInput;
+        moveDir.Normalize();
+        return moveDir * moveSpeed;
+    }
+
+    // This is the regular air velocity system (the old version) used for non cluster truck levels
+    Vector3 GetRegularAirVelocity()
+    {
+        Vector3 forwardAirVel = orientation.forward * (verticalInput * moveSpeed * airMultiplier);
+        Vector3 sidewaysAirVel = orientation.right * (horizontalInput * moveSpeed * sideAirMultiplier);
+        return forwardAirVel + sidewaysAirVel;
+    }
+
+    // This is the cluster trucks air velocity calculation
+    // Very situational solution
+    // Since the trolleys are all moving in one direction, we set a global world direction.
+    // Inputs that move the player farther away from the global world direction are induced with MORE air drag
+    // This is intended to make jumping feel more consistent between jumping with the trolleys vs jumping against/adjacent
+    Vector3 GetDirectionalAirVelocity()
+    {
+        // get the regular air velocity first so the global version preserves the old feel when aligned
+        Vector3 regularAirVelocity = GetRegularAirVelocity();
+
+        // flatten the direction of the trolley's and the players for horizontal only comparison
+        Vector3 inputDirXZPlane = Vector3.ProjectOnPlane(regularAirVelocity, Vector3.up);
+        Vector3 trolleyDirXZPlane = Vector3.ProjectOnPlane(worldDireciton, Vector3.up);
+
+        if (trolleyDirXZPlane.sqrMagnitude < 0.0001f)
+            return lastVel + regularAirVelocity;
+
+        inputDirXZPlane.Normalize();
+        trolleyDirXZPlane.Normalize();
+
+        // calc dot product between planes to get difference in alignment
+        float alignment = Vector3.Dot(inputDirXZPlane, trolleyDirXZPlane);
+        // apply air multipler on scale between regular air multipler (moving with trolleys) vs opposite air multipler (moving against trolleys)
+        float directionalAirMultiplier = Mathf.Lerp(oppositeAirMultiplier, airMultiplier, (alignment + 1f) * 0.5f);
+        float directionalScale = Mathf.Abs(airMultiplier) > 0.0001f ? directionalAirMultiplier / airMultiplier : 0f;
+
+        Vector3 directionalAirVelocity = regularAirVelocity * directionalScale;
+        Vector3 carryAlongWorld = Vector3.Project(lastVel, trolleyDirXZPlane);
+        Vector3 carrySideways = lastVel - carryAlongWorld;
+        Vector3 airAlongWorld = Vector3.Project(directionalAirVelocity, trolleyDirXZPlane);
+        Vector3 airSideways = directionalAirVelocity - airAlongWorld;
+
+        float carryWorldSpeed = Vector3.Dot(carryAlongWorld, trolleyDirXZPlane);
+        float airWorldSpeed = Vector3.Dot(airAlongWorld, trolleyDirXZPlane);
+
+        if (Mathf.Abs(carryWorldSpeed) > 0.0001f &&
+            Mathf.Abs(airWorldSpeed) > 0.0001f &&
+            Mathf.Sign(carryWorldSpeed) == Mathf.Sign(airWorldSpeed))
+        {
+            airWorldSpeed = Mathf.Sign(airWorldSpeed) * Mathf.Max(Mathf.Abs(carryWorldSpeed), Mathf.Abs(airWorldSpeed));
+        }
+        else
+        {
+            airWorldSpeed = carryWorldSpeed + airWorldSpeed;
+        }
+
+        return trolleyDirXZPlane * airWorldSpeed + carrySideways + airSideways;
+    }
+
     void Jump()
     {
+        Vector3 currentHorizontalVelocity = Vector3.ProjectOnPlane(rb.linearVelocity, Vector3.up);
+        Vector3 groundMoveVelocity = canJump ? GetGroundMoveVelocity() : Vector3.zero;
+
+        // save horizontal velocity on jump
+        lastVel = currentHorizontalVelocity - groundMoveVelocity;
+
         rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0, rb.linearVelocity.z);
         rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
     }
@@ -148,6 +226,11 @@ public class PlayerMovement : MonoBehaviour
     {
         if (((1 << collision.gameObject.layer) & whatIsGround) != 0)
         {
+            Vector3 currentHorizontalVelocity = Vector3.ProjectOnPlane(rb.linearVelocity, Vector3.up);
+            Vector3 groundMoveVelocity = canJump ? GetGroundMoveVelocity() : Vector3.zero;
+
+            // save horizontal velocity on jump
+            lastVel = currentHorizontalVelocity - groundMoveVelocity;
             canJump = false;
 
             if (collision.rigidbody == platformRb)
