@@ -19,6 +19,7 @@ public class Urinal : MonoBehaviour
     public AudioClip Zipper;
     public AudioClip correctVoiceLine;
     public AudioClip wrongVoiceLine;
+    public AudioClip leadToDoorVoiceLine;
     public PlayerMovement playerMovement;
     public FacePlayerModel facePlayer; 
     public FacePlayerModel facePlayer2; 
@@ -77,8 +78,9 @@ public class Urinal : MonoBehaviour
 
                 });
 
-
                 door.enabled = true;
+                StartCoroutine(WaitForExitVoiceline());
+                
             }
         }
         if(inCorrectUrinalRight)
@@ -101,8 +103,6 @@ public class Urinal : MonoBehaviour
                     new VOManager.SubtitleLine("Disgusting..", 5000f, 3000f),
 
                 });
-
-                StartCoroutine(DisableMovement());
                 
             }
         }
@@ -130,4 +130,13 @@ public class Urinal : MonoBehaviour
         yield return new WaitForSeconds(3);
         Pee2anim.SetTrigger("SlapRight");
     }
+    IEnumerator WaitForExitVoiceline() {
+        yield return new WaitForSeconds(8f);
+        audioSource.PlayOneShot(leadToDoorVoiceLine);
+        VOManager.Instance.ShowSubtitle(new List<VOManager.SubtitleLine>
+        {
+            new VOManager.SubtitleLine("Anyways, I'll meet you outside once you're done.", 0f, 4000f),
+
+        });
+    } 
 }

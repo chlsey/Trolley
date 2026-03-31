@@ -233,6 +233,10 @@ PrefabInstance:
       propertyPath: uiImage
       value: 
       objectReference: {fileID: 2146107403}
+    - target: {fileID: 2972068866885676290, guid: c0e56157e5ffae74dbaf952fe91860cc, type: 3}
+      propertyPath: m_RenderPostProcessing
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3021313438154955115, guid: c0e56157e5ffae74dbaf952fe91860cc, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.259

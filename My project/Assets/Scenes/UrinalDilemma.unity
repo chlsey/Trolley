@@ -314,6 +314,7 @@ MonoBehaviour:
   Zipper: {fileID: 8300000, guid: ab506cc2465d34845bb6c1b006aa5646, type: 3}
   correctVoiceLine: {fileID: 8300000, guid: 9c21aeccad1564a8b92d0dfbfdc44c2c, type: 3}
   wrongVoiceLine: {fileID: 8300000, guid: 0f125ca3a203a45d7a2aebfa7113b53b, type: 3}
+  leadToDoorVoiceLine: {fileID: 8300000, guid: 71820c934f102974d809a17e95a2342f, type: 3}
   playerMovement: {fileID: 861500493}
   facePlayer: {fileID: 1344806130}
   facePlayer2: {fileID: 1186022980}
@@ -2147,6 +2148,7 @@ MonoBehaviour:
   Zipper: {fileID: 8300000, guid: ab506cc2465d34845bb6c1b006aa5646, type: 3}
   correctVoiceLine: {fileID: 8300000, guid: 9c21aeccad1564a8b92d0dfbfdc44c2c, type: 3}
   wrongVoiceLine: {fileID: 8300000, guid: 0f125ca3a203a45d7a2aebfa7113b53b, type: 3}
+  leadToDoorVoiceLine: {fileID: 0}
   playerMovement: {fileID: 861500493}
   facePlayer: {fileID: 0}
   facePlayer2: {fileID: 0}
