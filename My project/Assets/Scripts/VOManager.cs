@@ -66,11 +66,14 @@ public class VOManager : MonoBehaviour
 
     private void OnEnable()
     {
-        SettingsManager.Instance.SettingsChanged += ApplySettings;
+        if (SettingsManager.Instance != null)
+            SettingsManager.Instance.SettingsChanged += ApplySettings;
     }
 
     private void Start()
     {
+        if (SettingsManager.Instance == null) return;
+
         SettingsData settings = SettingsManager.Instance.GetSettingsData();
         float generalAudioMultiplier = settings.generalAudioMultiplier;
 
@@ -92,7 +95,8 @@ public class VOManager : MonoBehaviour
 
     private void OnDisable()
     {
-        SettingsManager.Instance.SettingsChanged -= ApplySettings;
+        if (SettingsManager.Instance != null)
+            SettingsManager.Instance.SettingsChanged -= ApplySettings;
     }
 
     public void Play(AudioClip clip)
