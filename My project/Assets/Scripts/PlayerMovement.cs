@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] public Rigidbody platformRb;
-    public float sideAirMultiplier = 0.4f;
+    public float sideAirMultiplier = 0.35f;
 
     public PlayerCamera cam;
     public GameObject arms;
@@ -80,23 +80,22 @@ public class PlayerMovement : MonoBehaviour
 
     void MovePlayer()
     {
-        Vector3 moveDir = orientation.forward * verticalInput + orientation.right * horizontalInput;
-        moveDir.Normalize();
-
-        float speed;
+        Vector3 velocity = rb.linearVelocity;
+        Vector3 targetVel;
 
         if (canJump)
         {
-            speed = moveSpeed;
+            Vector3 moveDir = orientation.forward * verticalInput + orientation.right * horizontalInput;
+            moveDir.Normalize();
+            targetVel = moveDir * moveSpeed;
         }
         else
         {
-            bool sideways = Mathf.Abs(horizontalInput) > Mathf.Abs(verticalInput);
-            float airMult = sideways ? sideAirMultiplier : airMultiplier;
-            speed = moveSpeed * airMult;
+            // calculate forward
+            Vector3 forwardAirVel = orientation.forward * (verticalInput * moveSpeed * airMultiplier);
+            Vector3 sidewaysAirVel = orientation.right * (horizontalInput * moveSpeed * sideAirMultiplier);
+            targetVel = forwardAirVel + sidewaysAirVel;
         }
-        Vector3 targetVel = moveDir * speed;
-        Vector3 velocity = rb.linearVelocity;
 
         Vector3 velocityChange = new Vector3(
             targetVel.x - velocity.x,
