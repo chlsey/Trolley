@@ -28,12 +28,56 @@
     color: rgb(172, 42, 42);
 }
 
+.pause-menu-buttons:hover,
+.pause-menu-buttons:focus {
+    background-color: rgb(172, 42, 42);
+    border-left-color: rgb(240, 225, 201);
+    border-right-color: rgb(240, 225, 201);
+    border-top-color: rgb(240, 225, 201);
+    border-bottom-color: rgb(240, 225, 201);
+    color: rgb(240, 225, 201);
+}
+
 .option-sliders {
     -unity-font-definition: url("project://database/Assets/UI/UI%20Textures/ITCGaramondStd-BdCond.otf?fileID=12800000&guid=32d475e0d1034f443b328fdf926d6df9&type=3#ITCGaramondStd-BdCond");
     font-size: 46px;
     text-shadow: 0 0 0 rgb(53, 44, 38);
     color: rgb(172, 42, 42);
     -unity-text-outline-color: rgb(33, 35, 35);
+    padding-top: 8px;
+    padding-right: 12px;
+    padding-bottom: 8px;
+    padding-left: 12px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.option-sliders:hover,
+.option-sliders:focus {
+    background-color: rgba(172, 42, 42, 0.12);
+    border-left-color: rgb(72, 12, 12);
+    border-right-color: rgb(72, 12, 12);
+    border-top-color: rgb(72, 12, 12);
+    border-bottom-color: rgb(72, 12, 12);
+    border-top-width: 3px;
+    border-right-width: 3px;
+    border-bottom-width: 3px;
+    border-left-width: 3px;
+}
+
+.option-sliders:hover .unity-base-slider__tracker,
+.option-sliders:focus .unity-base-slider__tracker {
+    background-color: rgb(255, 243, 219);
+}
+
+.option-sliders:hover .unity-base-slider__dragger,
+.option-sliders:focus .unity-base-slider__dragger {
+    border-left-color: rgb(72, 12, 12);
+    border-right-color: rgb(72, 12, 12);
+    border-top-color: rgb(72, 12, 12);
+    border-bottom-color: rgb(72, 12, 12);
 }
 
 .unity-base-slider__dragger {

@@ -37,7 +37,8 @@
     -unity-background-scale-mode: scale-to-fit;
 }
 
-.play-button:hover {
+.play-button:hover,
+.play-button:focus {
     background-image: url("project://database/Assets/UI/UI%20Textures/Button_Play_Pressed.png?fileID=2800000&guid=ddec4a88f5fa1ef429502eaa489ad638&type=3#Button_Play_Pressed");
 }
 
@@ -46,7 +47,8 @@
     -unity-background-scale-mode: scale-to-fit;
 }
 
-.settings-button:hover {
+.settings-button:hover,
+.settings-button:focus {
     background-image: url("project://database/Assets/UI/UI%20Textures/Button_Settings_Pressed.png?fileID=2800000&guid=64ed679e97c19434586e79bab52a2558&type=3#Button_Settings_Pressed");
 }
 
@@ -55,7 +57,8 @@
     -unity-background-scale-mode: scale-to-fit;
 }
 
-.exit-button:hover {
+.exit-button:hover,
+.exit-button:focus {
     background-image: url("project://database/Assets/UI/UI%20Textures/Button_Exit_Pressed.png?fileID=2800000&guid=c1c16098975a02e40b54032ec0a8200e&type=3#Button_Exit_Pressed");
 }
 
@@ -64,8 +67,49 @@
     -unity-background-scale-mode: scale-to-fit;
 }
 
-.return-button:hover {
+.return-button:hover,
+.return-button:focus {
     background-image: url("project://database/Assets/UI/UI%20Textures/Button_Return_Pressed.png?fileID=2800000&guid=c107e733318f7c54183b272d994be9b5&type=3#Button_Return_Pressed");
+}
+
+.menu-slider {
+    padding-top: 8px;
+    padding-right: 12px;
+    padding-bottom: 8px;
+    padding-left: 12px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.menu-slider:hover,
+.menu-slider:focus {
+    background-color: rgba(240, 225, 201, 0.16);
+    border-left-color: rgb(240, 225, 201);
+    border-right-color: rgb(240, 225, 201);
+    border-top-color: rgb(240, 225, 201);
+    border-bottom-color: rgb(240, 225, 201);
+    border-top-width: 2px;
+    border-right-width: 2px;
+    border-bottom-width: 2px;
+    border-left-width: 2px;
+}
+
+.menu-slider:hover .unity-base-slider__dragger,
+.menu-slider:focus .unity-base-slider__dragger {
+    border-left-color: rgb(240, 225, 201);
+    border-right-color: rgb(240, 225, 201);
+    border-top-color: rgb(240, 225, 201);
+    border-bottom-color: rgb(240, 225, 201);
+}
+
+.menu-slider:hover .unity-base-slider__tracker,
+.menu-slider:focus .unity-base-slider__tracker {
+    border-left-color: rgb(240, 225, 201);
+    border-right-color: rgb(240, 225, 201);
+    border-top-color: rgb(240, 225, 201);
+    border-bottom-color: rgb(240, 225, 201);
 }
 
 .unity-base-slider__dragger {

@@ -7,163 +7,376 @@ public class MenuController : MonoBehaviour
     // Stores the player's pet choice so GameOrchestrator can read it
     public static bool IsCat { get; private set; }
 
+    private sealed class NavigationTargets
+    {
+        public VisualElement Up;
+        public VisualElement Down;
+        public VisualElement Left;
+        public VisualElement Right;
+        public bool HandleVertical;
+        public bool HandleHorizontal;
+    }
+
     private UIDocument uiDocument;
     private VisualElement root;
     private VisualElement mainMenu;
+    private VisualElement settingsMenu;
     private Button playButton;
     private Button settingsButton;
     private Button exitButton;
-    private VisualElement settingsMenu;
     private Slider volumeSlider;
     private Slider mouseSensSlider;
     private Slider controllerSensSlider;
     private Button returnButton;
-    private VisualElement petSelect;
 
     private void OnEnable()
     {
-        // Restore cursor so menu buttons are clickable after returning from gameplay
         UnityEngine.Cursor.lockState = CursorLockMode.None;
         UnityEngine.Cursor.visible = true;
-
-        // Ensure time is running (in case a pause menu or death screen froze it)
         Time.timeScale = 1f;
 
+        QueryElements();
+        ApplyCurrentSettings();
+        WireMenu();
+        ShowMainMenu(playButton);
+    }
+
+    private void QueryElements()
+    {
         uiDocument = GetComponent<UIDocument>();
         root = uiDocument.rootVisualElement;
 
-        // Main menu
-        mainMenu = root.Q("Main_Menu");
-        settingsMenu = root.Q("Settings_Menu");
+        mainMenu = root.Q<VisualElement>("Main_Menu");
+        settingsMenu = root.Q<VisualElement>("Settings_Menu");
 
-        playButton = root.Q("Play_Button") as Button;
-        settingsButton = root.Q("Settings_Button") as Button;
-        exitButton = root.Q("Exit_Button") as Button;
+        playButton = root.Q<Button>("Play_Button");
+        settingsButton = root.Q<Button>("Settings_Button");
+        exitButton = root.Q<Button>("Exit_Button");
 
-        volumeSlider = root.Q("Volume_Slider") as Slider;
-        mouseSensSlider = root.Q("Mouse_Slider") as Slider;
-        controllerSensSlider = root.Q("Controller_Slider") as Slider;
-        returnButton = root.Q("Return_Button") as Button;
+        volumeSlider = root.Q<Slider>("Volume_Slider");
+        mouseSensSlider = root.Q<Slider>("Mouse_Slider");
+        controllerSensSlider = root.Q<Slider>("Controller_Slider");
+        returnButton = root.Q<Button>("Return_Button");
+    }
 
-        //set slider value to the current settings
-        SettingsData SettingsStruct = SettingsManager.Instance.GetSettingsData();
-        volumeSlider.value = SettingsStruct.generalAudioMultiplier;
-        mouseSensSlider.value = SettingsStruct.mouseSens;
-        controllerSensSlider.value = SettingsStruct.controllerSens;
+    private void ApplyCurrentSettings()
+    {
+        if (SettingsManager.Instance == null)
+        {
+            return;
+        }
+
+        SettingsData settings = SettingsManager.Instance.GetSettingsData();
 
         if (volumeSlider != null)
         {
-            playButton.UnregisterCallback<ClickEvent>(ClickPlay);
-            playButton.RegisterCallback<ClickEvent>(ClickPlay);
+            volumeSlider.value = settings.generalAudioMultiplier;
         }
-        if (volumeSlider != null)
+
+        if (mouseSensSlider != null)
         {
-            settingsButton.UnregisterCallback<ClickEvent>(ClickSettings);
-            settingsButton.RegisterCallback<ClickEvent>(ClickSettings);
+            mouseSensSlider.value = settings.mouseSens;
         }
-        if (volumeSlider != null)
+
+        if (controllerSensSlider != null)
         {
-            exitButton.UnregisterCallback<ClickEvent>(ClickExit);
-            exitButton.RegisterCallback<ClickEvent>(ClickExit);
+            controllerSensSlider.value = settings.controllerSens;
         }
+    }
+
+    private void WireMenu()
+    {
+        if (root != null)
+        {
+            root.UnregisterCallback<NavigationCancelEvent>(OnNavigationCancel);
+            root.RegisterCallback<NavigationCancelEvent>(OnNavigationCancel);
+            root.UnregisterCallback<PointerDownEvent>(OnRootPointerDown);
+            root.RegisterCallback<PointerDownEvent>(OnRootPointerDown);
+        }
+
+        if (playButton != null)
+        {
+            playButton.clicked -= ClickPlay;
+            playButton.clicked += ClickPlay;
+            PrepareInteractiveElement(playButton, new NavigationTargets
+            {
+                Left = null,
+                Right = settingsButton,
+                HandleHorizontal = true
+            });
+        }
+
+        if (settingsButton != null)
+        {
+            settingsButton.clicked -= ClickSettings;
+            settingsButton.clicked += ClickSettings;
+            PrepareInteractiveElement(settingsButton, new NavigationTargets
+            {
+                Left = playButton,
+                Right = exitButton,
+                HandleHorizontal = true
+            });
+        }
+
+        if (exitButton != null)
+        {
+            exitButton.clicked -= ClickExit;
+            exitButton.clicked += ClickExit;
+            PrepareInteractiveElement(exitButton, new NavigationTargets
+            {
+                Left = settingsButton,
+                Right = null,
+                HandleHorizontal = true
+            });
+        }
+
         if (volumeSlider != null)
         {
             volumeSlider.UnregisterCallback<ChangeEvent<float>>(ChangeVolume);
             volumeSlider.RegisterCallback<ChangeEvent<float>>(ChangeVolume);
+            PrepareInteractiveElement(volumeSlider, new NavigationTargets
+            {
+                Up = null,
+                Down = mouseSensSlider,
+                HandleVertical = true
+            });
         }
+
         if (mouseSensSlider != null)
         {
             mouseSensSlider.UnregisterCallback<ChangeEvent<float>>(ChangeMouseSens);
             mouseSensSlider.RegisterCallback<ChangeEvent<float>>(ChangeMouseSens);
+            PrepareInteractiveElement(mouseSensSlider, new NavigationTargets
+            {
+                Up = volumeSlider,
+                Down = controllerSensSlider,
+                HandleVertical = true
+            });
         }
+
         if (controllerSensSlider != null)
         {
             controllerSensSlider.UnregisterCallback<ChangeEvent<float>>(ChangeControllerSens);
             controllerSensSlider.RegisterCallback<ChangeEvent<float>>(ChangeControllerSens);
+            PrepareInteractiveElement(controllerSensSlider, new NavigationTargets
+            {
+                Up = mouseSensSlider,
+                Down = returnButton,
+                HandleVertical = true
+            });
         }
+
         if (returnButton != null)
         {
-            returnButton.UnregisterCallback<ClickEvent>(OnClickReturn);
-            returnButton.RegisterCallback<ClickEvent>(OnClickReturn);
+            returnButton.clicked -= OnClickReturn;
+            returnButton.clicked += OnClickReturn;
+            PrepareInteractiveElement(returnButton, new NavigationTargets
+            {
+                Up = controllerSensSlider,
+                Down = null,
+                HandleVertical = true
+            });
         }
-
-        // // Pet selection screen
-        // petSelect = root.Q("PetSelect");
-        // var catButton = root.Q("Cat_Button") as Button;
-        // var dogButton = root.Q("Dog_Button") as Button;
-
-        // if (catButton != null)
-        //     catButton.RegisterCallback<ClickEvent>(ClickCat);
-        // if (dogButton != null)
-        //     dogButton.RegisterCallback<ClickEvent>(ClickDog);
-
-        // // Hide pet select at start
-        // if (petSelect != null)
-        //     petSelect.style.display = DisplayStyle.None;
     }
 
-    private void ClickPlay(ClickEvent evt)
+    private void PrepareInteractiveElement(VisualElement element, NavigationTargets navigationTargets)
+    {
+        if (element == null)
+        {
+            return;
+        }
+
+        element.focusable = true;
+        element.userData = navigationTargets;
+        element.UnregisterCallback<PointerEnterEvent>(OnPointerEnterFocus);
+        element.RegisterCallback<PointerEnterEvent>(OnPointerEnterFocus);
+        element.UnregisterCallback<NavigationMoveEvent>(OnNavigationMove);
+        element.RegisterCallback<NavigationMoveEvent>(OnNavigationMove);
+    }
+
+    private void OnPointerEnterFocus(PointerEnterEvent evt)
+    {
+        if (evt.currentTarget is VisualElement element)
+        {
+            FocusElement(element);
+        }
+    }
+
+    private void OnNavigationMove(NavigationMoveEvent evt)
+    {
+        if (evt.currentTarget is not VisualElement current || current.userData is not NavigationTargets targets)
+        {
+            return;
+        }
+
+        VisualElement next = null;
+
+        switch (evt.direction)
+        {
+            case NavigationMoveEvent.Direction.Up:
+                if (!targets.HandleVertical)
+                {
+                    return;
+                }
+
+                next = targets.Up;
+                break;
+            case NavigationMoveEvent.Direction.Down:
+                if (!targets.HandleVertical)
+                {
+                    return;
+                }
+
+                next = targets.Down;
+                break;
+            case NavigationMoveEvent.Direction.Left:
+                if (!targets.HandleHorizontal)
+                {
+                    return;
+                }
+
+                next = targets.Left;
+                break;
+            case NavigationMoveEvent.Direction.Right:
+                if (!targets.HandleHorizontal)
+                {
+                    return;
+                }
+
+                next = targets.Right;
+                break;
+            default:
+                return;
+        }
+
+        evt.PreventDefault();
+        evt.StopPropagation();
+
+        if (next != null)
+        {
+            FocusElement(next);
+        }
+    }
+
+    private void OnNavigationCancel(NavigationCancelEvent evt)
+    {
+        if (settingsMenu == null || !settingsMenu.visible)
+        {
+            return;
+        }
+
+        evt.PreventDefault();
+        evt.StopPropagation();
+        OnClickReturn();
+    }
+
+    private void OnRootPointerDown(PointerDownEvent evt)
+    {
+        if (evt.target is not VisualElement element)
+        {
+            return;
+        }
+
+        if (element.focusable || element.GetFirstAncestorOfType<Button>() != null || element.GetFirstAncestorOfType<Slider>() != null)
+        {
+            return;
+        }
+
+        FocusElement(settingsMenu != null && settingsMenu.visible ? volumeSlider : playButton);
+    }
+
+    private void FocusElement(VisualElement element)
+    {
+        if (root == null || element == null)
+        {
+            return;
+        }
+
+        root.schedule.Execute(() =>
+        {
+            if (element.panel != null && element.enabledInHierarchy && element.visible)
+            {
+                element.Focus();
+            }
+        }).ExecuteLater(0);
+    }
+
+    private void ShowMainMenu(VisualElement focusTarget)
+    {
+        if (settingsMenu != null)
+        {
+            settingsMenu.visible = false;
+            settingsMenu.SetEnabled(false);
+        }
+
+        if (mainMenu != null)
+        {
+            mainMenu.visible = true;
+            mainMenu.SetEnabled(true);
+        }
+
+        FocusElement(focusTarget);
+    }
+
+    private void ShowSettingsMenu()
+    {
+        if (settingsMenu != null)
+        {
+            settingsMenu.visible = true;
+            settingsMenu.SetEnabled(true);
+        }
+
+        if (mainMenu != null)
+        {
+            mainMenu.visible = false;
+            mainMenu.SetEnabled(false);
+        }
+
+        FocusElement(volumeSlider);
+    }
+
+    private void ClickPlay()
     {
         KillCounter.ResetKillCount();
         SceneManager.LoadScene("MainScene");
-        // if (mainMenu != null)
-        //     mainMenu.style.display = DisplayStyle.None;
-        // if (petSelect != null)
-        //     petSelect.style.display = DisplayStyle.Flex;
     }
 
-    // private void ClickCat(ClickEvent evt)
-    // {
-    //     IsCat = true;
-    //     SceneManager.LoadScene(1);
-    // }
-
-    // private void ClickDog(ClickEvent evt)
-    // {
-    //     IsCat = false;
-    //     SceneManager.LoadScene(1);
-    // }
-
-    private void ClickSettings(ClickEvent evt)
+    private void ClickSettings()
     {
-        settingsMenu.visible = true;
-        settingsMenu.SetEnabled(true);
-        mainMenu.visible = false;
-        mainMenu.SetEnabled(false);
+        ShowSettingsMenu();
         Debug.Log("Settings Pressed");
     }
 
-    private void ClickExit(ClickEvent evt)
+    private void ClickExit()
     {
         Application.Quit();
         Debug.Log("Quit Game");
     }
+
     private void ChangeVolume(ChangeEvent<float> evt)
     {
-        SettingsData SettingsStruct = SettingsManager.Instance.GetSettingsData();
-        SettingsStruct.generalAudioMultiplier = evt.newValue;
-        SettingsManager.Instance.SaveSettings(SettingsStruct);
-
+        SettingsData settings = SettingsManager.Instance.GetSettingsData();
+        settings.generalAudioMultiplier = evt.newValue;
+        SettingsManager.Instance.SaveSettings(settings);
     }
+
     private void ChangeMouseSens(ChangeEvent<float> evt)
     {
-        SettingsData SettingsStruct = SettingsManager.Instance.GetSettingsData();
-        SettingsStruct.mouseSens = evt.newValue;
-        SettingsManager.Instance.SaveSettings(SettingsStruct);
+        SettingsData settings = SettingsManager.Instance.GetSettingsData();
+        settings.mouseSens = evt.newValue;
+        SettingsManager.Instance.SaveSettings(settings);
     }
+
     private void ChangeControllerSens(ChangeEvent<float> evt)
     {
-        SettingsData SettingsStruct = SettingsManager.Instance.GetSettingsData();
-        SettingsStruct.controllerSens = evt.newValue;
-        SettingsManager.Instance.SaveSettings(SettingsStruct);
+        SettingsData settings = SettingsManager.Instance.GetSettingsData();
+        settings.controllerSens = evt.newValue;
+        SettingsManager.Instance.SaveSettings(settings);
     }
-    private void OnClickReturn(ClickEvent evt)
+
+    private void OnClickReturn()
     {
-        settingsMenu.visible = false;
-        settingsMenu.SetEnabled(false);
-        mainMenu.visible = true;
-        mainMenu.SetEnabled(true);
+        ShowMainMenu(settingsButton);
         Debug.Log("Return");
     }
 }
-
