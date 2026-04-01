@@ -1,5 +1,4 @@
 using UnityEngine;
-using TMPro;
 
 public class VictimSFX : MonoBehaviour
 {
@@ -11,26 +10,73 @@ public class VictimSFX : MonoBehaviour
     // public static int killCount = 0;
     private bool triggered = false;
     // public TextMeshPro text;
-    
+
+    private void Awake()
+    {
+        if (audioSource == null)
+        {
+            audioSource = GetComponent<AudioSource>();
+        }
+
+        if (anim == null)
+        {
+            anim = GetComponent<Animator>();
+        }
+    }
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        anim.speed = Random.Range(0.8f, 1.5f);
+        if (anim != null)
+        {
+            anim.speed = Random.Range(0.8f, 1.5f);
+        }
     }
+
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Triggered by: " + other.name + " on object: " + gameObject.name);
-        
-        if (triggered) return;
-
-        if ((layerMask.value & (1 << other.gameObject.layer)) > 0 )
+        if (other == null || triggered)
         {
-            triggered = true;
+            return;
+        }
+
+        Debug.Log("Triggered by: " + other.name + " on object: " + gameObject.name);
+
+        if ((layerMask.value & (1 << other.gameObject.layer)) <= 0)
+        {
+            return;
+        }
+
+        TriggerDeath();
+    }
+
+    public void TriggerDeath()
+    {
+        if (triggered)
+        {
+            return;
+        }
+
+        triggered = true;
+
+        if (anim != null)
+        {
             anim.SetTrigger("dead");
-            KillCounter.AddKill();
-            //VOManager.Instance.PlaySoundFX(splat);
-            audioSource.PlayOneShot(splat);
-            audioSource.PlayOneShot(applause);
+        }
+
+        KillCounter.AddKill();
+
+        if (audioSource != null)
+        {
+            if (splat != null)
+            {
+                audioSource.PlayOneShot(splat);
+            }
+
+            if (applause != null)
+            {
+                audioSource.PlayOneShot(applause);
+            }
         }
     }
 
