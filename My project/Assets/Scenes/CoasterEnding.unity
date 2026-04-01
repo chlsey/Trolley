@@ -19426,15 +19426,12 @@ MonoBehaviour:
   currentSpline: {fileID: 0}
   followSpline: 0
   audioSource: {fileID: 1919451335}
-  rideViewAnchor: {fileID: 190047434}
-  seatAnchor: {fileID: 190047434}
-  riderLocalPosition: {x: 0, y: 0.35, z: 1.65}
-  riderLocalEulerAngles: {x: 0, y: 0, z: 0}
+  cameraAnchor: {fileID: 190047434}
   mountPrompt: {fileID: 735600001000000101}
-  rideMinPitch: -20
-  rideMaxPitch: 20
-  rideMinYaw: -35
-  rideMaxYaw: 35
+  cameraMinPitch: -20
+  cameraMaxPitch: 20
+  cameraMinYaw: -35
+  cameraMaxYaw: 35
 --- !u!1001 &1924240433
 PrefabInstance:
   m_ObjectHideFlags: 0

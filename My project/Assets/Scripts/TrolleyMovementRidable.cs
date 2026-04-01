@@ -5,10 +5,7 @@ using UnityEngine.Splines;
 
 public class TrolleyMovementRidable : MonoBehaviour
 {
-    private const float DefaultMoveSpeed = 0.04f;
-
-    internal bool switched;
-    public float moveSpeed = DefaultMoveSpeed;
+    public float moveSpeed = 0.04f;
 
     [SerializeField] private float uphillSlowdown = 2f;
     [SerializeField] private float downhillSpeedup = 0.35f;
@@ -21,16 +18,13 @@ public class TrolleyMovementRidable : MonoBehaviour
     public bool followSpline = false;
     public AudioSource audioSource;
 
-    [Header("Ride")]
-    public Transform rideViewAnchor;
-    public Transform seatAnchor;
-    public Vector3 riderLocalPosition = new Vector3(0f, 0.35f, 1.65f);
-    public Vector3 riderLocalEulerAngles = Vector3.zero;
+    [Header("Camera")]
+    public Transform cameraAnchor;
     public GameObject mountPrompt;
-    public float rideMinPitch = -20f;
-    public float rideMaxPitch = 20f;
-    public float rideMinYaw = -35f;
-    public float rideMaxYaw = 35f;
+    public float cameraMinPitch = -20f;
+    public float cameraMaxPitch = 20f;
+    public float cameraMinYaw = -35f;
+    public float cameraMaxYaw = 35f;
 
     private float distanceAlongSpline = 0f;
     private Transform playerInRange;
@@ -45,11 +39,7 @@ public class TrolleyMovementRidable : MonoBehaviour
     {
         currentSpline = spline1;
         followSpline = false;
-
-        if (audioSource != null)
-        {
-            audioSource.Stop();
-        }
+        audioSource?.Stop();
     }
 
     private void OnDisable()
@@ -113,18 +103,8 @@ public class TrolleyMovementRidable : MonoBehaviour
             return;
         }
 
-        bool gotInput = false;
-
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            gotInput = true;
-        }
-        else if (Gamepad.current != null && Gamepad.current.buttonWest.wasReleasedThisFrame)
-        {
-            gotInput = true;
-        }
-
-        if (!gotInput)
+        if (!Input.GetKeyDown(KeyCode.E) &&
+            (Gamepad.current == null || !Gamepad.current.buttonWest.wasReleasedThisFrame))
         {
             return;
         }
@@ -139,7 +119,6 @@ public class TrolleyMovementRidable : MonoBehaviour
         Rigidbody playerRb = playerRoot.GetComponent<Rigidbody>();
         Collider[] playerColliders = playerRoot.GetComponentsInChildren<Collider>(true);
         Renderer[] playerRenderers = playerRoot.GetComponentsInChildren<Renderer>(true);
-        Transform rideAnchor = rideViewAnchor;
 
         if (playerMovement == null || playerCamera == null || playerRb == null)
         {
@@ -147,9 +126,9 @@ public class TrolleyMovementRidable : MonoBehaviour
             return;
         }
 
-        if (rideAnchor == null)
+        if (cameraAnchor == null)
         {
-            Debug.LogWarning($"{nameof(TrolleyMovementRidable)} on '{name}' is missing a ride view anchor.", this);
+            Debug.LogWarning($"{nameof(TrolleyMovementRidable)} on '{name}' is missing a camera anchor.", this);
             return;
         }
 
@@ -176,21 +155,15 @@ public class TrolleyMovementRidable : MonoBehaviour
             playerMovement.arms.SetActive(false);
         }
 
-        playerCamera.BeginRideView(rideAnchor, rideMinPitch, rideMaxPitch, rideMinYaw, rideMaxYaw);
+        playerCamera.BeginRideView(cameraAnchor, cameraMinPitch, cameraMaxPitch, cameraMinYaw, cameraMaxYaw);
 
         playerInRange = null;
         isMounted = true;
         followSpline = true;
         ToggleMountPrompt(false);
 
-        string splineName = "None";
-        if (currentSpline != null)
-        {
-            splineName = currentSpline.name;
-        }
-
         Debug.Log(
-            $"Player '{playerRoot.name}' mounted trolley '{name}' on spline '{splineName}'.",
+            $"Player '{playerRoot.name}' mounted trolley '{name}' on spline '{(currentSpline != null ? currentSpline.name : "None")}'.",
             this
         );
 
@@ -219,15 +192,8 @@ public class TrolleyMovementRidable : MonoBehaviour
         Vector3 upVector = ((Vector3)currentUp).normalized;
         float slopeSpeedMultiplier = GetSlopeSpeedMultiplier(forwardVector, upVector);
 
-        float splineSpeedMultiplier = 1f;
-        if (currentSpline.CompareTag("Loopty"))
-        {
-            splineSpeedMultiplier = 4.75f;
-        }
-
-        float finalSpeed = moveSpeed * splineSpeedMultiplier * slopeSpeedMultiplier;
-
-        distanceAlongSpline += finalSpeed * Time.deltaTime;
+        float splineSpeedMultiplier = currentSpline.CompareTag("Loopty") ? 4.75f : 1f;
+        distanceAlongSpline += moveSpeed * splineSpeedMultiplier * slopeSpeedMultiplier * Time.deltaTime;
     }
 
     private float GetSlopeSpeedMultiplier(Vector3 forwardVector, Vector3 upVector)
@@ -250,8 +216,6 @@ public class TrolleyMovementRidable : MonoBehaviour
 
     public void SwitchTrack()
     {
-        switched = !switched;
-
         if (currentSpline == spline1 && spline2 != null)
         {
             currentSpline = spline2;
@@ -269,17 +233,9 @@ public class TrolleyMovementRidable : MonoBehaviour
             return null;
         }
 
-        Rigidbody attached = other.attachedRigidbody;
-        GameObject candidate = null;
-
-        if (attached != null)
-        {
-            candidate = attached.gameObject;
-        }
-        else
-        {
-            candidate = other.transform.root.gameObject;
-        }
+        GameObject candidate = other.attachedRigidbody != null
+            ? other.attachedRigidbody.gameObject
+            : other.transform.root.gameObject;
 
         if (candidate != null && candidate.CompareTag("Player"))
         {
@@ -296,12 +252,6 @@ public class TrolleyMovementRidable : MonoBehaviour
             return;
         }
 
-        bool showPrompt = false;
-        if (shouldShow && !isMounted)
-        {
-            showPrompt = true;
-        }
-
-        mountPrompt.SetActive(showPrompt);
+        mountPrompt.SetActive(shouldShow && !isMounted);
     }
 }
