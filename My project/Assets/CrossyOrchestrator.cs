@@ -18,7 +18,8 @@ public class CrossyOrchestrator : MonoBehaviour
                 new VOManager.SubtitleLine("Where rules are made up, and traffic laws are... mostly optional", 8300f, 12500f),
                 new VOManager.SubtitleLine("All you need to do is reach the lever across the street to win!", 13000f, 18600f),
                 new VOManager.SubtitleLine("Simple!", 18800f, 19500f),
-                new VOManager.SubtitleLine("Let's give a round of applause to our contestant!", 20000f, 25000f)
+                new VOManager.SubtitleLine("Let's give a round of applause to our contestant!", 20000f, 25000f),
+                new VOManager.SubtitleLine("", 25000f, 25000f)
             });
         }
         else
