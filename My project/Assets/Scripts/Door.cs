@@ -6,17 +6,22 @@ public class Door : MonoBehaviour
 {
     public string sceneToLoad;
     private bool nearDoor;
+    private bool isLocked;
     public GameObject ePrompt;
 
+    void Awake()
+    {
+        SetPromptVisible(false);
+    }
 
     void Start()
     {
         nearDoor = false;
-        ePrompt.SetActive(false);
+        SetPromptVisible(false);
     }
     void Update()
     {
-        if(nearDoor && (Input.GetKeyDown(KeyCode.E) ||
+        if(!isLocked && nearDoor && (Input.GetKeyDown(KeyCode.E) ||
            (Gamepad.current != null && Gamepad.current.buttonWest.wasReleasedThisFrame)))
         {
             VOManager.Instance.StopBackgroundMusic();
@@ -27,12 +32,29 @@ public class Door : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         nearDoor = true;
-        ePrompt.SetActive(true);
+        if (!isLocked)
+        {
+            SetPromptVisible(true);
+        }
     }
     private void OnTriggerExit(Collider other)
     {
         nearDoor = false;
-        ePrompt.SetActive(false);
+        SetPromptVisible(false);
+    }
+
+    public void SetLocked(bool locked)
+    {
+        isLocked = locked;
+        SetPromptVisible(!isLocked && nearDoor);
+    }
+
+    private void SetPromptVisible(bool visible)
+    {
+        if (ePrompt != null)
+        {
+            ePrompt.SetActive(visible);
+        }
     }
     
 }

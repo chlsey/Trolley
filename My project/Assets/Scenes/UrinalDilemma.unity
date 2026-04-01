@@ -296,7 +296,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd41ff6a64a18d54fb6b506923fcad84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  door: {fileID: 1051883965}
+  state: {fileID: 106157530}
   applauseSources:
   - {fileID: 1958908608}
   - {fileID: 963823850}
@@ -498,6 +498,7 @@ GameObject:
   - component: {fileID: 106157528}
   - component: {fileID: 106157527}
   - component: {fileID: 106157529}
+  - component: {fileID: 106157530}
   m_Layer: 0
   m_Name: IntroPlayer
   m_TagString: Untagged
@@ -632,6 +633,24 @@ MonoBehaviour:
   urinal1: {fileID: 888858173}
   urinal2: {fileID: 52103138}
   bgMusicUrinal: {fileID: 8300000, guid: ba37167b92cd00446b3490b1ab480e13, type: 3}
+--- !u!114 &106157530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 106157526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1b4b1d93e2c4c1d8af8a0a35b77fe2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UrinalDilemmaState
+  exitDoor: {fileID: 1051883965}
+  urinals:
+  - {fileID: 888858173}
+  - {fileID: 52103138}
+  stalls:
+  - {fileID: 1610715837}
 --- !u!1 &122900910
 GameObject:
   m_ObjectHideFlags: 0
@@ -2134,7 +2153,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd41ff6a64a18d54fb6b506923fcad84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Urinal
-  door: {fileID: 1051883965}
+  state: {fileID: 106157530}
   applauseSources: []
   introSource: {fileID: 106157527}
   anim: {fileID: 1361707159}

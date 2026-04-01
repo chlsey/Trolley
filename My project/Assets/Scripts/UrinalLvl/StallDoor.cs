@@ -12,29 +12,40 @@ public class StallDoor : MonoBehaviour
 
     private bool isOpening = false;
     private bool playerInRange = false;
+    private bool interactionEnabled = true;
 
     void Start()
     {
-        ePrompt.SetActive(false);
+        SetPromptVisible(false);
     }
 
     private void OnTriggerEnter(Collider other)
     {
+        if (!interactionEnabled)
+        {
+            return;
+        }
+
         playerInRange = true;
-        ePrompt.SetActive(true);
+        SetPromptVisible(true);
     }
 
     private void OnTriggerExit(Collider other)
     {
         playerInRange = false;
-        ePrompt.SetActive(false);
+        SetPromptVisible(false);
     }
 
     void Update()
     {
+        if (!interactionEnabled)
+        {
+            return;
+        }
+
         if (playerInRange && !isOpening && (Input.GetKeyDown(KeyCode.E) || (Gamepad.current != null && Gamepad.current.buttonWest.wasPressedThisFrame)))
         {
-            ePrompt.SetActive(false);
+            SetPromptVisible(false);
             isOpening = true;
             
             anim.SetTrigger("Open");
@@ -51,5 +62,30 @@ public class StallDoor : MonoBehaviour
         yield return new WaitForSeconds(disable);
 
         doorCollider.enabled = true;
+    }
+
+    public void SetInteractionEnabled(bool enabled)
+    {
+        interactionEnabled = enabled;
+
+        if (!interactionEnabled)
+        {
+            playerInRange = false;
+            SetPromptVisible(false);
+        }
+    }
+
+    public void HidePrompt()
+    {
+        playerInRange = false;
+        SetPromptVisible(false);
+    }
+
+    private void SetPromptVisible(bool visible)
+    {
+        if (ePrompt != null)
+        {
+            ePrompt.SetActive(visible);
+        }
     }
 }
