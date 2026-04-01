@@ -11,6 +11,7 @@ public class PlayerCamera : MonoBehaviour
 
     [Header("References")]
     public Transform orientation;
+    public Transform cameraRigRoot;
 
     [Header("Rotation")]
     public float xRotation;
@@ -41,6 +42,10 @@ public class PlayerCamera : MonoBehaviour
     private float savedMinY;
     private float savedMaxY;
     private float savedTiltZ;
+    private Transform savedCameraRigParent;
+    private Vector3 savedCameraRigLocalPosition;
+    private Quaternion savedCameraRigLocalRotation;
+    private Vector3 savedCameraRigLocalScale;
 
     private void Start()
     {
@@ -143,12 +148,23 @@ public class PlayerCamera : MonoBehaviour
         if (reference == null)
             return;
 
+        Transform rigRoot = ResolveCameraRigRoot();
+        if (rigRoot == null)
+        {
+            Debug.LogWarning($"{nameof(PlayerCamera)} on '{name}' is missing a camera rig root.", this);
+            return;
+        }
+
         savedClampView = clampView;
         savedMinX = minX;
         savedMaxX = maxX;
         savedMinY = minY;
         savedMaxY = maxY;
         savedTiltZ = tiltZ;
+        savedCameraRigParent = rigRoot.parent;
+        savedCameraRigLocalPosition = rigRoot.localPosition;
+        savedCameraRigLocalRotation = rigRoot.localRotation;
+        savedCameraRigLocalScale = rigRoot.localScale;
 
         rideReference = reference;
         rideMinX = minRideX;
@@ -159,6 +175,10 @@ public class PlayerCamera : MonoBehaviour
         rideYRotation = 0f;
         rideViewActive = true;
         tiltZ = 0f;
+
+        SetParentPreservingWorldScale(rigRoot, rideReference);
+        rigRoot.localPosition = Vector3.zero;
+        rigRoot.localRotation = Quaternion.identity;
 
         transform.rotation = rideReference.rotation;
 
@@ -180,6 +200,15 @@ public class PlayerCamera : MonoBehaviour
         maxY = savedMaxY;
         tiltZ = savedTiltZ;
 
+        Transform rigRoot = ResolveCameraRigRoot();
+        if (rigRoot != null)
+        {
+            rigRoot.SetParent(savedCameraRigParent, false);
+            rigRoot.localPosition = savedCameraRigLocalPosition;
+            rigRoot.localRotation = savedCameraRigLocalRotation;
+            rigRoot.localScale = savedCameraRigLocalScale;
+        }
+
         Vector3 euler = transform.rotation.eulerAngles;
         xRotation = NormalizeAngle(euler.x);
         yRotation = NormalizeAngle(euler.y);
@@ -199,5 +228,42 @@ public class PlayerCamera : MonoBehaviour
             angle -= 360f;
 
         return angle;
+    }
+
+    private Transform ResolveCameraRigRoot()
+    {
+        if (cameraRigRoot != null)
+            return cameraRigRoot;
+
+        Transform cameraHolder = transform.parent;
+        if (cameraHolder != null)
+            return cameraHolder.parent;
+
+        return null;
+    }
+
+    private void SetParentPreservingWorldScale(Transform child, Transform newParent)
+    {
+        Vector3 worldScale = child.lossyScale;
+
+        child.SetParent(newParent, false);
+        child.localScale = DivideVectorComponents(worldScale, newParent != null ? newParent.lossyScale : Vector3.one);
+    }
+
+    private Vector3 DivideVectorComponents(Vector3 numerator, Vector3 denominator)
+    {
+        return new Vector3(
+            DivideOrFallback(numerator.x, denominator.x),
+            DivideOrFallback(numerator.y, denominator.y),
+            DivideOrFallback(numerator.z, denominator.z)
+        );
+    }
+
+    private float DivideOrFallback(float numerator, float denominator)
+    {
+        if (Mathf.Approximately(denominator, 0f))
+            return numerator;
+
+        return numerator / denominator;
     }
 }

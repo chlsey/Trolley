@@ -1378,13 +1378,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 190047433}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0.5, y: -0.5, z: -0.5, w: 0.5}
   m_LocalPosition: {x: 0, y: -0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 2002482904}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: -90}
 --- !u!1 &212760629
 GameObject:
   m_ObjectHideFlags: 0
@@ -19420,12 +19420,13 @@ MonoBehaviour:
   uphillSlowdown: 2
   downhillSpeedup: 0.35
   minSlopeSpeedMultiplier: 0.45
-  maxSlopeSpeedMultiplier: 1.5
-  spline1: {fileID: 1964669479}
-  spline2: {fileID: 1964669479}
+  maxSlopeSpeedMultiplier: 1.25
+  spline1: {fileID: 2031885682}
+  spline2: {fileID: 2031885682}
   currentSpline: {fileID: 0}
   followSpline: 0
   audioSource: {fileID: 1919451335}
+  rideViewAnchor: {fileID: 190047434}
   seatAnchor: {fileID: 190047434}
   riderLocalPosition: {x: 0, y: 0.35, z: 1.65}
   riderLocalEulerAngles: {x: 0, y: 0, z: 0}
@@ -19782,17 +19783,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1964669479 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6091427689555828156, guid: 8c1d130d2c2df854ea0c46204925af98, type: 3}
-  m_PrefabInstance: {fileID: 233670713}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dab5c7d4c32e743048dfca98e2d5914f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.Splines::UnityEngine.Splines.SplineContainer
 --- !u!1 &1986012102
 GameObject:
   m_ObjectHideFlags: 0
@@ -20275,6 +20265,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 9085554376526532695, guid: 8c1d130d2c2df854ea0c46204925af98, type: 3}
   m_PrefabInstance: {fileID: 233670713}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2031885682 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5825456004872650089, guid: 8c1d130d2c2df854ea0c46204925af98, type: 3}
+  m_PrefabInstance: {fileID: 233670713}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dab5c7d4c32e743048dfca98e2d5914f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Splines::UnityEngine.Splines.SplineContainer
 --- !u!1001 &2040641973
 PrefabInstance:
   m_ObjectHideFlags: 0

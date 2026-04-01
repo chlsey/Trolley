@@ -6,7 +6,6 @@ using UnityEngine.Splines;
 public class TrolleyMovementRidable : MonoBehaviour
 {
     private const float DefaultMoveSpeed = 0.04f;
-    private static readonly Quaternion MountRotationOffset = Quaternion.Euler(0f, 90f, 0f);
 
     internal bool switched;
     public float moveSpeed = DefaultMoveSpeed;
@@ -23,6 +22,7 @@ public class TrolleyMovementRidable : MonoBehaviour
     public AudioSource audioSource;
 
     [Header("Ride")]
+    public Transform rideViewAnchor;
     public Transform seatAnchor;
     public Vector3 riderLocalPosition = new Vector3(0f, 0.35f, 1.65f);
     public Vector3 riderLocalEulerAngles = Vector3.zero;
@@ -138,6 +138,8 @@ public class TrolleyMovementRidable : MonoBehaviour
         PlayerCamera playerCamera = playerRoot.GetComponentInChildren<PlayerCamera>();
         Rigidbody playerRb = playerRoot.GetComponent<Rigidbody>();
         Collider[] playerColliders = playerRoot.GetComponentsInChildren<Collider>(true);
+        Renderer[] playerRenderers = playerRoot.GetComponentsInChildren<Renderer>(true);
+        Transform rideAnchor = rideViewAnchor;
 
         if (playerMovement == null || playerCamera == null || playerRb == null)
         {
@@ -145,29 +147,10 @@ public class TrolleyMovementRidable : MonoBehaviour
             return;
         }
 
-        Transform rideParent = transform;
-        if (seatAnchor != null)
+        if (rideAnchor == null)
         {
-            rideParent = seatAnchor;
-        }
-
-        Vector3 playerWorldScale = playerRoot.lossyScale;
-
-        playerRb.linearVelocity = Vector3.zero;
-        playerRb.angularVelocity = Vector3.zero;
-
-        playerRoot.SetParent(rideParent, false);
-        PreserveWorldScale(playerRoot, playerWorldScale);
-
-        if (seatAnchor != null)
-        {
-            playerRoot.localPosition = Vector3.zero;
-            playerRoot.localRotation = MountRotationOffset;
-        }
-        else
-        {
-            playerRoot.localPosition = riderLocalPosition;
-            playerRoot.localRotation = Quaternion.Euler(riderLocalEulerAngles) * MountRotationOffset;
+            Debug.LogWarning($"{nameof(TrolleyMovementRidable)} on '{name}' is missing a ride view anchor.", this);
+            return;
         }
 
         playerRb.linearVelocity = Vector3.zero;
@@ -180,6 +163,11 @@ public class TrolleyMovementRidable : MonoBehaviour
             playerCollider.enabled = false;
         }
 
+        foreach (Renderer playerRenderer in playerRenderers)
+        {
+            playerRenderer.enabled = false;
+        }
+
         playerMovement.platformRb = null;
         playerMovement.enabled = false;
 
@@ -188,7 +176,7 @@ public class TrolleyMovementRidable : MonoBehaviour
             playerMovement.arms.SetActive(false);
         }
 
-        playerCamera.BeginRideView(rideParent, rideMinPitch, rideMaxPitch, rideMinYaw, rideMaxYaw);
+        playerCamera.BeginRideView(rideAnchor, rideMinPitch, rideMaxPitch, rideMinYaw, rideMaxYaw);
 
         playerInRange = null;
         isMounted = true;
@@ -315,36 +303,5 @@ public class TrolleyMovementRidable : MonoBehaviour
         }
 
         mountPrompt.SetActive(showPrompt);
-    }
-
-    private void PreserveWorldScale(Transform target, Vector3 desiredWorldScale)
-    {
-        if (target.parent == null)
-        {
-            target.localScale = desiredWorldScale;
-            return;
-        }
-
-        Vector3 parentScale = target.parent.lossyScale;
-
-        float localX = desiredWorldScale.x;
-        if (parentScale.x != 0f)
-        {
-            localX = desiredWorldScale.x / parentScale.x;
-        }
-
-        float localY = desiredWorldScale.y;
-        if (parentScale.y != 0f)
-        {
-            localY = desiredWorldScale.y / parentScale.y;
-        }
-
-        float localZ = desiredWorldScale.z;
-        if (parentScale.z != 0f)
-        {
-            localZ = desiredWorldScale.z / parentScale.z;
-        }
-
-        target.localScale = new Vector3(localX, localY, localZ);
     }
 }
