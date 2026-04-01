@@ -154,6 +154,7 @@ MonoBehaviour:
   sensX: 600
   sensY: 600
   orientation: {fileID: 5186241795654361235}
+  cameraRigRoot: {fileID: 965737215451005542}
   xRotation: 0
   yRotation: 0
   clampView: 0

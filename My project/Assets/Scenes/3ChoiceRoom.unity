@@ -2974,7 +2974,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50792f0bdb918d14a9c9ac3f65c8942c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Door
-  sceneToLoad: ExitHallwaySequence
+  sceneToLoad: CoasterEnding
   ePrompt: {fileID: 374189885}
 --- !u!65 &1287837912
 BoxCollider:
