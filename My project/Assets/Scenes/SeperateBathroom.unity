@@ -356,7 +356,9 @@ PrefabInstance:
       value: Plant Pots
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 8423178519194253117, guid: e21ddaefabce6a744ad517946f305181, type: 3}
+    - {fileID: -8125460383559926409, guid: e21ddaefabce6a744ad517946f305181, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 9103962308120395736, guid: e21ddaefabce6a744ad517946f305181, type: 3}
@@ -428,7 +430,9 @@ PrefabInstance:
       value: Plant Pots (1)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 8423178519194253117, guid: e21ddaefabce6a744ad517946f305181, type: 3}
+    - {fileID: 918409824207420171, guid: e21ddaefabce6a744ad517946f305181, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 9103962308120395736, guid: e21ddaefabce6a744ad517946f305181, type: 3}
@@ -1969,7 +1973,8 @@ PrefabInstance:
       value: Plant Pots (2)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 918409824207420171, guid: e21ddaefabce6a744ad517946f305181, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 9103962308120395736, guid: e21ddaefabce6a744ad517946f305181, type: 3}
