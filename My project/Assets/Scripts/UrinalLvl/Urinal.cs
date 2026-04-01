@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 public class Urinal : MonoBehaviour
 {
-    public Door door; 
+    public UrinalDilemmaState state;
     public AudioSource[] applauseSources;
     public AudioSource introSource;
     public Animator anim;
@@ -33,17 +33,17 @@ public class Urinal : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        door.enabled = false;
         foreach (AudioSource source in applauseSources)
         {
             source.enabled = false;
         }
         nearUrinal = false;
-        ePrompt.SetActive(false);
-        facePlayer2.enabled = false;
-        facePlayer.enabled = false;
-        facePlayer3.enabled = false;
-        facePlayer4.enabled = false;
+        SetPromptVisible(false);
+
+        if (facePlayer2 != null) facePlayer2.enabled = false;
+        if (facePlayer != null) facePlayer.enabled = false;
+        if (facePlayer3 != null) facePlayer3.enabled = false;
+        if (facePlayer4 != null) facePlayer4.enabled = false;
     }
 
     // Update is called once per frame
@@ -53,6 +53,11 @@ public class Urinal : MonoBehaviour
         {
             if (nearUrinal && (Input.GetKeyDown(KeyCode.E) || (Gamepad.current != null && Gamepad.current.buttonWest.isPressed)))
             {
+                if (state != null && !state.TryCommitUrinal(this))
+                {
+                    return;
+                }
+
                 anim.SetTrigger("PlayerPee");
                 Pee1anim.SetTrigger("Applause");
                 Pee2anim.SetTrigger("Applause");
@@ -78,7 +83,10 @@ public class Urinal : MonoBehaviour
 
                 });
 
-                door.enabled = true;
+                if (state != null)
+                {
+                    state.UnlockExit();
+                }
                 StartCoroutine(WaitForExitVoiceline());
                 
             }
@@ -87,6 +95,11 @@ public class Urinal : MonoBehaviour
         {
             if (nearUrinal && (Input.GetKeyDown(KeyCode.E) || (Gamepad.current != null && Gamepad.current.buttonWest.isPressed)))
             {
+                if (state != null && !state.TryCommitUrinal(this))
+                {
+                    return;
+                }
+
                 VOManager.Instance.StopBackgroundMusic();
                 introSource.enabled = false;
                 anim.SetTrigger("PlayerPee");
@@ -109,15 +122,32 @@ public class Urinal : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
+        if (state != null && state.HasUrinalSelection)
+        {
+            return;
+        }
+
         nearUrinal = true;
-        ePrompt.SetActive(true);
+        SetPromptVisible(true);
         Debug.Log("NearUrinal");
     }
     private void OnTriggerExit(Collider other)
     {
         nearUrinal = false;
-        ePrompt.SetActive(false);
+        SetPromptVisible(false);
         Debug.Log("AwayFromUrinal");
+    }
+    public void HidePrompt()
+    {
+        nearUrinal = false;
+        SetPromptVisible(false);
+    }
+    private void SetPromptVisible(bool visible)
+    {
+        if (ePrompt != null)
+        {
+            ePrompt.SetActive(visible);
+        }
     }
      IEnumerator DisableMovement()
     {
