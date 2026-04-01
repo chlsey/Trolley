@@ -25,7 +25,7 @@ public class TrolleyMovementRidable : MonoBehaviour
     public float cameraMinYaw = -35f;
     public float cameraMaxYaw = 35f;
 
-    private float distanceAlongSpline = 0f;
+    private float splineProgress = 0f;
     private Transform playerInRange;
     private bool isMounted;
 
@@ -62,6 +62,11 @@ public class TrolleyMovementRidable : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (TryKillVictim(other))
+        {
+            return;
+        }
+
         if (isMounted)
         {
             return;
@@ -92,6 +97,16 @@ public class TrolleyMovementRidable : MonoBehaviour
 
         playerInRange = null;
         ToggleMountPrompt(false);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision == null)
+        {
+            return;
+        }
+
+        TryKillVictim(collision.collider);
     }
 
     private void TryMountPlayer()
@@ -173,10 +188,9 @@ public class TrolleyMovementRidable : MonoBehaviour
             return;
         }
 
-        float splineLength = currentSpline.CalculateLength();
-        distanceAlongSpline = Mathf.Repeat(distanceAlongSpline, splineLength);
+        float normalizedProgress = Mathf.Clamp01(splineProgress);
 
-        currentSpline.Evaluate(distanceAlongSpline, out float3 currentPos, out float3 currentTangent, out float3 currentUp);
+        currentSpline.Evaluate(normalizedProgress, out float3 currentPos, out float3 currentTangent, out float3 currentUp);
 
         transform.position = currentPos;
         transform.rotation = Quaternion.LookRotation(currentTangent, currentUp);
@@ -186,7 +200,16 @@ public class TrolleyMovementRidable : MonoBehaviour
         float slopeSpeedMultiplier = GetSlopeSpeedMultiplier(forwardVector, upVector);
 
         float splineSpeedMultiplier = currentSpline.CompareTag("Loopty") ? 4.75f : 1f;
-        distanceAlongSpline += moveSpeed * splineSpeedMultiplier * slopeSpeedMultiplier * Time.deltaTime;
+        float finalSpeed = moveSpeed * splineSpeedMultiplier * slopeSpeedMultiplier;
+
+        splineProgress = Mathf.Min(1f, splineProgress + finalSpeed * Time.deltaTime);
+        if (splineProgress >= 1f)
+        {
+            currentSpline.Evaluate(1f, out currentPos, out currentTangent, out currentUp);
+            transform.position = currentPos;
+            transform.rotation = Quaternion.LookRotation(currentTangent, currentUp);
+            followSpline = false;
+        }
     }
 
     private float GetSlopeSpeedMultiplier(Vector3 forwardVector, Vector3 upVector)
@@ -236,6 +259,23 @@ public class TrolleyMovementRidable : MonoBehaviour
         }
 
         return null;
+    }
+
+    private bool TryKillVictim(Collider other)
+    {
+        if (!followSpline || other == null)
+        {
+            return false;
+        }
+
+        VictimSFX victim = other.GetComponentInParent<VictimSFX>();
+        if (victim == null)
+        {
+            return false;
+        }
+
+        victim.TriggerDeath();
+        return true;
     }
 
     private void ToggleMountPrompt(bool shouldShow)
