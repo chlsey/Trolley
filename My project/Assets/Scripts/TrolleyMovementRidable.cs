@@ -16,7 +16,6 @@ public class TrolleyMovementRidable : MonoBehaviour
     public SplineContainer spline2;
     public SplineContainer currentSpline;
     public bool followSpline = false;
-    public AudioSource audioSource;
 
     [Header("Camera")]
     public Transform cameraAnchor;
@@ -39,7 +38,6 @@ public class TrolleyMovementRidable : MonoBehaviour
     {
         currentSpline = spline1;
         followSpline = false;
-        audioSource?.Stop();
     }
 
     private void OnDisable()
@@ -166,11 +164,6 @@ public class TrolleyMovementRidable : MonoBehaviour
             $"Player '{playerRoot.name}' mounted trolley '{name}' on spline '{(currentSpline != null ? currentSpline.name : "None")}'.",
             this
         );
-
-        if (audioSource != null && !audioSource.isPlaying)
-        {
-            audioSource.Play();
-        }
     }
 
     private void MoveTrolley()
