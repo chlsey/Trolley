@@ -6,6 +6,7 @@ using UnityEngine.Splines;
 public class TrolleyMovementRidable : MonoBehaviour
 {
     private const float DefaultMoveSpeed = 0.04f;
+    private static readonly Quaternion MountRotationOffset = Quaternion.Euler(0f, 90f, 0f);
 
     internal bool switched;
     public float moveSpeed = DefaultMoveSpeed;
@@ -44,15 +45,6 @@ public class TrolleyMovementRidable : MonoBehaviour
     {
         currentSpline = spline1;
         followSpline = false;
-
-        if (moveSpeed <= 0f)
-        {
-            moveSpeed = DefaultMoveSpeed;
-            Debug.LogWarning(
-                $"{nameof(TrolleyMovementRidable)} had no move speed configured on '{name}'. Falling back to {DefaultMoveSpeed}.",
-                this
-            );
-        }
 
         if (audioSource != null)
         {
@@ -170,12 +162,12 @@ public class TrolleyMovementRidable : MonoBehaviour
         if (seatAnchor != null)
         {
             playerRoot.localPosition = Vector3.zero;
-            playerRoot.localRotation = Quaternion.identity;
+            playerRoot.localRotation = MountRotationOffset;
         }
         else
         {
             playerRoot.localPosition = riderLocalPosition;
-            playerRoot.localRotation = Quaternion.Euler(riderLocalEulerAngles);
+            playerRoot.localRotation = Quaternion.Euler(riderLocalEulerAngles) * MountRotationOffset;
         }
 
         playerRb.linearVelocity = Vector3.zero;
