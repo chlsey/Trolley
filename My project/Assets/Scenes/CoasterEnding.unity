@@ -3091,7 +3091,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Press <sprite index=1> to flip the lever
+  m_text: Press <sprite index=1> to get on the coaster
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 777663d8322eb453da744659877a0c7e, type: 2}
   m_sharedMaterial: {fileID: 2503320779844430176, guid: 777663d8322eb453da744659877a0c7e, type: 2}
@@ -19425,7 +19425,7 @@ MonoBehaviour:
   spline2: {fileID: 2031885682}
   currentSpline: {fileID: 0}
   followSpline: 0
-  audioSource: {fileID: 1919451335}
+  audioSource: {fileID: 0}
   cameraAnchor: {fileID: 190047434}
   mountPrompt: {fileID: 735600001000000101}
   cameraMinPitch: -20
