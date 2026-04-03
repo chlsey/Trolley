@@ -23,7 +23,8 @@ public class EndingDoorOrchestrator : MonoBehaviour
     [Header("Lights")]
     public Light leftL;
     public Light rightL;
-
+    public Light leftDoorKey;
+    public Light rightDoorKey;
     [Header("SFX")]
     public AudioClip lightOn;
 
@@ -45,6 +46,8 @@ public class EndingDoorOrchestrator : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        leftDoorKey.intensity = 0;
+        rightDoorKey.intensity = 0;
         leftL.intensity = 0;
         rightL.intensity = 0;
         StartCoroutine(ThreeDoorsCoroutine());
@@ -75,8 +78,8 @@ public class EndingDoorOrchestrator : MonoBehaviour
         VOManager.Instance.PlayLine(segway);
         yield return new WaitForSeconds(segway.length);
         VOManager.Instance.PlaySoundFX(lightOn);
-        leftL.intensity = 100;
-        rightL.intensity = 100;
+        leftL.intensity = 200;
+        rightL.intensity = 200;
         VOManager.Instance.PlayLine(tracksIntro);
         
         yield return new WaitForSeconds(6);
@@ -94,6 +97,10 @@ public class EndingDoorOrchestrator : MonoBehaviour
 
         yield return StartCoroutine(OpenCurtain(glassPanel));
         canEnter = true;
+        leftL.intensity = 0;
+        rightL.intensity = 0;
+        leftDoorKey.intensity = 25;
+        rightDoorKey.intensity = 25;
         // yield return new WaitForSeconds(ending.length - 2);
     }
 

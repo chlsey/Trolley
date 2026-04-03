@@ -587,16 +587,16 @@ MonoBehaviour:
     m_Value: 1.5
   streaksIntensity:
     m_OverrideState: 1
-    m_Value: 0.17
+    m_Value: 0
   streaksLength:
     m_OverrideState: 1
-    m_Value: 0.118
+    m_Value: 0.5
   streaksOrientation:
     m_OverrideState: 1
-    m_Value: 7.37
+    m_Value: 0
   streaksThreshold:
     m_OverrideState: 1
-    m_Value: 0.196
+    m_Value: 0.25
   resolution:
     m_OverrideState: 1
     m_Value: 4
