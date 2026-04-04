@@ -177,7 +177,7 @@ public class PlayerCamera : MonoBehaviour
         tiltZ = 0f;
 
         SetParentPreservingWorldScale(rigRoot, rideReference);
-        rigRoot.localPosition = Vector3.zero;
+        rigRoot.localPosition = new Vector3(0.5f,0.25f,0.310000002f);
         rigRoot.localRotation = Quaternion.identity;
 
         transform.rotation = rideReference.rotation;
