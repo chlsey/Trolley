@@ -6134,6 +6134,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 90.475
       objectReference: {fileID: 0}
+    - target: {fileID: 6530455894637966190, guid: 8c1d130d2c2df854ea0c46204925af98, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8086292215040526462, guid: 8c1d130d2c2df854ea0c46204925af98, type: 3}
       propertyPath: m_Name
       value: Level 9 Prefab Loop Update
@@ -28773,6 +28777,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 50327de446e15084e8a8166da4fe2b9e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4953377252493334692, guid: 50327de446e15084e8a8166da4fe2b9e, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -29570,6 +29578,52 @@ Transform:
   m_Children:
   - {fileID: 1581971051}
   m_Father: {fileID: 679349035}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1685519060
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1685519062}
+  - component: {fileID: 1685519061}
+  m_Layer: 0
+  m_Name: CoasterEndingController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1685519061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1685519060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e5e45311199e40c29f9f0127d5d8dab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  intro: {fileID: 8300000, guid: 7a4677197db174b31b83c90c1678e746, type: 3}
+  nauseaClip: {fileID: 8300000, guid: c5a06907f50b44cc7bb65c8174a6621b, type: 3}
+--- !u!4 &1685519062
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1685519060}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 9.47194, y: 20.66489, z: -99.42927}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1726435311 stripped
 GameObject:
@@ -31566,7 +31620,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: e199ed64a8ea7794eaf6e0c051baea10, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -34287,3 +34341,4 @@ SceneRoots:
   - {fileID: 1960622149}
   - {fileID: 1047918711}
   - {fileID: 233670713}
+  - {fileID: 1685519062}
