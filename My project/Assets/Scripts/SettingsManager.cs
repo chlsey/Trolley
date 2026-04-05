@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Audio;
 
 
 public struct SettingsData
@@ -58,6 +59,9 @@ public class SettingsManager : MonoBehaviour
     // Please assign audio to THEIR CORRECT AudioMixerGroup (Don't assign to master volume)
     // For example, any audio in SoundEffects at run time -> applied SoundEffects set volume multiplier -> applied Master set volume multiplier -> audio is played
 
+    [SerializeField] private AudioMixer generalAudioMixer;
+    private const string MasterVolumeParameter = "MasterVolume";
+    private const float MutedVolumeDb = -80.0f;
 
 
     private const string GeneralAudioKey = "settings.general_audio";
@@ -69,6 +73,7 @@ public class SettingsManager : MonoBehaviour
     [SerializeField] private float controllerSens = 150.0f;
     [SerializeField] private float generalAudioMultiplier = 1.0f;
     // -------------------------------------------------------------------------------------
+    private bool warnedAboutMissingMasterVolumeParameter;
 
     private void Awake()
     {
@@ -87,11 +92,34 @@ public class SettingsManager : MonoBehaviour
         LoadSettings();
     }
 
+    private void Start()
+    {
+        if (generalAudioMixer != null)
+        {
+            if (generalAudioMultiplier <= 0.0f)
+            {
+                if (!generalAudioMixer.SetFloat(MasterVolumeParameter, MutedVolumeDb) && !warnedAboutMissingMasterVolumeParameter)
+                {
+                    Debug.LogWarning($"SettingsManager: missing mixer parameter '{MasterVolumeParameter}'.", this);
+                    warnedAboutMissingMasterVolumeParameter = true;
+                }
+            }
+            else
+            {
+                if (!generalAudioMixer.SetFloat(MasterVolumeParameter, Mathf.Log10(generalAudioMultiplier) * 20.0f) && !warnedAboutMissingMasterVolumeParameter)
+                {
+                    Debug.LogWarning($"SettingsManager: missing mixer parameter '{MasterVolumeParameter}'.", this);
+                    warnedAboutMissingMasterVolumeParameter = true;
+                }
+            }
+        }
+    }
+
     public void LoadSettings()
     {
         mouseSens = PlayerPrefs.GetFloat(MouseSensKey, mouseSens);
         controllerSens = PlayerPrefs.GetFloat(ControllerSensKey, controllerSens);
-        generalAudioMultiplier = PlayerPrefs.GetFloat(GeneralAudioKey, generalAudioMultiplier);
+        generalAudioMultiplier = Mathf.Clamp01(PlayerPrefs.GetFloat(GeneralAudioKey, generalAudioMultiplier));
 
         SettingsChanged?.Invoke(GetSettingsData());
     }
@@ -101,12 +129,32 @@ public class SettingsManager : MonoBehaviour
     {
         mouseSens = settings.mouseSens;
         controllerSens = settings.controllerSens;
-        generalAudioMultiplier = settings.generalAudioMultiplier;
+        generalAudioMultiplier = Mathf.Clamp01(settings.generalAudioMultiplier);
 
         PlayerPrefs.SetFloat(MouseSensKey, mouseSens);
         PlayerPrefs.SetFloat(ControllerSensKey, controllerSens);
         PlayerPrefs.SetFloat(GeneralAudioKey, generalAudioMultiplier);
         PlayerPrefs.Save();
+        
+        if (generalAudioMixer != null)
+        {
+            if (generalAudioMultiplier <= 0.0f)
+            {
+                if (!generalAudioMixer.SetFloat(MasterVolumeParameter, MutedVolumeDb) && !warnedAboutMissingMasterVolumeParameter)
+                {
+                    Debug.LogWarning($"SettingsManager: missing mixer parameter '{MasterVolumeParameter}'.", this);
+                    warnedAboutMissingMasterVolumeParameter = true;
+                }
+            }
+            else
+            {
+                if (!generalAudioMixer.SetFloat(MasterVolumeParameter, Mathf.Log10(generalAudioMultiplier) * 20.0f) && !warnedAboutMissingMasterVolumeParameter)
+                {
+                    Debug.LogWarning($"SettingsManager: missing mixer parameter '{MasterVolumeParameter}'.", this);
+                    warnedAboutMissingMasterVolumeParameter = true;
+                }
+            }
+        }
 
         SettingsChanged?.Invoke(GetSettingsData());
     }
