@@ -87,6 +87,10 @@ public class LeverNoRating : MonoBehaviour
             armAnim = GetComponentInChildren<Animator>();
         if (audioSource == null)
             audioSource = GetComponent<AudioSource>();
+        if (greenRedLight != null)
+            greenRedLight.SetGreen();
+        if (redGreenLight != null)
+            redGreenLight.SetRed();
     }
     
 }
