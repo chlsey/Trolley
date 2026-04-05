@@ -25003,9 +25003,9 @@ GameObject:
   - component: {fileID: 1274551125}
   - component: {fileID: 1274551124}
   - component: {fileID: 1274551123}
-  - component: {fileID: 1274551122}
+  - component: {fileID: 1274551127}
   m_Layer: 0
-  m_Name: MadeDevsThrowOut
+  m_Name: OffOnStage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25019,31 +25019,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1274551120}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -11.399, y: -0.11398995, z: 18.37}
+  m_LocalRotation: {x: -0.67587286, y: -0, z: -0, w: 0.7370183}
+  m_LocalPosition: {x: -56, y: 19, z: -108}
   m_LocalScale: {x: 3.0923, y: 2.1758, z: 0.050074}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 758535823}
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
---- !u!114 &1274551122
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1274551120}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07ef1d487cd49439481de7d18c62af89, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BoundaryClipTrigger
-  triggeredClip: {fileID: 8300000, guid: 64008207592e049f0930b646dc24d2ef, type: 3}
-  subtitleLines:
-  - text: 'Well, this is where we keep all the supplies and assets I made the developers
-      throw out. '
-    timeStartMilliseconds: 0
-    durationMilliseconds: 4800
+  m_LocalEulerAnglesHint: {x: 1354.956, y: 0, z: 0}
 --- !u!114 &1274551123
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25077,7 +25059,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 10, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1274551125
 MeshRenderer:
@@ -25135,6 +25117,48 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1274551120}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1274551127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1274551120}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03a532e85c2b4184b99458b30c016743, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RepeatingClipTrigger
+  entries:
+  - clip: {fileID: 8300000, guid: 15c1d254da29b47f0a6f56b3d1ac71bf, type: 3}
+    subtitleLines:
+    - text: "There\u2019s really nothing over there contestant."
+      timeStartMilliseconds: 0
+      durationMilliseconds: 2400
+    - text: "Come back to the stage and let\u2019s finish this with a blast\u2026
+        or five blasts."
+      timeStartMilliseconds: 2900
+      durationMilliseconds: 5600
+  - clip: {fileID: 8300000, guid: 3a21eca65819442059ccd4391120e461, type: 3}
+    subtitleLines:
+    - text: "That\u2019s more like it, getting back to business!"
+      timeStartMilliseconds: 0
+      durationMilliseconds: 3200
+  - clip: {fileID: 8300000, guid: f30ed7b4523404e98b7d4e95915556ff, type: 3}
+    subtitleLines:
+    - text: No no no! Come back!
+      timeStartMilliseconds: 0
+      durationMilliseconds: 1400
+  - clip: {fileID: 8300000, guid: b4bc6e0f7731546adb40b7ab7ab1fe54, type: 3}
+    subtitleLines:
+    - text: "You can\u2019t toy with me like this contestant."
+      timeStartMilliseconds: 0
+      durationMilliseconds: 2600
+  - clip: {fileID: 8300000, guid: 2ccf2f2ecd4714963b0c51e2b069d04e, type: 3}
+    subtitleLines:
+    - text: No.
+      timeStartMilliseconds: 0
+      durationMilliseconds: 700
 --- !u!1 &1275611445
 GameObject:
   m_ObjectHideFlags: 0
