@@ -218,12 +218,22 @@ public class TrolleyMovementRidable : MonoBehaviour
             transform.position = currentPos;
             transform.rotation = Quaternion.LookRotation(currentTangent, currentUp);
             followSpline = false;
-            NextScene nextScene = FindObjectOfType<NextScene>();
-            if (nextScene != null)
-            {
-                Debug.Log("next scene loading");
-                nextScene.TriggerSceneChange();
-            }
+            StartCoroutine(WaitForAudioThenLoadNext());
+        }
+    }
+
+    private System.Collections.IEnumerator WaitForAudioThenLoadNext()
+    {
+        if (VOManager.Instance != null && VOManager.Instance.voiceSource != null)
+        {
+            yield return new WaitWhile(() => VOManager.Instance.voiceSource.isPlaying);
+        }
+
+        NextScene nextScene = FindObjectOfType<NextScene>();
+        if (nextScene != null)
+        {
+            Debug.Log("next scene loading");
+            nextScene.TriggerSceneChange();
         }
     }
 

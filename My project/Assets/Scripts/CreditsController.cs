@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
 using System.Collections;
 
 public class CreditsController : MonoBehaviour
@@ -11,6 +12,17 @@ public class CreditsController : MonoBehaviour
         UnityEngine.Cursor.lockState = CursorLockMode.None;
         UnityEngine.Cursor.visible = true;
         StartCoroutine(ReturnToMenu());
+    }
+
+    void Update()
+    {
+        bool skip = Input.GetKeyDown(KeyCode.Tab) ||
+            (Gamepad.current != null && Gamepad.current.rightShoulder.wasPressedThisFrame);
+
+        if (skip)
+        {
+            SceneManager.LoadScene("MenuScene");
+        }
     }
 
     private IEnumerator ReturnToMenu()

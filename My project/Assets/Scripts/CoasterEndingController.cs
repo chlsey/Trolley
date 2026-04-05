@@ -39,7 +39,7 @@ public class CoasterEndingController : MonoBehaviour
 
     private IEnumerator RidingCoroutine()
     {
-        yield return new WaitForSeconds(4f);
+        yield return new WaitForSeconds(9f);
 
         if (VOManager.Instance != null)
         {
