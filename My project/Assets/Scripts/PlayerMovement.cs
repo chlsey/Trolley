@@ -278,11 +278,11 @@ public class PlayerMovement : MonoBehaviour
 
     public void TeleportToTrack()
     {
-        cam.tiltZ = -90f;
+        cam.tiltZ = 0f;
 
-        transform.rotation = Quaternion.Euler(-90f, 180f, 0f);
+        transform.rotation = Quaternion.Euler(-25f, -90f, -90f);
 
-        cam.SetRotation(-90f, -90f);
+        cam.SetRotation(0f, 0f);
 
         cam.clampView = true;
         cam.minX = -20f;
