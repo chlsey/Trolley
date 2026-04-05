@@ -2,7 +2,6 @@
   "dependencies": {
     "com.cqf.urpvolumetricfog": "https://github.com/CristianQiu/Unity-URP-Volumetric-Light.git",
     "com.unity.2d.enhancers": "1.0.0",
-    "com.unity.ai.assistant": "1.7.0-pre.1",
     "com.unity.ai.generators": "1.7.0-pre.1",
     "com.unity.ai.inference": "2.5.0",
     "com.unity.burst": "1.8.28",

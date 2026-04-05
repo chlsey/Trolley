@@ -25,8 +25,9 @@ public class NextScene : MonoBehaviour
     {
         if (triggered) return; 
         triggered = true;
-
-        rBController.EnableRigidbody();
+        
+        if(rBController) rBController.EnableRigidbody();
+        
         StartCoroutine(LoadNextScene());
     }
 

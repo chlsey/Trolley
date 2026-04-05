@@ -206,10 +206,17 @@ public class TrolleyMovementRidable : MonoBehaviour
         splineProgress = Mathf.Min(1f, splineProgress + finalSpeed * Time.deltaTime);
         if (splineProgress >= 1f)
         {
+            Debug.Log("Spline progress at full 100");
             currentSpline.Evaluate(1f, out currentPos, out currentTangent, out currentUp);
             transform.position = currentPos;
             transform.rotation = Quaternion.LookRotation(currentTangent, currentUp);
             followSpline = false;
+            NextScene nextScene = FindObjectOfType<NextScene>();
+            if (nextScene != null)
+            {
+                Debug.Log("next scene loading");
+                nextScene.TriggerSceneChange();
+            }
         }
     }
 
