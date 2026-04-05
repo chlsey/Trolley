@@ -38,6 +38,28 @@ public class SettingsManager : MonoBehaviour
 
     private const string MouseSensKey = "settings.mouse_sens";
     private const string ControllerSensKey = "settings.controller_sens";
+
+    // GENERAL AUDIO OVERHAUL
+    // WE ARE NOW USING GLOBAL MIXERS TO PROPERLY ADJUST VOLUME/OTHER SETTINGS BEFORE PLAYING THEM
+    // Basically:
+    // Audio Clip/Source -> wired to a Audio Mixer Group -> Audio Mixer Group applies volume multipler before sound is played at runtime
+    // SettingsManager -> volume change -> onChange -> apply to Audio Mixer Grouup
+    // 
+    // Internally in Audio:
+    // We have AudioMixer -> AudioMixerGroups -> Audio Sources
+    //
+    // Audio Mixer Groups have a hierachy as well and are routed as such:
+    //
+    // -> Master
+    //  -> VO
+    //  -> Music 
+    //  -> SoundEffects
+    //
+    // Please assign audio to THEIR CORRECT AudioMixerGroup (Don't assign to master volume)
+    // For example, any audio in SoundEffects at run time -> applied SoundEffects set volume multiplier -> applied Master set volume multiplier -> audio is played
+
+
+
     private const string GeneralAudioKey = "settings.general_audio";
 
 
