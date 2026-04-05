@@ -18,20 +18,26 @@ public class PlayerMovement : MonoBehaviour
     [Header("Movement")]
     public float moveSpeed = 8f;
 
+    [Header("Cluster Truck Jump")]
     // determines how much we can accelerate in the forward vector while in air
     // -> affects forward/back correction
-    public float airMultiplier = 0.2f;
+    public float airMultiplier = 0.25f;
 
     // determines how fast we can accelerate in the right vector while in air
     // -> affects side to side correction
-    public float sideAirMultiplier = 0.9f;
+    public float sideAirMultiplier = 0.4f;
 
     // determines the players horizontal velocity at initial jump
+    // (remember that this affects max correction since correction is % of initial jump vel)
     public float horziontalJumpMultiplier = 0.5f;
 
     // determines the max correction velocity
     // -> THIS IS a % OF THE INITAL JUMP VELOCITY
-    public float maxCorrectionMultiplier = 0.3f;
+    public float maxCorrectionMultiplier = 0.25f;
+
+    // determines the vertical jump force
+    public float jumpForce = 8f;
+
     public bool useClusterTruckJump = false;
 
     // CLUSTER TRUCK JUMP CALL CHAIN
@@ -39,7 +45,6 @@ public class PlayerMovement : MonoBehaviour
     // WHILE IN AIR -> MovePlayer() -> GetDirectionalAirVelocity() -> baseAirMomentum + airCorrectionVel
 
     [Header("Jump")]
-    public float jumpForce = 7f;
     public float jumpCooldown = 0.25f;
     bool readyToJump;
     public bool canJump;
