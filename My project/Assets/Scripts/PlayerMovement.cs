@@ -1,10 +1,10 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] public Rigidbody platformRb;
-    public float sideAirMultiplier = 0.9f;
 
     public PlayerCamera cam;
     public GameObject arms;
@@ -17,11 +17,26 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Movement")]
     public float moveSpeed = 8f;
+
+    // determines how much we can accelerate in the forward vector while in air
+    // -> affects forward/back correction
     public float airMultiplier = 0.2f;
 
-    // ONLY RUNS ON CLUSTER TRUCKS
-    public bool useWorldDirectionalAirDrag = false;
-    public Vector3 worldDireciton = Vector3.forward;
+    // determines how fast we can accelerate in the right vector while in air
+    // -> affects side to side correction
+    public float sideAirMultiplier = 0.9f;
+
+    // determines the players horizontal velocity at initial jump
+    public float horziontalJumpMultiplier = 0.5f;
+
+    // determines the max correction velocity
+    // -> THIS IS a % OF THE INITAL JUMP VELOCITY
+    public float maxCorrectionMultiplier = 0.3f;
+    public bool useClusterTruckJump = false;
+
+    // CLUSTER TRUCK JUMP CALL CHAIN
+    // INITIAL JUMP -> Jump() -> lastVel/airCorrectionVel setup -> MovePlayer()
+    // WHILE IN AIR -> MovePlayer() -> GetDirectionalAirVelocity() -> baseAirMomentum + airCorrectionVel
 
     [Header("Jump")]
     public float jumpForce = 7f;
@@ -95,7 +110,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            if (useWorldDirectionalAirDrag)
+            if (useClusterTruckJump)
             {
                 targetVel = GetDirectionalAirVelocity();
             }
@@ -158,7 +173,7 @@ public class PlayerMovement : MonoBehaviour
         {
             airCorrectionVel += airInput;
 
-            float maxCorrectionSpeed = baseAirSpeed * 0.3f;
+            float maxCorrectionSpeed = baseAirSpeed * maxCorrectionMultiplier;
             if (airCorrectionVel.magnitude > maxCorrectionSpeed)
             {
                 airCorrectionVel = airCorrectionVel.normalized * maxCorrectionSpeed;
@@ -187,9 +202,9 @@ public class PlayerMovement : MonoBehaviour
             lastVel = currentHorizontalVelocity;
         }
 
-        if (useWorldDirectionalAirDrag)
+        if (useClusterTruckJump)
         {
-            lastVel *= 0.65f;
+            lastVel *= clusterTruckJumpMomentumMultiplier;
         }
 
         airCorrectionVel = Vector3.zero;
