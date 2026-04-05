@@ -176,6 +176,13 @@ public class TrolleyMovementRidable : MonoBehaviour
         followSpline = true;
         ToggleMountPrompt(false);
 
+        // Trigger riding voice line after a short delay
+        CoasterEndingController coasterController = FindObjectOfType<CoasterEndingController>();
+        if (coasterController != null)
+        {
+            coasterController.StartRidingCoroutine();
+        }
+
         Debug.Log(
             $"Player '{playerRoot.name}' mounted trolley '{name}' on spline '{(currentSpline != null ? currentSpline.name : "None")}'.",
             this

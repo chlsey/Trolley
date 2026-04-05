@@ -52,21 +52,26 @@ public class PlayerCamera : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
-        SettingsData settings = SettingsManager.Instance.GetSettingsData();
-        mouseSensX = settings.mouseSens;
-        mouseSensY = settings.mouseSens;
-        controllerSensX = settings.controllerSens;
-        controllerSensY = settings.controllerSens;
+        if (SettingsManager.Instance != null)
+        {
+            SettingsData settings = SettingsManager.Instance.GetSettingsData();
+            mouseSensX = settings.mouseSens;
+            mouseSensY = settings.mouseSens;
+            controllerSensX = settings.controllerSens;
+            controllerSensY = settings.controllerSens;
+        }
     }
 
     private void OnEnable()
     {
-        SettingsManager.Instance.SettingsChanged += ApplySettings;
+        if (SettingsManager.Instance != null)
+            SettingsManager.Instance.SettingsChanged += ApplySettings;
     }
 
     private void OnDisable()
     {
-        SettingsManager.Instance.SettingsChanged -= ApplySettings;
+        if (SettingsManager.Instance != null)
+            SettingsManager.Instance.SettingsChanged -= ApplySettings;
     }
 
     private void Update()

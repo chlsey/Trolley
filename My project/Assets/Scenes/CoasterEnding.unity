@@ -5893,6 +5893,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6920211811762728016, guid: 8c1d130d2c2df854ea0c46204925af98, type: 3}
+      propertyPath: trolley
+      value: 
+      objectReference: {fileID: 1919451339}
+    - target: {fileID: 6920211811762728016, guid: 8c1d130d2c2df854ea0c46204925af98, type: 3}
+      propertyPath: audioSource
+      value: 
+      objectReference: {fileID: 1434124378}
     - target: {fileID: 8086292215040526462, guid: 8c1d130d2c2df854ea0c46204925af98, type: 3}
       propertyPath: m_Name
       value: Level 9 Prefab Loop Update
@@ -27798,7 +27806,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f31f6eae749a8549b9ef5e5a8a0bb3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  sceneToLoad: MenuScene
+  sceneToLoad: Credits
   rBController: {fileID: 1047759878}
   health: {fileID: 8570878366440145665}
 --- !u!65 &1612544343
@@ -30348,6 +30356,11 @@ MonoBehaviour:
   cameraMaxPitch: 20
   cameraMinYaw: -50
   cameraMaxYaw: 50
+--- !u!4 &1919451339 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6273738448025275254, guid: 8c1d130d2c2df854ea0c46204925af98, type: 3}
+  m_PrefabInstance: {fileID: 233670713}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1924240433
 PrefabInstance:
   m_ObjectHideFlags: 0

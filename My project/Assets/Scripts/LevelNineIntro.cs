@@ -15,12 +15,14 @@ public class LevelNineIntro : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        clock.rotate = false;
-        trolleyMovement.followSpline = false;
-        lever.enabled = false;
+        if (clock != null) clock.rotate = false;
+        if (trolleyMovement != null) trolleyMovement.followSpline = false;
+        if (lever != null) lever.enabled = false;
 
-        StartCoroutine(PlayLevelNineIntro());
-
+        if (levelNineIntroClip != null)
+        {
+            StartCoroutine(PlayLevelNineIntro());
+        }
 
     }
 

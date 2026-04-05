@@ -21,7 +21,8 @@ public class CoasterEndingController : MonoBehaviour
             VOManager.Instance.PlayLine(intro);
             VOManager.Instance.ShowSubtitle(new List<VOManager.SubtitleLine>
             {
-                // new VOManager.SubtitleLine("Apologies for the sudden change in... dimentionality", 0f, 5000f)
+                new VOManager.SubtitleLine("Yes! The Trolley Getaway Experience!", 0f, 3800f),
+                new VOManager.SubtitleLine("Hop on for our final journey together as host and contestant.", 4000f, 8300f),
             });
 
             yield return new WaitForSeconds(intro.length);
@@ -31,14 +32,22 @@ public class CoasterEndingController : MonoBehaviour
         }
     }
 
+    public void StartRidingCoroutine()
+    {
+        StartCoroutine(RidingCoroutine());
+    }
+
     private IEnumerator RidingCoroutine()
     {
+        yield return new WaitForSeconds(4f);
+
         if (VOManager.Instance != null)
         {
             VOManager.Instance.PlayLine(nauseaClip);
             VOManager.Instance.ShowSubtitle(new List<VOManager.SubtitleLine>
             {
-                // new VOManager.SubtitleLine("Apologies for the sudden change in... dimentionality", 0f, 5000f)
+                new VOManager.SubtitleLine("Is this not the best, most nauseating thing you’ve ever experienced?", 0f, 5200f),
+                new VOManager.SubtitleLine("Haha! I sure won’t forget it anytime soon!", 5300f, 4000f),
             });
 
             yield return new WaitForSeconds(nauseaClip.length);
