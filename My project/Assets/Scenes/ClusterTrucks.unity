@@ -47188,7 +47188,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6100389820538841654, guid: c0e56157e5ffae74dbaf952fe91860cc, type: 3}
       propertyPath: jumpForce
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 6100389820538841654, guid: c0e56157e5ffae74dbaf952fe91860cc, type: 3}
       propertyPath: moveSpeed
@@ -47208,7 +47208,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6100389820538841654, guid: c0e56157e5ffae74dbaf952fe91860cc, type: 3}
       propertyPath: airMultiplier
-      value: 3
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 6100389820538841654, guid: c0e56157e5ffae74dbaf952fe91860cc, type: 3}
       propertyPath: oppositeAirMultiplier
@@ -47216,7 +47216,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6100389820538841654, guid: c0e56157e5ffae74dbaf952fe91860cc, type: 3}
       propertyPath: sideAirMultiplier
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 6100389820538841654, guid: c0e56157e5ffae74dbaf952fe91860cc, type: 3}
       propertyPath: useWorldDirectionalAirDrag
