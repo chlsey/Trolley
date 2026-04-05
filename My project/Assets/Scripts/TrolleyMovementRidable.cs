@@ -38,6 +38,7 @@ public class TrolleyMovementRidable : MonoBehaviour
     {
         currentSpline = spline1;
         followSpline = false;
+        // ToggleMountPrompt(false);
     }
 
     private void OnDisable()
