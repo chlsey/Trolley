@@ -29,38 +29,71 @@ public class LeverNoRating : MonoBehaviour
     void Update()
     {
         gotInput = Input.GetKeyDown(KeyCode.E) ||
-           (Gamepad.current != null && Gamepad.current.buttonWest.isPressed);
-        if (nearLever && gotInput && trolleyMovement && !catapultProjectile)
+           (Gamepad.current != null && Gamepad.current.buttonWest.wasReleasedThisFrame);
+
+        if (!nearLever || !gotInput || leverFlipped)
+        {
+            return;
+        }
+
+        leverFlipped = true;
+        enabled = false;
+
+        if (trolleyMovement && !catapultProjectile)
         {
             Debug.Log($"SwitchTrack called by {nameof(LeverNoRating)} on {gameObject.name}");
             trolleyMovement.SwitchTrack();
-            redGreenLight.Toggle();
-            greenRedLight.Toggle();
+            if (redGreenLight != null)
+            {
+                redGreenLight.Toggle();
+            }
+            else
+            {
+                Debug.LogWarning($"{nameof(LeverNoRating)} on {gameObject.name} is missing {nameof(redGreenLight)}. Track switched without updating the light.", this);
+            }
+
+            if (greenRedLight != null)
+            {
+                greenRedLight.Toggle();
+            }
+            else
+            {
+                Debug.LogWarning($"{nameof(LeverNoRating)} on {gameObject.name} is missing {nameof(greenRedLight)}. Track switched without updating the light.", this);
+            }
+
             anim.SetTrigger("Switch");
-            armAnim.SetTrigger("Switch");
+            if (armAnim != null && armAnim != anim)
+            {
+                armAnim.SetTrigger("Switch");
+            }
             audioSource.PlayOneShot(switchSound);
             Debug.Log("TrackSwitched");
             Debug.Log("Track Switched");
-            enabled = false;
-            leverFlipped = true;
+            return;
         }
-        if (nearLever && gotInput && catapultProjectile)
+
+        if (catapultProjectile)
         {
             catapultProjectile.Launch();
             anim.SetTrigger("Switch");
-            armAnim.SetTrigger("Switch");
+            if (armAnim != null && armAnim != anim)
+            {
+                armAnim.SetTrigger("Switch");
+            }
             audioSource.PlayOneShot(switchSound);
-            enabled = false;
-            leverFlipped = true;
+            return;
         }
-        else if (nearLever && gotInput)
+
+        if (!trolleyMovement)
         {
+            Debug.LogWarning($"{nameof(LeverNoRating)} on {gameObject.name} has no {nameof(trolleyMovement)} reference.", this);
             anim.SetTrigger("Switch");
-            armAnim.SetTrigger("Switch");
+            if (armAnim != null && armAnim != anim)
+            {
+                armAnim.SetTrigger("Switch");
+            }
             audioSource.PlayOneShot(switchSound);
-            enabled = false;
             Debug.Log("lever flipped in lever script");
-            leverFlipped = true;
         }
     }
 
@@ -87,6 +120,11 @@ public class LeverNoRating : MonoBehaviour
             armAnim = GetComponentInChildren<Animator>();
         if (audioSource == null)
             audioSource = GetComponent<AudioSource>();
+
+        if (redGreenLight == null || greenRedLight == null)
+        {
+            Debug.LogWarning($"{nameof(LeverNoRating)} on {gameObject.name} could not find both track lights. Level wiring is incomplete.", this);
+        }
     }
     
 }
