@@ -204,7 +204,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (useClusterTruckJump)
         {
-            lastVel *= clusterTruckJumpMomentumMultiplier;
+            lastVel *= maxCorrectionMultiplier;
         }
 
         airCorrectionVel = Vector3.zero;
