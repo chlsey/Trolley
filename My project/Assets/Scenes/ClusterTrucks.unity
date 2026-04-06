@@ -47215,16 +47215,16 @@ PrefabInstance:
       value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 6100389820538841654, guid: c0e56157e5ffae74dbaf952fe91860cc, type: 3}
-      propertyPath: horziontalJumpMultiplier
-      value: 0.5
+      propertyPath: useClusterTruckJump
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6100389820538841654, guid: c0e56157e5ffae74dbaf952fe91860cc, type: 3}
       propertyPath: maxCorrectionMultiplier
       value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 6100389820538841654, guid: c0e56157e5ffae74dbaf952fe91860cc, type: 3}
-      propertyPath: useClusterTruckJump
-      value: 1
+      propertyPath: horziontalJumpMultiplier
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 7735057603086622755, guid: c0e56157e5ffae74dbaf952fe91860cc, type: 3}
       propertyPath: m_Name

@@ -29,7 +29,7 @@ public class PlayerMovement : MonoBehaviour
 
     // determines the players horizontal velocity at initial jump
     // (remember that this affects max correction since correction is % of initial jump vel)
-    public float horziontalJumpMultiplier = 0.5f;
+    public float horziontalJumpMultiplier = 0.8f;
 
     // determines the max correction velocity
     // -> THIS IS a % OF THE INITAL JUMP VELOCITY
@@ -58,6 +58,7 @@ public class PlayerMovement : MonoBehaviour
     float verticalInput;
     Vector3 lastVel;
     Vector3 airCorrectionVel;
+    bool preserveJumpVelocityUntilExit;
 
     Rigidbody rb;
 
@@ -108,8 +109,9 @@ public class PlayerMovement : MonoBehaviour
     {
         Vector3 velocity = rb.linearVelocity;
         Vector3 targetVel;
+        bool groundedMovement = canJump && !preserveJumpVelocityUntilExit;
 
-        if (canJump)
+        if (groundedMovement)
         {
             targetVel = GetGroundMoveVelocity();
         }
@@ -132,7 +134,7 @@ public class PlayerMovement : MonoBehaviour
         );
 
         rb.AddForce(velocityChange, ForceMode.VelocityChange);
-        if (canJump && platformRb != null)
+        if (groundedMovement && platformRb != null)
         {
             Vector3 pv = platformRb.linearVelocity;
             rb.linearVelocity = new Vector3(
@@ -209,10 +211,16 @@ public class PlayerMovement : MonoBehaviour
 
         if (useClusterTruckJump)
         {
-            lastVel *= maxCorrectionMultiplier;
+            lastVel *= horziontalJumpMultiplier;
+            preserveJumpVelocityUntilExit = true;
+        }
+        else
+        {
+            preserveJumpVelocityUntilExit = false;
         }
 
         airCorrectionVel = Vector3.zero;
+        canJump = false;
 
         rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0, rb.linearVelocity.z);
         rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
@@ -227,6 +235,11 @@ public class PlayerMovement : MonoBehaviour
     {
         if (((1 << collision.gameObject.layer) & whatIsGround) != 0)
         {
+            if (preserveJumpVelocityUntilExit)
+            {
+                return;
+            }
+
             canJump = false; 
 
             foreach (var contact in collision.contacts)
@@ -246,6 +259,18 @@ public class PlayerMovement : MonoBehaviour
     {
         if (((1 << collision.gameObject.layer) & whatIsGround) != 0)
         {
+            if (preserveJumpVelocityUntilExit)
+            {
+                airCorrectionVel = Vector3.zero;
+                canJump = false;
+                preserveJumpVelocityUntilExit = false;
+
+                if (collision.rigidbody == platformRb)
+                    platformRb = null;
+
+                return;
+            }
+
             Vector3 currentHorizontalVelocity = Vector3.ProjectOnPlane(rb.linearVelocity, Vector3.up);
             Vector3 groundMoveVelocity = canJump ? GetGroundMoveVelocity() : Vector3.zero;
 
