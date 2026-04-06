@@ -29,7 +29,10 @@ public class PlayerMovement : MonoBehaviour
 
     // determines the players horizontal velocity at initial jump
     // (remember that this affects max correction since correction is % of initial jump vel)
-    public float horziontalJumpMultiplier = 0.8f;
+    public float horziontalJumpMultiplier = 1.0f;
+
+    // determines the players horizontal velocity at initial jump when side input is dominant
+    public float sidewaysHorizontalJumpMultiplier = 1.0f;
 
     // determines the max correction velocity
     // -> THIS IS a % OF THE INITAL JUMP VELOCITY
@@ -189,6 +192,30 @@ public class PlayerMovement : MonoBehaviour
 
         return baseAirMomentum + airCorrectionVel;
     }
+
+    Vector3 GetClusterTruckTakeoffVelocity(Vector3 baseJumpVelocity)
+    {
+        bool sideDominantJump = Mathf.Abs(horizontalInput) > Mathf.Abs(verticalInput);
+        if (!sideDominantJump)
+        {
+            return baseJumpVelocity * horziontalJumpMultiplier;
+        }
+
+        Vector3 flatForward = Vector3.ProjectOnPlane(orientation.forward, Vector3.up).normalized;
+        if (flatForward.sqrMagnitude < 0.0001f)
+        {
+            return baseJumpVelocity * sidewaysHorizontalJumpMultiplier;
+        }
+
+        Vector3 flatRight = Vector3.Cross(Vector3.up, flatForward).normalized;
+        float forwardSpeed = Vector3.Dot(baseJumpVelocity, flatForward);
+        float sidewaysSpeed = Vector3.Dot(baseJumpVelocity, flatRight);
+
+        Vector3 forwardTakeoffVelocity = flatForward * (forwardSpeed * horziontalJumpMultiplier);
+        Vector3 sidewaysTakeoffVelocity = flatRight * (sidewaysSpeed * sidewaysHorizontalJumpMultiplier);
+
+        return forwardTakeoffVelocity + sidewaysTakeoffVelocity;
+    }
     
     // NOTE:
     // REMOVED OLD INPUT BASED AIR SPEED
@@ -211,7 +238,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (useClusterTruckJump)
         {
-            lastVel *= horziontalJumpMultiplier;
+            lastVel = GetClusterTruckTakeoffVelocity(lastVel);
             preserveJumpVelocityUntilExit = true;
         }
         else

@@ -47224,7 +47224,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6100389820538841654, guid: c0e56157e5ffae74dbaf952fe91860cc, type: 3}
       propertyPath: horziontalJumpMultiplier
-      value: 0.8
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6100389820538841654, guid: c0e56157e5ffae74dbaf952fe91860cc, type: 3}
+      propertyPath: sidewaysHorizontalJumpMultiplier
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 7735057603086622755, guid: c0e56157e5ffae74dbaf952fe91860cc, type: 3}
       propertyPath: m_Name
@@ -130473,8 +130477,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1263031340}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.058624126, y: 0.039483048, z: -0.0050465716, w: 0.9974863}
-  m_LocalPosition: {x: 309.2893, y: 22.196728, z: -349.7153}
+  m_LocalRotation: {x: 0.107752606, y: 0.23044306, z: -0.025685541, w: 0.9667604}
+  m_LocalPosition: {x: 323.12564, y: 6.998463, z: -28.39126}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
