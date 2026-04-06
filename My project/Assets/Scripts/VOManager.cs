@@ -42,15 +42,6 @@ public class VOManager : MonoBehaviour
     }
 
     private Coroutine subtitleCoroutine;
-    private float baseAudioSourceVolume;
-    private float baseVoiceSourceVolume;
-    private float baseAudienceSourceVolume;
-    private float baseMusicSourceVolume;
-    private float baseSfxSourceVolume;
-
-
-
-
     private void Awake()
     {
         if (Instance != null)
@@ -61,42 +52,6 @@ public class VOManager : MonoBehaviour
 
         Instance = this;
         DontDestroyOnLoad(this.gameObject);
-        CacheBaseVolumes();
-    }
-
-    private void OnEnable()
-    {
-        if (SettingsManager.Instance != null)
-            SettingsManager.Instance.SettingsChanged += ApplySettings;
-    }
-
-    private void Start()
-    {
-        if (SettingsManager.Instance == null) return;
-
-        SettingsData settings = SettingsManager.Instance.GetSettingsData();
-        float generalAudioMultiplier = settings.generalAudioMultiplier;
-
-        if (audioSource != null)
-            audioSource.volume = baseAudioSourceVolume * generalAudioMultiplier;
-
-        if (voiceSource != null)
-            voiceSource.volume = baseVoiceSourceVolume * generalAudioMultiplier;
-
-        if (audienceSource != null)
-            audienceSource.volume = baseAudienceSourceVolume * generalAudioMultiplier;
-
-        if (musicSource != null)
-            musicSource.volume = baseMusicSourceVolume * generalAudioMultiplier;
-
-        if (sfxSource != null)
-            sfxSource.volume = baseSfxSourceVolume * generalAudioMultiplier;
-    }
-
-    private void OnDisable()
-    {
-        if (SettingsManager.Instance != null)
-            SettingsManager.Instance.SettingsChanged -= ApplySettings;
     }
 
     public void Play(AudioClip clip)
@@ -304,32 +259,4 @@ public class VOManager : MonoBehaviour
 
         subtitleCoroutine = null;
     }
-
-    private void CacheBaseVolumes()
-    {
-        baseAudioSourceVolume = audioSource != null ? audioSource.volume : 0f;
-        baseVoiceSourceVolume = voiceSource != null ? voiceSource.volume : 0f;
-        baseAudienceSourceVolume = audienceSource != null ? audienceSource.volume : 0f;
-        baseMusicSourceVolume = musicSource != null ? musicSource.volume : 0f;
-        baseSfxSourceVolume = sfxSource != null ? sfxSource.volume : 0f;
-    }
-
-    private void ApplySettings(SettingsData settings)
-    {
-        if (audioSource != null)
-            audioSource.volume = baseAudioSourceVolume * settings.generalAudioMultiplier;
-
-        if (voiceSource != null)
-            voiceSource.volume = baseVoiceSourceVolume * settings.generalAudioMultiplier;
-
-        if (audienceSource != null)
-            audienceSource.volume = baseAudienceSourceVolume * settings.generalAudioMultiplier;
-
-        if (musicSource != null)
-            musicSource.volume = baseMusicSourceVolume * settings.generalAudioMultiplier;
-
-        if (sfxSource != null)
-            sfxSource.volume = baseSfxSourceVolume * settings.generalAudioMultiplier;
-    }
-
 }
