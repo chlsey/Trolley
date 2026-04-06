@@ -1,10 +1,10 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] public Rigidbody platformRb;
-    public float sideAirMultiplier = 0.35f;
 
     public PlayerCamera cam;
     public GameObject arms;
@@ -17,15 +17,34 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Movement")]
     public float moveSpeed = 8f;
-    public float airMultiplier = 0.85f;
-    public float oppositeAirMultiplier = 0.4f;
 
-    // ONLY RUNS ON CLUSTER TRUCKS
-    public bool useWorldDirectionalAirDrag = false;
-    public Vector3 worldDireciton = Vector3.forward;
+    [Header("Cluster Truck Jump")]
+    // determines how much we can accelerate in the forward vector while in air
+    // -> affects forward/back correction
+    public float airMultiplier = 0.25f;
+
+    // determines how fast we can accelerate in the right vector while in air
+    // -> affects side to side correction
+    public float sideAirMultiplier = 0.4f;
+
+    // determines the players horizontal velocity at initial jump
+    // (remember that this affects max correction since correction is % of initial jump vel)
+    public float horziontalJumpMultiplier = 0.5f;
+
+    // determines the max correction velocity
+    // -> THIS IS a % OF THE INITAL JUMP VELOCITY
+    public float maxCorrectionMultiplier = 0.25f;
+
+    // determines the vertical jump force
+    public float jumpForce = 8f;
+
+    public bool useClusterTruckJump = false;
+
+    // CLUSTER TRUCK JUMP CALL CHAIN
+    // INITIAL JUMP -> Jump() -> lastVel/airCorrectionVel setup -> MovePlayer()
+    // WHILE IN AIR -> MovePlayer() -> GetDirectionalAirVelocity() -> baseAirMomentum + airCorrectionVel
 
     [Header("Jump")]
-    public float jumpForce = 7f;
     public float jumpCooldown = 0.25f;
     bool readyToJump;
     public bool canJump;
@@ -38,6 +57,7 @@ public class PlayerMovement : MonoBehaviour
     float horizontalInput;
     float verticalInput;
     Vector3 lastVel;
+    Vector3 airCorrectionVel;
 
     Rigidbody rb;
 
@@ -95,7 +115,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            if (useWorldDirectionalAirDrag)
+            if (useClusterTruckJump)
             {
                 targetVel = GetDirectionalAirVelocity();
             }
@@ -139,73 +159,60 @@ public class PlayerMovement : MonoBehaviour
     }
 
     // This is the cluster trucks air velocity calculation
-    // Very situational solution
-    // Since the trolleys are all moving in one direction, we set a global world direction.
-    // Inputs that move the player farther away from the global world direction are induced with MORE air drag
-    // This is intended to make jumping feel more consistent between jumping with the trolleys vs jumping against/adjacent
+    // We keep the takeoff speed locked while airborne, with tiny accumulated input correction
     Vector3 GetDirectionalAirVelocity()
     {
-        Vector3 moveDir = orientation.forward * verticalInput + orientation.right * horizontalInput;
-        Vector3 inputDirXZPlane = Vector3.ProjectOnPlane(moveDir, Vector3.up);
-        Vector3 trolleyDirXZPlane = Vector3.ProjectOnPlane(worldDireciton, Vector3.up);
-        float inputMagnitude = Mathf.Clamp01(inputDirXZPlane.magnitude);
+        Vector3 baseAirMomentum = Vector3.ProjectOnPlane(lastVel, Vector3.up);
+        float baseAirSpeed = baseAirMomentum.magnitude;
 
-
-        inputDirXZPlane.Normalize();
-        trolleyDirXZPlane.Normalize();
-
-        // calc dot product between planes to get difference in alignment
-        float alignment = Vector3.Dot(inputDirXZPlane, trolleyDirXZPlane);
-
-        // remap dot from -1..1 to 0..1 so we can lerp our drag values
-        float directionalBlend = (alignment + 1f) * 0.5f;
-
-        // bias the blend harder toward opposite air drag so sideways jumps get dragged more too
-        directionalBlend *= directionalBlend;
-        directionalBlend *= directionalBlend * directionalBlend;
-
-        // apply air multipler on scale between regular air multipler (moving with trolleys) vs opposite air multipler (moving against trolleys)
-        float directionalAirMultiplier = Mathf.Lerp(oppositeAirMultiplier, airMultiplier, directionalBlend);
-
-        // build the players intended air movement from input dir and the scaled multiplier
-        Vector3 directionalAirVelocity = inputDirXZPlane * (moveSpeed * directionalAirMultiplier * inputMagnitude);
-
-        // split lastVelocity into world direction vs leftover sideways so we can compare the forward parts cleanly
-        Vector3 lastVelocityAlongWorld = Vector3.Project(lastVel, trolleyDirXZPlane);
-        Vector3 lastVelocitySideways = lastVel - lastVelocityAlongWorld;
-
-        // do the same split for this frames air input
-        Vector3 airAlongWorld = Vector3.Project(directionalAirVelocity, trolleyDirXZPlane);
-        Vector3 airSideways = directionalAirVelocity - airAlongWorld;
-
-        // convert the world direction pieces into signed speeds for easier combine logic
-        float lastVelocityWorldSpeed = Vector3.Dot(lastVelocityAlongWorld, trolleyDirXZPlane);
-        float airWorldSpeed = Vector3.Dot(airAlongWorld, trolleyDirXZPlane);
-
-        if (Mathf.Abs(lastVelocityWorldSpeed) > 0.0001f &&
-            Mathf.Abs(airWorldSpeed) > 0.0001f &&
-            Mathf.Sign(lastVelocityWorldSpeed) == Mathf.Sign(airWorldSpeed))
+        if (baseAirSpeed < 0.0001f)
         {
-            // if both push the same way, keep the stronger one instead of stacking into mach fuck
-            airWorldSpeed = Mathf.Sign(airWorldSpeed) * Mathf.Max(Mathf.Abs(lastVelocityWorldSpeed), Mathf.Abs(airWorldSpeed));
-        }
-        else
-        {
-            // if they oppose each other, combine them normally so the input can fight the lastVelocity
-            airWorldSpeed = lastVelocityWorldSpeed + airWorldSpeed;
+            return baseAirMomentum;
         }
 
-        // apply the multiplier and shi to our calced velocities
-        return trolleyDirXZPlane * airWorldSpeed + lastVelocitySideways + airSideways;
+        Vector3 airInput = orientation.forward * (verticalInput * baseAirSpeed * airMultiplier * Time.fixedDeltaTime) +
+            orientation.right * (horizontalInput * baseAirSpeed * sideAirMultiplier * Time.fixedDeltaTime);
+        airInput = Vector3.ProjectOnPlane(airInput, Vector3.up);
+
+        if (airInput.sqrMagnitude > 0.0001f)
+        {
+            airCorrectionVel += airInput;
+
+            float maxCorrectionSpeed = baseAirSpeed * maxCorrectionMultiplier;
+            if (airCorrectionVel.magnitude > maxCorrectionSpeed)
+            {
+                airCorrectionVel = airCorrectionVel.normalized * maxCorrectionSpeed;
+            }
+        }
+
+        return baseAirMomentum + airCorrectionVel;
     }
-
+    
+    // NOTE:
+    // REMOVED OLD INPUT BASED AIR SPEED
+    // MAJORITY OF AIR VELOCITY IS NOW DETEMRINED AT INITAL JUMP -> MOMENTUM BASED JUMPING
+    // PLAYER CAN MINORLY AFFECT AIR VELOCITY IN-FLIGHT WITH INPUTS
     void Jump()
     {
         Vector3 currentHorizontalVelocity = Vector3.ProjectOnPlane(rb.linearVelocity, Vector3.up);
         Vector3 groundMoveVelocity = canJump ? GetGroundMoveVelocity() : Vector3.zero;
 
         // save horizontal velocity on jump
-        lastVel = currentHorizontalVelocity - groundMoveVelocity;
+        if (platformRb != null)
+        {
+            lastVel = Vector3.ProjectOnPlane(platformRb.linearVelocity, Vector3.up) + groundMoveVelocity;
+        }
+        else
+        {
+            lastVel = currentHorizontalVelocity;
+        }
+
+        if (useClusterTruckJump)
+        {
+            lastVel *= maxCorrectionMultiplier;
+        }
+
+        airCorrectionVel = Vector3.zero;
 
         rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0, rb.linearVelocity.z);
         rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
@@ -228,6 +235,7 @@ public class PlayerMovement : MonoBehaviour
                 {
                     canJump = true;
                     platformRb = collision.rigidbody;
+                    airCorrectionVel = Vector3.zero;
                     return;
                 }
             }
@@ -241,8 +249,16 @@ public class PlayerMovement : MonoBehaviour
             Vector3 currentHorizontalVelocity = Vector3.ProjectOnPlane(rb.linearVelocity, Vector3.up);
             Vector3 groundMoveVelocity = canJump ? GetGroundMoveVelocity() : Vector3.zero;
 
-            // save horizontal velocity on jump
-            lastVel = currentHorizontalVelocity - groundMoveVelocity;
+            // save horizontal velocity when leaving the ground
+            if (platformRb != null)
+            {
+                lastVel = Vector3.ProjectOnPlane(platformRb.linearVelocity, Vector3.up) + groundMoveVelocity;
+            }
+            else
+            {
+                lastVel = currentHorizontalVelocity;
+            }
+            airCorrectionVel = Vector3.zero;
             canJump = false;
 
             if (collision.rigidbody == platformRb)

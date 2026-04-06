@@ -47208,30 +47208,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6100389820538841654, guid: c0e56157e5ffae74dbaf952fe91860cc, type: 3}
       propertyPath: airMultiplier
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6100389820538841654, guid: c0e56157e5ffae74dbaf952fe91860cc, type: 3}
-      propertyPath: oppositeAirMultiplier
-      value: 1
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 6100389820538841654, guid: c0e56157e5ffae74dbaf952fe91860cc, type: 3}
       propertyPath: sideAirMultiplier
-      value: 1
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 6100389820538841654, guid: c0e56157e5ffae74dbaf952fe91860cc, type: 3}
-      propertyPath: useWorldDirectionalAirDrag
-      value: 1
+      propertyPath: horziontalJumpMultiplier
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 6100389820538841654, guid: c0e56157e5ffae74dbaf952fe91860cc, type: 3}
-      propertyPath: trolleyWorldDirection.x
-      value: 0
+      propertyPath: maxCorrectionMultiplier
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 6100389820538841654, guid: c0e56157e5ffae74dbaf952fe91860cc, type: 3}
-      propertyPath: trolleyWorldDirection.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6100389820538841654, guid: c0e56157e5ffae74dbaf952fe91860cc, type: 3}
-      propertyPath: trolleyWorldDirection.z
+      propertyPath: useClusterTruckJump
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7735057603086622755, guid: c0e56157e5ffae74dbaf952fe91860cc, type: 3}
