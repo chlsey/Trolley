@@ -353,6 +353,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f319500f6b6131f4fa756ca9ade0ed8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SettingsManager
+  generalAudioMixer: {fileID: 24100000, guid: 0b8b30d636fe4d64b96cc47389955d65, type: 2}
   mouseSens: 0.1
   controllerSens: 150
   generalAudioMultiplier: 1

@@ -24,6 +24,9 @@ public class PauseMenuController : MonoBehaviour
     private UIDocument uiDocument;
     private VisualElement root;
     private Slider volumeSlider;
+    private Slider voSlider;
+    private Slider musicSlider;
+    private Slider soundEffectsSlider;
     private Slider mouseSensSlider;
     private Slider controllerSensSlider;
     private Button unpauseButton;
@@ -105,6 +108,9 @@ public class PauseMenuController : MonoBehaviour
         root = uiDocument.rootVisualElement;
 
         volumeSlider = root.Q<Slider>("Volume_Slider");
+        voSlider = root.Q<Slider>("VO_Slider");
+        musicSlider = root.Q<Slider>("Music_Slider");
+        soundEffectsSlider = root.Q<Slider>("SoundEffects_Slider");
         mouseSensSlider = root.Q<Slider>("Mouse_Slider");
         controllerSensSlider = root.Q<Slider>("Controller_Slider");
         unpauseButton = root.Q<Button>("Unpause_Button");
@@ -124,6 +130,42 @@ public class PauseMenuController : MonoBehaviour
             PrepareInteractiveElement(volumeSlider, new NavigationTargets
             {
                 Up = null,
+                Down = voSlider,
+                HandleVertical = true
+            });
+        }
+
+        if (voSlider != null)
+        {
+            voSlider.UnregisterCallback<ChangeEvent<float>>(ChangeVOVolume);
+            voSlider.RegisterCallback<ChangeEvent<float>>(ChangeVOVolume);
+            PrepareInteractiveElement(voSlider, new NavigationTargets
+            {
+                Up = volumeSlider,
+                Down = musicSlider,
+                HandleVertical = true
+            });
+        }
+
+        if (musicSlider != null)
+        {
+            musicSlider.UnregisterCallback<ChangeEvent<float>>(ChangeMusicVolume);
+            musicSlider.RegisterCallback<ChangeEvent<float>>(ChangeMusicVolume);
+            PrepareInteractiveElement(musicSlider, new NavigationTargets
+            {
+                Up = voSlider,
+                Down = soundEffectsSlider,
+                HandleVertical = true
+            });
+        }
+
+        if (soundEffectsSlider != null)
+        {
+            soundEffectsSlider.UnregisterCallback<ChangeEvent<float>>(ChangeSoundEffectsVolume);
+            soundEffectsSlider.RegisterCallback<ChangeEvent<float>>(ChangeSoundEffectsVolume);
+            PrepareInteractiveElement(soundEffectsSlider, new NavigationTargets
+            {
+                Up = musicSlider,
                 Down = mouseSensSlider,
                 HandleVertical = true
             });
@@ -135,7 +177,7 @@ public class PauseMenuController : MonoBehaviour
             mouseSensSlider.RegisterCallback<ChangeEvent<float>>(ChangeMouseSens);
             PrepareInteractiveElement(mouseSensSlider, new NavigationTargets
             {
-                Up = volumeSlider,
+                Up = soundEffectsSlider,
                 Down = controllerSensSlider,
                 HandleVertical = true
             });
@@ -190,6 +232,21 @@ public class PauseMenuController : MonoBehaviour
         if (volumeSlider != null)
         {
             volumeSlider.value = settings.generalAudioMultiplier;
+        }
+
+        if (voSlider != null)
+        {
+            voSlider.value = settings.voAudioMultiplier;
+        }
+
+        if (musicSlider != null)
+        {
+            musicSlider.value = settings.musicAudioMultiplier;
+        }
+
+        if (soundEffectsSlider != null)
+        {
+            soundEffectsSlider.value = settings.soundEffectsAudioMultiplier;
         }
 
         if (mouseSensSlider != null)
@@ -329,6 +386,27 @@ public class PauseMenuController : MonoBehaviour
     {
         SettingsData settings = SettingsManager.Instance.GetSettingsData();
         settings.generalAudioMultiplier = evt.newValue;
+        SettingsManager.Instance.SaveSettings(settings);
+    }
+
+    private void ChangeVOVolume(ChangeEvent<float> evt)
+    {
+        SettingsData settings = SettingsManager.Instance.GetSettingsData();
+        settings.voAudioMultiplier = evt.newValue;
+        SettingsManager.Instance.SaveSettings(settings);
+    }
+
+    private void ChangeMusicVolume(ChangeEvent<float> evt)
+    {
+        SettingsData settings = SettingsManager.Instance.GetSettingsData();
+        settings.musicAudioMultiplier = evt.newValue;
+        SettingsManager.Instance.SaveSettings(settings);
+    }
+
+    private void ChangeSoundEffectsVolume(ChangeEvent<float> evt)
+    {
+        SettingsData settings = SettingsManager.Instance.GetSettingsData();
+        settings.soundEffectsAudioMultiplier = evt.newValue;
         SettingsManager.Instance.SaveSettings(settings);
     }
 
