@@ -3346,8 +3346,8 @@ Transform:
   m_GameObject: {fileID: 398973472}
   serializedVersion: 2
   m_LocalRotation: {x: 0.5416752, y: 0.45451948, z: -0.5416752, w: 0.45451948}
-  m_LocalPosition: {x: -60.95, y: -1.628, z: 28.99}
-  m_LocalScale: {x: 5.4204926, y: 2.1758, z: 0.050074}
+  m_LocalPosition: {x: -60.95, y: -15.4, z: 28.99}
+  m_LocalScale: {x: 138.77815, y: 137.13226, z: 0.050074}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1303223484}
@@ -5041,9 +5041,9 @@ MonoBehaviour:
   - text: "Oh my\u2026 is this where the victim extras stay when they\u2019re off-stage?"
     timeStartMilliseconds: 0
     durationMilliseconds: 4400
-  - text: Sick.
-    timeStartMilliseconds: 4450
-    durationMilliseconds: 800
+  - text: Not even a coffee or anything!
+    timeStartMilliseconds: 4500
+    durationMilliseconds: 2000
 --- !u!114 &639363997
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8923,7 +8923,7 @@ Transform:
   m_GameObject: {fileID: 1251502961}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.62637776, z: -0, w: 0.7795197}
-  m_LocalPosition: {x: -52.41, y: -0.11398995, z: 43.35}
+  m_LocalPosition: {x: -53.234, y: -0.11398995, z: 43.35}
   m_LocalScale: {x: 5.4204926, y: 2.1758, z: 0.050074}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8943,9 +8943,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BoundaryClipTrigger
   triggeredClip: {fileID: 8300000, guid: 2dcaa5424087c4c8bbc3bcbc8a7d6687, type: 3}
   subtitleLines:
-  - text: "How lazy! I don\u2019t think they even built a proper exit out of here!"
+  - text: "I don\u2019t think they even built a proper exit out of here!"
     timeStartMilliseconds: 0
-    durationMilliseconds: 4000
+    durationMilliseconds: 3500
 --- !u!114 &1251502964
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9148,6 +9148,7 @@ Transform:
   - {fileID: 1251502962}
   - {fileID: 131212631}
   - {fileID: 398973473}
+  - {fileID: 1745853102}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1314891872
@@ -9785,6 +9786,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 2859037534158880451, guid: b61b808ce2be8e04883b1b25c998fdfb, type: 3}
+      propertyPath: m_Volume
+      value: 0.101
+      objectReference: {fileID: 0}
     - target: {fileID: 7320110320956550558, guid: b61b808ce2be8e04883b1b25c998fdfb, type: 3}
       propertyPath: m_RenderPostProcessing
       value: 1
@@ -9831,7 +9836,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8895381986654659772, guid: b61b808ce2be8e04883b1b25c998fdfb, type: 3}
       propertyPath: moveSpeed
-      value: 10
+      value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: 8895381986654659772, guid: b61b808ce2be8e04883b1b25c998fdfb, type: 3}
       propertyPath: airMultiplier
@@ -11364,12 +11369,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1745853098}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -55.61055, y: -300, z: 29.35534}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -53.88602, y: -315.136, z: 29.808529}
   m_LocalScale: {x: 1000, y: 1, z: 1000}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1303223484}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1745853103
 MonoBehaviour:
@@ -13078,7 +13083,6 @@ SceneRoots:
   - {fileID: 219695496}
   - {fileID: 1584611096}
   - {fileID: 685622944}
-  - {fileID: 1745853102}
   - {fileID: 1059989794}
   - {fileID: 1372770386}
   - {fileID: 115307994}
