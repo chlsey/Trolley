@@ -666,6 +666,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2972068866885676290, guid: c0e56157e5ffae74dbaf952fe91860cc, type: 3}
+      propertyPath: m_Antialiasing
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2972068866885676290, guid: c0e56157e5ffae74dbaf952fe91860cc, type: 3}
       propertyPath: m_RenderPostProcessing
       value: 1
       objectReference: {fileID: 0}
@@ -4392,7 +4396,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1287837909}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 50792f0bdb918d14a9c9ac3f65c8942c, type: 3}
   m_Name: 
@@ -6377,7 +6381,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1731263084}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 50792f0bdb918d14a9c9ac3f65c8942c, type: 3}
   m_Name: 
@@ -6489,8 +6493,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcec620d1ad48419e9ef8659ac976188, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  sceneToLoad: TrackEnding
-  ePrompt: {fileID: 345180491}
 --- !u!1 &1748021910
 GameObject:
   m_ObjectHideFlags: 0

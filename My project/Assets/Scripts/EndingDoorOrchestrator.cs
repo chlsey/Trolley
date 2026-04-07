@@ -83,11 +83,13 @@ public class EndingDoorOrchestrator : MonoBehaviour
         VOManager.Instance.PlayLine(tracksIntro);
         
         yield return new WaitForSeconds(6);
+        leftDoorKey.intensity = 25;
         yield return StartCoroutine(OpenCurtain(doorACurtain));
         yield return new WaitForSeconds(tracksIntro.length - 6);
 
         VOManager.Instance.PlayLine(coasterIntro);
         yield return new WaitForSeconds(4);
+        rightDoorKey.intensity = 25;
         yield return StartCoroutine(OpenCurtain(doorBCurtain));
         yield return new WaitForSeconds(coasterIntro.length - 4);
 
@@ -99,8 +101,8 @@ public class EndingDoorOrchestrator : MonoBehaviour
         canEnter = true;
         leftL.intensity = 0;
         rightL.intensity = 0;
-        leftDoorKey.intensity = 25;
-        rightDoorKey.intensity = 25;
+        
+        
         // yield return new WaitForSeconds(ending.length - 2);
     }
 

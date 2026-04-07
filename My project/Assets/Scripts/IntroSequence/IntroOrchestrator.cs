@@ -84,12 +84,10 @@ public class IntroOrchestrator : MonoBehaviour
 
         lever.enabled = true;
 
-        Debug.Log("PlayIntroSequence started");
-
         // 0:06 lever check
         VOManager.Instance.ShowPrompt(new List<VOManager.SubtitleLine>
         {
-            new VOManager.SubtitleLine("Press <sprite index=1> to flip the lever", 4500, 6500),
+            new VOManager.SubtitleLine("Press <sprite index=1> to flip the lever", 4500, 7500),
             new VOManager.SubtitleLine("", 6500, 7500),
         });
         yield return new WaitUntil(() => lever.leverFlipped == true);
