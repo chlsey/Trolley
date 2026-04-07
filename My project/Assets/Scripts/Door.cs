@@ -31,16 +31,23 @@ public class Door : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        nearDoor = true;
-        if (!isLocked)
+        if (other.gameObject.layer == LayerMask.NameToLayer("player"))
         {
-            SetPromptVisible(true);
+            nearDoor = true;
+            if (!isLocked)
+            {
+                SetPromptVisible(true);
+            }
         }
     }
+
     private void OnTriggerExit(Collider other)
     {
-        nearDoor = false;
-        SetPromptVisible(false);
+        if (other.gameObject.layer == LayerMask.NameToLayer("player"))
+        {
+            nearDoor = false;
+            SetPromptVisible(false);
+        }
     }
 
     public void SetLocked(bool locked)
