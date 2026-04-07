@@ -9,10 +9,14 @@ public class VictimSFX : MonoBehaviour
     public AudioClip applause;
     // public static int killCount = 0;
     private bool triggered = false;
+    private bool coasterPhysicsReleased = false;
+    private Rigidbody victimRigidbody;
     // public TextMeshPro text;
 
     private void Awake()
     {
+        victimRigidbody = GetComponent<Rigidbody>();
+
         if (audioSource == null)
         {
             audioSource = GetComponent<AudioSource>();
@@ -78,6 +82,39 @@ public class VictimSFX : MonoBehaviour
                 audioSource.PlayOneShot(applause);
             }
         }
+    }
+
+    public void TriggerCoasterHit(Vector3 hitDirection, float impulse, float upwardImpulse, float torqueImpulse)
+    {
+        TriggerDeath();
+
+        if (coasterPhysicsReleased || victimRigidbody == null)
+        {
+            return;
+        }
+
+        coasterPhysicsReleased = true;
+
+        Vector3 horizontalDirection = Vector3.ProjectOnPlane(hitDirection, Vector3.up);
+        if (horizontalDirection.sqrMagnitude < 0.001f)
+        {
+            horizontalDirection = transform.forward;
+        }
+
+        horizontalDirection.Normalize();
+
+        victimRigidbody.isKinematic = false;
+        victimRigidbody.useGravity = true;
+        victimRigidbody.WakeUp();
+        victimRigidbody.AddForce((horizontalDirection * impulse) + (Vector3.up * upwardImpulse), ForceMode.Impulse);
+
+        Vector3 torqueAxis = Vector3.Cross(Vector3.up, horizontalDirection);
+        if (torqueAxis.sqrMagnitude < 0.001f)
+        {
+            torqueAxis = transform.right;
+        }
+
+        victimRigidbody.AddTorque(torqueAxis.normalized * torqueImpulse, ForceMode.Impulse);
     }
 
     // Update is called once per frame

@@ -25,6 +25,11 @@ public class TrolleyMovementRidable : MonoBehaviour
     public float cameraMinYaw = -35f;
     public float cameraMaxYaw = 35f;
 
+    [Header("Victim Hits")]
+    [SerializeField] private float victimHitImpulse = 8f;
+    [SerializeField] private float victimHitUpwardImpulse = 2f;
+    [SerializeField] private float victimHitTorqueImpulse = 4f;
+
     private float splineProgress = 0f;
     private Transform playerInRange;
     private bool isMounted;
@@ -299,7 +304,7 @@ public class TrolleyMovementRidable : MonoBehaviour
             return false;
         }
 
-        victim.TriggerDeath();
+        victim.TriggerCoasterHit(transform.forward, victimHitImpulse, victimHitUpwardImpulse, victimHitTorqueImpulse);
         return true;
     }
 
