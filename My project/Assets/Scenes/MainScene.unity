@@ -2943,7 +2943,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Press <sprite index=1> to flip the lever
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 777663d8322eb453da744659877a0c7e, type: 2}
   m_sharedMaterial: {fileID: 2503320779844430176, guid: 777663d8322eb453da744659877a0c7e, type: 2}
