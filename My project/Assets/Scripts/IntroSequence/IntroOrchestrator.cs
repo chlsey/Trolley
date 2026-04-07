@@ -5,9 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class IntroOrchestrator : MonoBehaviour
 {
-
-    public PlayerMovement pm;
-
     [Header("Curtains")]
     public Transform leftCurtain;
     public Transform rightCurtain;
@@ -49,18 +46,8 @@ public class IntroOrchestrator : MonoBehaviour
     public bool deathCoroutinePlaying;
 
     public LeverNoRating lever;
-
-    void Awake()
-    {
-        Screen.SetResolution(1920, 1080, FullScreenMode.ExclusiveFullScreen);
-        pm = FindObjectOfType<PlayerMovement>();
-
-        if (pm == null)
-            Debug.LogError("PlayerMovement not found in scene!");
-    }
     void Start()
     {   
-        pm.canJump = false;
         leverLight.intensity = 0;
         deathCoroutinePlaying = false;
         StartCoroutine(PlayIntroSequence());
@@ -76,8 +63,6 @@ public class IntroOrchestrator : MonoBehaviour
     private IEnumerator PlayIntroSequence()
     {
 
-        lever.enabled = false;
-
         LightManager.Instance.TurnOffRGBLights();
         VOManager.Instance.ShowPrompt(new List<VOManager.SubtitleLine>
         {
@@ -91,8 +76,8 @@ public class IntroOrchestrator : MonoBehaviour
         // Production assistant lines
         VOManager.Instance.ShowSubtitle(new List<VOManager.SubtitleLine>
         {
-            new VOManager.SubtitleLine("Alright, let's do a final check real quick.", 0f, 2500f),
-            new VOManager.SubtitleLine("See that lever set up?", 3500f, 5000f),
+            new VOManager.SubtitleLine("Alright, let's do a final check real quick.", 1000f, 2500f),
+            new VOManager.SubtitleLine("See that lever set up?", 3000f, 5000f),
         });
 
         Debug.Log("PlayIntroSequence started");
@@ -103,25 +88,21 @@ public class IntroOrchestrator : MonoBehaviour
             new VOManager.SubtitleLine("Press <sprite index=1> to flip the lever", 4500, 6500),
             new VOManager.SubtitleLine("", 6500, 7500),
         });
-
-        yield return new WaitForSeconds(introClipPart1.length);
-
-        lever.enabled = true;
-
         yield return new WaitUntil(() => lever.leverFlipped == true);
         Debug.Log("lever flipped, continuing");
 
+        // VOManager.Instance.ShowSubtitle(null);
 
 
         VOManager.Instance.PlayLine(introClipPart2);
             VOManager.Instance.ShowSubtitle(new List<VOManager.SubtitleLine>
         {
             new VOManager.SubtitleLine("Sweettt", 0f, 1500f),
-            new VOManager.SubtitleLine("Don’t forget buddy, you can only flip it once per round yeah?", 1500f, 5000f),
+            new VOManager.SubtitleLine("Don’t forget buddy, you can only flip it once per round yeah?", 1500f, 7000f),
             new VOManager.SubtitleLine("Alright, we're gonna be on air in", 5000, 6500f),
             new VOManager.SubtitleLine("3", 6500f, 8000f),
-            new VOManager.SubtitleLine("2", 8000f, 8000f),
-            new VOManager.SubtitleLine("1", 8500f, 8000f),
+            new VOManager.SubtitleLine("2", 8000f, 8500f),
+            new VOManager.SubtitleLine("1", 8500f, 9000f),
         });
         // 0:09 drum rolls spinning lights on
         yield return new WaitForSeconds(9);
