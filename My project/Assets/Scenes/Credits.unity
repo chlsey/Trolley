@@ -456,8 +456,8 @@ MonoBehaviour:
     Gardener: Pari Rohani\n\r\nLet\u2019s Eat: Kevin Chen\n\r\nExpert Foodie: Cici
     Zhan\n\r\nCan You Guys Hear Me: Ch\u2026lsey W\u2026 \r\n"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 85e76cccce744784b8dc6fe10d07f80f, type: 2}
+  m_sharedMaterial: {fileID: 2853162555671723090, guid: 85e76cccce744784b8dc6fe10d07f80f, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
