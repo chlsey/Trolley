@@ -3177,7 +3177,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: f9d564b2ee1e547c2b8967c3b10e3411, type: 3}
       propertyPath: m_Name
-      value: Curtains
+      value: Curtains L
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: f9d564b2ee1e547c2b8967c3b10e3411, type: 3}
       propertyPath: m_IsActive
@@ -3352,7 +3352,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: f9d564b2ee1e547c2b8967c3b10e3411, type: 3}
       propertyPath: m_Name
-      value: Curtains (1)
+      value: Curtains R
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: f9d564b2ee1e547c2b8967c3b10e3411, type: 3}
       propertyPath: m_IsActive
@@ -4292,7 +4292,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1282610237}
-  - component: {fileID: 1282610236}
+  - component: {fileID: 1282610238}
   m_Layer: 0
   m_Name: 3DoorOrchestrator
   m_TagString: Untagged
@@ -4300,33 +4300,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1282610236
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1282610235}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3173f417c35cb42049d09e6410227532, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
-  doorACurtain: {fileID: 1939345326}
-  doorBCurtain: {fileID: 402785285}
-  curtainOpenDistance: 10
-  curtainOpenDuration: 1
-  glassPanel: {fileID: 1448855250}
-  segway: {fileID: 8300000, guid: ee8ffed8862e741eeaca9dcdcf1ae745, type: 3}
-  tracksIntro: {fileID: 8300000, guid: 6a64e7dd71fc241f8872945485f17abf, type: 3}
-  coasterIntro: {fileID: 8300000, guid: 539064381e59941d0a3152dfbf4a0cbf, type: 3}
-  ending: {fileID: 8300000, guid: 0102d6b6ccfaf4db2bf6d38a5c219646, type: 3}
-  leftL: {fileID: 1576386460}
-  rightL: {fileID: 1359782080}
-  leftDoorKey: {fileID: 1053663605}
-  rightDoorKey: {fileID: 1536273240}
-  lightOn: {fileID: 8300000, guid: d788c5525137f42098ab88dde65f8426, type: 3}
-  canEnter: 0
 --- !u!4 &1282610237
 Transform:
   m_ObjectHideFlags: 0
@@ -4342,6 +4315,33 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1282610238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1282610235}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bf84f9b31b362e4fa4194c8c7e85e6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EndingDoorOrchestrator
+  doorACurtain: {fileID: 1939345326}
+  doorBCurtain: {fileID: 402785285}
+  curtainOpenDistance: 10
+  curtainOpenDuration: 1
+  glassPanel: {fileID: 1448855250}
+  segway: {fileID: 8300000, guid: ee8ffed8862e741eeaca9dcdcf1ae745, type: 3}
+  tracksIntro: {fileID: 8300000, guid: 6a64e7dd71fc241f8872945485f17abf, type: 3}
+  coasterIntro: {fileID: 8300000, guid: 539064381e59941d0a3152dfbf4a0cbf, type: 3}
+  ending: {fileID: 8300000, guid: 0102d6b6ccfaf4db2bf6d38a5c219646, type: 3}
+  leftL: {fileID: 1576386460}
+  rightL: {fileID: 1359782080}
+  leftDoorKey: {fileID: 1053663605}
+  rightDoorKey: {fileID: 1536273240}
+  lightOn: {fileID: 8300000, guid: d788c5525137f42098ab88dde65f8426, type: 3}
+  canEnter: 0
 --- !u!1 &1287837909
 GameObject:
   m_ObjectHideFlags: 0

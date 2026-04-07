@@ -19,6 +19,7 @@ public class OutOfBoundsTrigger : MonoBehaviour
         NextScene nextScene = FindObjectOfType<NextScene>();
         if (nextScene != null)
         {
+            StopAllCoroutines();
             Debug.Log("next scene loading");
             nextScene.TriggerSceneChange();
         }
