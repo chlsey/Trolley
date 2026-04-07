@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class IntroOrchestrator : MonoBehaviour
 {
+
+    public PlayerMovement pm;
+
     [Header("Curtains")]
     public Transform leftCurtain;
     public Transform rightCurtain;
@@ -46,8 +49,17 @@ public class IntroOrchestrator : MonoBehaviour
     public bool deathCoroutinePlaying;
 
     public LeverNoRating lever;
+
+    void Awake()
+    {
+        pm = FindObjectOfType<PlayerMovement>();
+
+        if (pm == null)
+            Debug.LogError("PlayerMovement not found in scene!");
+    }
     void Start()
     {   
+        pm.canJump = false;
         leverLight.intensity = 0;
         deathCoroutinePlaying = false;
         StartCoroutine(PlayIntroSequence());
