@@ -6,6 +6,7 @@ public class CoasterEndingController : MonoBehaviour
 {
     public AudioClip intro;
     public AudioClip nauseaClip;
+    public AudioClip rideMusic;
 
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -34,6 +35,14 @@ public class CoasterEndingController : MonoBehaviour
 
     public void StartRidingCoroutine()
     {
+        if (VOManager.Instance != null && rideMusic != null && VOManager.Instance.musicSource != null)
+        {
+            VOManager.Instance.musicSource.Stop();
+            VOManager.Instance.musicSource.clip = rideMusic;
+            VOManager.Instance.musicSource.loop = false;
+            VOManager.Instance.musicSource.Play();
+        }
+
         StartCoroutine(RidingCoroutine());
     }
 

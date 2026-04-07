@@ -29611,6 +29611,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   intro: {fileID: 8300000, guid: 7a4677197db174b31b83c90c1678e746, type: 3}
   nauseaClip: {fileID: 8300000, guid: e89a47eb2dba94a659af30780e8e9167, type: 3}
+  rideMusic: {fileID: 8300000, guid: d673e79503a59cb428050b1404261349, type: 3}
 --- !u!4 &1685519062
 Transform:
   m_ObjectHideFlags: 0
