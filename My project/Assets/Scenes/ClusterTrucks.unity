@@ -74030,6 +74030,7 @@ MonoBehaviour:
   fail1: {fileID: 8300000, guid: 88173ecb451374cbfad3f0cd4f3719b0, type: 3}
   fail2: {fileID: 8300000, guid: 8c8c8bfcdd402432788b2fc4423fa2c6, type: 3}
   fail3: {fileID: 8300000, guid: 095437742121244fba1c2de87e1e0827, type: 3}
+  finalDeath: {fileID: 8300000, guid: 28f51ba0c3b4d8348ac9908e9f45c086, type: 3}
   catMeow: {fileID: 8300000, guid: 019191aabefaf4fb891c25ee1dffb41a, type: 3}
   themeSong: {fileID: 8300000, guid: 84ea2376d2bf96a4482f32710cde33db, type: 3}
   jumpSound: {fileID: 8300000, guid: 9ebd020862f739c40b094bc1bf702833, type: 3}

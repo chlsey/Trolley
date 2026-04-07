@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ClusterTrucksVoiceController : MonoBehaviour
@@ -10,6 +11,7 @@ public class ClusterTrucksVoiceController : MonoBehaviour
     public AudioClip fail1;
     public AudioClip fail2;
     public AudioClip fail3;
+    public AudioClip finalDeath;
     public AudioClip catMeow;
     public AudioClip themeSong;
     public AudioClip jumpSound;
@@ -115,9 +117,23 @@ public class ClusterTrucksVoiceController : MonoBehaviour
 
     private IEnumerator PlayDeathVoiceLine()
     {
+        int deathCount = Health.deathCount;
         Debug.Log("player died, playing random voiceline");
-        // will randomly choose a death clip to play out of 3
+        
         VOManager.Instance.StopAllCoroutines();
+        // if the number of lives are up, play the better luck line
+        if(deathCount == 3)
+        {
+            VOManager.Instance.PlayLine(finalDeath);
+            VOManager.Instance.ShowSubtitle(new List<VOManager.SubtitleLine>
+            {
+                new VOManager.SubtitleLine("Awww. Better luck next time!", 140f, 4000f),
+
+            });
+            yield break;
+        }
+
+        // otherwise, randomly choose a death clip to play out of 3
         int randomInt = Random.Range(1, 4);
         switch (randomInt)
         {
