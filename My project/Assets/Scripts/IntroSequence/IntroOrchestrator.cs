@@ -90,7 +90,10 @@ public class IntroOrchestrator : MonoBehaviour
         });
         yield return new WaitUntil(() => lever.leverFlipped == true);
         Debug.Log("lever flipped, continuing");
-
+        VOManager.Instance.ShowPrompt(new List<VOManager.SubtitleLine>
+        {
+            new VOManager.SubtitleLine("", 0, 1000),
+        });
         // VOManager.Instance.ShowSubtitle(null);
 
 

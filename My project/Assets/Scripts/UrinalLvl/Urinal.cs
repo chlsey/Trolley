@@ -103,7 +103,7 @@ public class Urinal : MonoBehaviour
                 VOManager.Instance.StopBackgroundMusic();
                 introSource.enabled = false;
                 anim.SetTrigger("PlayerPee");
-                
+                playerMovement.moveSpeed = 0;
                 
                 StartCoroutine(SlapRightWithDelay());
                 audioSource.PlayOneShot(PeeSFX);
